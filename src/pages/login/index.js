@@ -1,6 +1,16 @@
 import React from 'react';
-import { ContainerLogin, LoginView, LoginButton, InputLogin, ButtonText, TitleView, TitleText, InputArea, SubTitleText, BorderArea } from './styles';
-
+import { 
+    ContainerLogin, 
+    LoginView, 
+    LoginButton, 
+    InputLogin, 
+    ButtonText, 
+    TitleView, 
+    TitleText, 
+    InputArea, 
+    SubTitleText, 
+    BorderArea 
+} from './styles';
 
 export default function Login() {
     return (
