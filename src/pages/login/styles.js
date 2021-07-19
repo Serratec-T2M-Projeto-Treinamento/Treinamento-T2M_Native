@@ -25,31 +25,31 @@ export const InputArea = styled.View`
 `;
 
 export const InputLogin = styled.TextInput`
-  background: white;
-  font-size: 16px;
-  border-color: black;
-  margin-left: 10px;
-  border-radius: 15px;
-  border-width: 1.5px;
-  width: 200px;
+    background: white;
+    font-size: 16px;
+    border-color: black;
+    margin-left: 10px;
+    border-radius: 15px;
+    border-width: 1.5px;
+    width: 200px;
 `;
 
 export const ButtonText = styled.Text`
     text-align: center;
 `;
 
- export const TitleView = styled.View`
+export const TitleView = styled.View`
     margin-left: 70px;
  `;
 
- export const TitleText = styled.Text`
+export const TitleText = styled.Text`
     font-size: 50px;
     font-style: italic;
  `;
 
 export const SubTitleText = styled.Text`
-font-size: 25px;
-font-style: italic;
+    font-size: 25px;
+    font-style: italic;
 `;
 
 export const BorderArea = styled.View`

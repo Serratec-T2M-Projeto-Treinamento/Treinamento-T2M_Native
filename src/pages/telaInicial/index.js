@@ -1,17 +1,19 @@
 import React from 'react';
-import { TextInput } from 'react-native';
-import { ContainerInicial, TelaText, TelaView, TelaButton } from './styles';
+import { ContainerInicial, TitleText, TelaView, TelaButton, TitleView, TelaText, ButtonView } from './styles';
 import { StyleSheet } from 'react-native';
 
 export default function TelaIncial() {
     return (
         <ContainerInicial>
                 <TelaView>
-                    <TelaText>Bem-Vindo Administrador</TelaText>
-                    <TextInput styles ={styles.input}/>
+                    <TitleView>
+                    <TitleText>Bem-Vindo Administrador</TitleText>
+                    </TitleView>
+                    <ButtonView>
                     <TelaButton>
-                        <TelaText>Clique Aqui</TelaText>
+                        <TelaText>Clique para fazer login</TelaText>
                     </TelaButton>
+                    </ButtonView>
                 </TelaView>
         </ContainerInicial>
     );
