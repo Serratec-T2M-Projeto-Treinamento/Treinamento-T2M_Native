@@ -2,21 +2,23 @@ import React from 'react';
 import { 
     ContainerLogin, 
     LoginView, 
-    LoginButton,
-    LoginButton2, 
+    LoginButton, 
     InputLogin, 
     ButtonText,  
     InputArea, 
     BorderArea,
-    LoginView2 
+    LoginView2,
+    Logo,
+    LogoView
 } from './styles';
-import { StyleSheet, Image } from 'react-native';
 
 export default function Login({navigation}) {
     return (
         <ContainerLogin>
             <LoginView>
-                <Image style={styles.logo} source={require('../../icons/logo.png')} />
+                <LogoView>
+                <Logo source={require('../../icons/logo.png')} />
+                </LogoView>
                 <LoginView2>
                 <BorderArea>
                 <InputArea>
@@ -28,22 +30,9 @@ export default function Login({navigation}) {
                 <LoginButton onPress={() => {navigation.navigate('Home')}}>
                     <ButtonText>Entrar</ButtonText>
                 </LoginButton>
-                <LoginButton2 onPress={() => {navigation.navigate('Tela Inicial')}}>
-                    <ButtonText>Voltar</ButtonText>
-                </LoginButton2>
                 </BorderArea>
                 </LoginView2>
             </LoginView>
         </ContainerLogin>
     );
 };
-
-const styles = StyleSheet.create({
-    logo:{
-        width:250,
-        height:'25%',
-        resizeMode:'center',
-        marginRight: 100,
-        
-    }
-});

@@ -97,3 +97,19 @@ export const BorderArea = styled.View`
     border-radius: 15px;
 
 `;
+
+export const Logo = styled.Image`
+    width:300px;
+    height:135px;
+    margin-right: 28px;
+`;
+
+export const LogoView = styled.View`
+    width:100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 50px;
+    
+   
+`;
