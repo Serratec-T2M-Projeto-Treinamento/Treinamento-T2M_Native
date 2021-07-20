@@ -2,23 +2,22 @@ import React from 'react';
 import { 
     ContainerLogin, 
     LoginView, 
-    LoginButton, 
+    LoginButton,
+    LoginButton2, 
     InputLogin, 
-    ButtonText, 
-    TitleView, 
-    TitleText, 
+    ButtonText,  
     InputArea, 
-    SubTitleText, 
-    BorderArea 
+    BorderArea,
+    LoginView2 
 } from './styles';
+import { StyleSheet, Image } from 'react-native';
 
-export default function Login() {
+export default function Login({navigation}) {
     return (
         <ContainerLogin>
             <LoginView>
-                <TitleView>
-                    <TitleText>T2M</TitleText>
-                    <SubTitleText>Test to Market</SubTitleText>
+                <Image style={styles.logo} source={require('../../icons/logo.png')} />
+                <LoginView2>
                 <BorderArea>
                 <InputArea>
                 <InputLogin placeholder='nome de usuario'/>
@@ -26,13 +25,25 @@ export default function Login() {
                 <InputArea>
                 <InputLogin placeholder='senha'/>
                 </InputArea>
-                </BorderArea>
-                </TitleView>
-                <LoginButton>
+                <LoginButton onPress={() => {navigation.navigate('Home')}}>
                     <ButtonText>Entrar</ButtonText>
                 </LoginButton>
+                <LoginButton2 onPress={() => {navigation.navigate('Tela Inicial')}}>
+                    <ButtonText>Voltar</ButtonText>
+                </LoginButton2>
+                </BorderArea>
+                </LoginView2>
             </LoginView>
         </ContainerLogin>
     );
 };
 
+const styles = StyleSheet.create({
+    logo:{
+        width:250,
+        height:'25%',
+        resizeMode:'center',
+        marginRight: 100,
+        
+    }
+});

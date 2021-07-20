@@ -1,10 +1,11 @@
 import React from 'react';
-import Login from './pages/login';
-import TelaInicial from './pages/telaInicial'
+import MyDrawer from './navegacao/MyDrawer';
+import { NavigationContainer } from '@react-navigation/native';
 
-
-export default function App(){
-    return(
-    <TelaInicial/>
+export default function App() {
+    return (
+        <NavigationContainer>
+        <MyDrawer/>
+        </NavigationContainer>
     );
 };

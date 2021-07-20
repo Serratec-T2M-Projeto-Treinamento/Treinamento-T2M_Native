@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components/native';
 
 export const ContainerInicial = styled.SafeAreaView`
@@ -9,14 +8,18 @@ export const ContainerInicial = styled.SafeAreaView`
 `;
 
 export const TelaView = styled.View`
-    width: 300px;
-    height: 400px;
-    margin-right: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
 `;
 
 export const TitleText = styled.Text`
     color: #679E9C;
     font-size: 20px;
+    margin-top: 100px;
 `;
 
 export const TelaButton = styled.TouchableOpacity`
@@ -27,7 +30,6 @@ export const TelaButton = styled.TouchableOpacity`
     font-weight: 600;
     background-color: #01a999;
     color: white;
-    
 `;
 
 export const TitleView = styled.View`
@@ -43,6 +45,19 @@ export const TelaText = styled.Text`
 export const ButtonView = styled.View`
     align-items: center;
     margin-top: 100px;
-    margin-left: 25px;
+    
+`;
+
+export const Logo = styled.Image`
+    width:350px;
+    height:160px;
+    
+`;
+
+export const LogoView = styled.View`
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 `;
