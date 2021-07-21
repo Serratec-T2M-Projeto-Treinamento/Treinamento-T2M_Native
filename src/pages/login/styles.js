@@ -3,26 +3,23 @@ import styled from 'styled-components/native';
 export const ContainerLogin = styled.SafeAreaView`
     align-items: center;
     justify-content: center;
-    flex: 1;
     background-color: #39C2C1;
 `;
 
 export const LoginView = styled.View`
     width: 100%;
     height: 100%;
-    display: flex;
     align-items: center;
+    margin-top: 100px;
 `;
 
 export const LoginView2 = styled.View`
     width: 100%;
     height: 300px;
-    display: flex;
     align-items: center;
 `;
 
 export const LoginButton = styled.TouchableOpacity`
-    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
@@ -35,7 +32,6 @@ export const LoginButton = styled.TouchableOpacity`
 `;
 
 export const LoginButton2 = styled.TouchableOpacity`
-    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
@@ -71,7 +67,6 @@ export const ButtonText = styled.Text`
 
 export const TitleView = styled.View`
     width: 100%;
-    display: flex;
     align-items: center;
     justify-content: center;
  `;
@@ -93,7 +88,6 @@ export const BorderArea = styled.View`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    display: flex;
     border-radius: 15px;
 
 `;
@@ -102,14 +96,13 @@ export const Logo = styled.Image`
     width:300px;
     height:135px;
     margin-right: 28px;
+
 `;
 
 export const LogoView = styled.View`
     width:100%;
-    display: flex;
     align-items: flex-end;
     justify-content: center;
     margin-bottom: 50px;
     
-   
 `;

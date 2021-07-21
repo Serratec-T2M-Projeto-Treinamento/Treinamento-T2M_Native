@@ -9,11 +9,13 @@ import {
   ButtonView,
   EspacoView
 } from './styles';
+import MenuIcon from '../../components/icon';
 
 export default function Cadastro() {
   return (
     <Container>
         <CadastroScroll>
+      <MenuIcon />
         <EspacoView>
         </EspacoView>
         <InputArea>
@@ -23,7 +25,7 @@ export default function Cadastro() {
           <InputCadastro placeholder="RG" />
           <InputCadastro placeholder="Cep" />
           <InputCadastro placeholder="E-mail" />
-          <InputCadastro placeholder="Pais" />
+          <InputCadastro placeholder="País" />
           <InputCadastro placeholder="Estado" />
           <InputCadastro placeholder="Cidade" />
           <InputCadastro placeholder="Bairro" />

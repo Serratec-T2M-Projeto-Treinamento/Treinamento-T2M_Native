@@ -4,17 +4,19 @@ import {
   HomeView,
   HomeButton,
   ButtonText,
-  IconView,
-  IconButton
+  IconArea,
+  ButtonView
 } from './styles';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { DrawerActions } from '@react-navigation/native';
+import MenuIcon from '../../components/icon';
 
 export default function Home({navigation}) {
   return (
     <ContainerHome>
-      
+      <IconArea>
+      <MenuIcon />
+      </IconArea>
       <HomeView>
+        <ButtonView>
         <HomeButton>
           <ButtonText onPress={()=>{navigation.navigate('Lista de Colaboradores')}}>Colaboradores</ButtonText>
         </HomeButton>
@@ -22,6 +24,7 @@ export default function Home({navigation}) {
         <HomeButton>
           <ButtonText>Treinamentos</ButtonText>
         </HomeButton>
+        </ButtonView>
       </HomeView>
     </ContainerHome>
   );
