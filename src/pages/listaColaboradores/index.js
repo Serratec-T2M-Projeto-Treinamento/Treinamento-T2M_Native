@@ -1,37 +1,45 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, ButtonInserir, ButtonText, ButtonView } from './styles';
 import MenuIcon from '../../components/icon';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
+import axios from 'axios';
 
-export default function Listagem({navigation}){
+export default function Listagem({ navigation }) {
 
-   // const [colaborador, setColaborador] = useState(null);
+    const [colaborador, setColaborador] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/colaborador')
-    //     .then(response => {
-    //        return response.json();
-    //     })
-    //     .then(data => {
-    //         console.log(data);
-    //     })
-    //     .catch(function(error){
-    //         console.error('Houve um erro na requisição ' + error.message);
-    //         throw error;
-    //     })
-    // }, []);
+    const getColaboradores = () => {
+        axios.get('http://10.0.2.2:3000/colaborador')
+            .then((response) => {
+                setColaborador(response.data);
+                console.log(colaborador);
+            })
+            .catch(function (error) {
+                console.error(error.message);
+            });
+    }
 
-    return(
-    <Container>
-        <MenuIcon />
-        <View>
-            <Text>Colaborador: </Text>
+    useEffect(() => {
+        getColaboradores()
+    }, []);
+
+    const info = colaborador.map((p, i) =>{
+        return(
+        <View key={i}>
+            <Text>Colaborador: {p.nome}</Text>
         </View>
-        <ButtonView>
-        <ButtonInserir onPress={()=>{navigation.navigate('Cadastro')}}>
-            <ButtonText>Novo Colaborador</ButtonText>
-        </ButtonInserir>
-        </ButtonView>
-    </Container>
-);
+        );
+    });
+
+    return (
+        <Container>
+            <MenuIcon />
+            <ButtonView>
+                <ButtonInserir onPress={() => { navigation.navigate('Cadastro') }}>
+                    <ButtonText>Novo Colaborador</ButtonText>
+                </ButtonInserir>
+            </ButtonView>
+            {info}
+        </Container>
+    );
 };
