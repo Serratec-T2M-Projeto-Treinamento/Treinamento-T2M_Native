@@ -1,11 +1,11 @@
 import React from 'react';
 import { 
-    ContainerLogin, 
-    LoginView, 
-    LoginButton, 
-    InputLogin, 
-    ButtonText,  
-    InputArea, 
+    ContainerLogin,
+    LoginView,
+    LoginButton,
+    InputLogin,
+    ButtonText,
+    InputArea,
     BorderArea,
     LoginView2,
     Logo,
@@ -17,7 +17,7 @@ export default function Login({navigation}) {
         <ContainerLogin>
             <LoginView>
                 <LogoView>
-                <Logo source={require('../../icons/logo.png')} />
+                <Logo source={require('../../../assets/logo.png')} />
                 </LogoView>
                 <LoginView2>
                 <BorderArea>

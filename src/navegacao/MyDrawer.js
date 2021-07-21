@@ -11,11 +11,11 @@ export default function DrawerNavigator() {
     return (
         <Drawer.Navigator
             initialRouteName='Login'
-            screenOptions={{ headerTransparent: true, headerShown: true }}>
-            <Drawer.Screen name='Login' component={Login} options={{headerStyle:{backgroundColor:'#39C2C1'}}}/>
+            screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
-            <Drawer.Screen name='Cadastro' component={Cadastro} options={{headerStyle:{backgroundColor:'#CBCBCB'}}}/>
+            <Drawer.Screen name='Cadastro' component={Cadastro} />
+            <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
         </Drawer.Navigator>
     );
 };
