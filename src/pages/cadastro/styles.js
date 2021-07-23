@@ -44,7 +44,7 @@ export const InputArea = styled.View`
 `;
 
 export const CadastroScroll = styled.ScrollView`
-  background-color: #CBCBCB;
+  background-color: #5CB3B2;
 `;
 
 export const EspacoView = styled.View`

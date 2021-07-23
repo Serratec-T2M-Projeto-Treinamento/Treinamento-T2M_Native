@@ -32,15 +32,15 @@ export const InformacoesArea = styled.View`
   width: 100%;
   display: flex;
   margin-top: -55px;
+  margin-left: 5px;
 `;
 
 export const InformacoesScroll = styled.ScrollView`
-  background-color: #FFF;
+  background-color: #5CB3B2;
 `;
 
 export const EspacoView = styled.View`
   height: 60px;
-
 `;
 
 export const ButtonView = styled.View`
