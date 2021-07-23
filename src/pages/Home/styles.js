@@ -29,6 +29,7 @@ export const HomeButton = styled.TouchableOpacity`
 export const ButtonText = styled.Text`  
   text-align: center;
   color: white;
+  font-size: 18px;
 `;
 
 export const IconArea = styled.View`
