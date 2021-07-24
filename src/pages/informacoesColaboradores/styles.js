@@ -31,7 +31,7 @@ export const InformacoesArea = styled.View`
   justify-content: flex-start;
   width: 100%;
   display: flex;
-  margin-top: -55px;
+  margin-top: -10px;
   margin-left: 5px;
 `;
 
@@ -40,11 +40,11 @@ export const InformacoesScroll = styled.ScrollView`
 `;
 
 export const EspacoView = styled.View`
-  height: 60px;
+  height: 1px;
 `;
 
 export const ButtonView = styled.View`
-  margin-top: 50px;
+  margin-top: 30px;
 `;
 export const ButtonText = styled.Text`
   text-align: center;

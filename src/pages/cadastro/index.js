@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   CadastroButton,
   InputCadastro,
@@ -10,77 +10,125 @@ import {
   EspacoView
 } from './styles';
 import MenuIcon from '../../components/icon';
-
-
-
+import axios from 'axios';
+import { Alert } from 'react-native';
 
 export default function Cadastro() {
-  const [colaborador, setColaborador] = useState({
-    nome: '',
-    dataNascimento:'',
-    Cpf: '',
-    Rg:'',
-    cep: '',
-    email:'',
-    telefone:'',
-    Pais:'',
-    estado:'',
-    cidade: '',
-    Bairro: '',
-    Rua: '',
-    numero: '',
-    complemento: '',
-    Posicao: '',
-    contaBancarria: '',
-    pix: '',
-    emailT2m: '',
-    certificacao:'',
-    treinamento: ''
-  });
-
-  const handleChange = (text) => {
-  console.log(text)
-  }
-
   return (
     <Container>
-        <CadastroScroll>
-      <MenuIcon />
+      <CadastroScroll>
+        <MenuIcon />
         <EspacoView>
         </EspacoView>
         <InputArea>
-          <InputCadastro placeholder="Nome" onChangeText={handleChange} />
-          <InputCadastro placeholder="Data de Nascimento" onChangeText={handleChange} />
-          <InputCadastro placeholder="CPF" onChangeText={handleChange}/>
-          <InputCadastro placeholder="RG" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Cep" onChangeText={handleChange}/>
-          <InputCadastro placeholder="E-mail" onChangeText={handleChange}/>
-          <InputCadastro placeholder="País" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Estado" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Cidade" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Bairro" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Rua" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Numero" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Complemento" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Posição" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Conta bancária" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Pix" onChangeText={handleChange}/>
-          <InputCadastro placeholder="E-mail T2M" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Certificação 1" onChangeText={handleChange}/>
-          <InputCadastro placeholder="Treinamento 1" onChangeText={handleChange}/>
+          <InputCadastro placeholder="Nome" />
+          <InputCadastro placeholder="Data de Nascimento" />
+          <InputCadastro placeholder="CPF" />
+          <InputCadastro placeholder="RG" />
+          <InputCadastro placeholder="Cep" />
+          <InputCadastro placeholder="E-mail" />
+          <InputCadastro placeholder="País" />
+          <InputCadastro placeholder="Estado" />
+          <InputCadastro placeholder="Cidade" />
+          <InputCadastro placeholder="Bairro" />
+          <InputCadastro placeholder="Rua" />
+          <InputCadastro placeholder="Numero" />
+          <InputCadastro placeholder="Complemento" />
+          <InputCadastro placeholder="Posição" />
+          <InputCadastro placeholder="Conta bancária" />
+          <InputCadastro placeholder="Pix" />
+          <InputCadastro placeholder="E-mail T2M" />
+          <InputCadastro placeholder="Certificação 1" />
+          <InputCadastro placeholder="Treinamento 1" />
         </InputArea>
         <ButtonView>
-        <CadastroButton>
-          <CadastroText>Histórico Profissional</CadastroText>
-        </CadastroButton>
-        <CadastroButton>
-          <CadastroText>SALVAR</CadastroText>
-        </CadastroButton>
+          <CadastroButton>
+            <CadastroText>Histórico Profissional</CadastroText>
+          </CadastroButton>
+          <CadastroButton >
+            <CadastroText>SALVAR</CadastroText>
+          </CadastroButton>
         </ButtonView>
         <EspacoView>
         </EspacoView>
       </CadastroScroll>
-      </Container>
+    </Container>
   );
+
+    // const [colaborador, setColaborador] = useState({
+  //   nome: '',
+  //   usuario: '',
+  //   cpf: '',
+  //   email: '',
+  //   dataNascimento: '',
+  //   endereco: {
+  //     rua: '',
+  //     numero: '',
+  //     complemento: '',
+  //     bairro: '',
+  //     cidade: '',
+  //     estado: '',
+  //     cep: ''
+  //   }
+  // });
+
+  // const handleNomeChange = (text) => {
+  //   setColaborador({ ...colaborador, nome: text });
+  //   console.log(colaborador);
+  // }
+
+  // const handleUsuarioChange = (text) => {
+  //   setColaborador({ ...colaborador, usuario: text });
+  // }
+
+  // const handleCpfChange = (text) => {
+  //   setColaborador({ ...colaborador, cpf: text });
+  // }
+
+  // const handleEmailChange = (text) => {
+  //   setColaborador({ ...colaborador, email: text });
+  // }
+
+  // const handleDataChange = (text) => {
+  //   setColaborador({ ...colaborador, dataNascimento: text });
+  // }
+
+  // const handleRuaChange = (text) => {
+  //   setColaborador({ ...colaborador, rua: text });
+  // }
+
+  // const handleNumeroChange = (text) => {
+  //   setColaborador({ ...colaborador, numero: text });
+  // }
+
+  // const handleComplementoChange = (text) => {
+  //   setColaborador({ ...colaborador, complemento: text });
+  // }
+
+  // const handleBairroChange = (text) => {
+  //   setColaborador({ ...colaborador, bairro: text });
+  // }
+
+  // const handleCidadeChange = (text) => {
+  //   setColaborador({ ...colaborador, cidade: text });
+  // }
+
+  // const handleEstadoChange = (text) => {
+  //   setColaborador({ ...colaborador, estado: text });
+  // }
+  
+  // const handleCepChange = (text) => {
+  //   setColaborador({ ...colaborador, cep: text });
+  // }
+  
+  
+  // const postColaborador = () => {
+  //   axios.post('https://api-zerocommerce.herokuapp.com/cliente', )
+  // };
+
+  // const handleChange = (text) => {
+  // setColaborador({...colaborador, nome: text})
+  // }
 }
+
 

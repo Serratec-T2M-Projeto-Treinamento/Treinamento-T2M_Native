@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator
-            initialRouteName='Sair'
+            initialRouteName='Home'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
