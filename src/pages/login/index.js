@@ -29,9 +29,9 @@ export default function Login({navigation}) {
 
 
      const logar = () => {
-         axios.get('http://10.0.2.2:3000/colaborador/1')
+         axios.get('https://api-zerocommerce.herokuapp.com/cliente/1')
          .then((response) => {
-             if(response.data.nome == usuario.login && response.data.senha == usuario.senha){
+             if(response.data.usuario == usuario.login && response.data.endereco.numero == usuario.senha){
                  navigation.navigate('Home');
              }else{
                  Alert.alert('Preencha os espaços com as informações corretas!')
