@@ -54,7 +54,7 @@ export default function Login({navigation}) {
                 <InputLogin onChangeText={handleNomeChange} placeholder='nome de usuario'/>
                 </InputArea>
                 <InputArea>
-                <InputLogin onChangeText={handleSenhaChange} placeholder='senha'/>
+                <InputLogin onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha'/>
                 </InputArea>
                 <LoginButton onPress={() => logar()}>
                     <ButtonText>Entrar</ButtonText>
