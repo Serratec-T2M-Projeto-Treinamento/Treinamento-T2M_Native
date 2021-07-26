@@ -8,13 +8,14 @@ export const Container = styled.SafeAreaView`
 export const CadastroButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
-  width: 100%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 10px;
+  border: white;
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -54,4 +55,5 @@ export const EspacoView = styled.View`
 
 export const ButtonView = styled.View`
   margin-top: 50px;
+  align-items: center;
 `;

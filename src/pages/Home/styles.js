@@ -4,7 +4,7 @@ export const ContainerHome = styled.SafeAreaView`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  background-color: #EFFFFB;
+  background-color: #5CB3B2;
   height: 100%;
 `;
 
@@ -24,6 +24,7 @@ export const HomeButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 30px;
+  border: white;
 `;
 
 export const ButtonText = styled.Text`  

@@ -11,7 +11,6 @@ export default function Listagem({ navigation }) {
         axios.get('https://api-zerocommerce.herokuapp.com/cliente')
             .then((response) => {
                 setColaborador(response.data);
-
             })
             .catch(function (error) {
                 console.error(error.message);
@@ -27,6 +26,38 @@ export default function Listagem({ navigation }) {
             colaborador: p
         });
     }
+
+    const info = colaborador.map((p, i) => {
+        return (
+            <InfoView key={i}>
+                <InfoButton onPress={() => handleClick(p)}>
+                    <InfoButtonText>{p.nome}</InfoButtonText>
+                </InfoButton>
+            </InfoView>
+        );
+    });
+
+    return (
+        <Container>
+            <ListScroll>
+                <MenuIcon />
+                <ContentView>
+                    <ButtonView>
+                        <ButtonInserir onPress={() => navigation.navigate('Cadastro')}>
+                            <ButtonText>Novo Colaborador</ButtonText>
+                        </ButtonInserir>
+                    </ButtonView>
+                    {info}
+                </ContentView>
+                <EspacoView>
+                </EspacoView>
+            </ListScroll>
+        </Container>
+    );
+};
+
+
+
     // id: colaborador.id,
     // nome: colaborador.nome,
     // posicao: colaborador.posicao,
@@ -46,32 +77,3 @@ export default function Listagem({ navigation }) {
     // emailT2m: colaborador.emailT2m,
     // treinamento: colaborador.treinamento,
     // certificacao: colaborador.certificacao
-
-    const info = colaborador.map((p, i) => {
-        return (
-            <InfoView key={i}>
-                <InfoButton onPress={() => handleClick(p)}>
-                    <InfoButtonText>{p.nome}</InfoButtonText>
-                </InfoButton>
-            </InfoView>
-        );
-    });
-
-    return (
-        <Container>
-            <ListScroll>
-                <MenuIcon />
-                <ContentView>
-                    <ButtonView>
-                        <ButtonInserir onPress={() => { navigation.navigate('Cadastro') }}>
-                            <ButtonText>Novo Colaborador</ButtonText>
-                        </ButtonInserir>
-                    </ButtonView>
-                    {info}
-                </ContentView>
-                <EspacoView>
-                </EspacoView>
-            </ListScroll>
-        </Container>
-    );
-};

@@ -21,9 +21,9 @@ export default function Home({navigation}) {
           <ButtonText onPress={()=>{navigation.navigate('Lista de Colaboradores')}}>Colaboradores</ButtonText>
         </HomeButton>
 
-        <HomeButton>
+        {/* <HomeButton>
           <ButtonText>Treinamentos</ButtonText>
-        </HomeButton>
+        </HomeButton> */}
         </ButtonView>
       </HomeView>
     </ContainerHome>

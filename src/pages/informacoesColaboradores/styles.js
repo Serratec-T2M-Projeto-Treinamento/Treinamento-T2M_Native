@@ -15,6 +15,7 @@ export const  InformacoesButton = styled.TouchableOpacity`
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 10px;
+  border: white;
 `;
 
 export const InformacoesText = styled.Text`
@@ -45,6 +46,7 @@ export const EspacoView = styled.View`
 
 export const ButtonView = styled.View`
   margin-top: 30px;
+  align-items: center;
 `;
 export const ButtonText = styled.Text`
   text-align: center;
