@@ -11,9 +11,45 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 
 export default function Cadastro() {
+  const [colaborador, setColaborador] = useState(
+    {
+    nome: '',
+    usuario: '',
+    cpf: '',
+    email: '',
+    dataNascimento: '',
+    endereco:{
+      rua: '',
+      numero: '',
+      complemento: '',
+      bairro: '',
+      cidade: '',
+      estado: '',
+      cep: ''
+      } 
+    })
+
+  const navigation = useNavigation();
+  
+  const postColaborador = () => {
+    axios.post('https://api-zerocommerce.herokuapp.com/cliente', colaborador)
+    .then(() => {
+      Alert.alert('Colaborador Cadastrado!')
+      navigation.reset({
+        routes:[{name:'Lista de Colaboradores'}]
+      })
+    })
+    .catch((error) => {
+      console.error('Ocorreu um erro inesperado: ' + error.message);
+    });
+  };
+  
+  console.log(colaborador);
+
   return (
     <Container>
       <CadastroScroll>
@@ -21,31 +57,24 @@ export default function Cadastro() {
         <EspacoView>
         </EspacoView>
         <InputArea>
-          <InputCadastro placeholder="Nome" />
-          <InputCadastro placeholder="Data de Nascimento" />
-          <InputCadastro placeholder="CPF" />
-          <InputCadastro placeholder="RG" />
-          <InputCadastro placeholder="Cep" />
-          <InputCadastro placeholder="E-mail" />
-          <InputCadastro placeholder="País" />
-          <InputCadastro placeholder="Estado" />
-          <InputCadastro placeholder="Cidade" />
-          <InputCadastro placeholder="Bairro" />
-          <InputCadastro placeholder="Rua" />
-          <InputCadastro placeholder="Numero" />
-          <InputCadastro placeholder="Complemento" />
-          <InputCadastro placeholder="Posição" />
-          <InputCadastro placeholder="Conta bancária" />
-          <InputCadastro placeholder="Pix" />
-          <InputCadastro placeholder="E-mail T2M" />
-          <InputCadastro placeholder="Certificação 1" />
-          <InputCadastro placeholder="Treinamento 1" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, nome: text})} placeholder="Nome" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, usuario: text})} placeholder="Usuario" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, cpf: text})} placeholder="CPF" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, email: text})} placeholder="E-mail" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, dataNascimento: text})} placeholder="Data de Nascimento" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, rua: text}})} placeholder="Rua" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, numero: text}})} placeholder="Numero" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, complemento: text}})} placeholder="Complemento" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, bairro: text}})} placeholder="Bairro" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, cidade: text}})} placeholder="Cidade" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, estado: text}})} placeholder="Estado" />
+          <InputCadastro onChangeText={(text) => setColaborador({...colaborador, endereco: {...colaborador.endereco, cep: text}})} placeholder="Cep" />
         </InputArea>
         <ButtonView>
-          <CadastroButton>
+          {/* <CadastroButton>
             <CadastroText>Histórico Profissional</CadastroText>
-          </CadastroButton>
-          <CadastroButton >
+          </CadastroButton> */}
+          <CadastroButton onPress={() => postColaborador()}>
             <CadastroText>SALVAR</CadastroText>
           </CadastroButton>
         </ButtonView>
@@ -55,80 +84,6 @@ export default function Cadastro() {
     </Container>
   );
 
-    // const [colaborador, setColaborador] = useState({
-  //   nome: '',
-  //   usuario: '',
-  //   cpf: '',
-  //   email: '',
-  //   dataNascimento: '',
-  //   endereco: {
-  //     rua: '',
-  //     numero: '',
-  //     complemento: '',
-  //     bairro: '',
-  //     cidade: '',
-  //     estado: '',
-  //     cep: ''
-  //   }
-  // });
-
-  // const handleNomeChange = (text) => {
-  //   setColaborador({ ...colaborador, nome: text });
-  //   console.log(colaborador);
-  // }
-
-  // const handleUsuarioChange = (text) => {
-  //   setColaborador({ ...colaborador, usuario: text });
-  // }
-
-  // const handleCpfChange = (text) => {
-  //   setColaborador({ ...colaborador, cpf: text });
-  // }
-
-  // const handleEmailChange = (text) => {
-  //   setColaborador({ ...colaborador, email: text });
-  // }
-
-  // const handleDataChange = (text) => {
-  //   setColaborador({ ...colaborador, dataNascimento: text });
-  // }
-
-  // const handleRuaChange = (text) => {
-  //   setColaborador({ ...colaborador, rua: text });
-  // }
-
-  // const handleNumeroChange = (text) => {
-  //   setColaborador({ ...colaborador, numero: text });
-  // }
-
-  // const handleComplementoChange = (text) => {
-  //   setColaborador({ ...colaborador, complemento: text });
-  // }
-
-  // const handleBairroChange = (text) => {
-  //   setColaborador({ ...colaborador, bairro: text });
-  // }
-
-  // const handleCidadeChange = (text) => {
-  //   setColaborador({ ...colaborador, cidade: text });
-  // }
-
-  // const handleEstadoChange = (text) => {
-  //   setColaborador({ ...colaborador, estado: text });
-  // }
-  
-  // const handleCepChange = (text) => {
-  //   setColaborador({ ...colaborador, cep: text });
-  // }
-  
-  
-  // const postColaborador = () => {
-  //   axios.post('https://api-zerocommerce.herokuapp.com/cliente', )
-  // };
-
-  // const handleChange = (text) => {
-  // setColaborador({...colaborador, nome: text})
-  // }
 }
 
 

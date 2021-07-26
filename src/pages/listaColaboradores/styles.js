@@ -15,16 +15,14 @@ export const ButtonInserir = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    
+    border: white;
 `;
 
 export const ButtonText = styled.Text`
     text-align: center;
-    padding-top: 5px;
     color: white;
     font-weight: bold;
     font-size: 18px;
-    
 `;
 
 export const ButtonView = styled.View`
