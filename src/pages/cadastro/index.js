@@ -43,8 +43,8 @@ export default function Cadastro() {
         routes:[{name:'Lista de Colaboradores'}]
       })
     })
-    .catch((error) => {
-      console.error('Ocorreu um erro inesperado: ' + error.message);
+    .catch(() => {
+      Alert.alert('Por favor, chegue os dados novamente: erro de requisição (400)');
     });
   };
   
