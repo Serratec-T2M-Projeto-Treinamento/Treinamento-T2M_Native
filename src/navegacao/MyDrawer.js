@@ -11,14 +11,14 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator
-            initialRouteName='Sair'
+            initialRouteName='Home'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
+            <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
-            <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} options={{drawerLabel: () => null}}/>
-            {/* Fazer o "Informações Colaboradores" sair do drawer navigator  */}
+            {/* options={{drawerLabel: () => null}} />  */}
         </Drawer.Navigator>
     );
 };

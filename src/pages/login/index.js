@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { 
+import {
     ContainerLogin,
     LoginView,
     LoginButton,
@@ -12,54 +12,55 @@ import {
     LogoView
 } from './styles';
 import axios from 'axios';
-import { Alert } from 'react-native';
 
+export default function Login({ navigation }) {
+    const [usuario, setUsuario] = useState({
+        usuario: '',
+        senha: ''
+    });
 
-
-export default function Login({navigation}) {
-    const [usuario, setUsuario] = useState({login: '', senha: ''});
-
-    const handleNomeChange = (text) =>{
-       setUsuario({...usuario, login: text});
+    const handleNomeChange = (text) => {
+        setUsuario({ ...usuario, usuario: text });
     }
 
-    const handleSenhaChange = (text) =>{
-        setUsuario({...usuario, senha: text});
+    const handleSenhaChange = (text) => {
+        setUsuario({ ...usuario, senha: text });
     }
 
+    console.log(usuario);
 
-     const logar = () => {
-         axios.get('https://api-zerocommerce.herokuapp.com/cliente/1') //ester 549//
-         .then((response) => {
-             if(response.data.usuario == usuario.login && response.data.endereco.numero == usuario.senha){
-                 navigation.navigate('Home');
-             }else{
-                 Alert.alert('Preencha os espaços com as informações corretas!')
-             }
-         })
-         .catch((error) => {
-             console.error(error.message);
-         });
-     }
+    const logar = () => {
+        axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios', usuario)
+            // .then(() => {
+            //     if (usuario == usuario.usuario && senha == usuario.senha) {
+            //         navigation.navigate('Home')
+            //     }else{
+            //         Alert.alert('Dados inválidos!')
+            //     }
+            // })
+            .catch((error) => {
+                console.error(error.message);
+            });
+    }
 
     return (
         <ContainerLogin>
             <LoginView>
                 <LogoView>
-                <Logo source={require('../../../assets/logo.png')} />
+                    <Logo source={require('../../../assets/logo.png')} />
                 </LogoView>
                 <LoginView2>
-                <BorderArea>
-                <InputArea>
-                <InputLogin onChangeText={handleNomeChange} placeholder='nome de usuario'/>
-                </InputArea>
-                <InputArea>
-                <InputLogin onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha'/>
-                </InputArea>
-                <LoginButton onPress={() => logar()}>
-                    <ButtonText>Entrar</ButtonText>
-                </LoginButton>
-                </BorderArea>
+                    <BorderArea>
+                        <InputArea>
+                            <InputLogin onChangeText={handleNomeChange} placeholder='nome de usuario' />
+                        </InputArea>
+                        <InputArea>
+                            <InputLogin onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha' />
+                        </InputArea>
+                        <LoginButton onPress={() => logar()}>
+                            <ButtonText>Entrar</ButtonText>
+                        </LoginButton>
+                    </BorderArea>
                 </LoginView2>
             </LoginView>
         </ContainerLogin>
