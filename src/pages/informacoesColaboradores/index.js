@@ -19,7 +19,8 @@ import {
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
 
-export default function Informacoes({ route }) {
+
+export default function Informacoes({ route, navigation }) {
 
 
   if (route.params) {
@@ -41,7 +42,7 @@ export default function Informacoes({ route }) {
     return (
       <Container>
         <InformacoesScroll>
-          <MenuIcon />
+          <MenuIcon/>
           <InformacoesArea>
             <DadosArea>
               <DadosView>
@@ -116,16 +117,16 @@ export default function Informacoes({ route }) {
           </InformacoesArea>
           <ButtonView>
             <TodoButton>
-              <ButtonText>Certificações</ButtonText>
+              <ButtonText onPress={() => navigation.navigate('Certificações')}>Certificações</ButtonText>
             </TodoButton>
             <TodoButton>
-              <ButtonText>Treinamentos</ButtonText>
+              <ButtonText onPress={() => navigation.navigate('Formações')}>Treinamentos</ButtonText>
             </TodoButton>
             <TodoButton>
-              <ButtonText>Histórico Profissional</ButtonText>
+              <ButtonText onPress={() => navigation.navigate('Histórico Profissional')}>Histórico Profissional</ButtonText>
             </TodoButton>
             <TodoButton>
-              <ButtonText>Projetos atuais</ButtonText>
+              <ButtonText  >Projetos atuais</ButtonText>
             </TodoButton>
             <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
