@@ -20,7 +20,7 @@ export const  InformacoesButton = styled.TouchableOpacity`
 export const InformacoesText = styled.Text`
   text-align: center;
   color: black;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: bold;
 `;
 
@@ -56,7 +56,7 @@ export const ButtonText = styled.Text`
 
 
 export const DadosText = styled.Text`
-  font-size: 26px;
+  font-size: 18px;
   text-align: center;
   font-style: italic;
   `;
