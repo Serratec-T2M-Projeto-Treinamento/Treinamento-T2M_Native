@@ -8,7 +8,7 @@ import Cadastro from '../pages/cadastro';
 import Projetos from '../pages/projetos';
 
 import Certificacao from '../pages/certificacao';
-=======
+
 import Formacoes from '../pages/formacoes';
 
 
