@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import ListaDeColaboradores from '../pages/listaColaboradores';
 import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
+import Certificacao from '../pages/certificacao';
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +18,7 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
             <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
+            <Drawer.Screen name='Certificações' component={Certificacao}/>
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
             {/* options={{drawerLabel: () => null}} />  */}
         </Drawer.Navigator>
