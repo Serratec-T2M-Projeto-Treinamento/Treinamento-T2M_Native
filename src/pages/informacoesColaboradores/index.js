@@ -23,8 +23,6 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Informacoes({ route, navigation }) {
 
-  const navigation = useNavigation();
-
   if (route.params) {
     const { colaborador } = route.params
 

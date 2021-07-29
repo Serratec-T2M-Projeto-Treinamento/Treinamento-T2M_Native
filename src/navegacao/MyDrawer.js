@@ -7,7 +7,6 @@ import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
 import Certificacao from '../pages/certificacao';
 import Projetos from '../pages/projetos';
-import Certificacao from '../pages/certificacao';
 import Formacoes from '../pages/formacoes';
 import HistoricoProfissional from '../pages/historicoProfissional';
 
@@ -25,8 +24,8 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Certificações' component={Certificacao}/>
             <Drawer.Screen name='Formações' component={Formacoes} />
             <Drawer.Screen name='Projetos' component={Projetos} />
-            <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
             <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/>
+            <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
             {/* options={{drawerLabel: () => null}} />  */}
         </Drawer.Navigator>
     );
