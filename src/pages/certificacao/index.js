@@ -7,9 +7,8 @@ export default function certificacao() {
 
     return(
         <Container>
-            <MenuIcon />
+            <MenuIcon/>
             <CertificacaoScroll>
-                <MenuIcon/>
                  <CertifiArea>
                     <CertiView>
                         <CertiText>- Certificação </CertiText>
