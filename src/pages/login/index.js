@@ -53,10 +53,10 @@ export default function Login({ navigation }) {
                 <LoginView2>
                     <BorderArea>
                         <InputArea>
-                            <InputLogin onChangeText={handleNomeChange} placeholder='nome de usuario' />
+                            <InputLogin autoCapitalize='none' onChangeText={handleNomeChange} placeholder='nome de usuario' />
                         </InputArea>
                         <InputArea>
-                            <InputLogin onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha' />
+                            <InputLogin autoCapitalize='none' onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha' />
                         </InputArea>
                         <LoginButton onPress={() => logar()}>
                             <ButtonText>Entrar</ButtonText>

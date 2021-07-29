@@ -8,7 +8,8 @@ import {
   Container,
   ButtonView,
   EspacoView,
-  PickerView
+  PickerView,
+  SelectView
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
@@ -19,51 +20,38 @@ export default function Cadastro({ navigation }) {
   const [idColaborador, setIdColaborador] = useState(0);
   const [idEndereco, setIdEndereco] = useState(0);
   const [posicoes, setPosicoes] = useState([]);
-  const[posicaoEscolhida, setPosicaoEscolhida] = useState();
-
-  console.log(posicaoEscolhida);
-
-  useEffect(async () => {
+  const [posicaoEscolhida, setPosicaoEscolhida] = useState();
+  const [permissaoEscolhida, setPermissaoEscolhida] = useState();
+  
+  const getPosicao = async () => {
     try {
-     const response = await axios.get("https://api-treinamento-t2m.herokuapp.com/posicoes")
-        setPosicoes(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+      const response = await axios.get('https://api-treinamento-t2m.herokuapp.com/posicoes')
+      setPosicoes(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getPosicao()
     }, []);
 
-  // const pickerPosicoes = posicoes.map((p, i) => {
-  //   return (
-  //     <Picker.Item key={i} label={p.nome} value={p.idPosicao} />
-  //   );
-  // });
-
-  // console.log(pickerPosicoes);
-
-  const [colaborador, setColaborador] = useState(
-    {
+    const [colaborador, setColaborador] = useState(
+      {
       nome: '',
       rg: '',
       cpf: '',
       email: '',
       dataNascimento: '',
-      contaBancaria: 0,
       pix: '',
       cnh: '',
       permissao: 0,
       posicao: {
         idPosicoes: 1
-      },
-      setColaboradoresEndereco: [{
-        idColaboradoresEnderecos: {
-          idColaborador: idColaborador,
-          idEndereco: idEndereco
-        }
-      }]
-    })
+      }
+    });
 
-  const [endereco, setEndereco] = useState({
+    const [endereco, setEndereco] = useState({
     pais: '',
     estado: '',
     cidade: '',
@@ -81,37 +69,46 @@ export default function Cadastro({ navigation }) {
         <EspacoView>
         </EspacoView>
         <InputArea>
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, nome: text })} placeholder="Nome" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, rg: text })} placeholder="Usuario" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cpf: text })} placeholder="CPF" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, email: text })} placeholder="E-mail" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, dataNascimento: text })} placeholder="Data de Nascimento" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cnh: text })} placeholder="CNH" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, pix: text })} placeholder="Pix" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, contaBancaria: text })} placeholder="Conta Bancária" />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, nome: text })} placeholder="Nome" placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, rg: text })} placeholder="Usuario" placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cpf: text })} placeholder="CPF" placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, email: text })} placeholder="E-mail" placeholderTextColor='#181818'/>
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, dataNascimento: text })} placeholder="Data de Nascimento" placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cnh: text })} placeholder="CNH" placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, pix: text })} placeholder="Pix" placeholderTextColor='#181818' />
           <PickerView>
             <Picker
               mode='dropdown'
+              itemStyle={{color:'#181818'}}
               selectedValue={posicaoEscolhida}
-              onValueChange={(itemValue,itemIndex) => setPosicaoEscolhida(itemValue)}>
+              onValueChange={(itemValue, itemIndex) => setPosicaoEscolhida(itemValue)}>
                 {posicoes.map((p,i) => (
-                <Picker.Item key={i} label={p.nome} value={p.idPosicoes} />
+                <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
                 )
               )}
             </Picker>
           </PickerView>
-          {/* <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, rua: text } })} placeholder="Rua" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, numero: text } })} placeholder="Numero" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, complemento: text } })} placeholder="Complemento" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, bairro: text } })} placeholder="Bairro" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, cidade: text } })} placeholder="Cidade" />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, estado: text } })} placeholder="Estado" />
-        <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, endereco: { ...colaborador.endereco, cep: text } })} placeholder="Cep" /> */}
+          <PickerView>
+            <Picker
+              mode='dropdown'
+              itemStyle={{color:'#181818'}}
+              selectedValue={permissaoEscolhida}
+              onValueChange={(itemValue, itemIndex) => setPermissaoEscolhida(itemValue)}>
+                <Picker.Item color='#181818' label='Administrador' value={2} />
+                <Picker.Item color='#181818' label='Líder' value={1} />
+                <Picker.Item color='#181818' label='Colaborador' value={0} />
+            </Picker>
+          </PickerView>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, pais: text })} placeholder="País"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, estado: text })} placeholder="Estado"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cidade: text })} placeholder="Cidade"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, bairro: text })} placeholder="Bairro"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, rua: text })} placeholder="Rua"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, numero: text })} placeholder="Numero"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, complemento: text })} placeholder="Complemento"  placeholderTextColor='#181818' />
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cep: text })} placeholder="Cep" placeholderTextColor='#181818'/>
         </InputArea>
         <ButtonView>
-          {/* <CadastroButton>
-            <CadastroText>Histórico Profissional</CadastroText>
-          </CadastroButton> */}
           <CadastroButton>
             <CadastroText>SALVAR</CadastroText>
           </CadastroButton>
@@ -124,4 +121,12 @@ export default function Cadastro({ navigation }) {
 
 }
 
-
+  // const getPermissao = async () => {
+  //   try {
+  //     const response = await axios.get('https://api-treinamento-t2m.herokuapp.com/colaboradores')
+  //     setPermissaoEscolhida(response.data.permissao);
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error('Ocorreu um erro: ' + error);
+  //   }
+  // }
