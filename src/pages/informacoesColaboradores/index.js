@@ -33,7 +33,6 @@ export default function Informacoes({ route }) {
       axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
         .then((response) => {
           setEndereco(response.data);
-          console.log(response.data);
         })
     }
 
@@ -41,8 +40,16 @@ export default function Informacoes({ route }) {
       getDados()
     }, [colaborador]);
 
-    const handleClick = () => {
+    const handleClickProj = () => {
       navigation.navigate('Projetos', { colaborador });
+    }
+
+    const handleClickForm = () => {
+      navigation.navigate('Formações', { colaborador });
+    }
+
+    const handleClickCert = () => {
+      navigation.navigate('Certificações', { colaborador });
     }
 
     const handleDate = () => {
@@ -151,16 +158,16 @@ export default function Informacoes({ route }) {
             </DadosArea>
           </InformacoesArea>
           <ButtonView>
-            <TodoButton>
+            <TodoButton onPress={() => handleClickCert()}>
               <ButtonText>Certificações</ButtonText>
             </TodoButton>
-            <TodoButton>
+            <TodoButton onPress={() => handleClickForm()}>
               <ButtonText>Treinamentos</ButtonText>
             </TodoButton>
             <TodoButton>
               <ButtonText>Histórico Profissional</ButtonText>
             </TodoButton>
-            <TodoButton onPress={() => handleClick()}>
+            <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
             </TodoButton>
             <InformacoesButton>

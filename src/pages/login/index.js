@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     ContainerLogin,
     LoginView,
@@ -12,32 +12,33 @@ import {
     LogoView
 } from './styles';
 import axios from 'axios';
+import { Alert } from 'react-native';
 
 export default function Login({ navigation }) {
-    const [usuario, setUsuario] = useState({
+    const [login, setLogin] = useState({
         usuario: '',
         senha: ''
     });
 
     const handleNomeChange = (text) => {
-        setUsuario({ ...usuario, usuario: text });
+        setLogin({ ...login, usuario: text });
     }
 
     const handleSenhaChange = (text) => {
-        setUsuario({ ...usuario, senha: text });
+        setLogin({ ...login, senha: text });
     }
 
-    console.log(usuario);
+    console.log(login);
 
     const logar = () => {
-        axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios', usuario)
-            // .then(() => {
-            //     if (usuario == usuario.usuario && senha == usuario.senha) {
-            //         navigation.navigate('Home')
-            //     }else{
-            //         Alert.alert('Dados inválidos!')
-            //     }
-            // })
+        axios.get('https://api-treinamento-t2m.herokuapp.com/usuarios/1')
+            .then((response) => {
+                if (response.data.usuario === login.usuario && response.data.senha === login.senha) {
+                    navigation.navigate('Home')
+                }else{
+                    Alert.alert('Nome de usuário ou senha inválidos!')
+                }
+            })
             .catch((error) => {
                 console.error(error.message);
             });
