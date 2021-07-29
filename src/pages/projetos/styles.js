@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
+    background-color: #5CB3B2;
     height: 100%;
 `;
 

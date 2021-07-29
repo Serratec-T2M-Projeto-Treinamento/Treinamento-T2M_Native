@@ -19,13 +19,15 @@ export const CadastroButton = styled.TouchableOpacity`
 `;
 
 export const InputCadastro = styled.TextInput`
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 10px;
   border: black;
   width: 70%;
   background-color: white;
   height: 50px;
   border-radius: 10px;
+  color: #181818;
+  
 `;
 
 export const CadastroText = styled.Text`
@@ -64,4 +66,8 @@ export const PickerView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
   border: black;
+`;
+
+export const SelectView = styled.View`
+  background-color: white;
 `;

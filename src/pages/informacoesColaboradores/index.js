@@ -18,8 +18,6 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
-
 
 export default function Informacoes({ route, navigation }) {
 
