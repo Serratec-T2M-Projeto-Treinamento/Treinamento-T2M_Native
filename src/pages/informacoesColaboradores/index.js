@@ -18,7 +18,6 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function Informacoes({ route, navigation }) {
@@ -26,7 +25,7 @@ export default function Informacoes({ route, navigation }) {
   if (route.params) {
     const { colaborador } = route.params
 
-    const [endereco, setEndereco] = useState([])
+    const [endereco, setEndereco] = useState({})
 
     const getDados = () => {
       axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
@@ -37,6 +36,8 @@ export default function Informacoes({ route, navigation }) {
 
     useEffect(() => {
       getDados()
+    }, []);
+
     }, [colaborador]);
 
     const handleClickProj = () => {
@@ -112,12 +113,22 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Email: </InformacoesText>
                 <DadosText>{colaborador.email}</DadosText>
               </DadosView>
-              {handleDate()}
+              <DadosView>
+                <InformacoesText>Data de Nascimento: </InformacoesText>
+                <DadosText>{colaborador.dataNascimento}</DadosText>
+              </DadosView>
               <DadosView>
                 <InformacoesText>CNH: </InformacoesText>
                 <DadosText>{colaborador.cnh}</DadosText>
               </DadosView>
-              {handlePermissao()}
+              <DadosView>
+                <InformacoesText>Permissão: </InformacoesText>
+                <DadosText>{colaborador.permissao}</DadosText>
+              </DadosView>
+              <DadosView>
+                <InformacoesText>Usuario: </InformacoesText>
+                <DadosText>{colaborador.usuario}</DadosText>
+              </DadosView>
               <DadosView>
                 <InformacoesText>Posição: </InformacoesText>
                 <DadosText>{colaborador.posicao.nome}</DadosText>
@@ -162,6 +173,9 @@ export default function Informacoes({ route, navigation }) {
             </TodoButton>
             <TodoButton onPress={() => handleClickForm()}>
               <ButtonText>Treinamentos</ButtonText>
+            </TodoButton>
+            <TodoButton>
+              <ButtonText >Projetos atuais</ButtonText>
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
