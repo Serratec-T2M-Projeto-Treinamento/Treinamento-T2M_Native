@@ -1,5 +1,5 @@
 import React from 'react';
-import{Container, HistoricoScroll, HistoricoArea, HistoricoView, HistoricoText, EspacoView, HistoView}from './styles';
+import{Container, HistoricoScroll,HistoText, HistoricoArea, HistoricoView, HistoricoText, EspacoView, HistoView}from './styles';
 import MenuIcon from '../../components/icon';
 
 export default function historicoProfissional() {
@@ -11,7 +11,7 @@ export default function historicoProfissional() {
                 <MenuIcon/>
                  <HistoricoArea>
                  <HistoView>
-                        <HistoricoText> Historico Profissional </HistoricoText>
+                        <HistoText> Historico Profissional </HistoText>
                     </HistoView>
                     <HistoricoView>
                         <HistoricoText> Empresa: </HistoricoText>

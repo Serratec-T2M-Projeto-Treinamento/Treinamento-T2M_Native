@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText,ProArea} from './styles';
 import axios from 'axios';
 import MenuIcon from   '../../components/icon';
 

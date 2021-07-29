@@ -14,7 +14,7 @@ export const  InformacoesButton = styled.TouchableOpacity`
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border: white;
+  border:white;
 `;
 
 export const InformacoesText = styled.Text`
@@ -73,6 +73,7 @@ export const DadosArea = styled.View`
   background-color: lightgrey;
   margin-top: 10px;
   border-radius: 10px;
+  border:lightblue;
   `;
 
 export const MensagemArea = styled.View`
