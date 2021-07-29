@@ -164,28 +164,17 @@ export default function Informacoes({ route, navigation }) {
             </TodoButton>
             <TodoButton onPress={() => handleClickForm()}>
               <ButtonText>Treinamentos</ButtonText>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Certificações')}>Certificações</ButtonText>
-            </TodoButton>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Formações')}>Treinamentos</ButtonText>
-            </TodoButton>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Histórico Profissional')}>Histórico Profissional</ButtonText>
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
-            <TodoButton>
               <ButtonText>Projetos atuais</ButtonText>
-            <TodoButton onPress={() => handleClick()}>
-              <ButtonText>Projetos atuais</ButtonText>
-            </TodoButton>
+              </TodoButton>
             <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
             </InformacoesButton>
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>
-      </Container >
+      </Container>
     );
 
   } else {
