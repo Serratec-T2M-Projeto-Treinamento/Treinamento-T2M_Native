@@ -3,13 +3,14 @@ import{ CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, Button
 import MenuIcon from '../../components/icon';
 
 export default function certificacao() {
-
+   
 
     return(
         <Container>
             <MenuIcon />
             <CertificacaoScroll>
-                <CertifiArea>
+                <MenuIcon/>
+                 <CertifiArea>
                     <CertiView>
                         <CertiText>- Certificação </CertiText>
                         <CertiText>- Certificação </CertiText>
