@@ -57,3 +57,11 @@ export const ButtonView = styled.View`
   margin-top: 50px;
   align-items: center;
 `;
+
+export const PickerView = styled.View`
+  background-color: white;
+  width: 70%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: black;
+`;
