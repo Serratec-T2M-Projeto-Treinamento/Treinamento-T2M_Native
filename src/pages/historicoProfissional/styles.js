@@ -17,6 +17,7 @@ export const HistoricoView = styled.SafeAreaView`
   border-radius: 10px;
   margin-top: 50px;
   justify-content: center ;
+  border:lightblue;
 `;
 export const HistoricoText= styled.Text`
   text-align: center;
@@ -33,10 +34,12 @@ export const HistoricoScroll = styled.ScrollView`
 
 export const EspacoView = styled.View`
   height: 400px;
- 
 `
 export const HistoView = styled.View`
 
- 
+`
+export const HistoText= styled.Text`
+font-size: 22px;
+color: black;
 `
 
