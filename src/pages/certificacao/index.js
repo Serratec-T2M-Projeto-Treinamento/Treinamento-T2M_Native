@@ -1,15 +1,14 @@
 import React from 'react';
-import{CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, ButtonView, ButtonText, CertiButton }from './styles';
+import{ CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, ButtonView, ButtonText, CertiButton }from './styles';
 import MenuIcon from '../../components/icon';
-
 
 export default function certificacao() {
    
 
     return(
         <Container>
+            <MenuIcon/>
             <CertificacaoScroll>
-                <MenuIcon/>
                  <CertifiArea>
                     <CertiView>
                         <CertiText>- Certificação </CertiText>

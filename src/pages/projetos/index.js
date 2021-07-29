@@ -26,8 +26,6 @@ export default function Projetos({ route }) {
             useEffect(() => {
                 getDados()
             }, [colaborador]);
-            
-            console.log(projetos);
 
 
         return (

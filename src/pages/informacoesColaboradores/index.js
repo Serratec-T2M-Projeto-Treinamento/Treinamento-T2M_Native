@@ -22,7 +22,6 @@ import axios from 'axios';
 
 export default function Informacoes({ route, navigation }) {
 
-
   if (route.params) {
     const { colaborador } = route.params
 
@@ -38,6 +37,59 @@ export default function Informacoes({ route, navigation }) {
     useEffect(() => {
       getDados()
     }, []);
+
+    }, [colaborador]);
+
+    const handleClickProj = () => {
+      navigation.navigate('Projetos', { colaborador });
+    }
+
+    const handleClickForm = () => {
+      navigation.navigate('Formações', { colaborador });
+    }
+
+    const handleClickCert = () => {
+      navigation.navigate('Certificações', { colaborador });
+    }
+
+    const handleDate = () => {
+      const data = new Date(colaborador.dataNascimento)
+      const dia = (data.getDate() + 1).toString().padStart(2, '0')
+      const mes = (data.getMonth() + 1).toString().padStart(2, '0')
+      const ano = data.getFullYear()
+      const dataFormatada = `${dia}/${mes}/${ano}`
+      return (
+        <DadosView>
+          <InformacoesText>Data de Nascimento: </InformacoesText>
+          <DadosText>{dataFormatada}</DadosText>
+        </DadosView>
+      )
+    }
+
+    const handlePermissao = () => {
+      if (colaborador.permissao === 2) {
+        return (
+          <DadosView>
+            <InformacoesText>Permissão: </InformacoesText>
+            <DadosText>Administrador</DadosText>
+          </DadosView>
+        )
+      } else if (colaborador.permissao === 1) {
+        return (
+          <DadosView>
+            <InformacoesText>Permissão: </InformacoesText>
+            <DadosText>Líder</DadosText>
+          </DadosView>
+        )
+      } else {
+        return (
+          <DadosView>
+            <InformacoesText>Permissão: </InformacoesText>
+            <DadosText>Colaborador</DadosText>
+          </DadosView>
+        )
+      }
+    };
 
     return (
       <Container>
@@ -116,25 +168,25 @@ export default function Informacoes({ route, navigation }) {
             </DadosArea>
           </InformacoesArea>
           <ButtonView>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Certificações')}>Certificações</ButtonText>
+            <TodoButton onPress={() => handleClickCert()}>
+              <ButtonText>Certificações</ButtonText>
             </TodoButton>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Formações')}>Treinamentos</ButtonText>
-            </TodoButton>
-            <TodoButton>
-              <ButtonText onPress={() => navigation.navigate('Histórico Profissional')}>Histórico Profissional</ButtonText>
+            <TodoButton onPress={() => handleClickForm()}>
+              <ButtonText>Treinamentos</ButtonText>
             </TodoButton>
             <TodoButton>
               <ButtonText >Projetos atuais</ButtonText>
             </TodoButton>
+            <TodoButton onPress={() => handleClickProj()}>
+              <ButtonText>Projetos atuais</ButtonText>
+              </TodoButton>
             <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
             </InformacoesButton>
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>
-      </Container >
+      </Container>
     );
 
   } else {
