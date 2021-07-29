@@ -18,72 +18,26 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
 
 
 export default function Informacoes({ route, navigation }) {
 
-  const navigation = useNavigation();
 
   if (route.params) {
     const { colaborador } = route.params
 
-    const [endereco, setEndereco] = useState([])
+    const [endereco, setEndereco] = useState({})
 
     const getDados = () => {
       axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
         .then((response) => {
           setEndereco(response.data);
-          console.log(response.data);
         })
     }
 
     useEffect(() => {
       getDados()
-    }, [colaborador]);
-
-    const handleClick = () => {
-      navigation.navigate('Projetos', { colaborador });
-    }
-
-    const handleDate = () => {
-      const data = new Date(colaborador.dataNascimento)
-      const dia = (data.getDate() + 1).toString().padStart(2, '0')
-      const mes = (data.getMonth() + 1).toString().padStart(2, '0')
-      const ano = data.getFullYear()
-      const dataFormatada = `${dia}/${mes}/${ano}`
-      return (
-        <DadosView>
-          <InformacoesText>Data de Nascimento: </InformacoesText>
-          <DadosText>{dataFormatada}</DadosText>
-        </DadosView>
-      )
-    }
-
-    const handlePermissao = () => {
-      if (colaborador.permissao === 2) {
-        return (
-          <DadosView>
-            <InformacoesText>Permissão: </InformacoesText>
-            <DadosText>Administrador</DadosText>
-          </DadosView>
-        )
-      } else if (colaborador.permissao === 1) {
-        return (
-          <DadosView>
-            <InformacoesText>Permissão: </InformacoesText>
-            <DadosText>Líder</DadosText>
-          </DadosView>
-        )
-      } else {
-        return (
-          <DadosView>
-            <InformacoesText>Permissão: </InformacoesText>
-            <DadosText>Colaborador</DadosText>
-          </DadosView>
-        )
-      }
-    };
+    }, []);
 
     return (
       <Container>
@@ -107,12 +61,22 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Email: </InformacoesText>
                 <DadosText>{colaborador.email}</DadosText>
               </DadosView>
-              {handleDate()}
+              <DadosView>
+                <InformacoesText>Data de Nascimento: </InformacoesText>
+                <DadosText>{colaborador.dataNascimento}</DadosText>
+              </DadosView>
               <DadosView>
                 <InformacoesText>CNH: </InformacoesText>
                 <DadosText>{colaborador.cnh}</DadosText>
               </DadosView>
-              {handlePermissao()}
+              <DadosView>
+                <InformacoesText>Permissão: </InformacoesText>
+                <DadosText>{colaborador.permissao}</DadosText>
+              </DadosView>
+              <DadosView>
+                <InformacoesText>Usuario: </InformacoesText>
+                <DadosText>{colaborador.usuario}</DadosText>
+              </DadosView>
               <DadosView>
                 <InformacoesText>Posição: </InformacoesText>
                 <DadosText>{colaborador.posicao.nome}</DadosText>
@@ -162,9 +126,7 @@ export default function Informacoes({ route, navigation }) {
               <ButtonText onPress={() => navigation.navigate('Histórico Profissional')}>Histórico Profissional</ButtonText>
             </TodoButton>
             <TodoButton>
-              <ButtonText  >Projetos atuais</ButtonText>
-            <TodoButton onPress={() => handleClick()}>
-              <ButtonText>Projetos atuais</ButtonText>
+              <ButtonText >Projetos atuais</ButtonText>
             </TodoButton>
             <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
