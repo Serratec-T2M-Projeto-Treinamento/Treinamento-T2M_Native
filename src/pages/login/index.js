@@ -12,37 +12,25 @@ import {
     LogoView
 } from './styles';
 import axios from 'axios';
-import { Alert } from 'react-native';
+import { Alert, Text, ActivityIndicator } from 'react-native';
+import { Formik } from 'formik';
+import * as yup from 'yup';
 
 export default function Login({ navigation }) {
-    const [login, setLogin] = useState({
-        usuario: '',
-        senha: ''
-    });
 
-    const handleNomeChange = (text) => {
-        setLogin({ ...login, usuario: text });
-    }
+    // async function Logar() {
+    //     try {
+    //         const response = await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)   
 
-    const handleSenhaChange = (text) => {
-        setLogin({ ...login, senha: text });
-    }
+    //     } catch (error) {
+    //         console.error(error.message);
+    //     }
+    // }
 
-    console.log(login);
-
-    const logar = () => {
-        axios.get('https://api-treinamento-t2m.herokuapp.com/usuarios/1')
-            .then((response) => {
-                if (response.data.usuario === login.usuario && response.data.senha === login.senha) {
-                    navigation.navigate('Home')
-                }else{
-                    Alert.alert('Nome de usuário ou senha inválidos!')
-                }
-            })
-            .catch((error) => {
-                console.error(error.message);
-            });
-    }
+    const loginValidationSchema = yup.object().shape({
+        usuario: yup.string().required('Campo obrigatório *'),
+        senha: yup.string().min(4, ({ min }) => `Senha deve ter no mínimo ${min} caracteres`).required('Campo obrigatório *'),
+    })
 
     return (
         <ContainerLogin>
@@ -52,18 +40,54 @@ export default function Login({ navigation }) {
                 </LogoView>
                 <LoginView2>
                     <BorderArea>
-                        <InputArea>
-                            <InputLogin autoCapitalize='none' onChangeText={handleNomeChange} placeholder='nome de usuario' />
-                        </InputArea>
-                        <InputArea>
-                            <InputLogin autoCapitalize='none' onChangeText={handleSenhaChange} secureTextEntry={true} placeholder='senha' />
-                        </InputArea>
-                        <LoginButton onPress={() => logar()}>
-                            <ButtonText>Entrar</ButtonText>
-                        </LoginButton>
+                        <Formik
+                            validationSchema={loginValidationSchema}
+                            initialValues={{ usuario: '', senha: '' }}
+                            onSubmit={async (values) => {
+                                const login = {
+                                    usuario: values.usuario,
+                                    senha: values.senha
+                                }
+
+                                await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)
+                                    .then((response) => {
+                                        navigation.navigate('Home');
+                                    }).catch(() => {
+                                        Alert.alert('Dados inválidos, tente novamente!')
+                                    })
+                            }}>
+                            {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
+                                <>
+                                    <InputArea>
+                                        <InputLogin name='Nome de Usuario' autoCapitalize='none' onChangeText={handleChange('usuario')} onBlur={handleBlur('usuario')} value={values.usuario} placeholder='nome de usuario' />
+                                        {(errors.usuario && touched.usuario) &&
+                                            <Text style={{ fontSize: 15, color: 'red' }}>{errors.usuario}</Text>
+                                        }
+                                    </InputArea>
+                                    <InputArea>
+                                        <InputLogin name='Senha' autoCapitalize='none' onChangeText={handleChange('senha')} onBlur={handleBlur('senha')} value={values.senha} secureTextEntry={true} placeholder='senha' />
+                                        {(errors.senha && touched.senha) &&
+                                            <Text style={{ fontSize: 15, color: 'red' }}>{errors.senha}</Text>
+                                        }
+                                    </InputArea>
+                                    <LoginButton onPress={handleSubmit}
+                                        disabled={!isValid}>
+                                        <ButtonText>Entrar</ButtonText>
+                                    </LoginButton>
+                                </>
+                            )}
+                        </Formik>
                     </BorderArea>
                 </LoginView2>
             </LoginView>
         </ContainerLogin>
     );
 };
+
+  // const handleNomeChange = (text) => {
+    //     setLogin({ ...login, usuario: text });
+    // }
+
+    // const handleSenhaChange = (text) => {
+    //     setLogin({ ...login, senha: text });
+    // }

@@ -46,9 +46,9 @@ export default function Informacoes({ route, navigation }) {
       navigation.navigate('Formações', { colaborador });
     }
 
-    const handleClickCert = () => {
-      navigation.navigate('Certificações', { colaborador });
-    }
+    // const handleClickCert = () => {
+    //   navigation.navigate('Certificações', { colaborador });
+    // }
 
     const handlePermissao = () => {
       if (colaborador.permissao === 2) {
@@ -145,18 +145,18 @@ export default function Informacoes({ route, navigation }) {
             </DadosArea>
           </InformacoesArea>
           <ButtonView>
-            <TodoButton onPress={() => handleClickCert()}>
+            {/* <TodoButton onPress={() => handleClickCert()}>
               <ButtonText>Certificações</ButtonText>
-            </TodoButton>
+            </TodoButton> */}
             <TodoButton onPress={() => handleClickForm()}>
               <ButtonText>Treinamentos</ButtonText>
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
               </TodoButton>
-            <InformacoesButton>
+            {/* <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
-            </InformacoesButton>
+            </InformacoesButton> */}
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>

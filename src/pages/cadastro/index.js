@@ -78,7 +78,7 @@ export default function Cadastro({ navigation }) {
       })
       
     } catch (error) {
-      console.error(error.message);
+      Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
     }
 
   }
