@@ -50,4 +50,9 @@ export const ButtonView = styled.View`
 export const CertificacaoScroll = styled.ScrollView`
  
 `
+export const DadosView = styled.View`
 
+`;
+export const DadosText = styled.Text`
+
+`;

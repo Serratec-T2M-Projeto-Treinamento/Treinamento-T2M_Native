@@ -60,21 +60,26 @@ export default function Cadastro({ navigation }) {
   });
 
   async function postColaborador(){
-    const responseColaborador = await axios.post('https://api-treinamento-t2m.herokuapp.com/colaboradores', colaborador)
-    const idColaborador = responseColaborador.data.idColaboradores
-    
-
-    const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco)
-    const idEndereco = responseEndereco.data.idEnderecos
-    
-
-    const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
-    console.log(response.data);
-    Alert.alert('Colaborador cadastrado com sucesso!')
-
-    navigation.reset({
-      routes:[{name:'Lista de Colaboradores'}]
-    })
+    try {
+      const responseColaborador = await axios.post('https://api-treinamento-t2m.herokuapp.com/colaboradores', colaborador)
+      const idColaborador = responseColaborador.data.idColaboradores
+      
+  
+      const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco)
+      const idEndereco = responseEndereco.data.idEnderecos
+      
+  
+      const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
+      console.log(response.data);
+      Alert.alert('Colaborador cadastrado com sucesso!')
+  
+      navigation.reset({
+        routes:[{name:'Lista de Colaboradores'}]
+      })
+      
+    } catch (error) {
+      console.error(error.message);
+    }
 
   }
 

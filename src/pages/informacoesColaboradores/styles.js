@@ -93,7 +93,7 @@ export const MensagemView = styled.View`
 export const MensagemText = styled.Text`
   text-align: center;
   color: black;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: bold;
 `;
 

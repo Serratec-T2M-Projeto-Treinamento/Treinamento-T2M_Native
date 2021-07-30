@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText,ProArea} from './styles';
+import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText } from './styles';
 import axios from 'axios';
 import MenuIcon from   '../../components/icon';
+import { handleDate } from '../../components/dataFormatada';
 
 export default function Projetos({ route }) {
     if (route.params) {
@@ -10,7 +11,7 @@ export default function Projetos({ route }) {
 
         const [projetos, setProjetos] = useState([]);
 
-        const getDados = () => {
+        const getProjetos = () => {
             colaborador.setColaboradoresProjetos.map((p, i) => {
                 axios.get(`https://api-treinamento-t2m.herokuapp.com/projetos/${colaborador.setColaboradoresProjetos[i].idColaboradoresProjetos.idProjeto}`)
                     .then((response) => {
@@ -24,9 +25,14 @@ export default function Projetos({ route }) {
             }
             
             useEffect(() => {
-                getDados()
+                getProjetos()
             }, [colaborador]);
 
+            const verificaGerenc = () => {
+                if (condition) {
+                    
+                }
+            }
 
         return (
             <Container>
@@ -39,6 +45,12 @@ export default function Projetos({ route }) {
                      </ProjetoView>
                      <DadosView>
                          <DadosText>{p.nome}</DadosText>
+                     </DadosView>
+                     <ProjetoView>
+                         <ProjetoText>Função: </ProjetoText>
+                     </ProjetoView>
+                     <DadosView>
+                         <DadosText>{colaborador.setColaboradoresProjetos[i].funcao}</DadosText>
                      </DadosView>
                      <ProjetoView>
                          <ProjetoText>Descrição: </ProjetoText>
@@ -55,15 +67,11 @@ export default function Projetos({ route }) {
                      <ProjetoView>
                          <ProjetoText>Entrega esperada: </ProjetoText>
                      </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.dataEntregaEsperada}</DadosText>
-                     </DadosView>
+                     {handleDate(p.dataEntregaEsperada)}
                      <ProjetoView>
                          <ProjetoText>Data de entrega: </ProjetoText>
                      </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.dataEntrega}</DadosText>
-                     </DadosView>
+                     {handleDate(p.dataEntrega)}
                      <ProjetoView>
                          <ProjetoText>N° de integrantes: </ProjetoText>
                      </ProjetoView>
@@ -83,7 +91,7 @@ export default function Projetos({ route }) {
                 <MensagemArea>
                     <MensagemView>
                         <MensagemText>Nenhuma informação encontrada,</MensagemText>
-                        <MensagemText>escolha um projeto do colaborador primeiro.</MensagemText>
+                        <MensagemText>escolha um colaborador primeiro para ver seus projetos.</MensagemText>
                     </MensagemView>
                 </MensagemArea>
             </Container>

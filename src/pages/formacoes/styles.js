@@ -6,55 +6,44 @@ export const Container = styled.SafeAreaView`
   
 `;
 
-export const ButtonInserir = styled.TouchableOpacity`
-    margin: 30px;
-    height: 40px;
-    background-color: #01a999;
-    font-size: 18px;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    border: white;
-`;
-
-export const ButtonText = styled.Text`
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-`;
-
-export const ButtonView = styled.View`
-    display: flex;
-    align-items: center;
-    
-`;
-
-export const FormacoesButton = styled.TouchableOpacity`
+export const FormacoesArea = styled.View`
+    flex-direction: column;
     border-radius: 20px;
-    background-color: #DEDEDE;
-    width: 80%;
-    height: 50px;
     justify-content: center;
-`;
+    background-color: lightgray;
+    border:lightblue;
+    margin:15px;
 
-export const FormacoesButtonText= styled.Text`
-    font-size: 18px;
-    color: black;
-    text-align: center;
-    
 `;
 
 export const FormacoesView = styled.View`
+    border-color: black;
+    align-items:center;
     width: 100%;
-    margin-top: 35px;
-    align-items: center;
+    display: flex;
+    flex-direction: column; 
     
 `;
 
-export const ContentView = styled.View`
-    
+export const FormacoesText = styled.Text`
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+`;
+
+export const DadosView = styled.View`
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 10px;
+    justify-content: center;
+    align-content: center;
+`;
+
+export const DadosText = styled.Text`
+    font-size: 20px;
+    text-align: center;
+    font-style: italic;
 `;
 
 export const ListScroll = styled.ScrollView`
@@ -63,4 +52,25 @@ export const ListScroll = styled.ScrollView`
 
 export const EspacoView = styled.View`
     height: 40px;
+`;
+
+export const MensagemArea = styled.View`
+    border-color: black;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+`;
+
+export const MensagemView = styled.View`
+    margin-bottom: 200px;
+`;
+
+export const MensagemText = styled.Text`
+    text-align: center;
+    color: black;
+    font-size:18px;
+    font-weight: bold;
 `;

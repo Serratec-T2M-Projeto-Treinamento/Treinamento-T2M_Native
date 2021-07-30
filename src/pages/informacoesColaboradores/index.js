@@ -17,6 +17,7 @@ import {
   TodoButton
 } from './styles';
 import MenuIcon from '../../components/icon';
+import { handleDate } from '../../components/dataFormatada';
 import axios from 'axios';
 
 export default function Informacoes({ route, navigation }) {
@@ -47,20 +48,6 @@ export default function Informacoes({ route, navigation }) {
 
     const handleClickCert = () => {
       navigation.navigate('Certificações', { colaborador });
-    }
-
-    const handleDate = () => {
-      const data = new Date(colaborador.dataNascimento)
-      const dia = (data.getDate() + 1).toString().padStart(2, '0')
-      const mes = (data.getMonth() + 1).toString().padStart(2, '0')
-      const ano = data.getFullYear()
-      const dataFormatada = `${dia}/${mes}/${ano}`
-      return (
-        <DadosView>
-          <InformacoesText>Data de Nascimento: </InformacoesText>
-          <DadosText>{dataFormatada}</DadosText>
-        </DadosView>
-      )
     }
 
     const handlePermissao = () => {
@@ -110,7 +97,10 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Email: </InformacoesText>
                 <DadosText>{colaborador.email}</DadosText>
               </DadosView>
-              {handleDate()}
+              <DadosView>
+              <InformacoesText>Data de nascimento: </InformacoesText>
+              {handleDate(colaborador.dataNascimento)}
+              </DadosView>
               <DadosView>
                 <InformacoesText>CNH: </InformacoesText>
                 <DadosText>{colaborador.cnh}</DadosText>
