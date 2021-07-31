@@ -137,7 +137,7 @@ export default function Cadastro({ navigation }) {
           <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, rua: text })} placeholder='Rua'  placeholderTextColor='#181818' />
           <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, numero: text })} placeholder='Numero'  placeholderTextColor='#181818' />
           <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, complemento: text })} placeholder='Complemento'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cep: text })} placeholder='Cep' placeholderTextColor='#181818'/>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cep: text })} keyboardType='number-pad' placeholder='Cep' placeholderTextColor='#181818'/>
         </InputArea>
         <ButtonView>
           <CadastroButton onPress={() => postColaborador()}>
