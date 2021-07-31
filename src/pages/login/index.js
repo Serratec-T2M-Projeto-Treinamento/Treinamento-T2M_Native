@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     ContainerLogin,
     LoginView,
@@ -17,20 +17,16 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 export default function Login({ navigation }) {
-
-    // async function Logar() {
-    //     try {
-    //         const response = await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)   
-
-    //     } catch (error) {
-    //         console.error(error.message);
-    //     }
-    // }
+    const [loading, setLoading] = useState(false);
 
     const loginValidationSchema = yup.object().shape({
         usuario: yup.string().required('Campo obrigatório *'),
         senha: yup.string().min(4, ({ min }) => `Senha deve ter no mínimo ${min} caracteres`).required('Campo obrigatório *'),
     })
+
+    const isLoading = () => {
+        setLoading(true);
+    }
 
     return (
         <ContainerLogin>
@@ -52,6 +48,7 @@ export default function Login({ navigation }) {
                                 await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)
                                     .then((response) => {
                                         navigation.navigate('Home');
+                                        setLoading(false);
                                     }).catch(() => {
                                         Alert.alert('Dados inválidos, tente novamente!')
                                     })
@@ -70,9 +67,15 @@ export default function Login({ navigation }) {
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.senha}</Text>
                                         }
                                     </InputArea>
-                                    <LoginButton onPress={handleSubmit}
+                                    <LoginButton onPress={() => {handleSubmit(); isLoading();}}
                                         disabled={!isValid}>
-                                        <ButtonText>Entrar</ButtonText>
+                                        {
+                                            loading ? (
+                                                <ActivityIndicator animating={loading} color='white' />
+                                            ) : (
+                                                <ButtonText>Entrar</ButtonText>
+                                                
+                                            )}
                                     </LoginButton>
                                 </>
                             )}
@@ -84,10 +87,3 @@ export default function Login({ navigation }) {
     );
 };
 
-  // const handleNomeChange = (text) => {
-    //     setLogin({ ...login, usuario: text });
-    // }
-
-    // const handleSenhaChange = (text) => {
-    //     setLogin({ ...login, senha: text });
-    // }
