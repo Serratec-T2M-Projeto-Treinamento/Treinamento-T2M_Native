@@ -71,3 +71,10 @@ export const PickerView = styled.View`
 export const SelectView = styled.View`
   background-color: white;
 `;
+
+export const DataView = styled.View`
+  width: 70%;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 10px;
+`;
