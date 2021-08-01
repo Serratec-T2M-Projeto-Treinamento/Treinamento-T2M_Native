@@ -7,7 +7,7 @@ export const Container = styled.SafeAreaView`
     
 `;
 
-export const ProjetoScroll = styled.ScrollView`
+export const TreinScroll = styled.ScrollView`
 
 `;
 
@@ -18,7 +18,7 @@ export const Titulo = styled.Text`
     font-style: italic;
 `;
 
-export const ProjetoArea = styled.View`
+export const TreinArea = styled.View`
     margin-top: 200px;
     flex-direction: column;
     border-radius: 20px;
@@ -28,7 +28,7 @@ export const ProjetoArea = styled.View`
     margin:15px;
 `;
 
-export const ProjetoView = styled.View`
+export const TreinView = styled.View`
     border-color: black;
     align-items:center;
     width: 100%;
@@ -36,7 +36,7 @@ export const ProjetoView = styled.View`
     flex-direction: column; 
 `;
 
-export const ProjetoText = styled.Text`
+export const TreinText = styled.Text`
     text-align: center;
     color: black;
     font-size: 20px;

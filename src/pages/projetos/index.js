@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText } from './styles';
-import axios from 'axios';
-import MenuIcon from   '../../components/icon';
+import React from 'react';
+import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, ProjetoScroll } from './styles';
+import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 
 export default function Projetos({ route }) {
@@ -9,79 +8,56 @@ export default function Projetos({ route }) {
 
         const { colaborador } = route.params
 
-        const [projetos, setProjetos] = useState([]);
-
-        const getProjetos = () => {
-            colaborador.setColaboradoresProjetos.map((p, i) => {
-                axios.get(`https://api-treinamento-t2m.herokuapp.com/projetos/${colaborador.setColaboradoresProjetos[i].idColaboradoresProjetos.idProjeto}`)
-                    .then((response) => {
-                        setProjetos([response.data]);
-                    })
-                    .catch((error) => {
-                        console.error(error.message);
-                    })
-                })
-                
-            }
-            
-            useEffect(() => {
-                getProjetos()
-            }, [colaborador]);
-
-            const verificaGerenc = () => {
-                if (condition) {
-                    
-                }
-            }
-
         return (
             <Container>
-                <MenuIcon/>
-                {projetos.map((p,i) => {
-                     return(
-                     <ProjetoArea key={i}>
-                     <ProjetoView>
-                         <ProjetoText>Nome: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.nome}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Função: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{colaborador.setColaboradoresProjetos[i].funcao}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Descrição: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.descricao}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Segmento: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.segmento}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Entrega esperada: </ProjetoText>
-                     </ProjetoView>
-                     {handleDate(p.dataEntregaEsperada)}
-                     <ProjetoView>
-                         <ProjetoText>Data de entrega: </ProjetoText>
-                     </ProjetoView>
-                     {handleDate(p.dataEntrega)}
-                     <ProjetoView>
-                         <ProjetoText>N° de integrantes: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.equipe}</DadosText>
-                     </DadosView>
-                 </ProjetoArea>
-                 )
-                })}
-
+                <ProjetoScroll>
+                    <MenuIcon />
+                    <Titulo>Projetos:</Titulo>
+                    {colaborador.setColabsProjs.map((p, i) => {
+                        return (
+                            <ProjetoArea key={i}>
+                                <ProjetoView>
+                                    <ProjetoText>Nome: </ProjetoText>
+                                </ProjetoView>
+                                <DadosView>
+                                    <DadosText>{p.projeto.nome}</DadosText>
+                                </DadosView>
+                                <ProjetoView>
+                                    <ProjetoText>Descrição: </ProjetoText>
+                                </ProjetoView>
+                                <DadosView>
+                                    <DadosText>{p.projeto.descricao}</DadosText>
+                                </DadosView>
+                                <ProjetoView>
+                                    <ProjetoText>App Gerenciador: </ProjetoText>
+                                </ProjetoView>
+                                <DadosView>
+                                    <DadosText>{p.projeto.appGerenciamento}</DadosText>
+                                </DadosView>
+                                <ProjetoView>
+                                    <ProjetoText>Segmento: </ProjetoText>
+                                </ProjetoView>
+                                <DadosView>
+                                    <DadosText>{p.projeto.segmento}</DadosText>
+                                </DadosView>
+                                <ProjetoView>
+                                    <ProjetoText>Entrega esperada: </ProjetoText>
+                                </ProjetoView>
+                                {handleDate(p.projeto.dataEntregaEsperada)}
+                                <ProjetoView>
+                                    <ProjetoText>Data de entrega: </ProjetoText>
+                                </ProjetoView>
+                                {handleDate(p.projeto.dataEntrega)}
+                                <ProjetoView>
+                                    <ProjetoText>N° de integrantes: </ProjetoText>
+                                </ProjetoView>
+                                <DadosView>
+                                    <DadosText>{p.projeto.equipe}</DadosText>
+                                </DadosView>
+                            </ProjetoArea>
+                        )
+                    })}
+                </ProjetoScroll>
             </Container>
         )
     } else {
@@ -98,3 +74,28 @@ export default function Projetos({ route }) {
         )
     }
 }
+
+// const [projetos, setProjetos] = useState([]);
+
+        // const getProjetos = () => {
+        //     colaborador.setColaboradoresProjetos.map((p, i) => {
+        //         axios.get(`https://api-treinamento-t2m.herokuapp.com/projetos/${colaborador.setColaboradoresProjetos[i].idColaboradoresProjetos.idProjeto}`)
+        //             .then((response) => {
+        //                 setProjetos([response.data]);
+        //             })
+        //             .catch((error) => {
+        //                 console.error(error.message);
+        //             })
+        //         })
+
+        //     }
+
+            // useEffect(() => {
+            //     getProjetos()
+            // }, [colaborador]);
+
+            // const verificaGerenc = () => {
+            //     if (condition) {
+
+            //     }
+            // }

@@ -68,7 +68,7 @@ export default function Login({ navigation }) {
                                         }
                                     </InputArea>
                                     <LoginButton onPress={() => {handleSubmit(); isLoading();}}
-                                        disabled={!isValid}>
+                                                 disabled={!isValid}>
                                         {
                                             loading ? (
                                                 <ActivityIndicator animating={loading} color='white' />
