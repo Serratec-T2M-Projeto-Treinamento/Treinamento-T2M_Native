@@ -4,11 +4,11 @@ export const Container = styled.SafeAreaView`
   background-color: #5CB3B2;
   height: 100%;
 `;
-export const HistoricoArea = styled.SafeAreaView`
+export const HistoricoArea = styled.View`
   justify-content: center ;
   align-items: center;
 `;
-export const HistoricoView = styled.SafeAreaView`
+export const HistoricoView = styled.View`
   height: 20%;
   display: flex;
   width: 50%;

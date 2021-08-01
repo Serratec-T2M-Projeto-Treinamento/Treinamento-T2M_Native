@@ -17,25 +17,12 @@ import {
   TodoButton
 } from './styles';
 import MenuIcon from '../../components/icon';
-import axios from 'axios';
+import { handleDate } from '../../components/dataFormatada';
 
 export default function Informacoes({ route, navigation }) {
 
   if (route.params) {
     const { colaborador } = route.params
-
-    const [endereco, setEndereco] = useState([])
-
-    const getDados = () => {
-      axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
-        .then((response) => {
-          setEndereco(response.data);
-        })
-    }
-
-    useEffect(() => {
-      getDados()
-    }, [colaborador]);
 
     const handleClickProj = () => {
       navigation.navigate('Projetos', { colaborador });
@@ -49,18 +36,8 @@ export default function Informacoes({ route, navigation }) {
       navigation.navigate('Certificações', { colaborador });
     }
 
-    const handleDate = () => {
-      const data = new Date(colaborador.dataNascimento)
-      const dia = (data.getDate() + 1).toString().padStart(2, '0')
-      const mes = (data.getMonth() + 1).toString().padStart(2, '0')
-      const ano = data.getFullYear()
-      const dataFormatada = `${dia}/${mes}/${ano}`
-      return (
-        <DadosView>
-          <InformacoesText>Data de Nascimento: </InformacoesText>
-          <DadosText>{dataFormatada}</DadosText>
-        </DadosView>
-      )
+    const handleClickTrein = () => {
+      navigation.navigate('Treinamentos', { colaborador });
     }
 
     const handlePermissao = () => {
@@ -110,7 +87,10 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Email: </InformacoesText>
                 <DadosText>{colaborador.email}</DadosText>
               </DadosView>
-              {handleDate()}
+              <DadosView>
+              <InformacoesText>Data de nascimento: </InformacoesText>
+              {handleDate(colaborador.dataNascimento)}
+              </DadosView>
               <DadosView>
                 <InformacoesText>CNH: </InformacoesText>
                 <DadosText>{colaborador.cnh}</DadosText>
@@ -122,35 +102,35 @@ export default function Informacoes({ route, navigation }) {
               </DadosView>
               <DadosView>
                 <InformacoesText>País: </InformacoesText>
-                <DadosText>{endereco.pais}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.pais}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Estado: </InformacoesText>
-                <DadosText>{endereco.estado}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.estado}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Cidade: </InformacoesText>
-                <DadosText>{endereco.cidade}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.cidade}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Bairro: </InformacoesText>
-                <DadosText>{endereco.bairro}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.bairro}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Rua: </InformacoesText>
-                <DadosText>{endereco.rua}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.rua}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Numero: </InformacoesText>
-                <DadosText>{endereco.numero}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.numero}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Complemento: </InformacoesText>
-                <DadosText>{endereco.complemento}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.complemento}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>CEP: </InformacoesText>
-                <DadosText>{endereco.cep}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.cep}</DadosText>
               </DadosView>
             </DadosArea>
           </InformacoesArea>
@@ -158,15 +138,18 @@ export default function Informacoes({ route, navigation }) {
             <TodoButton onPress={() => handleClickCert()}>
               <ButtonText>Certificações</ButtonText>
             </TodoButton>
-            <TodoButton onPress={() => handleClickForm()}>
+            <TodoButton onPress={() => handleClickTrein()}>
               <ButtonText>Treinamentos</ButtonText>
+            </TodoButton>
+            <TodoButton onPress={() => handleClickForm()}>
+              <ButtonText>Formações</ButtonText>
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
               </TodoButton>
-            <InformacoesButton>
+            {/* <InformacoesButton>
               <ButtonText>Alterar dados</ButtonText>
-            </InformacoesButton>
+            </InformacoesButton> */}
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>
@@ -188,3 +171,20 @@ export default function Informacoes({ route, navigation }) {
   }
 
 }
+
+// const handleClickCert = () => {
+    //   navigation.navigate('Certificações', { colaborador });
+    // }
+    
+    // const [endereco, setEndereco] = useState([])
+
+    // const getDados = () => {
+    //   axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
+    //     .then((response) => {
+    //       setEndereco(response.data);
+    //     })
+    // }
+
+    // useEffect(() => {
+    //   getDados()
+    // }, [colaborador]);
