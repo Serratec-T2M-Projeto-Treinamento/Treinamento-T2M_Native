@@ -64,3 +64,15 @@ export const ListScroll = styled.ScrollView`
 export const EspacoView = styled.View`
     height: 40px;
 `;
+
+export const LoadingView = styled.View`
+    flex: 1;
+    justify-content:center;
+    align-items: center;
+`;
+
+export const LoadingText = styled.Text`
+    font-size: 18px;
+    color: black;
+    text-align: center;
+`;
