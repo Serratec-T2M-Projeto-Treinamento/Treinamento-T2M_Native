@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText,ProArea} from './styles';
+import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProText, ButtonView} from './styles';
 import axios from 'axios';
 import MenuIcon from   '../../components/icon';
 
@@ -74,6 +74,11 @@ export default function Projetos({ route }) {
                  )
                 })}
 
+                <ButtonView>
+          <ProjetoButton>
+            <ProText>Adicionar Projeto</ProText>
+          </ProjetoButton>
+        </ButtonView>
             </Container>
         )
     } else {

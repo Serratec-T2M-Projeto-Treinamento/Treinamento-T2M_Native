@@ -68,3 +68,25 @@ export const MensagemText = styled.Text`
     font-size:18px;
     font-weight: bold;
 `;
+export const ButtonView = styled.View`
+  margin-top: 50px;
+  align-items: center;
+`;
+export const ProjetoButton = styled.TouchableOpacity`
+  height:50px;
+  background-color: #01a999;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
+`;
+export const ProText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size:18px;
+  font-weight: bold;
+`;
