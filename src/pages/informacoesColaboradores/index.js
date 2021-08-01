@@ -18,25 +18,11 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
-import axios from 'axios';
 
 export default function Informacoes({ route, navigation }) {
 
   if (route.params) {
     const { colaborador } = route.params
-
-    const [endereco, setEndereco] = useState([])
-
-    const getDados = () => {
-      axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
-        .then((response) => {
-          setEndereco(response.data);
-        })
-    }
-
-    useEffect(() => {
-      getDados()
-    }, [colaborador]);
 
     const handleClickProj = () => {
       navigation.navigate('Projetos', { colaborador });
@@ -46,9 +32,13 @@ export default function Informacoes({ route, navigation }) {
       navigation.navigate('Formações', { colaborador });
     }
 
-    // const handleClickCert = () => {
-    //   navigation.navigate('Certificações', { colaborador });
-    // }
+    const handleClickCert = () => {
+      navigation.navigate('Certificações', { colaborador });
+    }
+
+    const handleClickTrein = () => {
+      navigation.navigate('Treinamentos', { colaborador });
+    }
 
     const handlePermissao = () => {
       if (colaborador.permissao === 2) {
@@ -112,44 +102,47 @@ export default function Informacoes({ route, navigation }) {
               </DadosView>
               <DadosView>
                 <InformacoesText>País: </InformacoesText>
-                <DadosText>{endereco.pais}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.pais}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Estado: </InformacoesText>
-                <DadosText>{endereco.estado}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.estado}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Cidade: </InformacoesText>
-                <DadosText>{endereco.cidade}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.cidade}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Bairro: </InformacoesText>
-                <DadosText>{endereco.bairro}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.bairro}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Rua: </InformacoesText>
-                <DadosText>{endereco.rua}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.rua}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Numero: </InformacoesText>
-                <DadosText>{endereco.numero}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.numero}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Complemento: </InformacoesText>
-                <DadosText>{endereco.complemento}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.complemento}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>CEP: </InformacoesText>
-                <DadosText>{endereco.cep}</DadosText>
+                <DadosText>{colaborador.setColabsEndrs[0].endereco.cep}</DadosText>
               </DadosView>
             </DadosArea>
           </InformacoesArea>
           <ButtonView>
-            {/* <TodoButton onPress={() => handleClickCert()}>
+            <TodoButton onPress={() => handleClickCert()}>
               <ButtonText>Certificações</ButtonText>
-            </TodoButton> */}
-            <TodoButton onPress={() => handleClickForm()}>
+            </TodoButton>
+            <TodoButton onPress={() => handleClickTrein()}>
               <ButtonText>Treinamentos</ButtonText>
+            </TodoButton>
+            <TodoButton onPress={() => handleClickForm()}>
+              <ButtonText>Formações</ButtonText>
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
@@ -178,3 +171,20 @@ export default function Informacoes({ route, navigation }) {
   }
 
 }
+
+// const handleClickCert = () => {
+    //   navigation.navigate('Certificações', { colaborador });
+    // }
+    
+    // const [endereco, setEndereco] = useState([])
+
+    // const getDados = () => {
+    //   axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
+    //     .then((response) => {
+    //       setEndereco(response.data);
+    //     })
+    // }
+
+    // useEffect(() => {
+    //   getDados()
+    // }, [colaborador]);

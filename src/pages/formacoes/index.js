@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Container,
   FormacoesView,
@@ -13,84 +13,75 @@ import {
   MensagemText
 } from './styles';
 import MenuIcon from '../../components/icon';
-import { handleDate } from '../../components/dataFormatada';
-import axios from 'axios';
-
+import { Titulo } from '../certificacao/styles';
 
 export default function Formacoes({ route, navigation }) {
   if (route.params) {
     const { colaborador } = route.params
 
-    const [formacao, setFormacao] = useState([]);
+    // const [formacao, setFormacao] = useState([]);
 
-    const getFormacao = () => {
-      colaborador.setColaboradoresFormacoes.map((p, i) => {
-        axios.get(`https://api-treinamento-t2m.herokuapp.com/formacoes/${colaborador.setColaboradoresFormacoes[i].idColaboradoresFormacoes.idFormacao}`)
-          .then((response) => {
-            setFormacao([response.data]);
-          })
-          .catch((error) => {
-            console.error(error.message);
-          })
-      })
+    // const getFormacao = () => {
+    //   colaborador.setColaboradoresFormacoes.map((p, i) => {
+    //     axios.get(`https://api-treinamento-t2m.herokuapp.com/formacoes/${colaborador.setColaboradoresFormacoes[i].idColaboradoresFormacoes.idFormacao}`)
+    //       .then((response) => {
+    //         setFormacao([response.data]);
+    //       })
+    //       .catch((error) => {
+    //         console.error(error.message);
+    //       })
+    //   })
 
-    }
+    // }
 
-    useEffect(() => {
-      getFormacao()
-    }, [colaborador]);
+    // useEffect(() => {
+    //   getFormacao()
+    // }, [colaborador]);
 
     return (
       <Container>
-        {formacao.map((p, i) => {
-          return (
-            <ListScroll key={i}>
-              <MenuIcon />
-              <FormacoesArea>
+        <ListScroll>
+          <MenuIcon />
+          <Titulo>Formações:</Titulo>
+          {colaborador.setColabsForms.map((p, i) => {
+            return (
+              <FormacoesArea key={i}>
                 <FormacoesView>
                   <FormacoesText>Nome: </FormacoesText>
                 </FormacoesView>
                 <DadosView>
-                  <DadosText>{p.nome}</DadosText>
+                  <DadosText>{p.formacao.nome}</DadosText>
                 </DadosView>
                 <FormacoesView>
                   <FormacoesText>Nível: </FormacoesText>
                 </FormacoesView>
                 <DadosView>
-                  <DadosText>{p.nivel}</DadosText>
+                  <DadosText>{p.formacao.nivel}</DadosText>
                 </DadosView>
                 <FormacoesView>
                   <FormacoesText>Instituição: </FormacoesText>
                 </FormacoesView>
                 <DadosView>
-                  <DadosText>{p.instituicao}</DadosText>
+                  <DadosText>{p.formacao.instituicao}</DadosText>
                 </DadosView>
-                <FormacoesView>
-                  <FormacoesText>Data de Entrada: </FormacoesText>
-                </FormacoesView>
-                {handleDate(colaborador.setColaboradoresFormacoes[i].dataEntrada)}
-                <FormacoesView>
-                  <FormacoesText>Data de Conclusão: </FormacoesText>
-                </FormacoesView>
-                {handleDate(colaborador.setColaboradoresFormacoes[i].dataConclusao)}
               </FormacoesArea>
-              <EspacoView></EspacoView>
-            </ListScroll>
-          )
-        })}
+            )
+          })}
+          <EspacoView></EspacoView>
+        </ListScroll>
       </Container>
     );
   } else {
-    return(
-    <Container>
-      <MenuIcon />
-      <MensagemArea>
-        <MensagemView>
-          <MensagemText>Nenhuma informação encontrada,</MensagemText>
-          <MensagemText>escolha um colaborador primeiro para ver sua formação.</MensagemText>
-        </MensagemView>
-      </MensagemArea>
-    </Container>
+    return (
+      <Container>
+        <MenuIcon />
+        <MensagemArea>
+          <MensagemView>
+            <MensagemText>Nenhuma informação encontrada,</MensagemText>
+            <MensagemText>escolha um colaborador primeiro para ver sua formação.</MensagemText>
+          </MensagemView>
+        </MensagemArea>
+      </Container>
     )
   }
 }

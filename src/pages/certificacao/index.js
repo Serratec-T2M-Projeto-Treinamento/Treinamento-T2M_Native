@@ -1,62 +1,67 @@
-// import React, { useEffect, useState } from 'react';
-// import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, ButtonView, ButtonText, CertiButton, DadosView, DadosText } from './styles';
-// import MenuIcon from '../../components/icon';
-// import axios from 'axios';
+import React from 'react';
+import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText } from './styles';
+import MenuIcon from '../../components/icon';
 
-// export default function certificacao({ route }) {
-//     if (route.params) {
+export default function certificacao({ route }) {
+    if (route.params) {
 
-//         const { colaborador } = route.params
+        const { colaborador } = route.params
 
-//         const [certificados, setCertificados] = useState([]);
+        return (
+            <Container>
+                <CertificacaoScroll>
+                <MenuIcon />
+                <Titulo>Certificações: </Titulo>
+                {colaborador.setColabsCerts.map((p, i) => {
+                    return (
+                            <CertifiArea key={i}>
+                                <CertiView>
+                                    <CertiText>Nome: </CertiText>
+                                </CertiView>
+                                <DadosView>
+                                    <DadosText>{p.certificacao.nomeCertificado}</DadosText>
+                                </DadosView>
+                                <CertiView>
+                                    <CertiText>Instituição: </CertiText>
+                                </CertiView>
+                                <DadosView>
+                                    <DadosText>{p.certificacao.instituicaoCertificado}</DadosText>
+                                </DadosView>
+                            </CertifiArea>
+                    )
+                })}
+                        </CertificacaoScroll>
+            </Container>
 
-//         const getCetificados = async () => {
-//             try {
-//                 colaborador.setColaboradoresCertificacoes.map((p,i) => {
-//                 const response = axios.get(`https://api-treinamento-t2m.herokuapp.com/certificacoes/${colaborador.setColaboradoresCertificacoes[i].idColaboradoresCertificacoes.idCertificacao}`)
-//                 setCertificados(response.data);
-//             })
-//             } catch (error) {
-//                 console.error(error.message);
-//             }
-//         }
+        )
+    } else {
+        return (
+            <Container>
+                <MenuIcon />
+                <MensagemArea>
+                    <MensagemView>
+                        <MensagemText>Nenhuma informação encontrada,</MensagemText>
+                        <MensagemText>escolha um colaborador primeiro para ver suas certificações.</MensagemText>
+                    </MensagemView>
+                </MensagemArea>
+            </Container>
+        )
+    }
+}
 
-//         useEffect(() => {
-//             getCetificados()
-//         }, [colaborador])
+        // const [certificados, setCertificados] = useState([]);
 
-//         return (
-//             <Container>
-//                 <MenuIcon />
-//                 {certificados.map((p, i) => {
-//                     return (
-//                         <CertificacaoScroll key={i}>
-//                             <CertifiArea>
-//                                 <CertiView>
-//                                     <CertiText>Nome: </CertiText>
-//                                 </CertiView>
-//                                 <DadosView>
-//                                     <DadosText>{p.nome}</DadosText>
-//                                 </DadosView>
-//                                     <CertiText>- Certificação </CertiText>
-//                                     <CertiText>- Certificação </CertiText>
-//                                 <ButtonView>
-//                                     <CertiButton>
-//                                         <ButtonText>Inserir certificacao</ButtonText>
-//                                     </CertiButton>
-//                                 </ButtonView>
-//                             </CertifiArea>
-//                         </CertificacaoScroll>
-//                     )
-//                 })}
-//             </Container>
+        // const getCetificados = async () => {
+        //     try {
+        //         colaborador.setColaboradoresCertificacoes.map((p,i) => {
+        //         const response = axios.get(`https://api-treinamento-t2m.herokuapp.com/certificacoes/${colaborador.setColaboradoresCertificacoes[i].idColaboradoresCertificacoes.idCertificacao}`)
+        //         setCertificados(response.data);
+        //     })
+        //     } catch (error) {
+        //         console.error(error.message);
+        //     }
+        // }
 
-//         )
-//     } else {
-//         return (
-//             <Container>
-
-//             </Container>
-//         )
-//     }
-// }
+        // useEffect(() => {
+        //     getCetificados()
+        // }, [colaborador])
