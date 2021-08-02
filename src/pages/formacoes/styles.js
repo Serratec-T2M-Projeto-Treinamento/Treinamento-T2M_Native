@@ -3,7 +3,18 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
     background-color: #5CB3B2;
     height: 100%;
-  
+    
+`;
+    
+export const ListScroll = styled.ScrollView`
+    
+`;
+
+export const Titulo = styled.Text`
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
 `;
 
 export const FormacoesArea = styled.View`
@@ -46,9 +57,6 @@ export const DadosText = styled.Text`
     font-style: italic;
 `;
 
-export const ListScroll = styled.ScrollView`
-
-`;
 
 export const EspacoView = styled.View`
     height: 40px;
