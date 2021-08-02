@@ -1,7 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProText, ButtonView} from './styles';
-import axios from 'axios';
-import MenuIcon from   '../../components/icon';
 import React from 'react';
 import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, ProjetoScroll } from './styles';
 import MenuIcon from '../../components/icon';
@@ -14,55 +10,6 @@ export default function Projetos({ route }) {
 
         return (
             <Container>
-                <MenuIcon/>
-                {projetos.map((p,i) => {
-                     return(
-                     <ProjetoArea key={i}>
-                     <ProjetoView>
-                         <ProjetoText>Nome: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.nome}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Descrição: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.descricao}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Segmento: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.segmento}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Entrega esperada: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.dataEntregaEsperada}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>Data de entrega: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.dataEntrega}</DadosText>
-                     </DadosView>
-                     <ProjetoView>
-                         <ProjetoText>N° de integrantes: </ProjetoText>
-                     </ProjetoView>
-                     <DadosView>
-                         <DadosText>{p.equipe}</DadosText>
-                     </DadosView>
-                 </ProjetoArea>
-                 )
-                })}
-
-                <ButtonView>
-          <ProjetoButton>
-            <ProText>Adicionar Projeto</ProText>
-          </ProjetoButton>
-        </ButtonView>
                 <ProjetoScroll>
                     <MenuIcon />
                     <Titulo>Projetos:</Titulo>
