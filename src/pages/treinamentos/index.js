@@ -1,11 +1,16 @@
 import React from 'react';
 import { Container,TreinArea, TreinView, TreinText, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, TreinScroll } from './styles';
 import MenuIcon from '../../components/icon';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-export default function Treinamentos({ route }) {
+export default function Treinamentos({ route, navigation}) {
     if (route.params) {
 
         const { colaborador } = route.params
+
+        function handleNavTrein(){
+        navigation.navigate('Cadastro de Treinamentos', { colaborador })
+    }
 
         return (
             <Container>
@@ -42,6 +47,11 @@ export default function Treinamentos({ route }) {
                             </TreinArea>
                         )
                     })}
+                    <View>
+                        <TouchableOpacity onPress={() => handleNavTrein()}>
+                            <Text>Inserir Treinamento</Text>
+                        </TouchableOpacity>
+                    </View>
                 </TreinScroll>
             </Container>
         )

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro } from './styles';
+import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText } from './styles';
 import { Alert } from 'react-native';
+import MenuIcon from '../../components/icon';
 
 export default function CadastroCertificados({ route }) {
+    if (route.params) {
+        
+    
     const { idColaborador } = route.params
 
 
@@ -32,13 +36,25 @@ export default function CadastroCertificados({ route }) {
     }
     return (
         <Container>
-            <EspacoView></EspacoView>
+            <MenuIcon />
             <InputArea>
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, nomeCertificado: text })} placeholder='Nome do Certificado' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, instituicaoCertificado: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, tempoValidade: text })} placeholder='Validade' placeholderTextColor='#181818' />
-                
             </InputArea>
         </Container>
     )
+    }else{
+        return (
+            <Container>
+              <MenuIcon />
+              <MensagemArea>
+                <MensagemView>
+                  <MensagemText>Não foi possivel ir para o cadastro,</MensagemText>
+                  <MensagemText>escolha um colaborador para cadastrar uma certificação a ele.</MensagemText>
+                </MensagemView>
+              </MensagemArea>
+            </Container>
+          )
+    }
 }

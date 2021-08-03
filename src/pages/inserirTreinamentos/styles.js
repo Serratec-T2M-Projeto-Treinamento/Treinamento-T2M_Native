@@ -16,6 +16,7 @@ export const InputArea = styled.View`
 
 export const InputCadastro = styled.TextInput`
   font-size: 18px;
+  margin-top: 10px;
   border: black;
   width: 70%;
   background-color: white;
