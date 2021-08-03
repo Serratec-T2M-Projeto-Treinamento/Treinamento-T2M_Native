@@ -75,7 +75,7 @@ export const MensagemText = styled.Text`
   font-weight: bold;
 `;
 export const EndButton = styled.TouchableOpacity`
-  height: 30px;
+  height: 28px;
   background-color: #01a999;
   width: 50%;
   display: flex;
@@ -89,7 +89,7 @@ export const EndButton = styled.TouchableOpacity`
 export const EndText = styled.Text`
   text-align: center;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   justify-content: center;
 `;
 export const EndView = styled.View`
