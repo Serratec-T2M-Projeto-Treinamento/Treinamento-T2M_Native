@@ -32,11 +32,6 @@ export default function certificacao({ route, navigation }) {
                 <DadosView>
                   <DadosText>{p.certificacao.instituicaoCertificado}</DadosText>
                 </DadosView>
-                <View>
-                  <TouchableOpacity onPress={() => handleCadasCert()}>
-                    <Text>Inserir Certificação</Text>
-                  </TouchableOpacity>
-                </View>
                 <EndView>
                   <EndButton>
                     <EndText>Atualizar</EndText>
@@ -50,6 +45,11 @@ export default function certificacao({ route, navigation }) {
               </CertifiArea>
             )
           })}
+          <View>
+            <TouchableOpacity onPress={() => handleCadasCert()}>
+              <Text>Inserir Certificação</Text>
+            </TouchableOpacity>
+          </View>
         </CertificacaoScroll>
       </Container>
 

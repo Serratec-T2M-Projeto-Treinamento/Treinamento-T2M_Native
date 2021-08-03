@@ -37,7 +37,7 @@ export const CertiText= styled.Text`
     color: black;
     font-size: 20px;
     font-weight: bold;
-
+`;
 
 
 export const DadosView = styled.View`
