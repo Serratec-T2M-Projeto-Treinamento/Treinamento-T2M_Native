@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProText, ButtonView} from './styles';
 import axios from 'axios';
-import MenuIcon from   '../../components/icon';
-import React from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, ProjetoScroll } from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 
