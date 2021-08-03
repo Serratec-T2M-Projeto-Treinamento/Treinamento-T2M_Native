@@ -1,77 +1,98 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-    background-color:  #A0C8C3;
-    height: 100%;
+  background-color: #a0c8c3;
+  height: 100%;
 `;
 
-export const CertificacaoScroll = styled.ScrollView`
- 
-`;
+export const CertificacaoScroll = styled.ScrollView``;
 
 export const Titulo = styled.Text`
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-    font-style: italic;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-style: italic;
 `;
 
 export const CertifiArea = styled.SafeAreaView`
-    flex-direction: column;
-    border-radius: 20px;
-    justify-content: center;
-    background-color: lightgray;
-    border:lightblue;
-    margin:15px;
+  flex-direction: column;
+  border-radius: 20px;
+  justify-content: center;
+  background-color: lightgray;
+  border: lightblue;
+  margin: 15px;
 `;
 
 export const CertiView = styled.SafeAreaView`
-    border-color: black;
-    align-items:center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  
+  border-color: black;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const CertiText= styled.Text`
-    text-align: center;
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
+export const CertiText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
 `;
 
 export const DadosView = styled.View`
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 10px;
-    justify-content: center;
-    align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: center;
+  align-content: center;
 `;
 
 export const DadosText = styled.Text`
-    font-size: 20px;
-    text-align: center;
-    font-style: italic;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
 `;
 
 export const MensagemArea = styled.View`
-    border-color: black;
-    align-items:center;
-    justify-content: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 800px;
+  border-color: black;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
 `;
 
 export const MensagemView = styled.View`
-    margin-bottom: 200px;
+  margin-bottom: 200px;
 `;
 
 export const MensagemText = styled.Text`
-    text-align: center;
-    color: black;
-    font-size:18px;
-    font-weight: bold;
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+`;
+export const EndButton = styled.TouchableOpacity`
+  height: 30px;
+  background-color: #01a999;
+  width: 50%;
+  display: flex;
+  align-items: center;
+
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
+`;
+export const EndText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  justify-content: center;
+`;
+export const EndView = styled.View`
+  margin-top: 15px;
+  align-items: flex-end;
+  height: 35px;
+  width: 90%;
 `;
