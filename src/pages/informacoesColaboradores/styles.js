@@ -55,7 +55,7 @@ export const ButtonText = styled.Text`
 export const EndText = styled.Text`
   text-align: center;
   color: white;
-  font-size: 18px;
+  font-size: 15px;
   justify-content: center;
 `;
 
