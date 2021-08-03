@@ -35,7 +35,7 @@ export const CertiView = styled.SafeAreaView`
 `;
 
 export const CertiText= styled.Text`
-    text-align: center;
+  text-align: center;
     color: black;
     font-size: 20px;
     font-weight: bold;
