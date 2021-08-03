@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  background-color: #5CB3B2;
+  background-color:  #A0C8C3;
 `;
 
 export const  InformacoesButton = styled.TouchableOpacity`
@@ -35,7 +35,7 @@ export const InformacoesArea = styled.View`
 `;
 
 export const InformacoesScroll = styled.ScrollView`
-  background-color: #5CB3B2;
+  background-color: #A0C8C3;
 `;
 
 export const EspacoView = styled.View`

@@ -4,7 +4,7 @@ export const ContainerHome = styled.SafeAreaView`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  background-color: #5CB3B2;
+  background-color: #A0C8C3;
   height: 100%;
 `;
 

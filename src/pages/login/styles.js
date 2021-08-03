@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const ContainerLogin = styled.SafeAreaView`
     align-items: center;
     justify-content: center;
-    background-color: #39C2C1;
+    background-color: #A0C8C3;
 `;
 
 export const LoginView = styled.View`
