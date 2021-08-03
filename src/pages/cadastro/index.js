@@ -83,12 +83,13 @@ export default function Cadastro({ navigation }) {
       
     } catch (error) {
       Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
+      console.error(error);
     }
 
   }
 
-  console.log(colaborador.dataNascimento);
-
+  console.log(colaborador);
+  console.log(endereco);
 
   return (
     <Container>
@@ -151,15 +152,18 @@ export default function Cadastro({ navigation }) {
   );
 
 }
+  
+  //time stamp iso
+  
+  // const cadastroValidationSchema = yup.object().shape({
+  //   nome: yup.string().max(50, ({ max }) => `Nome deve ter no máximo ${max} caracteres`).required('Campo obrigatório *'),
+  //   rg: yup.string().max(12, ({ max }) => `RG deve ter no máximo ${max} caracteres`).required('Campo obrigatório *'),
+  //   cpf: yup.string().max(14, ({ max }) => `CPF deve ter no máximo ${max} caracteres`).required('Campo obrigatório *'),
+  //   email: yup.string().email('Coloque um email válido').required('Campo obrigatório *'),
+  //   pix: yup.string().required('Campo obrigatório *'),
+  //   cnh: yup.string().max(1, `CNH pode conter apenas sua categoria`).required('Campo obrigatório *')
+  // })
 
-{/* <DatePicker 
-                      date={colaborador.dataNascimento} mode='date' placeholder='Escolha uma data'
-                      format='DD-MM-YYYY' minDate='01-01-2000' maxDate='01-01-2022'
-                      confirmBtnText='Confirmar' cancelBtnText='Cancelar'
-                      customStyles={{dateIcon:{
-                        position: 'absolute', left: 0, top: 4, marginLeft: 0,
-                      }, dateInput:{
-                          marginLeft: 36,
-                      },
-                      }}
-                      onDateChange={(date) => {setColaborador({ ...colaborador, dataNascimento: date})}}/> */}
+  // const dataValidationSchema = yup.object().shape({
+  //   dataNascimento: yup.date().transform(parseDateString).max(new Date(), () => `Data maior que a atual`).required('Campo obrigatório *').typeError(null)
+  // })
