@@ -31,12 +31,14 @@ export const CertiView = styled.SafeAreaView`
   flex-direction: column;
 `;
 
-export const CertiText = styled.Text`
+
+export const CertiText= styled.Text`
   text-align: center;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-`;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+
+
 
 export const DadosView = styled.View`
   flex-direction: row;

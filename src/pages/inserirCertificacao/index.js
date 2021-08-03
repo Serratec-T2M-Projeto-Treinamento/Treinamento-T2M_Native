@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, EspacoView, InputArea, InputCadastro, CertiButton, CertiText,ButtonView, CadastroText, CadastroView} from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -36,11 +36,26 @@ export default function CadastroCertificados({ route }) {
     }
     return (
         <Container>
+
+            <EspacoView></EspacoView>
+            <CadastroView>
+                        <CadastroText> Cadastro de Certificados </CadastroText>
+            </CadastroView>
+
             <MenuIcon />
+
             <InputArea>
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, nomeCertificado: text })} placeholder='Nome do Certificado' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, instituicaoCertificado: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setCertificado({ ...certificado, tempoValidade: text })} placeholder='Validade' placeholderTextColor='#181818' />
+
+            <ButtonView>
+            <CertiButton>
+              <CertiText>Salvar</CertiText>
+            </CertiButton>
+            </ButtonView>
+
+
             </InputArea>
         </Container>
     )

@@ -118,7 +118,6 @@ export const EndButton = styled.TouchableOpacity`
   width: 50%;
   display: flex;
   align-items: center;
-
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 10px;
