@@ -28,6 +28,7 @@ export const InputCadastro = styled.TextInput`
   border-radius: 10px;
   color: #181818;
   margin: 5%;
+  margin-bottom: 3%;
 `;
 export const CadastroText = styled.Text`
   text-align: center;

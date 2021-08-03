@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText,TreinaText, TreinamentoButton, TreinamentoText, TreinamentoView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -38,12 +38,18 @@ export default function CadastroTreinamentos({ route }) {
     return (
         <Container>
             <MenuIcon />
+            <TreinamentoView>
+                <TreinaText> Cadastro de Treinamentos </TreinaText>
+            </TreinamentoView>
             <EspacoView></EspacoView>
             <InputArea>
                 <InputCadastro onChangeText={(text) => setTreinamento({ ...Treinamento, nome: text })} placeholder='Nome do Treinamento' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setTreinamento({ ...Treinamento, descricao: text })} placeholder='Descrição' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setTreinamento({ ...Treinamento, instituicao: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
-                <InputCadastro onChangeText={(text) => setTreinamento({ ...Treinamento, cargaHoraria: text })} keyboardType='number-pad' placeholder='Nome da Instuição' placeholderTextColor='#181818' />
+                <InputCadastro onChangeText={(text) => setTreinamento({ ...Treinamento, cargaHoraria: text })} keyboardType='number-pad' placeholder='Carga Horária' placeholderTextColor='#181818' />
+            <TreinamentoButton>
+                 <TreinamentoText>Salvar</TreinamentoText>
+            </TreinamentoButton>
             </InputArea>
         </Container>
     )
