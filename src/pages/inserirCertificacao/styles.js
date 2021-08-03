@@ -6,6 +6,7 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const InputArea = styled.View`
+
     background-color: black;
     width:80%;
     height: 400px;
@@ -41,6 +42,7 @@ export const CadastroView = styled.View`
 
 `;
 
+
 export const EspacoView = styled.View`
   height: 40px;
 `;
@@ -66,4 +68,25 @@ export const CertiText = styled.Text`
   color:white;
   font-size:18px;
   font-weight: bold;
+
+export const MensagemArea = styled.View`
+    border-color: black;
+    align-items:center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+`;
+
+export const MensagemView = styled.View`
+    margin-bottom: 200px;
+`;
+
+export const MensagemText = styled.Text`
+    text-align: center;
+    color: black;
+    font-size:18px;
+    font-weight: bold;
+
 `;
