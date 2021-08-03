@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     ContainerLogin,
     LoginView,
@@ -15,9 +15,11 @@ import axios from 'axios';
 import { Alert, Text, ActivityIndicator } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { AuthContext } from '../../services/auth';
 
 export default function Login({ navigation }) {
     const [loading, setLoading] = useState(false);
+    const { setIsAdmin } = React.useContext(AuthContext);
 
     const loginValidationSchema = yup.object().shape({
         usuario: yup.string().required('Campo obrigatório *'),
@@ -49,6 +51,8 @@ export default function Login({ navigation }) {
                                     .then((response) => {
                                         navigation.navigate('Home');
                                         setLoading(false);
+                                        setIsAdmin(response.data.isAdmin)
+                                        console.log(response.data.isAdmin);
                                     }).catch(() => {
                                         Alert.alert('Dados inválidos, tente novamente!')
                                     })

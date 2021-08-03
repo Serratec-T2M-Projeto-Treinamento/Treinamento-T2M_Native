@@ -1,11 +1,16 @@
 import React from 'react';
 import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText } from './styles';
+import { View, Text, TouchableOpacity } from 'react-native';
 import MenuIcon from '../../components/icon';
 
-export default function certificacao({ route }) {
+export default function certificacao({ route, navigation }) {
     if (route.params) {
 
         const { colaborador } = route.params
+
+        function handleCadasCert(){
+            navigation.navigate('Cadastro de Certificações', { colaborador } )
+        }
 
         return (
             <Container>
@@ -27,6 +32,11 @@ export default function certificacao({ route }) {
                                 <DadosView>
                                     <DadosText>{p.certificacao.instituicaoCertificado}</DadosText>
                                 </DadosView>
+                                <View>
+                                    <TouchableOpacity onPress={() => handleCadasCert()}>
+                                        <Text>Inserir Certificação</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </CertifiArea>
                     )
                 })}

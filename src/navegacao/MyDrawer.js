@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import ListaDeColaboradores from '../pages/listaColaboradores';
 import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
+import CadastroCertificados from '../pages/inserirCertificacao';
 import Projetos from '../pages/projetos';
 import Formacoes from '../pages/formacoes';
 import Certificacoes from  '../pages/certificacao';
@@ -16,12 +17,13 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator
-            initialRouteName='Sair'
+            initialRouteName='Lista de Colaboradores'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
             <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
+            <Drawer.Screen name='Cadastro de Certificações' component={CadastroCertificados} />
             <Drawer.Screen name='Treinamentos' component={Treinamentos}/>
             <Drawer.Screen name='Certificações' component={Certificacoes}/>
             <Drawer.Screen name='Formações' component={Formacoes} />
