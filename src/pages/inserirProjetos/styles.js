@@ -16,6 +16,7 @@ export const ProjetoArea = styled.View`
   flex-wrap: wrap;
   margin: 40px;
   justify-content: center;
+  border: white;
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -27,9 +28,9 @@ export const InputCadastro = styled.TextInput`
   height: 50px;
   border-radius: 10px;
   color: #181818;
-  
- 
-  
+  padding-left: 2px;
+  border-width: 2px;
+  margin: 8px;
 `;
 
 export const EspacoView = styled.View`
@@ -57,7 +58,7 @@ export const MensagemText = styled.Text`
     font-weight: bold;
 `;
 export const InserView = styled.View`
-  margin-top: 50px;
+  
   align-items: center;
 `;
 export const ProjetoButton = styled.TouchableOpacity`
