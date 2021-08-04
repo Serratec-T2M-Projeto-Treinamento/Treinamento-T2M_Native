@@ -101,4 +101,6 @@ export const TreinamentosText= styled.Text`
   margin-top: 3px;
   color: white;
   font-size: 18px;
+  justify-content: center;
+  
 `;
