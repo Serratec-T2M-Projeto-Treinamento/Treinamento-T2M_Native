@@ -92,6 +92,3 @@ export const ProjetoText = styled.Text`
 
 `;
 
-export const ProScroll = styled.ScrollView`
-
-`;

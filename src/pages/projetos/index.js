@@ -65,17 +65,12 @@ export default function Projetos({ route, navigation }) {
                             </ProjetoArea>
                         )
                     })}
-
-                    
-
                     <ProjetoView>
                         <ProjetoButton onPress={() => handleNavProj()}>
                             <ProjeText>Inserir Projetos</ProjeText>
                         </ProjetoButton>
                     </ProjetoView>
-
                 </ProjetoScroll>
-
             </Container>
         )
     } else {

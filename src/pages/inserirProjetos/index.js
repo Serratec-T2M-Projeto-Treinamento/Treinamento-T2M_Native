@@ -45,7 +45,7 @@ export default function CadastroProjetos({ route }) {
                 <MenuIcon />
                 <EspacoView></EspacoView>
                 <InserirView>
-                    <InserirText> Inserir Projetos </InserirText>
+                    <InserirText> Cadastro de Projetos </InserirText>
                 </InserirView>
                 <ProjetoArea>
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, nome: text })} placeholder='Nome do Projeto' placeholderTextColor='#181818' />
