@@ -101,3 +101,14 @@ export const ProText = styled.Text`
   font-size:18px;
   font-weight: bold;
 `;
+export const ButtonText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  justify-content: center;
+  background-color: #01a999;
+  border-radius: 80px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
+`;
