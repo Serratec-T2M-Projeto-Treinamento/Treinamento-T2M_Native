@@ -9,7 +9,7 @@ export default function certificacao({ route, navigation }) {
     const { colaborador } = route.params
 
     function handleCadasCert() {
-      navigation.navigate('Cadastro de Certificações', { colaborador })
+      navigation.navigate('Inserir Certificações', { colaborador })
     }
 
     return (

@@ -11,7 +11,12 @@ export const InputArea = styled.View`
   justify-content: center;
   width: 100%;
   display: flex;
-  margin-top: -55px;
+  
+`;
+
+export const InputView = styled.View`
+  width: 100%;
+  align-items: center;
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -24,4 +29,37 @@ export const InputCadastro = styled.TextInput`
   border-radius: 10px;
   color: #181818;
   
+`;
+
+export const ButtonView = styled.View`
+  margin-top: 50px;
+  align-items: center;
+`;
+
+export const CadastroButton = styled.TouchableOpacity`
+  height:50px;
+  background-color: #01a999;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border: white;
+`;
+
+export const CadastroText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+`;
+
+export const PickerView = styled.View`
+  background-color: white;
+  width: 70%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: black;
 `;

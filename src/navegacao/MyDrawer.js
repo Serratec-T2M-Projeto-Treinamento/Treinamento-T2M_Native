@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import ListaDeColaboradores from '../pages/listaColaboradores';
 import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
+import CadastroEndereco from '../pages/inserirEndereco';
 import CadastroCertificados from '../pages/inserirCertificacao';
 import CadastroTreinamentos from '../pages/inserirTreinamentos';
 import CadastroFormacoes from '../pages/inserirFormacoes';
@@ -25,11 +26,12 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
+            <Drawer.Screen name='Inserir Endereços' component={CadastroEndereco} />
             <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
-            <Drawer.Screen name='Cadastro de Certificações' component={CadastroCertificados} />
-            <Drawer.Screen name='Cadastro de Treinamentos' component={CadastroTreinamentos} />
-            <Drawer.Screen name='Cadastro de Formações' component={CadastroFormacoes} />
-            <Drawer.Screen name='Cadastro de Projetos' component={CadastroProjetos} />
+            <Drawer.Screen name='Inserir Certificações' component={CadastroCertificados} />
+            <Drawer.Screen name='Inserir Treinamentos' component={CadastroTreinamentos} />
+            <Drawer.Screen name='Inserir Formações' component={CadastroFormacoes} />
+            <Drawer.Screen name='Inserir Projetos' component={CadastroProjetos} />
             <Drawer.Screen name='Treinamentos' component={Treinamentos}/>
             <Drawer.Screen name='Certificações' component={Certificacoes}/>
             <Drawer.Screen name='Formações' component={Formacoes} />
