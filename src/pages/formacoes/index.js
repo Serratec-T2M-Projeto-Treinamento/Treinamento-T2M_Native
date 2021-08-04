@@ -21,7 +21,7 @@ export default function Formacoes({ route, navigation }) {
     const { colaborador } = route.params
 
     function handleNavForm(){
-      navigation.navigate('Cadastro de Formações', { colaborador })
+      navigation.navigate('Inserir Formações', { colaborador })
     }
 
     return (
