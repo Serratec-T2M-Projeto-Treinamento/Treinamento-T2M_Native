@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container,TreinArea, TreinView, TreinText, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, TreinScroll } from './styles';
+import { Container,TreinArea, TreinamentosText, ButtonView, TreinView, TreinText, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, TreinScroll, TreinamentosButton } from './styles';
 import MenuIcon from '../../components/icon';
 import { View, Text, TouchableOpacity } from 'react-native';
 
@@ -47,11 +47,13 @@ export default function Treinamentos({ route, navigation}) {
                             </TreinArea>
                         )
                     })}
-                    <View>
-                        <TouchableOpacity onPress={() => handleNavTrein()}>
-                            <Text>Inserir Treinamento</Text>
-                        </TouchableOpacity>
-                    </View>
+                    
+                        <ButtonView>
+                        <TreinamentosButton onPress={() => handleNavTrein()}>
+                            <TreinamentosText>Inserir Treinamento</TreinamentosText>
+                        </TreinamentosButton>
+                        </ButtonView>
+                   
                 </TreinScroll>
             </Container>
         )
