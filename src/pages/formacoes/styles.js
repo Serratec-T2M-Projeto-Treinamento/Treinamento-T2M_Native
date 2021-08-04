@@ -80,7 +80,7 @@ export const FormaText = styled.Text`
    text-align: center;
   color: white;
   font-size: 18px;
-  justify-content: center;
+  
 `;
 export const FormacoesButton = styled.TouchableOpacity`
   height: 35px;
@@ -89,6 +89,6 @@ export const FormacoesButton = styled.TouchableOpacity`
   display: flex;
   align-items: center;
   border-radius: 10px;
-  margin: 10%;
+  margin: 25%;
   border: white;
 `;
