@@ -6,6 +6,10 @@ export const Container = styled.SafeAreaView`
   background-color: #A0C8C3;
 `;
 
+export const ProScroll = styled.ScrollView`
+
+`;
+
 export const ProjetoArea = styled.View`
   background-color: black;
   width:80%;
@@ -58,7 +62,6 @@ export const MensagemText = styled.Text`
     font-weight: bold;
 `;
 export const InserView = styled.View`
-  
   align-items: center;
 `;
 export const ProjetoButton = styled.TouchableOpacity`
