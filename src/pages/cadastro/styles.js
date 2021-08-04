@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
   height: 100%;
-  background-color: #effffb;
+  background-color: #A0C8C3;
 `;
 
 export const CadastroButton = styled.TouchableOpacity`
@@ -47,7 +47,7 @@ export const InputArea = styled.View`
 `;
 
 export const CadastroScroll = styled.ScrollView`
-  background-color: #5CB3B2;
+  background-color: #A0C8C3;
 `;
 
 export const EspacoView = styled.View`

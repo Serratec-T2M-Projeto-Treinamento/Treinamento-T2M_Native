@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  background-color: #5CB3B2;
+  background-color: #a0c8c3;
 `;
 
-export const  InformacoesButton = styled.TouchableOpacity`
-  height:50px;
+export const InformacoesButton = styled.TouchableOpacity`
+  height: 50px;
   background-color: #01a999;
   width: 80%;
   display: flex;
@@ -14,7 +14,7 @@ export const  InformacoesButton = styled.TouchableOpacity`
   border-radius: 30px;
   margin-bottom: 20px;
   margin-top: 10px;
-  border:white;
+  border: white;
 `;
 
 export const InformacoesText = styled.Text`
@@ -26,16 +26,15 @@ export const InformacoesText = styled.Text`
 
 export const InformacoesArea = styled.View`
   border-color: black;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   width: 100%;
   display: flex;
   flex-direction: column;
-  
 `;
 
 export const InformacoesScroll = styled.ScrollView`
-  background-color: #5CB3B2;
+  background-color: #a0c8c3;
 `;
 
 export const EspacoView = styled.View`
@@ -53,42 +52,46 @@ export const ButtonText = styled.Text`
   font-size: 18px;
   justify-content: center;
 `;
-
+export const EndText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  justify-content: center;
+`;
 
 export const DadosText = styled.Text`
   font-size: 18px;
   text-align: center;
   font-style: italic;
-  `;
+`;
 
 export const DadosView = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 10px;
-  
-  `;
+`;
 
 export const DadosArea = styled.View`
   width: 90%;
   background-color: lightgrey;
   margin-top: 10px;
   border-radius: 10px;
-  border:lightblue;
-  `;
+  border: lightblue;
+`;
 
 export const MensagemArea = styled.View`
   border-color: black;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   width: 100%;
   display: flex;
   flex-direction: column;
   height: 800px;
 `;
-  
+
 export const MensagemView = styled.View`
   margin-bottom: 200px;
-  `;
+`;
 
 export const MensagemText = styled.Text`
   text-align: center;
@@ -98,7 +101,7 @@ export const MensagemText = styled.Text`
 `;
 
 export const TodoButton = styled.TouchableOpacity`
-  height:50px;
+  height: 50px;
   background-color: #01a999;
   width: 80%;
   display: flex;
@@ -108,4 +111,21 @@ export const TodoButton = styled.TouchableOpacity`
   margin-bottom: 20px;
   margin-top: 10px;
   border: white;
+`;
+export const EndButton = styled.TouchableOpacity`
+  height: 30px;
+  background-color: #01a999;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
+`;
+export const EndView = styled.View`
+  margin-top: 15px;
+  align-items: flex-end;
+  height: 35px;
+  width: 90%;
 `;

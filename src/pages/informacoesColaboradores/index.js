@@ -14,7 +14,10 @@ import {
   DadosArea,
   MensagemArea,
   MensagemText,
-  TodoButton
+  TodoButton,
+  EndButton,
+  EndText,
+  EndView
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -100,6 +103,13 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Posição: </InformacoesText>
                 <DadosText>{colaborador.posicao.nome}</DadosText>
               </DadosView>
+              </DadosArea>
+              <EndView>
+              <EndButton>
+              <EndText>Alterar dados</EndText>
+            </EndButton>
+            </EndView>
+              <DadosArea>
               <DadosView>
                 <InformacoesText>País: </InformacoesText>
                 <DadosText>{colaborador.setColabsEndrs[0].endereco.pais}</DadosText>
@@ -133,6 +143,11 @@ export default function Informacoes({ route, navigation }) {
                 <DadosText>{colaborador.setColabsEndrs[0].endereco.cep}</DadosText>
               </DadosView>
             </DadosArea>
+            <EndView>
+            <EndButton>
+              <EndText>Alterar endereço</EndText>
+            </EndButton>
+            </EndView>
           </InformacoesArea>
           <ButtonView>
             <TodoButton onPress={() => handleClickCert()}>

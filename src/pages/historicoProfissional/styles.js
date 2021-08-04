@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  background-color: #5CB3B2;
+  background-color: #A0C8C3;
   height: 100%;
 `;
 export const HistoricoArea = styled.View`
@@ -39,7 +39,7 @@ export const HistoView = styled.View`
 
 `
 export const HistoText= styled.Text`
-font-size: 22px;
-color: black;
+  font-size: 22px;
+  color: black;
 `
 
