@@ -80,3 +80,27 @@ export const MensagemText = styled.Text`
     font-size:18px;
     font-weight: bold;
 `;
+export const ButtonView = styled.View`
+   border-color: black;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+export const TreinamentosButton= styled.TouchableOpacity`
+  height: 35px;
+  background-color: #01a999;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin:10%;
+  border:white;
+`;
+export const TreinamentosText= styled.Text`
+ text-align: center;
+  color: white;
+  font-size: 18px;
+  justify-content: center;
+  
+`;
