@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText, FormacaoText, FormaText, FormaView, FormaButton  } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -36,11 +36,18 @@ export default function CadastroFormacoes({ route }) {
     return (
         <Container>
             <MenuIcon />
-            <EspacoView></EspacoView>
+            <FormaView>
+                    <FormacaoText> Inserir Formaçôes </FormacaoText>
+            </FormaView>
             <InputArea>
                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nome: text })} placeholder='Nome da Formacao' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nivel: text })} placeholder='Nível' placeholderTextColor='#181818' />
                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, instituicao: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
+                <FormaView>
+                        <FormaButton>
+                            <FormaText>Salvar</FormaText>
+                        </FormaButton>
+                    </FormaView>
             </InputArea>
         </Container>
     )
