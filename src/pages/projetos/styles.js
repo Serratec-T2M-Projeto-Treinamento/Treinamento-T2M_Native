@@ -86,7 +86,7 @@ export const ButtonView = styled.View`
 export const ProjetoButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
-  width: 80%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,7 +116,7 @@ export const ButtonText = styled.Text`
 export const ProjeText = styled.Text`
   text-align: center;
   color: white;
-  font-size: 14px;
+  font-size: 18px;
   justify-content: center;
   background-color: #01a999;
   `;
