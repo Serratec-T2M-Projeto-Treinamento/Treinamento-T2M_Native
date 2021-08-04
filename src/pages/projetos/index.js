@@ -13,7 +13,7 @@ export default function Projetos({ route, navigation }) {
         const { colaborador } = route.params
 
         function handleNavProj(){
-            navigation.navigate('Cadastro de Projetos', { colaborador });
+            navigation.navigate('Inserir Projetos', { colaborador });
         }
 
         return (

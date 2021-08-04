@@ -20,7 +20,7 @@ export const ProjetoArea = styled.View`
 `;
 
 export const InputCadastro = styled.TextInput`
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 10px;
   border: white;
   width: 80%;
@@ -91,3 +91,4 @@ export const ProjetoText = styled.Text`
   margin-top: 20px;
 
 `;
+

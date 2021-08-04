@@ -27,6 +27,10 @@ export default function Informacoes({ route, navigation }) {
   if (route.params) {
     const { colaborador } = route.params
 
+    const handleClickEndr = () => {
+      navigation.navigate('Inserir Endereços',  { colaborador });
+    }
+
     const handleClickProj = () => {
       navigation.navigate('Projetos', { colaborador });
     }
@@ -109,43 +113,48 @@ export default function Informacoes({ route, navigation }) {
               <EndText>Alterar dados</EndText>
             </EndButton>
             </EndView>
-              <DadosArea>
+            {colaborador.setColabsEndrs.map((p,i) => {
+              return(
+              <DadosArea key={i}>
               <DadosView>
                 <InformacoesText>País: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.pais}</DadosText>
+                <DadosText>{p.endereco.pais}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Estado: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.estado}</DadosText>
+                <DadosText>{p.endereco.estado}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Cidade: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.cidade}</DadosText>
+                <DadosText>{p.endereco.cidade}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Bairro: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.bairro}</DadosText>
+                <DadosText>{p.endereco.bairro}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Rua: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.rua}</DadosText>
+                <DadosText>{p.endereco.rua}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Numero: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.numero}</DadosText>
+                <DadosText>{p.endereco.numero}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>Complemento: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.complemento}</DadosText>
+                <DadosText>{p.endereco.complemento}</DadosText>
               </DadosView>
               <DadosView>
                 <InformacoesText>CEP: </InformacoesText>
-                <DadosText>{colaborador.setColabsEndrs[0].endereco.cep}</DadosText>
+                <DadosText>{p.endereco.cep}</DadosText>
               </DadosView>
             </DadosArea>
+
+              )
+            })}
             <EndView>
-            <EndButton>
-              <EndText>Alterar endereço</EndText>
+            <EndButton onPress={() => handleClickEndr()}>
+              <EndText>Inserir endereço</EndText>
             </EndButton>
             </EndView>
           </InformacoesArea>
@@ -162,9 +171,6 @@ export default function Informacoes({ route, navigation }) {
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
               </TodoButton>
-            {/* <InformacoesButton>
-              <ButtonText>Alterar dados</ButtonText>
-            </InformacoesButton> */}
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>
@@ -186,20 +192,3 @@ export default function Informacoes({ route, navigation }) {
   }
 
 }
-
-// const handleClickCert = () => {
-    //   navigation.navigate('Certificações', { colaborador });
-    // }
-    
-    // const [endereco, setEndereco] = useState([])
-
-    // const getDados = () => {
-    //   axios.get(`https://api-treinamento-t2m.herokuapp.com/enderecos/${colaborador.setColaboradoresEnderecos[0].idColaboradoresEnderecos.idEndereco}`)
-    //     .then((response) => {
-    //       setEndereco(response.data);
-    //     })
-    // }
-
-    // useEffect(() => {
-    //   getDados()
-    // }, [colaborador]);
