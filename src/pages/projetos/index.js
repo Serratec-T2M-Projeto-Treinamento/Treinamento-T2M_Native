@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { Container,ProjetoScroll, Titulo, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjeView, ProjeButton, ProjeText } from './styles';
+
+import { Container,ProjetoScroll, Titulo, ProjetoView, ButtonText, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
+
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import { TouchableOpacity, View, Text } from 'react-native';
@@ -63,11 +65,19 @@ export default function Projetos({ route, navigation }) {
                             </ProjetoArea>
                         )
                     })}
+
+                    <View>
+                        <TouchableOpacity onPress={() => handleNavProj()}>
+                            <ButtonText>Inserir Projetos</ButtonText>
+                        </TouchableOpacity>
+                    </View>
+
                     <ProjeView>
                         <ProjeButton onPress={() => handleNavProj()}>
                             <ProjeText>Inserir Projetos</ProjeText>
                         </ProjeButton>
                     </ProjeView>
+
                 </ProjetoScroll>
 
             </Container>
