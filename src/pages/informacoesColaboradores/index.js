@@ -28,7 +28,7 @@ export default function Informacoes({ route, navigation }) {
     const { colaborador } = route.params
 
     const handleClickEndr = () => {
-      navigation.navigate('Inserir Endereços',  colaborador );
+      navigation.navigate('Inserir Endereços',  { colaborador });
     }
 
     const handleClickProj = () => {
