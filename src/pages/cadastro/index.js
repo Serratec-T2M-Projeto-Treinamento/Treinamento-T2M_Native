@@ -5,6 +5,7 @@ import {
   CadastroText,
   CadastroScroll,
   InputArea,
+  InputView,
   Container,
   ButtonView,
   EspacoView,
@@ -23,13 +24,14 @@ export default function Cadastro({ navigation }) {
   const [posicoes, setPosicoes] = useState([]);
   const [posicaoEscolhida, setPosicaoEscolhida] = useState();
   const [permissaoEscolhida, setPermissaoEscolhida] = useState();
-  
+  const [chnEscolhido, setCnhEscolhido] = useState();
+
   const handlePermissao = (p) => {
     if (p) {
       return <Picker.Item color='#181818' label='Administrador' value={2} />
     }
   }
-  
+
   const getPosicao = async () => {
     try {
       const response = await axios.get('https://api-treinamento-t2m.herokuapp.com/posicoes')
@@ -41,10 +43,10 @@ export default function Cadastro({ navigation }) {
 
   useEffect(() => {
     getPosicao()
-    }, []);
+  }, []);
 
-    const [colaborador, setColaborador] = useState(
-      {
+  const [colaborador, setColaborador] = useState(
+    {
       nome: '',
       rg: '',
       cpf: '',
@@ -58,7 +60,7 @@ export default function Cadastro({ navigation }) {
       }
     });
 
-    const [endereco, setEndereco] = useState({
+  const [endereco, setEndereco] = useState({
     pais: '',
     estado: '',
     cidade: '',
@@ -69,24 +71,24 @@ export default function Cadastro({ navigation }) {
     cep: '',
   });
 
-  async function postColaborador(){
+  async function postColaborador() {
     try {
       const responseColaborador = await axios.post('https://api-treinamento-t2m.herokuapp.com/colaboradores', colaborador)
       const idColaborador = responseColaborador.data.idColaboradores
-      
-  
+
+
       const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco)
       const idEndereco = responseEndereco.data.idEnderecos
-      
-  
+
+
       const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
       console.log(response.data);
       Alert.alert('Colaborador cadastrado com sucesso!')
-  
+
       navigation.reset({
-        routes:[{name:'Lista de Colaboradores'}]
+        routes: [{ name: 'Lista de Colaboradores' }]
       })
-      
+
     } catch (error) {
       Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
       console.error(error);
@@ -104,47 +106,79 @@ export default function Cadastro({ navigation }) {
         <EspacoView>
         </EspacoView>
         <InputArea>
+          <CadastroText>Nome Completo:</CadastroText>
           <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, nome: text })} placeholder='Nome' placeholderTextColor='#181818' />
+          <CadastroText>RG:</CadastroText>
           <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, rg: text })} keyboardType='number-pad' placeholder='RG' placeholderTextColor='#181818' />
+          <CadastroText>CPF:</CadastroText>
           <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cpf: text })} keyboardType='number-pad' placeholder='CPF' placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, email: text })} keyboardType='email-address' autoCapitalize='none' placeholder='E-mail' placeholderTextColor='#181818'/>
+          <CadastroText>E-mail:</CadastroText>
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, email: text })} keyboardType='email-address' autoCapitalize='none' placeholder='E-mail' placeholderTextColor='#181818' />
+          <CadastroText>Data de nascimento:</CadastroText>
           {/* <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, dataNascimento: text })} placeholder='Data de Nascimento' placeholderTextColor='#181818' /> */}
           <DataView>
-          <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setColaborador({ ...colaborador, dataNascimento: value })} styleInput={{ fontSize: 22, paddingLeft: 5}} />
+            <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setColaborador({ ...colaborador, dataNascimento: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
           </DataView>
-          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cnh: text })} placeholder='CNH' placeholderTextColor='#181818' />
-          <InputCadastro  onChangeText={(text) => setColaborador({ ...colaborador, pix: text })} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
+          {/* <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, cnh: text })} placeholder='CNH' placeholderTextColor='#181818' /> */}
+          <CadastroText>Pix:</CadastroText>
+          <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, pix: text })} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
+          <CadastroText>CNH:</CadastroText>
           <PickerView>
             <Picker
               mode='dropdown'
-              itemStyle={{color:'#181818'}}
+              itemStyle={{ color: '#181818' }}
+              selectedValue={chnEscolhido}
+              onValueChange={(itemValue, itemIndex) => setCnhEscolhido(itemValue)}>
+              <Picker.Item color='#181818' label='Escolha uma categoria' value='' />
+              <Picker.Item color='#181818' label='A' value='A' />
+              <Picker.Item color='#181818' label='B' value='B' />
+              <Picker.Item color='#181818' label='C' value='C' />
+              <Picker.Item color='#181818' label='D' value='D' />
+              <Picker.Item color='#181818' label='E' value='E' />
+              <Picker.Item color='#181818' label='AB' value='AB' />
+            </Picker>
+          </PickerView>
+          <CadastroText>Cargo:</CadastroText>
+          <PickerView>
+            <Picker
+              mode='dropdown'
+              itemStyle={{ color: '#181818' }}
               selectedValue={posicaoEscolhida}
               onValueChange={(itemValue, itemIndex) => setPosicaoEscolhida(itemValue)}>
-                {posicoes.map((p,i) => (
+              {posicoes.map((p, i) => (
                 <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
-                )
+              )
               )}
             </Picker>
           </PickerView>
+          <CadastroText>Posição:</CadastroText>
           <PickerView>
             <Picker
               mode='dropdown'
-              itemStyle={{color:'#181818'}}
+              itemStyle={{ color: '#181818' }}
               selectedValue={permissaoEscolhida}
               onValueChange={(itemValue, itemIndex) => setPermissaoEscolhida(itemValue)}>
-                {handlePermissao (isAdmin)}
-                <Picker.Item color='#181818' label='Líder' value={1} />
-                <Picker.Item color='#181818' label='Colaborador' value={0} />
+              {handlePermissao(isAdmin)}
+              <Picker.Item color='#181818' label='Líder' value={1} />
+              <Picker.Item color='#181818' label='Colaborador' value={0} />
             </Picker>
           </PickerView>
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, pais: text })} placeholder='País'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, estado: text })} placeholder='Estado'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cidade: text })} placeholder='Cidade'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, bairro: text })} placeholder='Bairro'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, rua: text })} placeholder='Rua'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, numero: text })} placeholder='Numero'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, complemento: text })} placeholder='Complemento'  placeholderTextColor='#181818' />
-          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cep: text })} keyboardType='number-pad' placeholder='Cep' placeholderTextColor='#181818'/>
+          <CadastroText>País</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, pais: text })} placeholder='País' placeholderTextColor='#181818' />
+          <CadastroText>Sigla do Estado:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, estado: text })} placeholder='Sigla' placeholderTextColor='#181818' />
+          <CadastroText>Cidade:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cidade: text })} placeholder='Cidade' placeholderTextColor='#181818' />
+          <CadastroText>Bairro:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, bairro: text })} placeholder='Bairro' placeholderTextColor='#181818' />
+          <CadastroText>Logradouro:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, rua: text })} placeholder='Logradouro' placeholderTextColor='#181818' />
+          <CadastroText>Número:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, numero: text })} placeholder='Numero' placeholderTextColor='#181818' />
+          <CadastroText>Complemento:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, complemento: text })} placeholder='Complemento' placeholderTextColor='#181818' />
+          <CadastroText>CEP:</CadastroText>
+          <InputCadastro onChangeText={(text) => setEndereco({ ...endereco, cep: text })} keyboardType='number-pad' placeholder='Cep' placeholderTextColor='#181818' />
         </InputArea>
         <ButtonView>
           <CadastroButton onPress={() => postColaborador()}>
@@ -158,9 +192,9 @@ export default function Cadastro({ navigation }) {
   );
 
 }
-  
+
   //time stamp iso
-  
+
   // const cadastroValidationSchema = yup.object().shape({
   //   nome: yup.string().max(50, ({ max }) => `Nome deve ter no máximo ${max} caracteres`).required('Campo obrigatório *'),
   //   rg: yup.string().max(12, ({ max }) => `RG deve ter no máximo ${max} caracteres`).required('Campo obrigatório *'),

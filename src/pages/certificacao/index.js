@@ -1,5 +1,5 @@
 import React from 'react';
-import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertifButton, CertifText, CertifView } from './styles';
+import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertiButton, CertiButtonText } from './styles';
 import MenuIcon from '../../components/icon';
 
 export default function certificacao({ route, navigation }) {
@@ -44,11 +44,11 @@ export default function certificacao({ route, navigation }) {
               </CertifiArea>
             )
           })}
-          <CertifView>
-            <CertifButton onPress={() => handleCadasCert()}>
-              <CertifText>Inserir Certificação</CertifText>
-            </CertifButton>
-          </CertifView>
+          <CertiView>
+            <CertiButton onPress={() => handleCadasCert()}>
+              <CertiButtonText>Inserir Certificação</CertiButtonText>
+            </CertiButton>
+          </CertiView>
         </CertificacaoScroll>
       </Container>
 
