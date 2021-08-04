@@ -100,7 +100,7 @@ export const TreinamentosButton= styled.TouchableOpacity`
 export const TreinamentosText= styled.Text`
  text-align: center;
   color: white;
-  font-size: 18px;
+  font-size: 19px;
   justify-content: center;
   
 `;
