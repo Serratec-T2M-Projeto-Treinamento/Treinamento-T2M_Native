@@ -55,11 +55,11 @@ export default function Formacoes({ route, navigation }) {
               </FormacoesArea>
             )
           })}
-            <View>
+            <FormacoesView>
               <FormacoesButton onPress={() => handleNavForm()}>
                 <FormaText>Inserir Formações</FormaText>
               </FormacoesButton>
-            </View>
+            </FormacoesView>
           <EspacoView></EspacoView>
         </ListScroll>
       </Container>

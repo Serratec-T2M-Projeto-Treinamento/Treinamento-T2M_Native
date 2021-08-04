@@ -32,8 +32,8 @@ export const CertiView = styled.SafeAreaView`
 `;
 
 
-export const CertiText= styled.Text`
-  text-align: center;
+export const CertiText = styled.Text`
+    text-align: center;
     color: black;
     font-size: 20px;
     font-weight: bold;
@@ -73,6 +73,7 @@ export const MensagemText = styled.Text`
   font-size: 18px;
   font-weight: bold;
 `;
+
 export const EndButton = styled.TouchableOpacity`
   height: 35px;
   background-color: #01a999;
@@ -92,6 +93,7 @@ export const EndText = styled.Text`
   font-size: 15px;
   margin-top: 5px;
 `;
+
 export const EndView = styled.View`
   align-items: center;
   justify-content: center;
@@ -100,26 +102,24 @@ export const EndView = styled.View`
   width: 90%;
   margin-top:15px
 `;
-export const CertifView = styled.SafeAreaView`
-  border-color: black;
-  align-items: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-export const CertifButton = styled.TouchableOpacity`
-  height: 35px;
+
+export const CertiButton = styled.TouchableOpacity`
+  height:50px;
   background-color: #01a999;
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  margin:10%;
-  border:white;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
   
 `;
-export const CertifText = styled.Text`
-  margin-top: 3px;
+
+export const CertiButtonText = styled.Text`
+  text-align: center;
   color: white;
   font-size: 18px;
+  
 `;

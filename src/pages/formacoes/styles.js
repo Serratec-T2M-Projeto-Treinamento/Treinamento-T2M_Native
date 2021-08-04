@@ -77,18 +77,20 @@ export const MensagemText = styled.Text`
   font-weight: bold;
 `;
 export const FormaText = styled.Text`
-   text-align: center;
+  text-align: center;
   color: white;
   font-size: 18px;
   
 `;
 export const FormacoesButton = styled.TouchableOpacity`
-  height: 35px;
+  height:50px;
   background-color: #01a999;
   width: 50%;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  margin: 25%;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
   border: white;
 `;
