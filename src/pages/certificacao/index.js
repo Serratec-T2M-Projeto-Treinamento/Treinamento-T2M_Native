@@ -1,5 +1,5 @@
 import React from 'react';
-import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView } from './styles';
+import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertifButton, CertifText, CertifView } from './styles';
 import { View, Text, TouchableOpacity } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -45,11 +45,11 @@ export default function certificacao({ route, navigation }) {
               </CertifiArea>
             )
           })}
-          <View>
-            <TouchableOpacity onPress={() => handleCadasCert()}>
-              <Text>Inserir Certificação</Text>
-            </TouchableOpacity>
-          </View>
+          <CertifView>
+            <CertifButton onPress={() => handleCadasCert()}>
+              <CertifText>Inserir Certificação</CertifText>
+            </CertifButton>
+          </CertifView>
         </CertificacaoScroll>
       </Container>
 
