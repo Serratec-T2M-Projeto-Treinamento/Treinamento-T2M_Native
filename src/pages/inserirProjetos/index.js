@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, InputCadastro, MensagemArea, MensagemView, MensagemText, InserView, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, InserView, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -41,6 +41,7 @@ export default function CadastroProjetos({ route }) {
         }
         return (
             <Container>
+                <ProScroll>
                 <MenuIcon />
                 <EspacoView></EspacoView>
                 <InserirView>
@@ -60,7 +61,9 @@ export default function CadastroProjetos({ route }) {
                         </ProjetoButton>
                     </InserView>
                 </ProjetoArea>
+                </ProScroll>
             </Container>
+            
         )
     } else {
         return (

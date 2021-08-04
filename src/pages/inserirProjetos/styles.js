@@ -20,7 +20,7 @@ export const ProjetoArea = styled.View`
 `;
 
 export const InputCadastro = styled.TextInput`
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 10px;
   border: white;
   width: 80%;
@@ -89,5 +89,9 @@ export const ProjetoText = styled.Text`
   font-size: 30px;
   font-weight: bold;
   margin-top: 20px;
+
+`;
+
+export const ProScroll = styled.ScrollView`
 
 `;
