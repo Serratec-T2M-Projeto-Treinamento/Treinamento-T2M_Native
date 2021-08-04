@@ -90,7 +90,7 @@ export const ButtonView = styled.View`
 export const TreinamentosButton= styled.TouchableOpacity`
   height: 35px;
   background-color: #01a999;
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
   border-radius: 10px;

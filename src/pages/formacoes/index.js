@@ -10,7 +10,9 @@ import {
   FormacoesArea,
   MensagemArea,
   MensagemView,
-  MensagemText
+  MensagemText,
+  FormacoesButton,
+  FormaText
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { Titulo } from '../certificacao/styles';
@@ -54,9 +56,9 @@ export default function Formacoes({ route, navigation }) {
             )
           })}
             <View>
-              <TouchableOpacity onPress={() => handleNavForm()}>
-                <Text>Inserir Formações</Text>
-              </TouchableOpacity>
+              <FormacoesButton onPress={() => handleNavForm()}>
+                <FormaText>Inserir Formações</FormaText>
+              </FormacoesButton>
             </View>
           <EspacoView></EspacoView>
         </ListScroll>
