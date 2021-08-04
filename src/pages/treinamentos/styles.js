@@ -98,9 +98,9 @@ export const TreinamentosButton= styled.TouchableOpacity`
   border:white;
 `;
 export const TreinamentosText= styled.Text`
- text-align: center;
+  margin-top: 3px;
   color: white;
-  font-size: 19px;
+  font-size: 18px;
   justify-content: center;
   
 `;

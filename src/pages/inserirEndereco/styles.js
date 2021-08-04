@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
   height: 100%;
-  background-color: #effffb;
+  background-color: #a0c8c3;
 `;
 
 export const InputArea = styled.View`
@@ -63,3 +63,24 @@ export const PickerView = styled.View`
   border-radius: 10px;
   border: black;
 `;
+
+export const MensagemArea = styled.View`
+  border-color: black;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  `;
+
+export const MensagemView = styled.View`
+  margin-bottom: 200px;
+  `;
+
+export const MensagemText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  `;
