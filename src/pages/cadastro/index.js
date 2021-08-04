@@ -16,13 +16,19 @@ import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
 import { Alert } from 'react-native';
 import DateField from 'react-native-datefield';
+import { AuthContext } from '../../services/auth';
 
 export default function Cadastro({ navigation }) {
+  const { isAdmin } = React.useContext(AuthContext);
   const [posicoes, setPosicoes] = useState([]);
   const [posicaoEscolhida, setPosicaoEscolhida] = useState();
   const [permissaoEscolhida, setPermissaoEscolhida] = useState();
-  // const [date, setDate] = useState('31/07/2021');
   
+  const handlePermissao = (p) => {
+    if (p) {
+      return <Picker.Item color='#181818' label='Administrador' value={2} />
+    }
+  }
   
   const getPosicao = async () => {
     try {
@@ -126,7 +132,7 @@ export default function Cadastro({ navigation }) {
               itemStyle={{color:'#181818'}}
               selectedValue={permissaoEscolhida}
               onValueChange={(itemValue, itemIndex) => setPermissaoEscolhida(itemValue)}>
-                <Picker.Item color='#181818' label='Administrador' value={2} />
+                {handlePermissao (isAdmin)}
                 <Picker.Item color='#181818' label='Líder' value={1} />
                 <Picker.Item color='#181818' label='Colaborador' value={0} />
             </Picker>

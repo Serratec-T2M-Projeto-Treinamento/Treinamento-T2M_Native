@@ -1,6 +1,5 @@
 import React from 'react';
 import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertifButton, CertifText, CertifView } from './styles';
-import { View, Text, TouchableOpacity } from 'react-native';
 import MenuIcon from '../../components/icon';
 
 export default function certificacao({ route, navigation }) {
@@ -9,7 +8,7 @@ export default function certificacao({ route, navigation }) {
     const { colaborador } = route.params
 
     function handleCadasCert() {
-      navigation.navigate('Cadastro de Certificações', { colaborador })
+      navigation.navigate('Inserir Certificações', { colaborador })
     }
 
     return (

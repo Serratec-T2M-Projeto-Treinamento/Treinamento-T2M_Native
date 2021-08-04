@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-import { Container,ProjetoScroll, Titulo, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjeView, ProjeButton, ProjeText } from './styles';
+
+import { Container,ProjetoScroll, Titulo, ProjetoView, ButtonText, ProjetoText, ProjeText, ProjetoButton, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
+
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import { TouchableOpacity, View, Text } from 'react-native';
@@ -11,7 +13,7 @@ export default function Projetos({ route, navigation }) {
         const { colaborador } = route.params
 
         function handleNavProj(){
-            navigation.navigate('Cadastro de Projetos', { colaborador });
+            navigation.navigate('Inserir Projetos', { colaborador });
         }
 
         return (
@@ -63,11 +65,15 @@ export default function Projetos({ route, navigation }) {
                             </ProjetoArea>
                         )
                     })}
-                    <ProjeView>
-                        <ProjeButton onPress={() => handleNavProj()}>
+
+                    
+
+                    <ProjetoView>
+                        <ProjetoButton onPress={() => handleNavProj()}>
                             <ProjeText>Inserir Projetos</ProjeText>
-                        </ProjeButton>
-                    </ProjeView>
+                        </ProjetoButton>
+                    </ProjetoView>
+
                 </ProjetoScroll>
 
             </Container>

@@ -86,7 +86,7 @@ export const ButtonView = styled.View`
 export const ProjetoButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
-  width: 80%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,27 +101,22 @@ export const ProText = styled.Text`
   font-size:18px;
   font-weight: bold;
 `;
-export const ProjeView = styled.View`
-  border-color: black;
-  align-items: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-export const ProjeButton = styled.TouchableOpacity`
-  height: 35px;
+
+export const ButtonText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  justify-content: center;
   background-color: #01a999;
-  width: 60%;
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  margin:10%;
-  border:white;
-  
+  border-radius: 80px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-weight: bold;
 `;
 export const ProjeText = styled.Text`
   text-align: center;
   color: white;
   font-size: 18px;
   justify-content: center;
-  `
+  background-color: #01a999;
+  `;
