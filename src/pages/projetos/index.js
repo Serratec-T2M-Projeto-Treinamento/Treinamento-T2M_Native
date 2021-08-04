@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Container,ProjetoScroll, Titulo, ProjetoView, ButtonText, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
+import { Container,ProjetoScroll, Titulo, ProjetoView, ButtonText, ProjetoText, ProjeText, ProjetoButton, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
 
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -66,17 +66,13 @@ export default function Projetos({ route, navigation }) {
                         )
                     })}
 
-                    <View>
-                        <TouchableOpacity onPress={() => handleNavProj()}>
-                            <ButtonText>Inserir Projetos</ButtonText>
-                        </TouchableOpacity>
-                    </View>
+                    
 
-                    <ProjeView>
-                        <ProjeButton onPress={() => handleNavProj()}>
+                    <ProjetoView>
+                        <ProjetoButton onPress={() => handleNavProj()}>
                             <ProjeText>Inserir Projetos</ProjeText>
-                        </ProjeButton>
-                    </ProjeView>
+                        </ProjetoButton>
+                    </ProjetoView>
 
                 </ProjetoScroll>
 

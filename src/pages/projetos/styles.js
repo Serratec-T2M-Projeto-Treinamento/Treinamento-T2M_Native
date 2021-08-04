@@ -113,3 +113,10 @@ export const ButtonText = styled.Text`
   margin-top: 20px;
   font-weight: bold;
 `;
+export const ProjeText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  justify-content: center;
+  background-color: #01a999;
+  `;
