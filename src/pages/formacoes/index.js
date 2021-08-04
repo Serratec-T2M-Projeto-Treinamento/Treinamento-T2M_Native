@@ -14,29 +14,15 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { Titulo } from '../certificacao/styles';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 export default function Formacoes({ route, navigation }) {
   if (route.params) {
     const { colaborador } = route.params
 
-    // const [formacao, setFormacao] = useState([]);
-
-    // const getFormacao = () => {
-    //   colaborador.setColaboradoresFormacoes.map((p, i) => {
-    //     axios.get(`https://api-treinamento-t2m.herokuapp.com/formacoes/${colaborador.setColaboradoresFormacoes[i].idColaboradoresFormacoes.idFormacao}`)
-    //       .then((response) => {
-    //         setFormacao([response.data]);
-    //       })
-    //       .catch((error) => {
-    //         console.error(error.message);
-    //       })
-    //   })
-
-    // }
-
-    // useEffect(() => {
-    //   getFormacao()
-    // }, [colaborador]);
+    function handleNavForm(){
+      navigation.navigate('Cadastro de Formações', { colaborador })
+    }
 
     return (
       <Container>
@@ -67,6 +53,11 @@ export default function Formacoes({ route, navigation }) {
               </FormacoesArea>
             )
           })}
+            <View>
+              <TouchableOpacity onPress={() => handleNavForm()}>
+                <Text>Inserir Formações</Text>
+              </TouchableOpacity>
+            </View>
           <EspacoView></EspacoView>
         </ListScroll>
       </Container>
