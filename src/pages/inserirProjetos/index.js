@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, EspacoView, ProjetoArea, InputCadastro, MensagemArea, MensagemView, MensagemText, InserView, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
@@ -43,7 +43,10 @@ export default function CadastroProjetos({ route }) {
             <Container>
                 <MenuIcon />
                 <EspacoView></EspacoView>
-                <InputArea>
+                <InserirView>
+                    <InserirText> Inserir Projetos </InserirText>
+                </InserirView>
+                <ProjetoArea>
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, nome: text })} placeholder='Nome do Projeto' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, descricao: text })} placeholder='Descrição' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, appGerenciamento: text })} placeholder='App Gerenciador' placeholderTextColor='#181818' />
@@ -51,7 +54,12 @@ export default function CadastroProjetos({ route }) {
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntregaEsperada: text })} placeholder='Entrega Esperada' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntrega: text })} placeholder='Data de Entrega' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, equipe: text })} keyboardType='number-pad' placeholder='N° de Integrantes' placeholderTextColor='#181818' />
-                </InputArea>
+                    <InserView>
+                        <ProjetoButton>
+                            <ProjetoText>Salvar</ProjetoText>
+                        </ProjetoButton>
+                    </InserView>
+                </ProjetoArea>
             </Container>
         )
     } else {
