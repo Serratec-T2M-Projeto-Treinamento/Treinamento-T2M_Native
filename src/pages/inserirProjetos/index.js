@@ -1,44 +1,42 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, InserView, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 
 export default function CadastroProjetos({ route }) {
     if (route.params) {
+        const { colaborador } = route.params
+
+        // const [projetos, setProjetos] = useState({
+        //     nome: '',
+        //     descricao: '',
+        //     appGerenciamento: '',
+        //     segmento: '',
+        //     dataEntregaEsperada: '',
+        //     dataEntrega: '',
+        //     equipe: 0
+        //     //dataEntradaForm: ''
+        // });
+
+        // async function postProjetos() {
+        //     try {
+
+        //         const responseProjetos = await axios.post('https://api-Projetos-t2m.herokuapp.com/Projetos', Projetos)
+        //         const idProjeto = responseProjetos.data.idProjetos
+        //         //const funcao = responseProjetos.data.funcao
+        //         //const dataInico = responseProjetos.data.dataInicio
 
 
-        const { idColaborador } = route.params
+        //         const response = await axios.put(`https://api-Projetos-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${idProjeto}/funcao/${funcao}/dataInicio/${dataInicioProj}`)
+        //         console.log(response.data);
 
+        //     } catch (error) {
+        //         Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
+        //     }
 
-        const [projetos, setProjetos] = useState({
-            nome: '',
-            descricao: '',
-            appGerenciamento: '',
-            segmento: '',
-            dataEntregaEsperada: '',
-            dataEntrega: '',
-            equipe: 0
-            //dataEntradaForm: ''
-        });
+        // }
 
-        async function postProjetos() {
-            try {
-
-                const responseProjetos = await axios.post('https://api-Projetos-t2m.herokuapp.com/Projetos', Projetos)
-                const idProjeto = responseProjetos.data.idProjetos
-                //const funcao = responseProjetos.data.funcao
-                //const dataInico = responseProjetos.data.dataInicio
-
-
-                const response = await axios.put(`https://api-Projetos-t2m.herokuapp.com/colabsProjs/colaborador/${idColaborador}/projetoAInserir/${idProjeto}/funcao/${funcao}/dataInicio/${dataInicioProj}`)
-                console.log(response.data);
-
-            } catch (error) {
-                Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
-            }
-
-        }
         return (
             <Container>
                 <ProScroll>
@@ -55,11 +53,11 @@ export default function CadastroProjetos({ route }) {
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntregaEsperada: text })} placeholder='Entrega Esperada' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntrega: text })} placeholder='Data de Entrega' placeholderTextColor='#181818' />
                     <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, equipe: text })} keyboardType='number-pad' placeholder='N° de Integrantes' placeholderTextColor='#181818' />
-                    <InserView>
+                    <InserirView>
                         <ProjetoButton>
                             <ProjetoText>Salvar</ProjetoText>
                         </ProjetoButton>
-                    </InserView>
+                    </InserirView>
                 </ProjetoArea>
                 </ProScroll>
             </Container>
