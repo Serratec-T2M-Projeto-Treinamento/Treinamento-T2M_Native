@@ -15,7 +15,8 @@ export default function CadastroTreinamentos({ route }) {
         nome: '',
         descricao: '',
         instituicao: '',
-        cargaHoraria: 0
+        cargaHoraria: 0,
+        // status
     });
 
     async function postTreinamento() {
@@ -23,12 +24,11 @@ export default function CadastroTreinamentos({ route }) {
 
             const responseTreinamento = await axios.post('https://api-treinamento-t2m.herokuapp.com/Treinamentos', treinamento)
             const idTreinamento = responseTreinamento.data.idTreinamentos
-            //const dataObtencaoCert = responseTreinamento.data.dataObtencao
+            //const status = responseTreinamento.data.status
 
 
-            const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts​/colaborador​/${idColaborador}​/certificacaoAInserir​/${idTreinamento}​/status/${status}`)
+            const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsTrns/colaborador/${idColaborador}/treinamentoAInserir/${idTreinamento}/status/${status}`)
             console.log(response.data);
-            Alert.alert('Colaborador cadastrado com sucesso!')
 
         } catch (error) {
             Alert.alert('Envio de dados nao permitido, cheque as informações passadas');

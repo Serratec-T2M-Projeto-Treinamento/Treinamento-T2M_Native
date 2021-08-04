@@ -1,13 +1,18 @@
 
 import React, { useEffect, useState } from 'react';
-import { Container, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProText, ButtonView} from './styles';
+import { Container,ProjetoScroll, Titulo, ProjetoView, ProjetoText, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
+import { TouchableOpacity, View, Text } from 'react-native';
 
-export default function Projetos({ route }) {
+export default function Projetos({ route, navigation }) {
     if (route.params) {
 
         const { colaborador } = route.params
+
+        function handleNavProj(){
+            navigation.navigate('Cadastro de Projetos', { colaborador });
+        }
 
         return (
             <Container>
@@ -58,6 +63,11 @@ export default function Projetos({ route }) {
                             </ProjetoArea>
                         )
                     })}
+                    <View>
+                        <TouchableOpacity onPress={() => handleNavProj()}>
+                            <Text>Inserir Projetos</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ProjetoScroll>
 
             </Container>
@@ -76,28 +86,3 @@ export default function Projetos({ route }) {
         )
     }
 }
-
-// const [projetos, setProjetos] = useState([]);
-
-        // const getProjetos = () => {
-        //     colaborador.setColaboradoresProjetos.map((p, i) => {
-        //         axios.get(`https://api-treinamento-t2m.herokuapp.com/projetos/${colaborador.setColaboradoresProjetos[i].idColaboradoresProjetos.idProjeto}`)
-        //             .then((response) => {
-        //                 setProjetos([response.data]);
-        //             })
-        //             .catch((error) => {
-        //                 console.error(error.message);
-        //             })
-        //         })
-
-        //     }
-
-            // useEffect(() => {
-            //     getProjetos()
-            // }, [colaborador]);
-
-            // const verificaGerenc = () => {
-            //     if (condition) {
-
-            //     }
-            // }
