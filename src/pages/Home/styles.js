@@ -54,6 +54,7 @@ export const LogoView = styled.View`
     justify-content: center;
     margin-bottom: 50px;
     
+    
 `;
 export const HoView= styled.View`
   
@@ -66,3 +67,14 @@ font-weight: bold;
 margin-top: 20px;
 
 `;
+export const HoText = styled.Text`
+text-align: center;
+align-items: center;
+justify-content: center;
+color: black;
+font-size: 18px;
+font-weight: bold;
+margin-top: 20px;
+font-family:Italic;
+margin:30px
+`
