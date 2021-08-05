@@ -11,7 +11,7 @@ export const ProScroll = styled.ScrollView`
 `;
 
 export const ProjetoArea = styled.View`
-width: 100%;
+
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -25,7 +25,7 @@ export const InputCadastro = styled.TextInput`
   color: #181818;
   padding-left: 2px;
   border-width: 2px;
-  margin: 8px;
+  margin: 5%;
 `;
 
 export const EspacoView = styled.View`
@@ -39,7 +39,13 @@ export const MensagemArea = styled.View`
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 800px;
+    height: 700px;
+`;
+export const DateView = styled.View`
+    margin: 3px;
+    background-color: white;
+    border-radius: 8px;
+    width: 80%;
 `;
 
 export const MensagemView = styled.View`
@@ -61,10 +67,9 @@ export const ProjetoButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   border: white;
-  margin: 10%;
+  
 `;
 export const ProjetoText = styled.Text`
   text-align: center;
@@ -73,9 +78,15 @@ export const ProjetoText = styled.Text`
   font-weight: bold;
   `;
   export const InserirView = styled.View`
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  justify-content: center;
+  background-color: black;
+  margin: 40px; 
+  flex-direction: column;
+  border-radius: 20px;
+ 
   `;
   export const InserirText = styled.Text`
   text-align: center;
@@ -87,7 +98,13 @@ export const ProjetoText = styled.Text`
 `;
 export const CardText = styled.Text`
   text-align: center;
+  color: white;
+  font-size: 22px;
+  
 `;
 export const CardView = styled.View`
+
+`;
+export const ProjetoView = styled.View`
 
 `;

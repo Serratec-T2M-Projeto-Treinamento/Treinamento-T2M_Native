@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText, FormacaoText, FormaText, FormaView, FormaButton } from './styles';
+import { Container, EspacoView,DateView, CadastroText, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText, FormacaoText, FormaText, FormaView, FormaButton } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import DateField from 'react-native-datefield';
@@ -46,12 +46,21 @@ export default function CadastroFormacoes({ route }) {
                     <FormacaoText> Inserir Formaçôes </FormacaoText>
                 </FormaView>
                 <InputArea>
-                    <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nome: text })} placeholder='Nome da Formacao' placeholderTextColor='#181818' />
+                    <CadastroText>Formação:</CadastroText>
+                    <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nome: text })} placeholder='Nome da Formação' placeholderTextColor='#181818' />
+                    <CadastroText>Nível de Formação:</CadastroText>
                     <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nivel: text })} placeholder='Nível' placeholderTextColor='#181818' />
+                    <CadastroText>Instituição:</CadastroText>
                     <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, instituicao: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
+                    <CadastroText>Data entrada:</CadastroText>
+                <DateView>
+                    <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setDatas({ ...datas, dataEntrada: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                 </DateView>
+                    <CadastroText>Data conclusão:</CadastroText>
+                <DateView>
+                    <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setDatas({ ...datas, dataConclusao: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                </DateView>
                 </InputArea>
-                <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setDatas({ ...datas, dataEntrada: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
-                <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setDatas({ ...datas, dataConclusao: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
                 <FormaView>
                     <FormaButton onPress={() => postFormacao()}>
                         <FormaText>Salvar</FormaText>

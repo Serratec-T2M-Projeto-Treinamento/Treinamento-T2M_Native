@@ -8,14 +8,15 @@ export const Container = styled.SafeAreaView`
 export const InputArea = styled.View`
   background-color: black;
   width:80%;
-  height: 300px;
+  height: 60%;
   border-radius: 15px;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 40px;
   justify-content: center;
   border-width: 2px;
-  border: white;
+  border:white;
+  
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -49,8 +50,8 @@ export const MensagemView = styled.View`
 export const MensagemText = styled.Text`
     text-align: center;
     color: black;
-    font-size:18px;
-    font-weight: bold;
+    font-size:20px;
+    
 `;
 export const FormaButton = styled.TouchableOpacity`
   height:50px;
@@ -64,6 +65,8 @@ export const FormaButton = styled.TouchableOpacity`
   margin: 10%;
 `;
 export const FormaView = styled.View`
+  justify-content:center;
+  align-items:center;
 
 `;
 export const FormacaoText = styled.Text`
@@ -80,3 +83,19 @@ export const FormaText = styled.Text`
   font-size:18px;
   font-weight: bold;
   `;
+  export const DateView = styled.View`
+  background-color: white;
+  margin: 8px;
+  background-color: white;
+  border-radius: 8px;
+  width: 80%;
+  `;
+export const DataView = styled.View`
+   
+   `;
+export const CadastroText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+   `

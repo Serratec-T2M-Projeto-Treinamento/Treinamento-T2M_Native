@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView } from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -43,9 +43,9 @@ export default function CadastroProjetos({ route, navigation }) {
                 <ProScroll>
                     <MenuIcon />
                     <EspacoView></EspacoView>
-                    <InserirView>
+                    <ProjetoView>
                         <InserirText> Inserir Projeto </InserirText>
-                    </InserirView>
+                    </ProjetoView>
                     <ProjetoArea>
                         {projetos.map((p, i) => {
                             return (
@@ -80,13 +80,13 @@ export default function CadastroProjetos({ route, navigation }) {
                                         </CardView>
                                         <InserirView>
                                             <InputCadastro onChangeText={(text) => setLinkProj({...linkProj, funcao: text})} placeholder='Função' placeholderTextColor='#181818' />
+                                        <DateView>
                                             <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
-                                        </InserirView>
-                                    <InserirView>
+                                        </DateView>
                                         <ProjetoButton onPress={() => LinkarProjeto(p)}>
                                             <ProjetoText>Inserir</ProjetoText>
                                         </ProjetoButton>
-                                    </InserirView>
+                                        </InserirView>
                                 </InserirView>
                             )
                         })}
