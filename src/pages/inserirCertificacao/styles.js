@@ -15,6 +15,7 @@ export const InputArea = styled.View`
     flex-wrap: wrap;
     margin: 40px;
     justify-content: center;
+    border:white;
     
 `;
 
