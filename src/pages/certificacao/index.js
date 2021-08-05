@@ -8,7 +8,7 @@ export default function certificacao({ route, navigation }) {
     const { colaborador } = route.params
 
     function handleCadasCert() {
-      navigation.navigate('Inserir Certificações', { colaborador })
+      navigation.navigate('Inserir Certificações em Colaborador', { colaborador })
     }
 
     return (
@@ -31,11 +31,6 @@ export default function certificacao({ route, navigation }) {
                 <DadosView>
                   <DadosText>{p.certificacao.instituicaoCertificado}</DadosText>
                 </DadosView>
-                <EndView>
-                  <EndButton>
-                    <EndText>Atualizar</EndText>
-                  </EndButton>
-                </EndView>
                 <EndView>
                   <EndButton>
                     <EndText>Deletar</EndText>

@@ -6,14 +6,16 @@ import ListaDeColaboradores from '../pages/listaColaboradores';
 import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
 import CadastroEndereco from '../pages/inserirEndereco';
-import CadastroCertificados from '../pages/inserirCertificacao';
-import CadastroTreinamentos from '../pages/inserirTreinamentos';
-import CadastroFormacoes from '../pages/inserirFormacoes';
-import CadastroProjetos from '../pages/inserirProjetos';
+import InserirCertificados from '../pages/inserirCertificacao';
+import InserirTreinamentos from '../pages/inserirTreinamentos';
+import InserirFormacoes from '../pages/inserirFormacoes';
+import InserirProjetos from '../pages/inserirProjetos';
+import AtualizarEndereco from '../pages/atualizarEndereco';
 import Projetos from '../pages/projetos';
 import Formacoes from '../pages/formacoes';
 import Certificacoes from  '../pages/certificacao';
 import Treinamentos from '../pages/treinamentos';
+import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import HistoricoProfissional from '../pages/historicoProfissional';
 
 const Drawer = createDrawerNavigator();
@@ -25,19 +27,21 @@ export default function DrawerNavigator() {
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
-            <Drawer.Screen name='Cadastro' component={Cadastro} />
-            <Drawer.Screen name='Inserir Endereços' component={CadastroEndereco} />
             <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
-            <Drawer.Screen name='Inserir Certificações' component={CadastroCertificados} />
-            <Drawer.Screen name='Inserir Treinamentos' component={CadastroTreinamentos} />
-            <Drawer.Screen name='Inserir Formações' component={CadastroFormacoes} />
-            <Drawer.Screen name='Inserir Projetos' component={CadastroProjetos} />
-            <Drawer.Screen name='Treinamentos' component={Treinamentos}/>
-            <Drawer.Screen name='Certificações' component={Certificacoes}/>
-            <Drawer.Screen name='Formações' component={Formacoes} />
-            <Drawer.Screen name='Projetos' component={Projetos} />
-            {/* <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/> */}
+            <Drawer.Screen name='Cadastro' component={Cadastro} />
+            <Drawer.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
+            <Drawer.Screen name='Atualizar Endereço' component={AtualizarEndereco} />
+            <Drawer.Screen name='Inserir Endereço em Colaborador' component={CadastroEndereco} />
+            <Drawer.Screen name='Inserir Certificações em Colaborador' component={InserirCertificados} />
+            <Drawer.Screen name='Inserir Treinamentos em Colaborador' component={InserirTreinamentos} />
+            <Drawer.Screen name='Inserir Formações em Colaborador' component={InserirFormacoes} />
+            <Drawer.Screen name='Inserir Projetos em Colaborador' component={InserirProjetos} />
+            <Drawer.Screen name='Treinamentos de um colaborador' component={Treinamentos}/>
+            <Drawer.Screen name='Certificações de um colaborador' component={Certificacoes}/>
+            <Drawer.Screen name='Formações de um colaborador' component={Formacoes} />
+            <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
+            {/* <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/> */}
             {/* options={{drawerLabel: () => null}} />  */}
         </Drawer.Navigator>
     );

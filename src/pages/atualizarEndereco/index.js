@@ -6,10 +6,12 @@ import { Alert, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { AuthContext } from '../../services/auth';
 
-export default function CadastroEndereco({ route }) {
+export default function AtualizarEndereco({ route, navigation }) {
 
     if (route.params) {
+        const { enderecos } = React.useContext(AuthContext);
 
         const { colaborador } = route.params
 
@@ -49,19 +51,19 @@ export default function CadastroEndereco({ route }) {
                 <ProScroll>
                     <MenuIcon />
                     <InserirView>
-                        <InserirText> Cadastro de endereço </InserirText>
+                        <InserirText> Atualização de endereço </InserirText>
                     </InserirView>
                     <EspacoView></EspacoView>
                     <Formik
                         initialValues={{
-                            pais: '',
-                            estado: '',
-                            cidade: '',
-                            bairro: '',
-                            rua: '',
-                            numero: '',
-                            complemento: '',
-                            cep: '',
+                            pais: enderecos.endereco.pais,
+                            estado: enderecos.endereco.estado,
+                            cidade: enderecos.endereco.cidade,
+                            bairro: enderecos.endereco.bairro,
+                            rua: enderecos.endereco.rua,
+                            numero: enderecos.endereco.numero,
+                            complemento: enderecos.endereco.complemento,
+                            cep: enderecos.endereco.cep,
                         }}
                         onSubmit={async (values) => {
                             const endereco = {
@@ -75,16 +77,11 @@ export default function CadastroEndereco({ route }) {
                                 cep: values.cep,
                             }
                             try {
-                                const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco);
-                                const idEndereco = responseEndereco.data.idEnderecos
-                                console.log(idEndereco);
-
-                                const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${colaborador.idColaboradores}/enderecoAInserir/${idEndereco}`);
-                                console.log(response);
-                                Alert.alert('Endereço inserido com sucesso!')
+                                const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/enderecos/${enderecos.endereco.idEnderecos}`, endereco);
                                 navigation.reset({
                                     routes: [{ name: 'Lista de Colaboradores' }]
                                   })
+                                Alert.alert('Endereço atualizado com sucesso!')
                             } catch (error) {
                                 Alert.alert('Ocorreu um erro, por favor cheque os dados enviados')
                                 console.error(error);
@@ -138,7 +135,6 @@ export default function CadastroEndereco({ route }) {
                                                 <Picker.Item color='#181818' value='SE' label='Sergipe' />
                                                 <Picker.Item color='#181818' value='TO' label='Tocantins' />
                                             </Picker>
-
                                         </PickerView>
                                     </InputView>
                                     <InputView>
@@ -197,17 +193,10 @@ export default function CadastroEndereco({ route }) {
                 <MensagemArea>
                     <MensagemView>
                         <MensagemText>Nenhuma informação encontrada,</MensagemText>
-                        <MensagemText>escolha um colaborador para inserir um endereço a ele.</MensagemText>
+                        <MensagemText>escolha um colaborador para atualizar um endereço dele.</MensagemText>
                     </MensagemView>
                 </MensagemArea>
             </Container>
         )
     }
 }
-
-
-
-{/* <InputCadastro onChangeText={handleChange('estado')} onBlur={handleBlur('estado')} value={values.estado} placeholder='Sigla do Estado' placeholderTextColor='#181818' />
-{(errors.estado && touched.estado) &&
-    <Text style={{ fontSize: 15, color: 'red' }}>{errors.estado}</Text>
-} */}

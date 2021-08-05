@@ -9,7 +9,7 @@ export default function Treinamentos({ route, navigation}) {
         const { colaborador } = route.params
 
         function handleNavTrein(){
-        navigation.navigate('Inserir Treinamentos', { colaborador })
+        navigation.navigate('Inserir Treinamentos em Colaborador', { colaborador })
     }
 
         return (
