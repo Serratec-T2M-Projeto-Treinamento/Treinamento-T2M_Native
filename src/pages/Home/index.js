@@ -13,7 +13,6 @@ import {
 } from './styles';
 import { Text, Button, Animated } from'react-native';
 import MenuIcon from '../../components/icon';
-import * as Animatable from 'react-native-animatable';
 
 export default function Home({ navigation }) {
   
