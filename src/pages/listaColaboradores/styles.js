@@ -39,7 +39,7 @@ export const InfoButton = styled.TouchableOpacity`
 `;
 
 export const InfoButtonText = styled.Text`
-    font-size: 18px;
+    font-size: 17px;
     color: black;
     text-align: center;
     
