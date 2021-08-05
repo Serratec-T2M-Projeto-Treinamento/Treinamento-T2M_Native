@@ -1,3 +1,4 @@
+import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 
 export const ContainerHome = styled.SafeAreaView`
@@ -40,4 +41,28 @@ export const IconArea = styled.View`
 
 export const ButtonView = styled.View`
   margin-bottom: 130px;
+`;
+export const Logo = styled.Image`
+    width:300px;
+    height:135px;
+    margin-right: 28px;
+
+`;
+export const LogoView = styled.View`
+    width:100%;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 50px;
+    
+`;
+export const HoView= styled.View`
+  
+`;
+export const HomeText = styled(Animated.Text)`
+text-align: center;
+color: black;
+font-size: 30px;
+font-weight: bold;
+margin-top: 20px;
+
 `;

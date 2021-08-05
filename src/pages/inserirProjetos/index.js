@@ -1,67 +1,98 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView} from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
+import { handleDate } from '../../components/dataFormatada';
+import DateField from 'react-native-datefield';
 
-export default function CadastroProjetos({ route }) {
+export default function CadastroProjetos({ route, navigation }) {
     if (route.params) {
+
         const { colaborador } = route.params
 
-        // const [projetos, setProjetos] = useState({
-        //     nome: '',
-        //     descricao: '',
-        //     appGerenciamento: '',
-        //     segmento: '',
-        //     dataEntregaEsperada: '',
-        //     dataEntrega: '',
-        //     equipe: 0
-        //     //dataEntradaForm: ''
-        // });
+        const [projetos, setProjetos] = useState([]);
+        const [linkProj, setLinkProj] = useState({
+            funcao: '',
+            dataInicio: ''
+        })
 
-        // async function postProjetos() {
-        //     try {
-
-        //         const responseProjetos = await axios.post('https://api-Projetos-t2m.herokuapp.com/Projetos', Projetos)
-        //         const idProjeto = responseProjetos.data.idProjetos
-        //         //const funcao = responseProjetos.data.funcao
-        //         //const dataInico = responseProjetos.data.dataInicio
+        useEffect(() => {
+            axios.get('https://api-treinamento-t2m.herokuapp.com/projetos')
+                .then((response) => setProjetos(response.data))
+                .catch((error) => {
+                    console.error(error);
+                });
+        }, []);
 
 
-        //         const response = await axios.put(`https://api-Projetos-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${idProjeto}/funcao/${funcao}/dataInicio/${dataInicioProj}`)
-        //         console.log(response.data);
-
-        //     } catch (error) {
-        //         Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
-        //     }
-
-        // }
+        const LinkarProjeto = async (p) => {
+            try {
+                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${p.idProjetos}`, linkProj)
+                Alert.alert('Projeto Inserirido com sucesso!')
+                navigation.reset({
+                    routes: [{ name: 'Lista de Colaboradores' }]
+                })
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
         return (
             <Container>
                 <ProScroll>
-                <MenuIcon />
-                <EspacoView></EspacoView>
-                <InserirView>
-                    <InserirText> Cadastro de Projetos </InserirText>
-                </InserirView>
-                <ProjetoArea>
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, nome: text })} placeholder='Nome do Projeto' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, descricao: text })} placeholder='Descrição' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, appGerenciamento: text })} placeholder='App Gerenciador' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, segmento: text })} placeholder='Segmento' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntregaEsperada: text })} placeholder='Entrega Esperada' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, dataEntrega: text })} placeholder='Data de Entrega' placeholderTextColor='#181818' />
-                    <InputCadastro onChangeText={(text) => setProjetos({ ...projetos, equipe: text })} keyboardType='number-pad' placeholder='N° de Integrantes' placeholderTextColor='#181818' />
+                    <MenuIcon />
+                    <EspacoView></EspacoView>
                     <InserirView>
-                        <ProjetoButton>
-                            <ProjetoText>Salvar</ProjetoText>
-                        </ProjetoButton>
+                        <InserirText> Inserir Projeto </InserirText>
                     </InserirView>
-                </ProjetoArea>
+                    <ProjetoArea>
+                        {projetos.map((p, i) => {
+                            return (
+                                <InserirView key={i}>
+                                        <CardView>
+                                            <CardText>Nome:</CardText>
+                                            <CardText>{p.nome}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>Descrção:</CardText>
+                                            <CardText>{p.descricao}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>App Gerenciador:</CardText>
+                                            <CardText>{p.appGerenciamento}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>Segmento:</CardText>
+                                            <CardText>{p.segmento}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>Data de entrega esperada:</CardText>
+                                            <CardText>{handleDate(p.dataEntregaEsperada)}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>Data de entrega:</CardText>
+                                            <CardText>{handleDate(p.dataEntrega)}</CardText>
+                                        </CardView>
+                                        <CardView>
+                                            <CardText>N° de integrantes:</CardText>
+                                            <CardText>{p.equipe}</CardText>
+                                        </CardView>
+                                        <InserirView>
+                                            <InputCadastro onChangeText={(text) => setLinkProj({...linkProj, funcao: text})} placeholder='Função' placeholderTextColor='#181818' />
+                                            <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                                        </InserirView>
+                                    <InserirView>
+                                        <ProjetoButton onPress={() => LinkarProjeto(p)}>
+                                            <ProjetoText>Inserir</ProjetoText>
+                                        </ProjetoButton>
+                                    </InserirView>
+                                </InserirView>
+                            )
+                        })}
+                    </ProjetoArea>
                 </ProScroll>
             </Container>
-            
         )
     } else {
         return (

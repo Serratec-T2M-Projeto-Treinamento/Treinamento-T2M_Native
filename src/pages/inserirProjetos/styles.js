@@ -11,16 +11,7 @@ export const ProScroll = styled.ScrollView`
 `;
 
 export const ProjetoArea = styled.View`
-  background-color: black;
-  width:80%;
-  height: 550px;
-  align-items: center;
-  border-radius: 15px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 40px;
-  justify-content: center;
-  border: white;
+width: 100%;
 `;
 
 export const InputCadastro = styled.TextInput`
@@ -61,9 +52,7 @@ export const MensagemText = styled.Text`
     font-size:18px;
     font-weight: bold;
 `;
-export const InserView = styled.View`
-  align-items: center;
-`;
+
 export const ProjetoButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
@@ -84,7 +73,9 @@ export const ProjetoText = styled.Text`
   font-weight: bold;
   `;
   export const InserirView = styled.View`
-  height:150%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   `;
   export const InserirText = styled.Text`
   text-align: center;
@@ -94,4 +85,9 @@ export const ProjetoText = styled.Text`
   margin-top: 20px;
 
 `;
+export const CardText = styled.Text`
+  text-align: center;
+`;
+export const CardView = styled.View`
 
+`;

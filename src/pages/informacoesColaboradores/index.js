@@ -21,30 +21,42 @@ import {
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
+import { AuthContext } from '../../services/auth';
 
 export default function Informacoes({ route, navigation }) {
 
   if (route.params) {
+    const { setEnderecos } = React.useContext(AuthContext);
+
     const { colaborador } = route.params
 
     const handleClickEndr = () => {
-      navigation.navigate('Inserir Endereços',  { colaborador });
+      navigation.navigate('Inserir Endereço em Colaborador', { colaborador });
     }
 
     const handleClickProj = () => {
-      navigation.navigate('Projetos', { colaborador });
+      navigation.navigate('Projetos de um colaborador', { colaborador });
     }
 
     const handleClickForm = () => {
-      navigation.navigate('Formações', { colaborador });
+      navigation.navigate('Formações de um colaborador', { colaborador });
     }
 
     const handleClickCert = () => {
-      navigation.navigate('Certificações', { colaborador });
+      navigation.navigate('Certificações de um colaborador', { colaborador });
     }
 
     const handleClickTrein = () => {
-      navigation.navigate('Treinamentos', { colaborador });
+      navigation.navigate('Treinamentos de um colaborador', { colaborador });
+    }
+
+    const handleClickColab = () => {
+      navigation.navigate('Atualizar Colaborador', { colaborador });
+    }
+
+    const handleClickEnder = (p) => {
+      setEnderecos(p)
+      navigation.navigate('Atualizar Endereço', { colaborador });
     }
 
     const handlePermissao = () => {
@@ -75,7 +87,7 @@ export default function Informacoes({ route, navigation }) {
     return (
       <Container>
         <InformacoesScroll>
-          <MenuIcon/>
+          <MenuIcon />
           <InformacoesArea>
             <DadosArea>
               <DadosView>
@@ -95,8 +107,8 @@ export default function Informacoes({ route, navigation }) {
                 <DadosText>{colaborador.email}</DadosText>
               </DadosView>
               <DadosView>
-              <InformacoesText>Data de nascimento: </InformacoesText>
-              {handleDate(colaborador.dataNascimento)}
+                <InformacoesText>Data de nascimento: </InformacoesText>
+                {handleDate(colaborador.dataNascimento)}
               </DadosView>
               <DadosView>
                 <InformacoesText>CNH: </InformacoesText>
@@ -107,55 +119,59 @@ export default function Informacoes({ route, navigation }) {
                 <InformacoesText>Posição: </InformacoesText>
                 <DadosText>{colaborador.posicao.nome}</DadosText>
               </DadosView>
-              </DadosArea>
               <EndView>
-              <EndButton>
-              <EndText>Alterar dados</EndText>
-            </EndButton>
-            </EndView>
-            {colaborador.setColabsEndrs.map((p,i) => {
-              return(
-              <DadosArea key={i}>
-              <DadosView>
-                <InformacoesText>País: </InformacoesText>
-                <DadosText>{p.endereco.pais}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Estado: </InformacoesText>
-                <DadosText>{p.endereco.estado}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Cidade: </InformacoesText>
-                <DadosText>{p.endereco.cidade}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Bairro: </InformacoesText>
-                <DadosText>{p.endereco.bairro}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Rua: </InformacoesText>
-                <DadosText>{p.endereco.rua}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Numero: </InformacoesText>
-                <DadosText>{p.endereco.numero}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>Complemento: </InformacoesText>
-                <DadosText>{p.endereco.complemento}</DadosText>
-              </DadosView>
-              <DadosView>
-                <InformacoesText>CEP: </InformacoesText>
-                <DadosText>{p.endereco.cep}</DadosText>
-              </DadosView>
+                <EndButton onPress={() => handleClickColab()}>
+                  <EndText>Alterar dados</EndText>
+                </EndButton>
+              </EndView>
             </DadosArea>
-
+            {colaborador.setColabsEndrs.map((p, i) => {
+              return (
+                <DadosArea key={i}>
+                  <DadosView>
+                    <InformacoesText>País: </InformacoesText>
+                    <DadosText>{p.endereco.pais}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Estado: </InformacoesText>
+                    <DadosText>{p.endereco.estado}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Cidade: </InformacoesText>
+                    <DadosText>{p.endereco.cidade}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Bairro: </InformacoesText>
+                    <DadosText>{p.endereco.bairro}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Rua: </InformacoesText>
+                    <DadosText>{p.endereco.rua}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Numero: </InformacoesText>
+                    <DadosText>{p.endereco.numero}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>Complemento: </InformacoesText>
+                    <DadosText>{p.endereco.complemento}</DadosText>
+                  </DadosView>
+                  <DadosView>
+                    <InformacoesText>CEP: </InformacoesText>
+                    <DadosText>{p.endereco.cep}</DadosText>
+                  </DadosView>
+                  <EndView>
+                    <EndButton onPress={() => handleClickEnder(p)}>
+                      <EndText>Alterar dados</EndText>
+                    </EndButton>
+                  </EndView>
+                </DadosArea>
               )
             })}
             <EndView>
-            <EndButton onPress={() => handleClickEndr()}>
-              <EndText>Inserir endereço</EndText>
-            </EndButton>
+              <EndButton onPress={() => handleClickEndr()}>
+                <EndText>Inserir endereço</EndText>
+              </EndButton>
             </EndView>
           </InformacoesArea>
           <ButtonView>
@@ -170,7 +186,7 @@ export default function Informacoes({ route, navigation }) {
             </TodoButton>
             <TodoButton onPress={() => handleClickProj()}>
               <ButtonText>Projetos atuais</ButtonText>
-              </TodoButton>
+            </TodoButton>
           </ButtonView>
           <EspacoView></EspacoView>
         </InformacoesScroll>
