@@ -58,7 +58,7 @@ export const LogoView = styled.View`
 export const HoView= styled.View`
   
 `;
-export const HomeText = styled(Animated.Text)`
+export const HomeText = styled.Text`
 text-align: center;
 color: black;
 font-size: 30px;
