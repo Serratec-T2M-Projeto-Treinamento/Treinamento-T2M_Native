@@ -5,7 +5,6 @@ import {
   CadastroText,
   CadastroScroll,
   InputArea,
-  InputView,
   Container,
   ButtonView,
   EspacoView,
@@ -91,8 +90,6 @@ export default function Cadastro({ navigation }) {
       console.error(error);
     }
     
-    console.log(colaborador);
-    console.log(endereco);
   }
   return (
     <Container>
