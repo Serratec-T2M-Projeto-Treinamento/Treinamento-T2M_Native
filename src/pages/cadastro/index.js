@@ -22,9 +22,6 @@ import { AuthContext } from '../../services/auth';
 export default function Cadastro({ navigation }) {
   const { isAdmin } = React.useContext(AuthContext);
   const [posicoes, setPosicoes] = useState([]);
-  const [posicaoEscolhida, setPosicaoEscolhida] = useState();
-  const [permissaoEscolhida, setPermissaoEscolhida] = useState();
-  const [chnEscolhido, setCnhEscolhido] = useState();
 
   const handlePermissao = (p) => {
     if (p) {
@@ -68,37 +65,35 @@ export default function Cadastro({ navigation }) {
     rua: '',
     numero: '',
     complemento: '',
-    cep: '',
+    cep: ''
   });
 
   async function postColaborador() {
     try {
+      
       const responseColaborador = await axios.post('https://api-treinamento-t2m.herokuapp.com/colaboradores', colaborador)
       const idColaborador = responseColaborador.data.idColaboradores
-
+      
 
       const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco)
       const idEndereco = responseEndereco.data.idEnderecos
-
-
+      
+      
       const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
-      console.log(response.data);
       Alert.alert('Colaborador cadastrado com sucesso!')
-
+      
       navigation.reset({
         routes: [{ name: 'Lista de Colaboradores' }]
       })
-
+      
     } catch (error) {
       Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
       console.error(error);
     }
-
+    
+    console.log(colaborador);
+    console.log(endereco);
   }
-
-  console.log(colaborador);
-  console.log(endereco);
-
   return (
     <Container>
       <CadastroScroll>
@@ -127,8 +122,8 @@ export default function Cadastro({ navigation }) {
             <Picker
               mode='dropdown'
               itemStyle={{ color: '#181818' }}
-              selectedValue={chnEscolhido}
-              onValueChange={(itemValue, itemIndex) => setCnhEscolhido(itemValue)}>
+              selectedValue={colaborador.cnh}
+              onValueChange={(itemValue) => setColaborador({...colaborador, cnh: itemValue})}>
               <Picker.Item color='#181818' label='Escolha uma categoria' value='' />
               <Picker.Item color='#181818' label='A' value='A' />
               <Picker.Item color='#181818' label='B' value='B' />
@@ -143,8 +138,8 @@ export default function Cadastro({ navigation }) {
             <Picker
               mode='dropdown'
               itemStyle={{ color: '#181818' }}
-              selectedValue={posicaoEscolhida}
-              onValueChange={(itemValue, itemIndex) => setPosicaoEscolhida(itemValue)}>
+              selectedValue={colaborador.posicao.idPosicoes}
+              onValueChange={(itemValue) => setColaborador({...colaborador, posicao:{...colaborador.posicao, idPosicoes: itemValue}})}>
               {posicoes.map((p, i) => (
                 <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
               )
@@ -156,8 +151,8 @@ export default function Cadastro({ navigation }) {
             <Picker
               mode='dropdown'
               itemStyle={{ color: '#181818' }}
-              selectedValue={permissaoEscolhida}
-              onValueChange={(itemValue, itemIndex) => setPermissaoEscolhida(itemValue)}>
+              selectedValue={colaborador.permissao}
+              onValueChange={(itemValue) => setColaborador({...colaborador, permissao: itemValue})}>
               {handlePermissao(isAdmin)}
               <Picker.Item color='#181818' label='Líder' value={1} />
               <Picker.Item color='#181818' label='Colaborador' value={0} />
