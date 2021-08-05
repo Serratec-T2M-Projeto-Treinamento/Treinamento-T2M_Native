@@ -117,7 +117,7 @@ export const EndButton = styled.TouchableOpacity`
   border: white;
   `;
 export const EndView = styled.View`
-  margin-top: 15px;
+  margin-top: 5px;
   align-items: flex-end;
   height: 35px;
   width: 90%;

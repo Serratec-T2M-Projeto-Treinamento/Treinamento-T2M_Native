@@ -84,7 +84,7 @@ export const ProjetoText = styled.Text`
   font-weight: bold;
   `;
   export const InserirView = styled.View`
-
+  height:150%;
   `;
   export const InserirText = styled.Text`
   text-align: center;

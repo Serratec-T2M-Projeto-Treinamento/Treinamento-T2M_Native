@@ -6,11 +6,16 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const InputArea = styled.View`
-  border-color: black;
+  background-color: black;
+  width:80%;
+  height: 600px;
   align-items: center;
+  border-radius: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 40px;
   justify-content: center;
-  width: 100%;
-  display: flex;
+  border: white;
   
 `;
 
@@ -21,32 +26,34 @@ export const InputView = styled.View`
 
 export const InputCadastro = styled.TextInput`
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 3%;
   border: black;
   width: 70%;
   background-color: white;
-  height: 50px;
+  height: 8%;
   border-radius: 10px;
   color: #181818;
+  flex-direction:column;
   
 `;
 
 export const ButtonView = styled.View`
-  margin-top: 50px;
+  margin-top: 5%;
   align-items: center;
 `;
 
 export const CadastroButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
-  width: 80%;
+  width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 30px;
   margin-bottom: 20px;
-  margin-top: 5px;
+  margin-top: 10px;
   border: white;
+  margin: 4%;
 `;
 
 export const CadastroText = styled.Text`
@@ -84,3 +91,21 @@ export const MensagemText = styled.Text`
   font-size: 18px;
   font-weight: bold;
   `;
+   export const InserirView = styled.View`
+  
+   `;
+   export const InserirText = styled.Text`
+   text-align: center;
+   color: black;
+   font-size: 30px;
+   font-weight: bold;
+   margin-top: 20px;
+ 
+ `;
+ export const EspacoView = styled.View`
+
+`;
+
+export const ProScroll = styled.ScrollView`
+
+`;
