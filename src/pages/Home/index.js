@@ -9,7 +9,8 @@ import {
   LogoView,
   Logo,
   HoView,
-  HomeText
+  HomeText,
+  HoText
 } from './styles';
 import { Text, Button} from'react-native';
 import MenuIcon from '../../components/icon';
@@ -26,6 +27,7 @@ export default function Home({ navigation }) {
       <HomeView>
       <LogoView>
           <Logo source={require('../../../assets/logo.png')} />
+          <HoText>Provendo competência em qualidade de software</HoText>
       </LogoView>
       <HoView>
               <HomeText>Bem Vindo!</HomeText>
