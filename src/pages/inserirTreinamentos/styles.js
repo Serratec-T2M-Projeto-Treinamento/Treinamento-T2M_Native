@@ -1,63 +1,25 @@
 import styled from "styled-components/native";
 
-export const Container = styled.SafeAreaView `
+export const Container = styled.SafeAreaView`
   height: 100%;
   background-color: #A0C8C3;
 `;
 
-export const InputArea = styled.View `
-  background-color: black;
-  width:80%;
-  height: 400px;
-  align-items: center;
-  border-radius: 15px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 40px;
-  justify-content: center;
- 
+export const ProScroll = styled.ScrollView`
+
+`;
+
+export const TreinamentoArea = styled.View`
+  width:100%;
+
   
 `;
 
-export const InputCadastro = styled.TextInput `
-  font-size: 18px;
-  margin-top: 10px;
-  border: white;
-  width: 70%;
-  background-color: white;
-  height: 50px;
-  border-radius: 10px;
-  color: #181818;
-  margin-bottom: 3%;
-  margin:4%
-  
-`;
-
-export const EspacoView = styled.View `
+export const EspacoView = styled.View`
 
 `;
 
-export const MensagemArea = styled.View `
-  border-color: black;
-  align-items:center;
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 800px;
-`;
-
-export const MensagemView = styled.View `
-  margin-bottom: 200px;
-`;
-
-export const MensagemText = styled.Text `
-  text-align: center;
-  color: black;
-  font-size:18px;
-  font-weight: bold;
-`;
-export const TreinamentoButton = styled.TouchableOpacity `
+export const TreinamentoButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
   width: 200px;
@@ -70,7 +32,52 @@ export const TreinamentoButton = styled.TouchableOpacity `
   border: white;
   margin: 10%;
 `;
-export const TreinaText = styled.Text `
+
+export const MensagemArea = styled.View`
+  border-color: black;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+`;
+
+export const MensagemView = styled.View`
+  margin-bottom: 200px;
+`;
+
+export const MensagemText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size:18px;
+  font-weight: bold;
+`;
+
+export const TreinamentoText = styled.Text`
+  text-align: center;
+  color:white;
+  font-size:18px;
+  font-weight: bold;
+  
+`;
+export const TreinamentoView = styled.View`
+  margin-bottom: 50px;
+`;
+export const CardText = styled.Text`
+  text-align: center;
+`;
+export const CardView = styled.View`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`;
+export const InserirView = styled.View`
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  `;
+export const InserirText = styled.Text`
   text-align: center;
   color: black;
   font-size: 30px;
@@ -78,13 +85,10 @@ export const TreinaText = styled.Text `
   margin-top: 20px;
 
 `;
-export const TreinamentoText = styled.Text `
-  text-align: center;
-  color:white;
-  font-size:18px;
-  font-weight: bold;
-  
-`;
-export const TreinamentoView = styled.View `
-  margin-bottom: 50px;
+export const PickerView = styled.View`
+  background-color: white;
+  width: 70%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: black;
 `;
