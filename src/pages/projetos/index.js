@@ -1,11 +1,7 @@
-
-import React, { useEffect, useState } from 'react';
-
-import { Container,ProjetoScroll, Titulo, ProjetoView, ButtonText, ProjetoText, ProjeText, ProjetoButton, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
-
+import React from 'react';
+import { Container,ProjetoScroll, Titulo, ProjetoView, ProjetoText, ProjeText, ProjetoButton, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
-import { TouchableOpacity, View, Text } from 'react-native';
 
 export default function Projetos({ route, navigation }) {
     if (route.params) {
@@ -65,17 +61,12 @@ export default function Projetos({ route, navigation }) {
                             </ProjetoArea>
                         )
                     })}
-
-                    
-
                     <ProjetoView>
                         <ProjetoButton onPress={() => handleNavProj()}>
                             <ProjeText>Inserir Projetos</ProjeText>
                         </ProjetoButton>
                     </ProjetoView>
-
                 </ProjetoScroll>
-
             </Container>
         )
     } else {

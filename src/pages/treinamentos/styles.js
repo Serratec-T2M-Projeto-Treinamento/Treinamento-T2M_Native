@@ -88,17 +88,18 @@ export const ButtonView = styled.View`
   flex-direction: column;
 `;
 export const TreinamentosButton= styled.TouchableOpacity`
-  height: 35px;
+  height:50px;
   background-color: #01a999;
   width: 50%;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  margin:10%;
-  border:white;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
 `;
 export const TreinamentosText= styled.Text`
-  margin-top: 3px;
   color: white;
   font-size: 18px;
   justify-content: center;

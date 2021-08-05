@@ -46,6 +46,15 @@ export const InputArea = styled.View`
   margin-top: -55px;
 `;
 
+export const InputView = styled.View`
+  border-color: black;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  display: flex;
+  
+`;
+
 export const CadastroScroll = styled.ScrollView`
   background-color: #A0C8C3;
 `;
@@ -66,10 +75,6 @@ export const PickerView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
   border: black;
-`;
-
-export const SelectView = styled.View`
-  background-color: white;
 `;
 
 export const DataView = styled.View`

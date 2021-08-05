@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Container, InputArea, InputView, InputCadastro, ButtonView, CadastroButton, CadastroText, PickerView, MensagemArea, MensagemView, MensagemText } from './styles';
+import { Container, InputArea,EspacoView, ProScroll, InserirText,InserirView, InputView, InputCadastro, ButtonView, CadastroButton, CadastroText, PickerView, MensagemArea, MensagemView, MensagemText } from './styles';
 import MenuIcon from '../../components/icon';
 import { Alert, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -46,7 +46,12 @@ export default function CadastroEndereco({ route }) {
     
         return (
             <Container>
+                 <ProScroll>
                 <MenuIcon />
+                <InserirView>
+                    <InserirText> Cadastro de endereço </InserirText>
+                 </InserirView>
+                 <EspacoView></EspacoView>
                 <Formik
                     initialValues={{
                         pais: '',
@@ -86,6 +91,7 @@ export default function CadastroEndereco({ route }) {
                 >
                     {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched, isValid }) => (
                         <>
+                        
                             <InputArea>
                                 <InputView>
                                     <InputCadastro name='pais' onChangeText={handleChange('pais')} onBlur={handleBlur('pais')} value={values.pais} placeholder='País' placeholderTextColor='#181818' />
@@ -167,16 +173,17 @@ export default function CadastroEndereco({ route }) {
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.cep}</Text>
                                     }
                                 </InputView>
-                            </InputArea>
                             <ButtonView>
                                 <CadastroButton onPress={() => handleSubmit()}
                                     disabled={!isValid}>
                                     <CadastroText>SALVAR</CadastroText>
                                 </CadastroButton>
                             </ButtonView>
+                            </InputArea>
                         </>
                     )}
                 </Formik>
+                </ProScroll>
             </Container>
         )
     }else{
