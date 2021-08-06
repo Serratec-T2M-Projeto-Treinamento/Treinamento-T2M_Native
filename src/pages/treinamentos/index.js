@@ -1,16 +1,26 @@
 import React from 'react';
-import { Container,TreinArea, TreinamentosText, ButtonView, TreinView, TreinText, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, TreinScroll, TreinamentosButton } from './styles';
+import { Container, TreinArea, TreinamentosText, ButtonView, TreinView, TreinText, DadosView, DadosText, MensagemArea, MensagemView, MensagemText, Titulo, TreinScroll, TreinamentosButton, EndView, EndButton, EndText } from './styles';
 import MenuIcon from '../../components/icon';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { Alert } from 'react-native';
+import axios from 'axios';
 
-export default function Treinamentos({ route, navigation}) {
+export default function Treinamentos({ route, navigation }) {
     if (route.params) {
 
         const { colaborador } = route.params
 
-        function handleNavTrein(){
-        navigation.navigate('Inserir Treinamentos em Colaborador', { colaborador })
-    }
+        function handleNavTrein() {
+            navigation.navigate('Inserir Treinamentos em Colaborador', { colaborador })
+        }
+
+        async function handleRemoveTrein(p) {
+            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsTrns/colaborador/${colaborador.idColaboradores}/treinamentoARemover/${p.treinamento.idTreinamentos}`);
+            Alert.alert("Treinamento removido com sucesso!");
+            navigation.reset({
+                routes: [{ name: 'Lista de Colaboradores' }]
+            })
+            // setRefresh(!refresh);
+        };
 
         return (
             <Container>
@@ -44,16 +54,21 @@ export default function Treinamentos({ route, navigation}) {
                                 <DadosView>
                                     <DadosText>{p.treinamento.instituicao}</DadosText>
                                 </DadosView>
+                                <EndView>
+                                    <EndButton onPress={() => handleRemoveTrein(p)}>
+                                        <EndText>Deletar</EndText>
+                                    </EndButton>
+                                </EndView>
                             </TreinArea>
                         )
                     })}
-                    
-                        <ButtonView>
+
+                    <ButtonView>
                         <TreinamentosButton onPress={() => handleNavTrein()}>
                             <TreinamentosText>Inserir Treinamento</TreinamentosText>
                         </TreinamentosButton>
-                        </ButtonView>
-                   
+                    </ButtonView>
+
                 </TreinScroll>
             </Container>
         )

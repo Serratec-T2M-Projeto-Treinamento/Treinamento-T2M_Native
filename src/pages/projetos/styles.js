@@ -120,3 +120,32 @@ export const ProjeText = styled.Text`
   justify-content: center;
   background-color: #01a999;
   `;
+
+export const EndButton = styled.TouchableOpacity`
+height: 35px;
+background-color: #01a999;
+width: 50%;
+display: flex;
+align-items: center;
+border-radius: 30px;
+margin-bottom: 20px;
+margin-top: 10px;
+border: white;
+
+`;
+
+export const EndText = styled.Text`
+text-align: center;
+color: white;
+font-size: 15px;
+margin-top: 5px;
+`;
+
+export const EndView = styled.View`
+align-items: center;
+justify-content: center;
+margin-left: 20px;
+height: 35px;
+width: 90%;
+margin-top:15px
+`;

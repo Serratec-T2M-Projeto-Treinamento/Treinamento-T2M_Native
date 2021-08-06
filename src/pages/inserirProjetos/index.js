@@ -29,15 +29,16 @@ export default function CadastroProjetos({ route, navigation }) {
         const LinkarProjeto = async (p) => {
             try {
                 await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${p.idProjetos}`, linkProj)
-                Alert.alert('Projeto Inserirido com sucesso!')
+                Alert.alert('Projeto Inserido com sucesso!')
                 navigation.reset({
                     routes: [{ name: 'Lista de Colaboradores' }]
                 })
             } catch (error) {
+                Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
                 console.error(error);
             }
         }
-
+        console.log(linkProj);
         return (
             <Container>
                 <ProScroll>

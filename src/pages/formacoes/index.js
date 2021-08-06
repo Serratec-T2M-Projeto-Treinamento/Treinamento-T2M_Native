@@ -12,19 +12,31 @@ import {
   MensagemView,
   MensagemText,
   FormacoesButton,
-  FormaText
+  FormaText,
+  EndView,
+  EndText,
+  EndButton
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { Titulo } from '../certificacao/styles';
-import { View, Text, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
 export default function Formacoes({ route, navigation }) {
   if (route.params) {
     const { colaborador } = route.params
 
-    function handleNavForm(){
+    function handleNavForm() {
       navigation.navigate('Inserir Formações em Colaborador', { colaborador })
     }
+
+    async function handleRemoveForm(p){
+      await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsForms/${colaborador.idColaboradores}/formacaoARemover/${p.formacao.idFormacoes}`);
+      alert("Formação removida com sucesso!");
+      navigation.reset({
+        routes: [{ name: 'Lista de Colaboradores' }]
+    })
+      // setRefresh(!refresh);
+    };
 
     return (
       <Container>
@@ -52,14 +64,19 @@ export default function Formacoes({ route, navigation }) {
                 <DadosView>
                   <DadosText>{p.formacao.instituicao}</DadosText>
                 </DadosView>
+                <EndView>
+                  <EndButton onPress={() => handleRemoveForm(p)}>
+                    <EndText>Deletar</EndText>
+                  </EndButton>
+                </EndView>
               </FormacoesArea>
             )
           })}
-            <FormacoesView>
-              <FormacoesButton onPress={() => handleNavForm()}>
-                <FormaText>Inserir Formações</FormaText>
-              </FormacoesButton>
-            </FormacoesView>
+          <FormacoesView>
+            <FormacoesButton onPress={() => handleNavForm()}>
+              <FormaText>Inserir Formações</FormaText>
+            </FormacoesButton>
+          </FormacoesView>
           <EspacoView></EspacoView>
         </ListScroll>
       </Container>

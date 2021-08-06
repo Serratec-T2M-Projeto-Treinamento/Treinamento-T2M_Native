@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import DateField from 'react-native-datefield';
 
-export default function CadastroFormacoes({ route }) {
+export default function CadastroFormacoes({ route, navigation }) {
     if (route.params) {
 
 
@@ -28,9 +28,13 @@ export default function CadastroFormacoes({ route }) {
                 
                 const responseFormacao = await axios.post('https://api-treinamento-t2m.herokuapp.com/formacoes', formacao)
                 const idFormacao = responseFormacao.data.idFormacoes
+                console.log(idFormacao);
 
-                const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsForms/colaborador/${colaborador.idColaboradores}/formacaoAInserir/${idFormacao}`, datas)
+                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsForms/colaborador/${colaborador.idColaboradores}/formacaoAInserir/${idFormacao}`, datas)
                 Alert.alert('Formação inserida com sucesso!');
+                navigation.reset({
+                    routes: [{ name: 'Lista de Colaboradores' }]
+                })
 
             } catch (error) {
                 Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
@@ -38,7 +42,10 @@ export default function CadastroFormacoes({ route }) {
             }
 
         }
-       
+
+        console.log(formacao);
+        console.log(datas);
+
         return (
             <Container>
                 <MenuIcon />

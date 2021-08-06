@@ -1,6 +1,8 @@
 import React from 'react';
 import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertiButton, CertiButtonText } from './styles';
 import MenuIcon from '../../components/icon';
+import axios from 'axios';
+import { Alert } from 'react-native';
 
 export default function certificacao({ route, navigation }) {
   if (route.params) {
@@ -10,6 +12,15 @@ export default function certificacao({ route, navigation }) {
     function handleCadasCert() {
       navigation.navigate('Inserir Certificações em Colaborador', { colaborador })
     }
+
+    async function handleRemoveCert(p){
+      await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts/colaborador/${colaborador.idColaboradores}/certificacaoARemover/${p.certificacao.idCertificacoes}`);
+      Alert.alert("Certificação removida com sucesso!");
+      navigation.reset({
+        routes: [{ name: 'Lista de Colaboradores' }]
+      })
+      // setRefresh(!refresh);
+    };
 
     return (
       <Container>
@@ -32,7 +43,7 @@ export default function certificacao({ route, navigation }) {
                   <DadosText>{p.certificacao.instituicaoCertificado}</DadosText>
                 </DadosView>
                 <EndView>
-                  <EndButton>
+                  <EndButton onPress={() => handleRemoveCert(p)}>
                     <EndText>Deletar</EndText>
                   </EndButton>
                 </EndView>

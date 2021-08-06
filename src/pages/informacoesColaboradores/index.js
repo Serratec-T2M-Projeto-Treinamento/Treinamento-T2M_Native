@@ -22,13 +22,26 @@ import {
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import { AuthContext } from '../../services/auth';
+import axios from 'axios';
+import { Alert } from 'react-native';
 
 export default function Informacoes({ route, navigation }) {
 
   if (route.params) {
-    const { setEnderecos } = React.useContext(AuthContext);
+    const { setEnderecos, setColaboradores, colaboradores } = React.useContext(AuthContext);
 
     const { colaborador } = route.params
+
+    const [refresh, setRefresh] = useState(false);
+
+    useEffect(async () => {
+      try {
+        const responseColab = await axios.get(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${colaboradores.idColaboradores}`);
+        setColaboradores(responseColab.data);
+      } catch (error) {
+        Alert.alert('Ocorreu um erro... ' + error);
+      }
+    }, [refresh]);
 
     const handleClickEndr = () => {
       navigation.navigate('Inserir Endereço em Colaborador', { colaborador });
@@ -58,6 +71,28 @@ export default function Informacoes({ route, navigation }) {
       setEnderecos(p)
       navigation.navigate('Atualizar Endereço', { colaborador });
     }
+
+    const handleDeleteColab = async () => {
+      console.log(colaboradores.idColaboradores);
+      try {
+        await axios.delete(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${colaboradores.idColaboradores}`);
+        Alert.alert('Colaborador deletado com sucesso!');
+        navigation.reset({
+          routes: [{ name: 'Lista de Colaboradores' }]
+        })
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
+    const handleRemoveEndr = async (p) => {
+      console.log(p.endereco.idEnderecos);
+      console.log(colaboradores.idColaboradores);
+      await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${colaboradores.idColaboradores}/enderecoARemover/${p.endereco.idEnderecos}`)
+      Alert.alert('Endereço removido com sucesso!');
+      setRefresh(!refresh);
+    } 
 
     const handlePermissao = () => {
       if (colaborador.permissao === 2) {
@@ -124,6 +159,11 @@ export default function Informacoes({ route, navigation }) {
                   <EndText>Alterar dados</EndText>
                 </EndButton>
               </EndView>
+              <EndView>
+                <EndButton onPress={() => handleDeleteColab()}>
+                  <EndText>Deletar Colaborador</EndText>
+                </EndButton>
+              </EndView>
             </DadosArea>
             {colaborador.setColabsEndrs.map((p, i) => {
               return (
@@ -165,6 +205,11 @@ export default function Informacoes({ route, navigation }) {
                       <EndText>Alterar dados</EndText>
                     </EndButton>
                   </EndView>
+                  <EndView>
+                <EndButton onPress={() => handleRemoveEndr(p)}>
+                  <EndText>Remover Endereço</EndText>
+                </EndButton>
+              </EndView>
                 </DadosArea>
               )
             })}

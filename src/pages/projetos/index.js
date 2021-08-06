@@ -1,16 +1,41 @@
 import React from 'react';
-import { Container,ProjetoScroll, Titulo, ProjetoView, ProjetoText, ProjeText, ProjetoButton, ProjetoArea, DadosView, DadosText, MensagemArea, MensagemView, MensagemText} from './styles';
+import {
+    Container,
+    ProjetoScroll,
+    Titulo,
+    ProjetoView,
+    ProjetoText,
+    ProjeText,
+    ProjetoButton,
+    ProjetoArea,
+    DadosView,
+    DadosText,
+    MensagemArea,
+    MensagemView,
+    MensagemText,
+    EndView,
+    EndButton,
+    EndText
+} from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
+import { Alert } from 'react-native';
+import axios from 'axios';
 
 export default function Projetos({ route, navigation }) {
     if (route.params) {
 
         const { colaborador } = route.params
 
-        function handleNavProj(){
+        function handleNavProj() {
             navigation.navigate('Inserir Projetos em Colaborador', { colaborador });
         }
+
+        async function handleRemoveProj(p) {
+            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoARemover/${p.projeto.idProjetos}`);
+            Alert.alert("Projeto removido com sucesso!");
+            // setRefresh(!refresh);
+        };
 
         return (
             <Container>
@@ -58,6 +83,11 @@ export default function Projetos({ route, navigation }) {
                                 <DadosView>
                                     <DadosText>{p.projeto.equipe}</DadosText>
                                 </DadosView>
+                                <EndView>
+                                    <EndButton onPress={() => handleRemoveProj(p)}>
+                                        <EndText>Deletar</EndText>
+                                    </EndButton>
+                                </EndView>
                             </ProjetoArea>
                         )
                     })}
