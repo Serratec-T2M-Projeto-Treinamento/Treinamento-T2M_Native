@@ -31,7 +31,7 @@ const Drawer = createDrawerNavigator();
 export default function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName='Login'
+            initialRouteName='Home'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Home' component={Home} />

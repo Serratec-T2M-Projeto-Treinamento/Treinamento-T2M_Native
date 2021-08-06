@@ -8,8 +8,7 @@ export default function Competencia({ navigation }) {
 
     const handleClick = (p) => {
         setCompetencia(p);
-        console.log(p);
-        navigate.navigate('Conhecimentos por posição');
+        navigation.navigate('Conhecimentos por posição');
     }
 
     const posicaoMap = posicao.setPosComps.map((p, i) => {

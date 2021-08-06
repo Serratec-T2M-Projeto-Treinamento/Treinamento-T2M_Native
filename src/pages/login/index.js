@@ -49,12 +49,13 @@ export default function Login({ navigation }) {
 
                                 await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)
                                     .then((response) => {
-                                        navigation.navigate('Drawer');
+                                        navigation.navigate('Home');
                                         setLoading(false);
                                         setIsAdmin(response.data.isAdmin)
                                         
                                     }).catch(() => {
                                         Alert.alert('Dados inválidos, tente novamente!')
+                                        setLoading(false);
                                     })
                             }}>
                             {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (

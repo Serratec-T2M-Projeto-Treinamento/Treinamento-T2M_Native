@@ -8,7 +8,6 @@ import DateField from 'react-native-datefield';
 
 export default function InserirConhecimento() {
     
-        console.log(linkProj);
         return (
             <Container>
                 <ProScroll>
@@ -30,7 +29,7 @@ export default function InserirConhecimento() {
                                             <CardText>{p.descricao}</CardText>
                                         </CardView>
                                         <InserirView>
-                                        <ProjetoButton onPress={() => LinkarProjeto(p)}>
+                                        <ProjetoButton>
                                             <ProjetoText>Inserir</ProjetoText>
                                         </ProjetoButton>
                                         </InserirView>
