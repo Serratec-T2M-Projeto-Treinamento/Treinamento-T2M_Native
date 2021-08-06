@@ -38,7 +38,7 @@ export default function CadastroProjetos({ route, navigation }) {
                 console.error(error);
             }
         }
-        console.log(linkProj);
+        
         return (
             <Container>
                 <ProScroll>

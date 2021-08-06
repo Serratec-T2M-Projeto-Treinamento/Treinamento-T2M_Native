@@ -77,10 +77,8 @@ export default function CadastroEndereco({ route }) {
                             try {
                                 const responseEndereco = await axios.post('https://api-treinamento-t2m.herokuapp.com/enderecos', endereco);
                                 const idEndereco = responseEndereco.data.idEnderecos
-                                console.log(idEndereco);
 
                                 const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${colaborador.idColaboradores}/enderecoAInserir/${idEndereco}`);
-                                console.log(response);
                                 Alert.alert('Endereço inserido com sucesso!')
                                 navigation.reset({
                                     routes: [{ name: 'Lista de Colaboradores' }]

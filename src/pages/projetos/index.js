@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Container,
     ProjetoScroll,
@@ -21,20 +21,39 @@ import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import { Alert } from 'react-native';
 import axios from 'axios';
+import { AuthContext } from '../../services/auth';
 
 export default function Projetos({ route, navigation }) {
     if (route.params) {
 
         const { colaborador } = route.params
 
+        const { colaboradores, setColaboradores } = React.useContext(AuthContext);
+
+
+        const [refresh, setRefresh] = useState(false);
+
+        const getColab = async () => {
+            try {
+                const responseColab = await axios.get(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${colaboradores.idColaboradores}`);
+                setColaboradores(responseColab.data);
+            } catch (error) {
+                Alert.alert('Ocorreu um erro... ' + error);
+            }
+        }
+
+        useEffect(() => {
+            getColab()
+        }, [refresh]);
+
         function handleNavProj() {
             navigation.navigate('Inserir Projetos em Colaborador', { colaborador });
         }
 
         async function handleRemoveProj(p) {
-            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoARemover/${p.projeto.idProjetos}`);
+            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaboradores.idColaboradores}/projetoARemover/${p.projeto.idProjetos}`);
             Alert.alert("Projeto removido com sucesso!");
-            // setRefresh(!refresh);
+            setRefresh(!refresh);
         };
 
         return (
@@ -42,7 +61,7 @@ export default function Projetos({ route, navigation }) {
                 <ProjetoScroll>
                     <MenuIcon />
                     <Titulo>Projetos:</Titulo>
-                    {colaborador.setColabsProjs.map((p, i) => {
+                    {colaboradores.setColabsProjs.map((p, i) => {
                         return (
                             <ProjetoArea key={i}>
                                 <ProjetoView>

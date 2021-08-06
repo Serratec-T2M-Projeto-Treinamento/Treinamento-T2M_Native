@@ -28,7 +28,7 @@ export default function CadastroFormacoes({ route, navigation }) {
                 
                 const responseFormacao = await axios.post('https://api-treinamento-t2m.herokuapp.com/formacoes', formacao)
                 const idFormacao = responseFormacao.data.idFormacoes
-                console.log(idFormacao);
+                
 
                 await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsForms/colaborador/${colaborador.idColaboradores}/formacaoAInserir/${idFormacao}`, datas)
                 Alert.alert('Formação inserida com sucesso!');
@@ -43,8 +43,6 @@ export default function CadastroFormacoes({ route, navigation }) {
 
         }
 
-        console.log(formacao);
-        console.log(datas);
 
         return (
             <Container>
