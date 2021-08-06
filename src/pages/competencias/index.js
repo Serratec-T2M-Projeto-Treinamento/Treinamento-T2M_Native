@@ -11,17 +11,17 @@ export default function Competencia({navigation}){
                 <Titulo>Compentências</Titulo>
             <TreinamentoColaArea>
                 <TreinamentoColaView>
-                <TreinamentoButton >
+                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }}>
                             <TreinamenText>Posição: </TreinamenText>
                 </TreinamentoButton>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                <TreinamentoButton >
+                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }} >
                             <TreinamenText>Posição: </TreinamenText>
                 </TreinamentoButton>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                <TreinamentoButton>
+                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }}>
                             <TreinamenText>Posição: </TreinamenText>
                 </TreinamentoButton>
                 </TreinamentoColaView>

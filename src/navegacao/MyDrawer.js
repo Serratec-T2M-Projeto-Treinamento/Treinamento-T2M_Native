@@ -19,6 +19,8 @@ import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import ListaPosicao from '../pages/listaPosicao';
 import HistoricoProfissional from '../pages/historicoProfissional';
 import Competencia from '../pages/competencias';
+import Conhecimento from '../pages/conhecimento'
+import InserirConhecimento from '../pages/inserirConhecimento';
 
 const Drawer = createDrawerNavigator();
 
@@ -44,6 +46,8 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Formações de um colaborador' component={Formacoes} />
             <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
             <Drawer.Screen name='Competencias' component={Competencia} />
+            <Drawer.Screen name='Conhecimento' component={Conhecimento} />
+            <Drawer.Screen name='InserirConhecimento' component={InserirConhecimento} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
             {/* <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/> */}
             {/* options={{drawerLabel: () => null}} />  */}
