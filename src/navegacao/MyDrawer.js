@@ -16,8 +16,7 @@ import Formacoes from '../pages/formacoes';
 import Certificacoes from  '../pages/certificacao';
 import Treinamentos from '../pages/treinamentos';
 import AtualizarColaboradores from '../pages/atualizarColaboradores';
-import HistoricoProfissional from '../pages/historicoProfissional';
-import TreinamentoCola from '../pages/treinamentoCola';
+import ListaPosicao from '../pages/ListaPosicao';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,8 +27,9 @@ export default function DrawerNavigator() {
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
-            <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
+            <Drawer.Screen name='Lista de Posições' component={ListaPosicao} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
+            <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
             <Drawer.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
             <Drawer.Screen name='Atualizar Endereço' component={AtualizarEndereco} />
             <Drawer.Screen name='Inserir Endereço em Colaborador' component={CadastroEndereco} />
@@ -41,7 +41,6 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Certificações de um colaborador' component={Certificacoes}/>
             <Drawer.Screen name='Formações de um colaborador' component={Formacoes} />
             <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
-            <Drawer.Screen name='TreinamentoCola' component={TreinamentoCola} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
             {/* <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/> */}
             {/* options={{drawerLabel: () => null}} />  */}
