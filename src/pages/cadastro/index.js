@@ -72,9 +72,6 @@ export default function Cadastro({ navigation }) {
     cep: ''
   });
 
-  console.log(colaborador);
-  console.log(endereco);
-
   async function postColaborador() {
     try {
       

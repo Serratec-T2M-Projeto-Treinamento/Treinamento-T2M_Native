@@ -25,8 +25,6 @@ export default function InserirCertificados({ route, navigation }) {
 
 
         const putCertificacoes = async (p) => {
-            console.log(p);
-            console.log(data);
             try {
                 await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts/colaborador/${colaborador.idColaboradores}/certificacaoAInserir/${p.idCertificacoes}​`, data);
                 Alert.alert('Certificação inserida com sucesso!')
