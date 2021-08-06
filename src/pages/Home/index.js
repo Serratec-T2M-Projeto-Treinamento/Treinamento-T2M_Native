@@ -36,6 +36,9 @@ export default function Home({ navigation }) {
           <HomeButton onPress={() => { navigation.navigate('Lista de Colaboradores') }}>
             <ButtonText>Colaboradores</ButtonText>
           </HomeButton>
+          <HomeButton onPress={() => { navigation.navigate('TreinamentosCola') }}>
+            <ButtonText>Treinamentos</ButtonText>
+          </HomeButton>
           {/* <HomeButton>
           <ButtonText>Treinamentos</ButtonText>
         </HomeButton> */}

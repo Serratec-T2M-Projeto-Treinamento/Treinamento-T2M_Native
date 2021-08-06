@@ -87,6 +87,8 @@ export default function CadastroProjetos({ route, navigation }) {
                                             <ProjetoText>Inserir</ProjetoText>
                                         </ProjetoButton>
                                         </InserirView>
+                                    <InserirView>
+                                    </InserirView>
                                 </InserirView>
                             )
                         })}

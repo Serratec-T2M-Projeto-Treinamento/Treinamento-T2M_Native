@@ -17,7 +17,7 @@ export const HomeView = styled.View`
 `;
 
 export const HomeButton = styled.TouchableOpacity`
-  margin: 30px;
+  margin: 10px;
   height: 40px;
   background-color: #01a999;
   font-size: 18px;
@@ -26,6 +26,7 @@ export const HomeButton = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 30px;
   border: white;
+
 `;
 
 export const ButtonText = styled.Text`  

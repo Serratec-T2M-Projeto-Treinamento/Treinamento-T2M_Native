@@ -73,7 +73,7 @@ export const ProjetoButton = styled.TouchableOpacity`
 `;
 export const ProjetoText = styled.Text`
   text-align: center;
-  color:white;
+  color:black;
   font-size:18px;
   font-weight: bold;
   `;
@@ -82,12 +82,12 @@ export const ProjetoText = styled.Text`
   justify-content: center;
   width: 80%;
   justify-content: center;
-  background-color: black;
+  background-color: lightgray;
   margin: 40px; 
   flex-direction: column;
   border-radius: 20px;
- 
   `;
+  
   export const InserirText = styled.Text`
   text-align: center;
   color: black;
@@ -96,10 +96,17 @@ export const ProjetoText = styled.Text`
   margin-top: 20px;
 
 `;
+export const CarText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+`;
 export const CardText = styled.Text`
   text-align: center;
-  color: white;
+  color: black;
   font-size: 22px;
+
   
 `;
 export const CardView = styled.View`
