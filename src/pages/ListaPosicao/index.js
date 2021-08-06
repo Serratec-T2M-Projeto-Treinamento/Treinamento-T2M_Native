@@ -5,13 +5,14 @@ import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
 
-export default function ListaPosicoes({ navigation }) {
+export default function ListaPosicao({ navigation }) {
     const { setPosicao } = React.useContext(AuthContext);
     const [posicoes, setPosicoes] = useState([]);
 
     useEffect(async () => {
         try {
             const response = await axios.get(`https://api-treinamento-t2m.herokuapp.com/posicoes`)
+            setPosicao(response.data);
             setPosicoes(response.data);
 
         } catch (error) {
@@ -29,7 +30,7 @@ export default function ListaPosicoes({ navigation }) {
         <Container>
             <ListScroll>
                 <MenuIcon />
-                <Titulo>Treinamentos</Titulo>
+                <Titulo>Posições</Titulo>
                 {posicoes.map((p, i) => {
                     return (
                         <TreinamentoColaArea key={i}>
@@ -45,16 +46,6 @@ export default function ListaPosicoes({ navigation }) {
                 })}
             </ListScroll>
         </Container>
-
-
-
-
-
-
-
-
-
-
 
     );
 };

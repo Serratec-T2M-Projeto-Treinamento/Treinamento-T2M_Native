@@ -3,23 +3,13 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from '../pages/login';
 import Home from '../pages/Home';
 import ListaDeColaboradores from '../pages/listaColaboradores';
-import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
-import CadastroEndereco from '../pages/inserirEndereco';
-import InserirCertificados from '../pages/inserirCertificacao';
-import InserirTreinamentos from '../pages/inserirTreinamentos';
-import InserirFormacoes from '../pages/inserirFormacoes';
-import InserirProjetos from '../pages/inserirProjetos';
-import AtualizarEndereco from '../pages/atualizarEndereco';
-import Projetos from '../pages/projetos';
-import Formacoes from '../pages/formacoes';
-import Certificacoes from  '../pages/certificacao';
-import Treinamentos from '../pages/treinamentos';
-import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import ListaPosicao from '../pages/ListaPosicao';
 import Competencia from '../pages/competencias';
 import Conhecimento from '../pages/conhecimento'
 import InserirConhecimento from '../pages/inserirConhecimento';
+import PossiveisTreinamentos from '../pages/possiveisTreinamentos';
+import NovosTreinamentos from '../pages/novosTreinamentos';
 
 const Drawer = createDrawerNavigator();
 
@@ -47,9 +37,10 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
             <Drawer.Screen name='Competencias' component={Competencia} />
             <Drawer.Screen name='Conhecimento' component={Conhecimento} />
+            <Drawer.Screen name='InserirConhecimento' component={InserirConhecimento} />
+            <Drawer.Screen name='Possiveis Treinamentos' component={PossiveisTreinamentos} />
+            <Drawer.Screen name='Novos Treinamentos' component={NovosTreinamentos} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
-            {/* <Drawer.Screen name='Histórico Profissional' component={HistoricoProfissional}/> */}
-            {/* options={{drawerLabel: () => null}} />  */}
         </Drawer.Navigator>
     );
 };
