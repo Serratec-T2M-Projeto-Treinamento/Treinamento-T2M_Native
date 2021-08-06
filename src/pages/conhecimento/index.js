@@ -8,22 +8,19 @@ export default function Competencia({navigation}){
         <Container>
             <ListScroll>
                 <MenuIcon/>
-                <Titulo>Compentências</Titulo>
+                <Titulo>Conhecimentos</Titulo>
             <TreinamentoColaArea>
-                <TreinamentoColaView>
-                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }}>
-                            <TreinamenText>Posição: </TreinamenText>
-                </TreinamentoButton>
+                <TreinamentoColaView> 
+                            <TreinamenText>Linguagens:Python </TreinamenText>
+                            <TreinamenText>nivel:Avançado</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }} >
-                            <TreinamenText>Posição: </TreinamenText>
-                </TreinamentoButton>
+                            <TreinamenText>Linguagem:C+ </TreinamenText>
+                            <TreinamenText>nivel:Avançado</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                <TreinamentoButton onPress={() => { navigation.navigate('Conhecimento') }}>
-                            <TreinamenText>Posição: </TreinamenText>
-                </TreinamentoButton>
+                            <TreinamenText>Linguagem:JavaScript </TreinamenText>
+                            <TreinamenText>nivel:Avançado </TreinamenText>
                 </TreinamentoColaView>
             </TreinamentoColaArea>
             </ListScroll>
