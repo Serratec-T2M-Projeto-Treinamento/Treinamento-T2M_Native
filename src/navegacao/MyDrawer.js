@@ -17,7 +17,6 @@ import Certificacoes from  '../pages/certificacao';
 import Treinamentos from '../pages/treinamentos';
 import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import ListaPosicao from '../pages/listaPosicao';
-import HistoricoProfissional from '../pages/historicoProfissional';
 import Competencia from '../pages/competencias';
 import Conhecimento from '../pages/conhecimento'
 import InserirConhecimento from '../pages/inserirConhecimento';

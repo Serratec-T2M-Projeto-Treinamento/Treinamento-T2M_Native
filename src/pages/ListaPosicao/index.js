@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, ListScroll, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
-import { } from './styles'
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
@@ -24,7 +23,7 @@ export default function ListaPosicoes({ navigation }) {
     const handleClick = (p) => {
         setPosicao(p)
         navigation.navigate('Competências por posição')
-      };
+    };
 
     return (
         <Container>
@@ -35,8 +34,8 @@ export default function ListaPosicoes({ navigation }) {
                     return (
                         <TreinamentoColaArea key={i}>
                             <TreinamentoColaView>
-                                    <TreinamenText>{p.nome}</TreinamenText>
-                                    <TreinamenText>{p.descricao}</TreinamenText>
+                                <TreinamenText>{p.nome}</TreinamenText>
+                                <TreinamenText>{p.descricao}</TreinamenText>
                                 <TreinamentoButton onPress={() => handleClick(p)}>
                                     <TreinamenText>Requisitos para Ocupação</TreinamenText>
                                 </TreinamentoButton>
