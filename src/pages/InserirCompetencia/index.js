@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
-import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
-import { handleDate } from '../../components/dataFormatada';
-import DateField from 'react-native-datefield';
+i
 
 export default function InserirCompetencia() {
         return (
