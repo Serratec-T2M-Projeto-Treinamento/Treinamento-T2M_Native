@@ -25,16 +25,6 @@ export default function Conhecimento(){
             </TreinamentoColaArea>
             </ListScroll>
         </Container>
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
         );
 };
