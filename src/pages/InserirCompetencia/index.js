@@ -6,14 +6,14 @@ import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import DateField from 'react-native-datefield';
 
-export default function InserirConhecimento() {
+export default function InserirCompetencia() {
         return (
             <Container>
                 <ProScroll>
                     <MenuIcon />
                     <EspacoView></EspacoView>
                     <ProjetoView>
-                        <InserirText> Inserir Conhecimento</InserirText>
+                        <InserirText> Inserir Competencia</InserirText>
                     </ProjetoView>
                     <ProjetoArea>
                             return (
