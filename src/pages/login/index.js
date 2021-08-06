@@ -49,7 +49,7 @@ export default function Login({ navigation }) {
 
                                 await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)
                                     .then((response) => {
-                                        navigation.navigate('Home');
+                                        navigation.navigate('Drawer');
                                         setLoading(false);
                                         setIsAdmin(response.data.isAdmin)
                                         

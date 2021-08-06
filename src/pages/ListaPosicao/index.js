@@ -12,6 +12,7 @@ export default function ListaPosicao({ navigation }) {
     useEffect(async () => {
         try {
             const response = await axios.get(`https://api-treinamento-t2m.herokuapp.com/posicoes`)
+            setPosicao(response.data);
             setPosicoes(response.data);
 
         } catch (error) {
@@ -29,7 +30,7 @@ export default function ListaPosicao({ navigation }) {
         <Container>
             <ListScroll>
                 <MenuIcon />
-                <Titulo>Treinamentos</Titulo>
+                <Titulo>Posições</Titulo>
                 {posicoes.map((p, i) => {
                     return (
                         <TreinamentoColaArea key={i}>
@@ -45,16 +46,6 @@ export default function ListaPosicao({ navigation }) {
                 })}
             </ListScroll>
         </Container>
-
-
-
-
-
-
-
-
-
-
 
     );
 };
