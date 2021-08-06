@@ -13,15 +13,19 @@ export const Titulo = styled.Text`
   font-style: italic;
 `;
 export const TreinamentoColaArea = styled.View`
-  
-`;
-export const TreinamentoColaView = styled.View`
- flex-direction: column;
+  flex-direction: column;
   border-radius: 20px;
   justify-content: center;
   background-color: lightgray;
   border: lightblue;
   margin: 15px;
+`;
+export const TreinamentoColaView = styled.View`
+  border-color: black;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 export const TreinamenText = styled.Text`
   text-align: center;
