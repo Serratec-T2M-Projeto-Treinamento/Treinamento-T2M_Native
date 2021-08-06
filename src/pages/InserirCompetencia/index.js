@@ -15,7 +15,7 @@ export default function InserirCompetencia() {
                     <ProjetoView>
                         <InserirText> Inserir Competencia</InserirText>
                     </ProjetoView>
-                    <ProjetoArea>
+                    <ProjetoArea> 
                             return (
                                 <InserirView key={i}>
                                         <CardView>
