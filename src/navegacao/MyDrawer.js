@@ -16,14 +16,14 @@ import Formacoes from '../pages/formacoes';
 import Certificacoes from  '../pages/certificacao';
 import Treinamentos from '../pages/treinamentos';
 import AtualizarColaboradores from '../pages/atualizarColaboradores';
-import ListaPosicao from '../pages/ListaPosicao';
+import ListaPosicao from '../pages/listaPosicao';
 
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator
-            initialRouteName='Lista de Colaboradores'
+            initialRouteName='Home'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Drawer.Screen name='Home' component={Home} />
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
