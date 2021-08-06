@@ -10,12 +10,13 @@ export const ProScroll = styled.ScrollView`
 `;
 
 export const TreinamentoArea = styled.View`
-  width:100%;
 
-  
 `;
 
 export const EspacoView = styled.View`
+
+`;
+export const TreinaView = styled.View`
 
 `;
 
@@ -27,10 +28,8 @@ export const TreinamentoButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 30px;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-top: 5px;
   border: white;
-  margin: 10%;
 `;
 
 export const MensagemArea = styled.View`
@@ -41,6 +40,7 @@ export const MensagemArea = styled.View`
   display: flex;
   flex-direction: column;
   height: 800px;
+  
 `;
 
 export const MensagemView = styled.View`
@@ -66,16 +66,32 @@ export const TreinamentoView = styled.View`
 `;
 export const CardText = styled.Text`
   text-align: center;
+  color:black;
+  font-size: 20px;
+  font-weight: bold;
+`;
+export const CarText = styled.Text`
+  text-align: center;
+  color:black;
+  font-size: 20px;
+  font-family:italic;
+  
 `;
 export const CardView = styled.View`
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 `;
 export const InserirView = styled.View`
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  justify-content: center;
+  background-color: lightgray;
+  margin: 40px; 
+  flex-direction: column;
+  border-radius: 20px;
+ 
   `;
 export const InserirText = styled.Text`
   text-align: center;

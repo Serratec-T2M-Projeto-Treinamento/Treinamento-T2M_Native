@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, TreinamentoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, TreinamentoButton, TreinamentoText, TreinamentoView, InserirText, InserirView, CardText, CardView, PickerView } from './styles';
+import { Container, EspacoView, TreinamentoArea,CarText, ProScroll, TreinaView, MensagemArea, MensagemView, MensagemText, TreinamentoButton, TreinamentoText, TreinamentoView, InserirText, InserirView, CardText, CardView, PickerView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import { Picker } from '@react-native-picker/picker';
@@ -42,28 +42,28 @@ export default function CadastroTreinamentos({ route, navigation }) {
                     <MenuIcon />
                     <EspacoView>
                     </EspacoView>
-                    <InserirView>
+                    <TreinaView>
                         <InserirText> Inserir Treinamento </InserirText>
-                    </InserirView>
+                    </TreinaView>
                     <TreinamentoArea>
                         {treinamentos.map((p, i) => {
                             return (
                                 <InserirView key={i}>
                                     <CardView>
                                         <CardText>Nome:</CardText>
-                                        <CardText>{p.nome}</CardText>
+                                        <CarText>{p.nome}</CarText>
                                     </CardView>
                                     <CardView>
                                         <CardText>Descrição:</CardText>
-                                        <CardText>{p.descricao}</CardText>
+                                        <CarText>{p.descricao}</CarText>
                                     </CardView>
                                     <CardView>
                                         <CardText>Carga Horária:</CardText>
-                                        <CardText>{p.cargaHoraria} Hora(s)</CardText>
+                                        <CarText>{p.cargaHoraria} Hora(s)</CarText>
                                     </CardView>
                                     <CardView>
                                         <CardText>instituição:</CardText>
-                                        <CardText>{p.instituicao}</CardText>
+                                        <CarText>{p.instituicao}</CarText>
                                     </CardView>
                                     <CardView>
                                         <PickerView>
