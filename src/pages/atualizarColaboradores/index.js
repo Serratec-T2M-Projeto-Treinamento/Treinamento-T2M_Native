@@ -56,7 +56,7 @@ export default function AtualizarColaboradores({ route, navigation }) {
             pix: colaborador.pix,
             permissao: colaborador.permissao,
             posicao: {
-                idPosicoes: colaborador.posicao.idPosicoes
+                idPosicoes: colaborador?.posicao?.idPosicoes
             }
 
         })
