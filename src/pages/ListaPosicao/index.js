@@ -5,7 +5,7 @@ import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
 
-export default function ListaPosicoes({ navigation }) {
+export default function ListaPosicao({ navigation }) {
     const { setPosicao } = React.useContext(AuthContext);
     const [posicoes, setPosicoes] = useState([]);
 
