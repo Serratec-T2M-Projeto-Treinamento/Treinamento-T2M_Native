@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ContainerHome,
   HomeView,
@@ -12,7 +12,6 @@ import {
   HomeText,
   HoText
 } from './styles';
-import { Text, Button} from'react-native';
 import MenuIcon from '../../components/icon';
 
 export default function Home({ navigation }) {
@@ -36,12 +35,9 @@ export default function Home({ navigation }) {
           <HomeButton onPress={() => { navigation.navigate('Lista de Colaboradores') }}>
             <ButtonText>Colaboradores</ButtonText>
           </HomeButton>
-          <HomeButton onPress={() => { navigation.navigate('TreinamentosCola') }}>
+          <HomeButton onPress={() => { navigation.navigate('Treinamentos') }}>
             <ButtonText>Treinamentos</ButtonText>
           </HomeButton>
-          {/* <HomeButton>
-          <ButtonText>Treinamentos</ButtonText>
-        </HomeButton> */}
         </ButtonView>
       </HomeView>
     </ContainerHome>
