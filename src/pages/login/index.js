@@ -52,7 +52,7 @@ export default function Login({ navigation }) {
                                         navigation.navigate('Home');
                                         setLoading(false);
                                         setIsAdmin(response.data.isAdmin)
-                                        console.log(response.data.isAdmin);
+                                        
                                     }).catch(() => {
                                         Alert.alert('Dados inválidos, tente novamente!')
                                     })
