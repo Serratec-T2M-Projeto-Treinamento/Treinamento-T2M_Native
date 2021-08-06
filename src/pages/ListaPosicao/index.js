@@ -3,7 +3,7 @@ import { Container, ListScroll, Titulo,TreinamentoButton, TreinamentoColaArea, T
 import{} from './styles'
 import MenuIcon from '../../components/icon';
 
-export default function TreinamentoCola({navigation}){
+export default function ListaPosicoes({navigation}){
     return( 
         <Container>
             <ListScroll>
