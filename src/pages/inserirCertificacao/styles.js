@@ -5,14 +5,15 @@ export const Container = styled.SafeAreaView`
   background-color: #A0C8C3;
 `;
 
+export const TreinaScroll = styled.ScrollView`
+
+`;
+
 export const InputArea = styled.View`
-    background-color: black;
     width:80%;
     height: 400px;
     align-items: center;
     border-radius: 15px;
-    flex-direction: row;
-    flex-wrap: wrap;
     margin: 40px;
     justify-content: center;
     border:white;
@@ -64,6 +65,11 @@ export const CertiButton = styled.TouchableOpacity`
   border: white;
   margin: 10%;
 `;
+
+export const CertiView = styled.View`
+
+`;
+
 export const CertiText = styled.Text`
   text-align: center;
   color:white;
@@ -89,4 +95,11 @@ export const MensagemText = styled.Text`
     color: black;
     font-size:18px;
     font-weight: bold;
+`;
+
+export const DataView = styled.View`
+  width: 70%;
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 10px;
 `;

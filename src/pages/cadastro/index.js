@@ -17,10 +17,15 @@ import { Picker } from '@react-native-picker/picker';
 import { Alert } from 'react-native';
 import DateField from 'react-native-datefield';
 import { AuthContext } from '../../services/auth';
+import { mask } from 'remask';
 
 export default function Cadastro({ navigation }) {
   const { isAdmin } = React.useContext(AuthContext);
   const [posicoes, setPosicoes] = useState([]);
+
+  const padraoCpf = '999.999.999-99'
+  const padraoRg = '99.999.999-9'
+  const padraoCep = '99999-999'
 
   const handlePermissao = (p) => {
     if (p) {
@@ -67,6 +72,9 @@ export default function Cadastro({ navigation }) {
     cep: ''
   });
 
+  console.log(colaborador);
+  console.log(endereco);
+
   async function postColaborador() {
     try {
       
@@ -78,7 +86,7 @@ export default function Cadastro({ navigation }) {
       const idEndereco = responseEndereco.data.idEnderecos
       
       
-      const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
+      await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`)
       Alert.alert('Colaborador cadastrado com sucesso!')
       
       navigation.reset({

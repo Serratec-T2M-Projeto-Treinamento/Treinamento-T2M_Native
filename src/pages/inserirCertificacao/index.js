@@ -1,80 +1,85 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, InputArea, InputCadastro, CertiButton, CertiText, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText } from './styles';
-import { Alert, Text } from 'react-native';
+import { Container, TreinaScroll, EspacoView, InputArea, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
+import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
-import { Formik } from 'formik';
-import * as yup from 'yup';
+import DateField from 'react-native-datefield';
 
-export default function InserirCertificados({ route }) {
+export default function InserirCertificados({ route, navigation }) {
     if (route.params) {
-
-
         const { colaborador } = route.params
 
-        const certValidationSchema = yup.object().shape({
-            nomeCertificado: yup.string().max(50, ({ max }) => `Máximo de ${max} caracteres`).required('O nome do certificado é obrigatório'),
-            instituicaoCertificado: yup.string().max(30, ({ max }) => `Máximo de ${max} caracteres`).required('O nome da instituição é obrigatório'),
-            tempoValidade: yup.number().max(2, ({ max }) => `Máximo de ${max} dígitos`)
+        const [certificados, setCertificados] = useState([]);
+        const [data, setData] = useState({
+            dataObtencao: ''
         });
 
-        console.log(colaborador.idColaboradores);
+
+        useEffect(() => {
+            axios.get('https://api-treinamento-t2m.herokuapp.com/certificacoes')
+                .then((response) => setCertificados(response.data))
+                .catch((error) => {
+                    console.error(error);
+                });
+        }, []);
+
+
+        const putCertificacoes = async (p) => {
+            console.log(p);
+            console.log(data);
+            try {
+                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts/colaborador/${colaborador.idColaboradores}/certificacaoAInserir/${p.idCertificacoes}​`, data);
+                Alert.alert('Certificação inserida com sucesso!')
+                navigation.reset({
+                    routes: [{ name: 'Lista de Colaboradores' }]
+                })
+            } catch (error) {
+                Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
+                console.error(error);
+            }
+            
+        }
+
 
         return (
             <Container>
-                <MenuIcon />
-                <Formik initialValues={{
-                    nomeCertificado: '',
-                    instituicaoCertificado: '',
-                    tempoValidade: 0
-                }}
-                    onSubmit={async (values) => {
-                        const certificado = {
-                            nomeCertificado: values.nomeCertificado,
-                            instituicaoCertificado: values.instituicaoCertificado,
-                            tempoValidade: values.tempoValidade
-                        }
-                        try {
-                            const responseCertificado = await axios.post('https://api-treinamento-t2m.herokuapp.com/certificacoes', certificado)
-                            const idCertificado = responseCertificado.data.idCertificacoes
-                            console.log(idCertificado);
-                            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts​/colaborador​/${colaborador.idColaboradores}​/certificacaoAInserir​/${idCertificado}​`)
-                            Alert.alert('Colaborador cadastrado com sucesso!')
-                        } catch (error) {
-                            Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
-                            console.error(error);
-                        }
-                    }}
-                    validationSchema={certValidationSchema}>
-                    {({ handleChange, handleBlur, handleSubmit, values, errors, touched, isValid }) => (
-                        <>
-                            <CadastroView>
-                                <CadastroText> Cadastro de Certificados </CadastroText>
-                            </CadastroView>
-                            <InputArea>
-                                <InputCadastro name='nomeCertificado' onChangeText={handleChange('nomeCertificado')} onBlur={handleBlur('nomeCertificado')} value={values.nomeCertificado} placeholder='Nome do Certificado' placeholderTextColor='#181818' />
-                                {(errors.nomeCertificado && touched.nomeCertificado) &&
-                                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.nomeCertificado}</Text>
-                                }
-                                <InputCadastro name='instituicaoCertificado' onChangeText={handleChange('instituicaoCertificado')} onBlur={handleBlur('instituicaoCertificado')} value={values.instituicaoCertificado} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
-                                {(errors.instituicaoCertificado && touched.instituicaoCertificado) &&
-                                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.instituicaoCertificado}</Text>
-                                }
-                                <InputCadastro name='tempoValidade' onChangeText={handleChange('tempoValidade')} onBlur={handleBlur('tempoValidade')} value={values.tempoValidade} keyboardType='number-pad' placeholder='Validade' placeholderTextColor='#181818' />
-                                {(errors.tempoValidade && touched.tempoValidade) &&
-                                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.tempoValidade}</Text>
-                                }
+                <TreinaScroll>
+                    <MenuIcon />
+                    <EspacoView>
+                    </EspacoView>
+                    <CadastroView>
+                        <CadastroText> Cadastro de Certificados </CadastroText>
+                    </CadastroView>
+                    {certificados.map((p, i) => {
+                        return (
+                            <InputArea key={i}>
+                                <CertiView>
+                                    <CertiText>Nome:</CertiText>
+                                    <CertiText>{p.nomeCertificado}</CertiText>
+                                </CertiView>
+                                <CertiView>
+                                    <CertiText>Instituição:</CertiText>
+                                    <CertiText>{p.instituicaoCertificado}</CertiText>
+                                </CertiView>
+                                <CertiView>
+                                    <CertiText>Validade:</CertiText>
+                                    <CertiText>{p.tempoValidade}</CertiText>
+                                    <CertiText>Data de Obtenção:</CertiText>
+                                </CertiView>
+                                <DataView>
+                                    <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setData({dataObtencao: value})} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                                </DataView>
                                 <ButtonView>
-                                    <CertiButton onPress={() => handleSubmit()}
-                                        disabled={!isValid}>
+                                    <CertiButton onPress={() => putCertificacoes(p)}>
                                         <CertiText>Salvar</CertiText>
                                     </CertiButton>
                                 </ButtonView>
                             </InputArea>
-
-                        </>
-                    )}
-                </Formik>
+                        )
+                    })}
+                    <EspacoView>
+                    </EspacoView>
+                </TreinaScroll>
             </Container>
         )
     } else {

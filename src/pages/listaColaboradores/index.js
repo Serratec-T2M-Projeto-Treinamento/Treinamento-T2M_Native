@@ -3,8 +3,10 @@ import { Container, ButtonInserir, ButtonText, ButtonView, InfoButton, InfoButto
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
 import { ActivityIndicator } from 'react-native';
+import { AuthContext } from '../../services/auth';
 
 export default function Listagem({ navigation }) {
+    const { setColaboradores } = React.useContext(AuthContext);
     const [colaborador, setColaborador] = useState([]);
 
     const [loading, setLoading] = useState(true);
@@ -25,6 +27,7 @@ export default function Listagem({ navigation }) {
     }, []);
 
     const handleClick = (p) => {
+        setColaboradores(p);
         navigation.navigate('Informações Colaboradores', {
             colaborador: p
         });
