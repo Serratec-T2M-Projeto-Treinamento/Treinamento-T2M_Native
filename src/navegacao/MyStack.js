@@ -15,18 +15,14 @@ import Projetos from '../pages/projetos';
 import Formacoes from '../pages/formacoes';
 import Certificacoes from  '../pages/certificacao';
 import Treinamentos from '../pages/treinamentos';
+import PossiveisTreinamentos from '../pages/possiveisTreinamentos';
 import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import Competencia from '../pages/competencias';
 import Conhecimento from '../pages/conhecimento'
 import InserirConhecimento from '../pages/inserirConhecimento';
-import { DrawerActions } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import MyDrawer from './MyDrawer';
 
-
-
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
 
 export default function MyStack() {
     return (
@@ -38,20 +34,21 @@ export default function MyStack() {
             <Stack.Screen name='Lista de Colaboradores' component={ListaColaboradores} />
             <Stack.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
             <Stack.Screen name='Cadastro' component={Cadastro} />
-            <Drawer.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
-            <Drawer.Screen name='Atualizar Endereço' component={AtualizarEndereco} />
-            <Drawer.Screen name='Inserir Endereço em Colaborador' component={CadastroEndereco} />
-            <Drawer.Screen name='Inserir Certificações em Colaborador' component={InserirCertificados} />
-            <Drawer.Screen name='Inserir Treinamentos em Colaborador' component={InserirTreinamentos} />
-            <Drawer.Screen name='Inserir Formações em Colaborador' component={InserirFormacoes} />
-            <Drawer.Screen name='Inserir Projetos em Colaborador' component={InserirProjetos} />
-            <Drawer.Screen name='InserirConhecimento' component={InserirConhecimento} />
-            <Drawer.Screen name='Treinamentos de um colaborador' component={Treinamentos} />
-            <Drawer.Screen name='Certificações de um colaborador' component={Certificacoes} />
-            <Drawer.Screen name='Formações de um colaborador' component={Formacoes} />
-            <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
-            <Drawer.Screen name='Competências por posição' component={Competencia} />
-            <Drawer.Screen name='Conhecimentos por posição' component={Conhecimento} />
+            <Stack.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
+            <Stack.Screen name='Atualizar Endereço' component={AtualizarEndereco} />
+            <Stack.Screen name='Inserir Endereço em Colaborador' component={CadastroEndereco} />
+            <Stack.Screen name='Inserir Certificações em Colaborador' component={InserirCertificados} />
+            <Stack.Screen name='Inserir Treinamentos em Colaborador' component={InserirTreinamentos} />
+            <Stack.Screen name='Inserir Formações em Colaborador' component={InserirFormacoes} />
+            <Stack.Screen name='Inserir Projetos em Colaborador' component={InserirProjetos} />
+            <Stack.Screen name='InserirConhecimento' component={InserirConhecimento} />
+            <Stack.Screen name='Treinamentos de um colaborador' component={Treinamentos} />
+            <Stack.Screen name='Treinamentos' component={PossiveisTreinamentos} />
+            <Stack.Screen name='Certificações de um colaborador' component={Certificacoes} />
+            <Stack.Screen name='Formações de um colaborador' component={Formacoes} />
+            <Stack.Screen name='Projetos de um colaborador' component={Projetos} />
+            <Stack.Screen name='Competências por posição' component={Competencia} />
+            <Stack.Screen name='Conhecimentos por posição' component={Conhecimento} />
             <Stack.Screen name='Drawer' component={MyDrawer} />
         </Stack.Navigator>
     );
