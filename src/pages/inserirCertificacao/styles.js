@@ -16,7 +16,8 @@ export const InputArea = styled.View`
     border-radius: 15px;
     margin: 40px;
     justify-content: center;
-    border:white;
+    border:#01a999;
+    background-color: lightgray;
     
 `;
 
@@ -43,13 +44,8 @@ export const CadastroText = styled.Text`
 export const CadastroView = styled.View`
 
 `;
-
-
-export const EspacoView = styled.View`
-  height: 40px;
-`;
 export const ButtonView = styled.View`
-  margin-top: 50px;
+  
   align-items: center;
 `;
 export const CertiButton = styled.TouchableOpacity`
@@ -72,9 +68,9 @@ export const CertiView = styled.View`
 
 export const CertiText = styled.Text`
   text-align: center;
-  color:white;
+  color:black;
   font-size:18px;
-  font-weight: bold;
+  
 `;
 export const MensagemArea = styled.View`
     border-color: black;
@@ -102,4 +98,10 @@ export const DataView = styled.View`
   background-color: white;
   margin-top: 10px;
   border-radius: 10px;
+`;
+export const CertText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
 `;

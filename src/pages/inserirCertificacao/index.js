@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, TreinaScroll, EspacoView, InputArea, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
+import { Container, TreinaScroll,CertText, EspacoView, InputArea, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import DateField from 'react-native-datefield';
@@ -43,8 +43,6 @@ export default function InserirCertificados({ route, navigation }) {
             <Container>
                 <TreinaScroll>
                     <MenuIcon />
-                    <EspacoView>
-                    </EspacoView>
                     <CadastroView>
                         <CadastroText> Cadastro de Certificados </CadastroText>
                     </CadastroView>
@@ -52,17 +50,17 @@ export default function InserirCertificados({ route, navigation }) {
                         return (
                             <InputArea key={i}>
                                 <CertiView>
-                                    <CertiText>Nome:</CertiText>
+                                    <CertText>Nome:</CertText>
                                     <CertiText>{p.nomeCertificado}</CertiText>
                                 </CertiView>
                                 <CertiView>
-                                    <CertiText>Instituição:</CertiText>
+                                    <CertText>Instituição:</CertText>
                                     <CertiText>{p.instituicaoCertificado}</CertiText>
                                 </CertiView>
                                 <CertiView>
-                                    <CertiText>Validade:</CertiText>
+                                    <CertText>Validade:</CertText>
                                     <CertiText>{p.tempoValidade}</CertiText>
-                                    <CertiText>Data de Obtenção:</CertiText>
+                                    <CertText>Data de Obtenção:</CertText>
                                 </CertiView>
                                 <DataView>
                                     <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setData({dataObtencao: value})} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
@@ -75,8 +73,7 @@ export default function InserirCertificados({ route, navigation }) {
                             </InputArea>
                         )
                     })}
-                    <EspacoView>
-                    </EspacoView>
+                   
                 </TreinaScroll>
             </Container>
         )

@@ -19,7 +19,7 @@ export const FormacoesArea = styled.View`
   border-radius: 20px;
   justify-content: center;
   background-color: lightgray;
-  border: lightblue;
+  border: #01a999;
   margin: 15px;
 `;
 
@@ -73,13 +73,13 @@ export const MensagemView = styled.View`
 export const MensagemText = styled.Text`
   text-align: center;
   color: black;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 `;
 export const FormaText = styled.Text`
   text-align: center;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   
 `;
 export const FormacoesButton = styled.TouchableOpacity`

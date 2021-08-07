@@ -24,7 +24,7 @@ export const TreinArea = styled.View`
     border-radius: 20px;
     justify-content: center;
     background-color: lightgray;
-    border:lightblue;
+    border:#01a999;
     margin:15px;
 `;
 

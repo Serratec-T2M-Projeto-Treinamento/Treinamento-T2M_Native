@@ -17,7 +17,8 @@ import {
   TodoButton,
   EndButton,
   EndText,
-  EndView
+  EndView,
+  InfView
 } from './styles';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -214,11 +215,11 @@ export default function Informacoes({ route, navigation }) {
                   </DadosArea>
                 )
               })}
-              <EndView>
+              <InfView>
                 <EndButton onPress={() => handleClickEndr()}>
                   <EndText>Inserir endereço</EndText>
                 </EndButton>
-              </EndView>
+              </InfView>
             </InformacoesArea>
             <ButtonView>
               <TodoButton onPress={() => handleClickCert()}>

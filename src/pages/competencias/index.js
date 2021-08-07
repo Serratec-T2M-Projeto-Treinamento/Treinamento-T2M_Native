@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ListScroll, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import { Container, ListScroll, Titulo,TreinaText, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 
@@ -15,11 +15,11 @@ export default function Competencia({ navigation }) {
         return (
             <TreinamentoColaArea key={i}>
                 <TreinamentoColaView>
-                    <TreinamenText>Nome: </TreinamenText>
+                    <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.competencia.nome}</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                    <TreinamenText>Descrição: </TreinamenText>
+                    <TreinaText>Descrição: </TreinaText>
                     <TreinamenText>{p.competencia.descricao}</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
