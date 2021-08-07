@@ -35,7 +35,7 @@ export default function Home({ navigation }) {
           <HomeButton onPress={() => { navigation.navigate('Lista de Colaboradores') }}>
             <ButtonText>Colaboradores</ButtonText>
           </HomeButton>
-          <HomeButton onPress={() => { navigation.navigate('Drawer') }}>
+          <HomeButton onPress={() => { navigation.navigate('Lista de Posições') }}>
             <ButtonText>Treinamentos</ButtonText>
           </HomeButton>
         </ButtonView>

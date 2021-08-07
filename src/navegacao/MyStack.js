@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../pages/login';
 import Home from '../pages/Home';
 import ListaColaboradores from '../pages/listaColaboradores';
+import ListaPosicao from '../pages/ListaPosicao';
 import InformacoesColaboradores from '../pages/informacoesColaboradores';
 import Cadastro from '../pages/cadastro';
 import CadastroEndereco from '../pages/inserirEndereco';
@@ -20,7 +21,7 @@ import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import Competencia from '../pages/competencias';
 import Conhecimento from '../pages/conhecimento'
 import InserirConhecimento from '../pages/inserirConhecimento';
-import MyDrawer from './MyDrawer';
+import NovaPosicao from '../pages/novasPosicao';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export default function MyStack() {
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Home' component={Home} />
             <Stack.Screen name='Lista de Colaboradores' component={ListaColaboradores} />
+            <Stack.Screen name='Lista de Posições' component={ListaPosicao} />
             <Stack.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
             <Stack.Screen name='Cadastro' component={Cadastro} />
             <Stack.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
@@ -49,7 +51,7 @@ export default function MyStack() {
             <Stack.Screen name='Projetos de um colaborador' component={Projetos} />
             <Stack.Screen name='Competências por posição' component={Competencia} />
             <Stack.Screen name='Conhecimentos por posição' component={Conhecimento} />
-            <Stack.Screen name='Drawer' component={MyDrawer} />
+            <Stack.Screen name='Cadastrar Posições' component={NovaPosicao} />
         </Stack.Navigator>
     );
 };
