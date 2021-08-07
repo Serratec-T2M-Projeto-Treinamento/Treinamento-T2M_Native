@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import { Container, EspacoView, ProjetoArea,CarText, ProScroll,ButtonView, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -52,34 +52,34 @@ export default function CadastroProjetos({ route, navigation }) {
                             return (
                                 <InserirView key={i}>
                                         <CardView>
-                                            <CardText>Nome:</CardText>
+                                            <CarText>Nome:</CarText>
                                             <CardText>{p.nome}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>Descrção:</CardText>
+                                            <CarText>Descrção:</CarText>
                                             <CardText>{p.descricao}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>App Gerenciador:</CardText>
+                                            <CarText>App Gerenciador:</CarText>
                                             <CardText>{p.appGerenciamento}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>Segmento:</CardText>
+                                            <CarText>Segmento:</CarText>
                                             <CardText>{p.segmento}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>Data de entrega esperada:</CardText>
+                                            <CarText>Data de entrega esperada:</CarText>
                                             <CardText>{handleDate(p.dataEntregaEsperada)}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>Data de entrega:</CardText>
+                                            <CarText>Data de entrega:</CarText>
                                             <CardText>{handleDate(p.dataEntrega)}</CardText>
                                         </CardView>
                                         <CardView>
-                                            <CardText>N° de integrantes:</CardText>
+                                            <CarText>N° de integrantes:</CarText>
                                             <CardText>{p.equipe}</CardText>
                                         </CardView>
-                                        <InserirView>
+                                        <ButtonView>
                                             <InputCadastro onChangeText={(text) => setLinkProj({...linkProj, funcao: text})} placeholder='Função' placeholderTextColor='#181818' />
                                         <DateView>
                                             <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
@@ -87,9 +87,7 @@ export default function CadastroProjetos({ route, navigation }) {
                                         <ProjetoButton onPress={() => LinkarProjeto(p)}>
                                             <ProjetoText>Inserir</ProjetoText>
                                         </ProjetoButton>
-                                        </InserirView>
-                                    <InserirView>
-                                    </InserirView>
+                                        </ButtonView>
                                 </InserirView>
                             )
                         })}

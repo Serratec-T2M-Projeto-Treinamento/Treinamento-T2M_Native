@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, TreinaScroll, EspacoView, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
+import { Container, TreinaScroll, PosiText, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert, Text } from 'react-native';
 import MenuIcon from '../../components/icon';
 import { Formik } from 'formik';
@@ -40,23 +40,25 @@ export default function NovaPosicao({ navigation }) {
                         <>
                             <InputArea>
                                 <CertiView>
+                                    <PosiText>Nome da posição:</PosiText>
                                     <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
                                     {(errors.nome && touched.nome) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                                         }
                                 </CertiView>
                                 <CertiView>
+                                     <PosiText>Descrição da posição:</PosiText>
                                     <InputCadastro name='descricao' onChangeText={handleChange('descricao')} onBlur={handleBlur('descricao')} value={values.descricao} placeholder='Descrição' placeholderTextColor='#181818' />
                                     {(errors.descricao && touched.descricao) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.descricao}</Text>
                                         }
-                                </CertiView>
                                 <ButtonView>
                                     <CertiButton onPress={() => handleSubmit()}
                                                  disabled={!isValid}>
                                         <CertiText>Salvar</CertiText>
                                     </CertiButton>
                                 </ButtonView>
+                                </CertiView>
                             </InputArea>
 
                         </>

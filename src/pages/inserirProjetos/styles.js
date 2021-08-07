@@ -40,6 +40,7 @@ export const MensagemArea = styled.View`
     display: flex;
     flex-direction: column;
     height: 700px;
+    
 `;
 export const DateView = styled.View`
     margin: 3px;
@@ -86,7 +87,19 @@ export const ProjetoText = styled.Text`
   margin: 40px; 
   flex-direction: column;
   border-radius: 20px;
+  border:#01a999;
+  
   `;
+   export const ButtonView = styled.View`
+   align-items: center;
+  justify-content: center;
+  width: 80%;
+  justify-content: center;
+  background-color: lightgray;
+  margin: 40px; 
+  flex-direction: column;
+  border-radius: 20px;
+   `
   
   export const InserirText = styled.Text`
   text-align: center;

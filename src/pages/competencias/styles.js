@@ -31,6 +31,13 @@ export const TreinamenText = styled.Text`
   text-align: center;
   color: black;
   font-size: 18px;
+
+  font-family: italic;
+`;
+export const TreinaText = styled.Text`
+  text-align: center;
+  color: black;
+  font-size: 20px;
   font-weight: bold;
 `;
 export const TreinamentoButton = styled.TouchableOpacity`

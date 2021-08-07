@@ -21,7 +21,7 @@ import AtualizarColaboradores from '../pages/atualizarColaboradores';
 import Competencia from '../pages/competencias';
 import Conhecimento from '../pages/conhecimento'
 import InserirConhecimento from '../pages/inserirConhecimento';
-import NovaPosicao from '../pages/novasPosicao';
+import NovasPosicao from '../pages/novasPosicao';
 
 const Stack = createStackNavigator();
 
@@ -51,7 +51,7 @@ export default function MyStack() {
             <Stack.Screen name='Projetos de um colaborador' component={Projetos} />
             <Stack.Screen name='Competências por posição' component={Competencia} />
             <Stack.Screen name='Conhecimentos por posição' component={Conhecimento} />
-            <Stack.Screen name='Cadastrar Posições' component={NovaPosicao} />
+            <Stack.Screen name='Cadastrar Posições' component={NovasPosicao} />
         </Stack.Navigator>
     );
 };

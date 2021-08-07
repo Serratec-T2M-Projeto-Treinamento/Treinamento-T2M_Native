@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, ListScroll, Titulo,TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import { Container, ListScroll,TreinaText, Titulo,TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 
@@ -17,16 +17,16 @@ export default function Conhecimento({ navigation }){
         return(
             <TreinamentoColaArea key={i}>
                 <TreinamentoColaView>
-                    <TreinamenText>Nome: </TreinamenText>
+                    <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.conhecimento.nome}</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
-                    <TreinamenText>Descrição: </TreinamenText>
+                    <TreinaText>Descrição: </TreinaText>
                     <TreinamenText>{p.conhecimento.descricao}</TreinamenText>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => handleClick(p)}>
-                        <TreinamenText>Possiveis Treinamentos</TreinamenText>
+                        <TreinaText>Possiveis Treinamentos</TreinaText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
             </TreinamentoColaArea>

@@ -20,7 +20,7 @@ export const InformacoesButton = styled.TouchableOpacity`
 export const InformacoesText = styled.Text`
   text-align: center;
   color: black;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -40,6 +40,12 @@ export const InformacoesScroll = styled.ScrollView`
 export const EspacoView = styled.View`
   height: 10px;
 `;
+export const InfView = styled.View`
+margin-top: 5px;
+  align-items: flex-end;
+  height: 35px;
+  width: 85%;
+`;
 
 export const ButtonView = styled.View`
   margin-top: 30px;
@@ -54,7 +60,7 @@ export const ButtonText = styled.Text`
 `;
 
 export const DadosText = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   font-style: italic;
   `;
@@ -70,7 +76,7 @@ export const DadosArea = styled.View`
   background-color: lightgrey;
   margin-top: 10px;
   border-radius: 10px;
-  border: lightblue;
+  border:  #01a999;
   `;
 
 export const MensagemArea = styled.View`
@@ -120,7 +126,8 @@ export const EndView = styled.View`
   margin-top: 5px;
   align-items: flex-end;
   height: 35px;
-  width: 90%;
+  width: 98%;
+  padding-left: 10px;
   `;
 
 export const EndText = styled.Text`
