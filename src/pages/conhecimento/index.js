@@ -10,7 +10,7 @@ export default function Conhecimento({ navigation }){
     const handleClick = (p) => {
         console.log(p);
         setConhecimento(p);
-        navigation.navigate('Possiveis treinamentos');
+        navigation.navigate('Treinamentos');
     }
 
     const posicaoMap = competencia.competencia.setCompsCons.map((p,i) => {

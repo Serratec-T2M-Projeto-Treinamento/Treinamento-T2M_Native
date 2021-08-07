@@ -5,11 +5,6 @@ import Home from '../pages/Home';
 import ListaDeColaboradores from '../pages/listaColaboradores';
 import Cadastro from '../pages/cadastro';
 import ListaPosicao from '../pages/ListaPosicao';
-import Competencia from '../pages/competencias';
-import Conhecimento from '../pages/conhecimento'
-import InserirConhecimento from '../pages/inserirConhecimento';
-import PossiveisTreinamentos from '../pages/possiveisTreinamentos';
-import NovosTreinamentos from '../pages/novosTreinamentos';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,24 +17,6 @@ export default function DrawerNavigator() {
             <Drawer.Screen name='Lista de Colaboradores' component={ListaDeColaboradores} />
             <Drawer.Screen name='Lista de Posições' component={ListaPosicao} />
             <Drawer.Screen name='Cadastro' component={Cadastro} />
-            <Drawer.Screen name='Informações Colaboradores' component={InformacoesColaboradores} />
-            <Drawer.Screen name='Atualizar Colaborador' component={AtualizarColaboradores} />
-            <Drawer.Screen name='Atualizar Endereço' component={AtualizarEndereco} />
-            <Drawer.Screen name='Inserir Endereço em Colaborador' component={CadastroEndereco} />
-            <Drawer.Screen name='Inserir Certificações em Colaborador' component={InserirCertificados} />
-            <Drawer.Screen name='Inserir Treinamentos em Colaborador' component={InserirTreinamentos} />
-            <Drawer.Screen name='Inserir Formações em Colaborador' component={InserirFormacoes} />
-            <Drawer.Screen name='Inserir Projetos em Colaborador' component={InserirProjetos} />
-            <Drawer.Screen name='InserirConhecimento' component={InserirConhecimento} />
-            <Drawer.Screen name='Treinamentos de um colaborador' component={Treinamentos}/>
-            <Drawer.Screen name='Certificações de um colaborador' component={Certificacoes}/>
-            <Drawer.Screen name='Formações de um colaborador' component={Formacoes} />
-            <Drawer.Screen name='Projetos de um colaborador' component={Projetos} />
-            <Drawer.Screen name='Competencias' component={Competencia} />
-            <Drawer.Screen name='Conhecimento' component={Conhecimento} />
-            <Drawer.Screen name='InserirConhecimento' component={InserirConhecimento} />
-            <Drawer.Screen name='Possiveis Treinamentos' component={PossiveisTreinamentos} />
-            <Drawer.Screen name='Novos Treinamentos' component={NovosTreinamentos} />
             <Drawer.Screen name='Sair' component={Login} options={{gestureEnabled:false}}/>
         </Drawer.Navigator>
     );
