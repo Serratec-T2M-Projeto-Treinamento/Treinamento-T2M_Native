@@ -19,14 +19,17 @@ export const CadastroButton = styled.TouchableOpacity`
 `;
 
 export const InputCadastro = styled.TextInput`
-  font-size: 18px;
-  margin-top: 10px;
+   font-size: 18px;
   border: black;
   width: 70%;
   background-color: white;
   height: 50px;
   border-radius: 10px;
   color: #181818;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left:80px;
   
 `;
 
@@ -41,9 +44,16 @@ export const InputArea = styled.View`
   border-color: black;
   align-items: center;
   justify-content: center;
-  width: 100%;
   display: flex;
-  margin-top: -55px;
+  background-color: black;
+  width:80%;
+  height: 70%;
+  border-radius: 15px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 40px;
+  justify-content: center;
+  border:white;
 `;
 
 export const InputView = styled.View`
@@ -60,12 +70,11 @@ export const CadastroScroll = styled.ScrollView`
 `;
 
 export const EspacoView = styled.View`
-  height: 60px;
+  height: 80px;
 
 `;
 
 export const ButtonView = styled.View`
-  margin-top: 50px;
   align-items: center;
 `;
 
@@ -103,4 +112,16 @@ export const MensagemText = styled.Text`
   color: black;
   font-size: 18px;
   font-weight: bold;
+`;
+export const CadasText = styled.Text`
+ text-align: center;
+color: black;
+font-size: 30px;
+font-weight: bold;
+margin-top: 20px;
+`;
+export const CadasView = styled.View`
+  justify-content:center;
+  align-items:center;
+  margin
 `;

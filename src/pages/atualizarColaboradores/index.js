@@ -12,7 +12,9 @@ import {
     DataView,
     MensagemArea,
     MensagemView,
-    MensagemText
+    MensagemText,
+    CadasText,
+    CadasView
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
@@ -79,8 +81,9 @@ export default function AtualizarColaboradores({ route, navigation }) {
             <Container>
                 <CadastroScroll>
                     <MenuIcon />
-                    <EspacoView>
-                    </EspacoView>
+                    <CadasView>
+                        <CadasText>Atualize seu Cadastro</CadasText>
+                     </CadasView>
                     <InputArea>
                         <CadastroText>Nome Completo:</CadastroText>
                         <InputCadastro value={valores.nome} onChangeText={(text) => setValores({ ...valores, nome: text })} placeholder='Nome' placeholderTextColor='#181818' />
