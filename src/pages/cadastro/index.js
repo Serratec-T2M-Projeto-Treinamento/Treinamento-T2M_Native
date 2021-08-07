@@ -9,7 +9,9 @@ import {
   ButtonView,
   EspacoView,
   PickerView,
-  DataView
+  DataView,
+  CadasText,
+  CadasView
 } from './styles';
 import MenuIcon from '../../components/icon';
 import axios from 'axios';
@@ -100,8 +102,9 @@ export default function Cadastro({ navigation }) {
     <Container>
       <CadastroScroll>
         <MenuIcon />
-        <EspacoView>
-        </EspacoView>
+        <CadasView>
+              <CadasText>Insira seu Cadastro</CadasText>
+        </CadasView>
         <InputArea>
           <CadastroText>Nome Completo:</CadastroText>
           <InputCadastro onChangeText={(text) => setColaborador({ ...colaborador, nome: text })} placeholder='Nome' placeholderTextColor='#181818' />
