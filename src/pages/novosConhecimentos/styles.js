@@ -24,7 +24,7 @@ export const InputArea = styled.View`
     margin: 40px;
     justify-content: center;
     border:white;
-  
+    background-color: black;
     
 `;
 

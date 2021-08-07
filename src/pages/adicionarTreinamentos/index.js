@@ -5,14 +5,14 @@ import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
 
-export default function InserirCompetencia({ navigation }) {
-    const { posicao, setPosicao } = React.useContext(AuthContext);
-    const [competencias, setCompetencias] = useState([]);
+export default function AdicionarTreinamentos({ navigation }) {
+    const { conhecimento, setConhecimento } = React.useContext(AuthContext);
+    const [treinamentos, setTreinamentos] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://api-treinamento-t2m.herokuapp.com/competencias`)
+        axios.get(`https://api-treinamento-t2m.herokuapp.com/treinamentos`)
             .then((response) => {
-                setCompetencias(response.data);
+                setTreinamentos(response.data);
             })
             .catch((error) => {
                 console.error(error);
@@ -20,22 +20,20 @@ export default function InserirCompetencia({ navigation }) {
     }, [])
 
     const handleClick = async (p) => {
-        console.log(posicao);
-        console.log(p);
         try {
-            await axios.put(`https://api-treinamento-t2m.herokuapp.com/posComps/posicao/${posicao.idPosicoes}/competenciaAInserir/${p.idCompetencias}`)
-            Alert.alert('Competência inserida com sucesso!')
-            const responsePosicao = await axios.get(`https://api-treinamento-t2m.herokuapp.com/posicoes/${posicao.idPosicoes}`);
-            setPosicao(responsePosicao.data);
+            await axios.put(`https://api-treinamento-t2m.herokuapp.com/consTrns/conhecimento/${conhecimento.idConhecimentos}/treinamentoAInserir/${p.idTreinamentos}`)
+            Alert.alert('Treinamento inserido com sucesso!')
+            const responseConhecimento = await axios.get(`https://api-treinamento-t2m.herokuapp.com/conhecimentos/${conhecimento.idConhecimentos}`);
+            setConhecimento(responseConhecimento.data);
             navigation.reset({
-                routes: [{ name: 'Competências por posição' }]
+                routes: [{ name: 'Treinamentos' }]
             })
         } catch (error) {
             console.error(error);
         }
     }
 
-    const competenciasMap = competencias.map((p, i) => {
+    const treinamentosMap = treinamentos.map((p, i) => {
         return (
             <ProjetoArea key={i}>
                 <InserirView>
@@ -47,6 +45,14 @@ export default function InserirCompetencia({ navigation }) {
                         <CardText>Descrição:</CardText>
                         <CardText>{p.descricao}</CardText>
                     </CardView>
+                    <CardView>
+                        <CardText>Instituição:</CardText>
+                        <CardText>{p.instituicao}</CardText>
+                    </CardView>
+                    <CardView>
+                        <CardText>Carga Horária:</CardText>
+                        <CardText>{p.cargaHoraria} Hora(s)</CardText>
+                    </CardView>
                     <InserirView>
                         <ProjetoButton onPress={() => handleClick(p)}>
                             <ProjetoText>Inserir</ProjetoText>
@@ -55,7 +61,6 @@ export default function InserirCompetencia({ navigation }) {
                     <InserirView>
                     </InserirView>
                 </InserirView>
-
             </ProjetoArea>
         )
     })
@@ -66,9 +71,9 @@ export default function InserirCompetencia({ navigation }) {
                 <MenuIcon />
                 <EspacoView></EspacoView>
                 <ProjetoView>
-                    <InserirText> Inserir Competencia</InserirText>
+                    <InserirText> Inserir Treinamento</InserirText>
                 </ProjetoView>
-                {competenciasMap}
+                {treinamentosMap}
             </ProScroll>
         </Container>
     )

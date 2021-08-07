@@ -10,18 +10,6 @@ export default function ListaPosicao({ navigation }) {
     const [posicoes, setPosicoes] = useState([]);
     const [refresh, setRefresh] = useState(false);
 
-    useEffect(async () => {
-        try {
-            const response = await axios.get(`https://api-treinamento-t2m.herokuapp.com/posicoes`)
-            setPosicao(response.data);
-            setPosicoes(response.data);
-
-        } catch (error) {
-            Alert.alert('Ocorreu um erro inesperado')
-            console.error(error);
-        }
-    }, []);
-
     useEffect(() => {
         axios
             .get('https://api-treinamento-t2m.herokuapp.com/posicoes')

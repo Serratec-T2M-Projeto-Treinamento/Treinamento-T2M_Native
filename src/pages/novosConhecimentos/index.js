@@ -6,8 +6,8 @@ import MenuIcon from '../../components/icon';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-export default function NovaPosicao({ navigation }) {
-    const posicaoValidationSchema = yup.object().shape({
+export default function NovoConhecimento({ navigation }) {
+    const conhecimentoValidationSchema = yup.object().shape({
         nome: yup.string().max(100, ({ max }) => `Maximo de ${max} caracteres`).required('Nome é obrigatório'),
         descricao: yup.string().max(200, ({ max }) => `Maximo de ${max} caracteres`).required('Descrição é obrigatório')
     })
@@ -17,19 +17,19 @@ export default function NovaPosicao({ navigation }) {
             <TreinaScroll>
                 <MenuIcon />
                 <CadastroView>
-                    <CadastroText>Cadastro de Posições</CadastroText>
+                    <CadastroText>Cadastro de Conhecimentos</CadastroText>
                 </CadastroView>
-                <Formik validationSchema={posicaoValidationSchema}
+                <Formik validationSchema={conhecimentoValidationSchema}
                     initialValues={{
                         nome: '',
                         descricao: ''
                     }}
                     onSubmit={async (values) => {
                         try {
-                            await axios.post(`https://api-treinamento-t2m.herokuapp.com/posicoes`, values)
-                            Alert.alert('Posição cadastrada com sucesso!')
+                            await axios.post(`https://api-treinamento-t2m.herokuapp.com/conhecimentos`, values)
+                            Alert.alert('Conhecimento cadastrado com sucesso!')
                             navigation.reset({
-                                routes: [{ name: 'Lista de Posições' }]
+                                routes: [{ name: 'Conhecimentos por competência' }]
                             })
                         } catch (error) {
                             Alert.alert('Ocorreu um erro, cheque os dados novamente.')

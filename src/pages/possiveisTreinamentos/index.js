@@ -1,13 +1,26 @@
-import React from 'react';
-import { Container, ListScroll, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
-import { } from './styles'
+import React, {useState, useEffect} from 'react';
+import { Container, ListScroll, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText, TreinamentoButton} from './styles';
+import axios from 'axios';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
+import { Alert } from 'react-native';
 
 export default function PossiveisTreinamentos({ navigation }) {
-    const { conhecimento } = React.useContext(AuthContext);
+    const { conhecimento, setConhecimento  } = React.useContext(AuthContext);
+    const [refresh, setRefresh] = useState(false);
 
-    const treinamentos = conhecimento.conhecimento.setConsTrns.map((p, i) => {
+    async function handleRemoverTreinamento(p) {
+        await axios.put(`https://api-treinamento-t2m.herokuapp.com/consTrns/conhecimento/${conhecimento.idConhecimentos}/treinamentoARemover/${p.treinamento.idTreinamentos}`);
+        Alert.alert("Treinamento removido com sucesso!");
+        setRefresh(!refresh)
+    };
+
+    useEffect(async () => {
+        const responseConhecimento = await axios.get(`https://api-treinamento-t2m.herokuapp.com/conhecimentos/${conhecimento.idConhecimentos}`)
+        setConhecimento(responseConhecimento.data)
+    }, [refresh]);
+
+    const treinamentos = conhecimento.setConsTrns.map((p, i) => {
         return (
             <TreinamentoColaArea key={i}>
                 <TreinamentoColaView>
@@ -26,11 +39,11 @@ export default function PossiveisTreinamentos({ navigation }) {
                     <TreinaText>Carga Horária:</TreinaText>
                     <TreinamenText>{p.treinamento.cargaHoraria}Hora(s)</TreinamenText>
                 </TreinamentoColaView>
-                {/* <TreinamentoColaView>
-                    <TreinamentoButton onPress={() => { navigation.navigate('Treinamentos') }} >
-                        <TreinamenText>Posição: </TreinamenText>
+                <TreinamentoColaView>
+                    <TreinamentoButton onPress={() => handleRemoverTreinamento(p)} >
+                        <TreinamenText>Remover</TreinamenText>
                     </TreinamentoButton>
-                </TreinamentoColaView> */}
+                </TreinamentoColaView>
             </TreinamentoColaArea>
         )
     })
@@ -39,6 +52,16 @@ export default function PossiveisTreinamentos({ navigation }) {
             <ListScroll>
                 <MenuIcon />
                 <Titulo>Possiveis Treinamentos</Titulo>
+                {/* <TreinamentoColaView>
+                    <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Treinamento')} >
+                        <TreinamenText>Cadastrar Treinamentos</TreinamenText>
+                    </TreinamentoButton>
+                </TreinamentoColaView> */}
+                <TreinamentoColaView>
+                    <TreinamentoButton onPress={() => navigation.navigate('Inserir Treinamentos em Conhecimento')} >
+                        <TreinamenText>Inserir</TreinamenText>
+                    </TreinamentoButton>
+                </TreinamentoColaView>
                     {treinamentos}
             </ListScroll>
         </Container>

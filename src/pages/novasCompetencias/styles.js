@@ -8,13 +8,6 @@ export const Container = styled.SafeAreaView`
 export const TreinaScroll = styled.ScrollView`
 
 `;
-export const PosiText = styled.Text`
-   padding-left:10px;
-  color:white;
-  font-size: 18px;
-  font-family:italic;
-  `;
-  
 
 export const InputArea = styled.View`
     width:80%;
@@ -24,7 +17,6 @@ export const InputArea = styled.View`
     margin: 40px;
     justify-content: center;
     border:white;
-  
     
 `;
 
@@ -32,7 +24,7 @@ export const InputCadastro = styled.TextInput`
   font-size: 18px;
   margin-top: 10px;
   border: white;
-  width: 90%;
+  width: 80%;
   background-color: white;
   height: 50px;
   border-radius: 10px;
@@ -52,8 +44,12 @@ export const CadastroView = styled.View`
 
 `;
 
-export const ButtonView = styled.View`
 
+export const EspacoView = styled.View`
+  height: 40px;
+`;
+export const ButtonView = styled.View`
+  margin-top: 50px;
   align-items: center;
 `;
 export const CertiButton = styled.TouchableOpacity`
@@ -71,7 +67,7 @@ export const CertiButton = styled.TouchableOpacity`
 `;
 
 export const CertiView = styled.View`
-width: 70%;
+
 `;
 
 export const CertiText = styled.Text`
@@ -107,4 +103,3 @@ export const DataView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
 `;
-
