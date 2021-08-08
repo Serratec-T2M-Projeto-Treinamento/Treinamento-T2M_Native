@@ -36,10 +36,6 @@ export const InformacoesArea = styled.View`
 export const InformacoesScroll = styled.ScrollView`
   background-color: #a0c8c3;
 `;
-
-export const EspacoView = styled.View`
-  height: 10px;
-`;
 export const InfView = styled.View`
 margin-top: 5px;
   align-items: flex-end;

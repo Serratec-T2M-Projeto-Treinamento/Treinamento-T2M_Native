@@ -8,9 +8,6 @@ import {
   ListScroll,
   EspacoView,
   FormacoesArea,
-  MensagemArea,
-  MensagemView,
-  MensagemText,
   FormacoesButton,
   FormaText,
   EndView,
@@ -91,7 +88,6 @@ export default function Formacoes({ route, navigation }) {
               <FormaText>Inserir Formações</FormaText>
             </FormacoesButton>
           </FormacoesView>
-          <EspacoView></EspacoView>
         </ListScroll>
       </Container>
     );

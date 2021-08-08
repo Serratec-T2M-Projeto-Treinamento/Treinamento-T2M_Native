@@ -5,7 +5,8 @@ export const Container = styled.SafeAreaView`
   height: 100%;
 `;
 
-export const ListScroll = styled.ScrollView``;
+export const ListScroll = styled.ScrollView`
+`;
 
 export const Titulo = styled.Text`
   font-size: 30px;
@@ -52,30 +53,6 @@ export const DadosText = styled.Text`
   font-style: italic;
 `;
 
-export const EspacoView = styled.View`
-  height: 40px;
-`;
-
-export const MensagemArea = styled.View`
-  border-color: black;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 800px;
-`;
-
-export const MensagemView = styled.View`
-  margin-bottom: 200px;
-`;
-
-export const MensagemText = styled.Text`
-  text-align: center;
-  color: black;
-  font-size: 20px;
-  font-weight: bold;
-`;
 export const FormaText = styled.Text`
   text-align: center;
   color: white;

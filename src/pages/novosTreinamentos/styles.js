@@ -9,7 +9,7 @@ export const TreinaScroll = styled.ScrollView`
 
 `;
 export const PosiText = styled.Text`
-   padding-left:10px;
+  padding-left:10px;
   color:white;
   font-size: 18px;
   font-family:italic;
@@ -42,7 +42,6 @@ export const InputCadastro = styled.TextInput`
   height: 50px;
   border-radius: 10px;
   color: #181818;
-
   margin-bottom: 3%;
 `;
 export const CadastroText = styled.Text`
@@ -58,7 +57,6 @@ export const CadastroView = styled.View`
 `;
 
 export const ButtonView = styled.View`
-
   align-items: center;
 `;
 export const CertiButton = styled.TouchableOpacity`
@@ -76,7 +74,7 @@ export const CertiButton = styled.TouchableOpacity`
 `;
 
 export const CertiView = styled.View`
-width: 70%;
+  width: 70%;
 `;
 
 export const CertiText = styled.Text`
@@ -86,30 +84,13 @@ export const CertiText = styled.Text`
   font-weight: bold;
 `;
 export const MensagemArea = styled.View`
-    border-color: black;
-    align-items:center;
-    justify-content: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 800px;
+  border-color: black;
+  align-items:center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
 `;
 
-export const MensagemView = styled.View`
-    margin-bottom: 200px;
-`;
-
-export const MensagemText = styled.Text`
-    text-align: center;
-    color: black;
-    font-size:18px;
-    font-weight: bold;
-`;
-
-export const DataView = styled.View`
-  width: 70%;
-  background-color: white;
-  margin-top: 10px;
-  border-radius: 10px;
-`;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, TreinamentoArea, CarText, ProScroll, TreinaView, MensagemArea, MensagemView, MensagemText, TreinamentoButton, TreinamentoText, InserirText, InserirView, CardText, CardView, PickerView } from './styles';
+import { Container, TreinamentoArea, CarText, ProScroll, TreinaView,TreinamentoButton, TreinamentoText, InserirText, InserirView, CardText, CardView, PickerView} from './styles';
 import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import { Alert, ActivityIndicator } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -54,8 +54,6 @@ export default function CadastroTreinamentos({ route, navigation }) {
         return (
             <Container>
                 <ProScroll>
-                    <EspacoView>
-                    </EspacoView>
                     <TreinaView>
                         <InserirText> Inserir Treinamento </InserirText>
                     </TreinaView>
@@ -92,17 +90,13 @@ export default function CadastroTreinamentos({ route, navigation }) {
                                             </Picker>
                                         </PickerView>
                                     </CardView>
-                                    <InserirView>
                                         <TreinamentoButton onPress={() => LinkarTreinamento(p)}>
                                             <TreinamentoText>Inserir</TreinamentoText>
                                         </TreinamentoButton>
-                                    </InserirView>
                                 </InserirView>
                             )
                         })}
                     </TreinamentoArea>
-                    <EspacoView>
-                    </EspacoView>
                 </ProScroll>
             </Container>
         )
