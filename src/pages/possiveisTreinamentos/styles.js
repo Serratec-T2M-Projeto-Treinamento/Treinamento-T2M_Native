@@ -48,7 +48,7 @@ export const TreinamentoButton = styled.TouchableOpacity`
 export const TreinamentoColaButton = styled.TouchableOpacity`
   height:40px;
   background-color: #01a999;
-  width: 45%;
+  width: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,6 +69,13 @@ export const TreiText = styled.Text`
   font-size: 22px;
   font-weight: bold;
 `;
+export const TreiPoText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+`;
+
 export const TreinaColaView = styled.View`
   margin-top: 5px;
   justify-content: center;

@@ -36,11 +36,11 @@ export default function NovosTreinamentos({ navigation }) {
                 </CadastroView>
                 <InputArea>
                     <CertiView>
-                        <CertiText>Nome:</CertiText>
+                        <CertiText>Nome do treinamento:</CertiText>
                         <InputCadastro onChangeText={(text) => setTreinamento({ ...treinamento, nome: text })} placeholder='Nome' placeholderTextColor='#181818' />
                     </CertiView>
                     <CertiView>
-                        <CertiText>Descrição:</CertiText>
+                        <CertiText>Descrição do treinamento:</CertiText>
                         <InputCadastro onChangeText={(text) => setTreinamento({ ...treinamento, descricao: text })} placeholder='Descrição' placeholderTextColor='#181818' />
                     </CertiView>
                     <CertiView>

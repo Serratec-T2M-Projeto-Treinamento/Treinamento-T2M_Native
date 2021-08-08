@@ -24,31 +24,29 @@ export default function PossiveisTreinamentos({ navigation }) {
 
     const treinamentos = conhecimento.setConsTrns.map((p, i) => {
         return (
-            <Container key={i}>
-                <TreinamentoColaArea >
-                    <TreinamentoColaView>
-                        <TreinaText>Nome:</TreinaText>
-                        <TreinamenText>{p.treinamento.nome}</TreinamenText>
-                    </TreinamentoColaView>
-                    <TreinamentoColaView>
-                        <TreinaText>Descrição:</TreinaText>
-                        <TreinamenText>{p.treinamento.descricao}</TreinamenText>
-                    </TreinamentoColaView>
-                    <TreinamentoColaView>
-                        <TreinaText>Instituição:</TreinaText>
-                        <TreinamenText>{p.treinamento.instituicao}</TreinamenText>
-                    </TreinamentoColaView>
-                    <TreinamentoColaView>
-                        <TreinaText>Carga Horária:</TreinaText>
-                        <TreinamenText>{p.treinamento.cargaHoraria}Hora(s)</TreinamenText>
-                    </TreinamentoColaView>
-                </TreinamentoColaArea>
+            <TreinamentoColaArea key={i} >
+                <TreinamentoColaView>
+                    <TreinaText>Nome:</TreinaText>
+                    <TreinamenText>{p.treinamento.nome}</TreinamenText>
+                </TreinamentoColaView>
+                <TreinamentoColaView>
+                    <TreinaText>Descrição:</TreinaText>
+                    <TreinamenText>{p.treinamento.descricao}</TreinamenText>
+                </TreinamentoColaView>
+                <TreinamentoColaView>
+                    <TreinaText>Instituição:</TreinaText>
+                    <TreinamenText>{p.treinamento.instituicao}</TreinamenText>
+                </TreinamentoColaView>
+                <TreinamentoColaView>
+                    <TreinaText>Carga Horária:</TreinaText>
+                    <TreinamenText>{p.treinamento.cargaHoraria}Hora(s)</TreinamenText>
+                </TreinamentoColaView>
                 <TreinaColaView>
                     <TreinamentoColaButton onPress={() => handleRemoverTreinamento(p)} >
                         <TreiText>Remover</TreiText>
                     </TreinamentoColaButton>
                 </TreinaColaView>
-            </Container>
+            </TreinamentoColaArea>
         )
     })
 

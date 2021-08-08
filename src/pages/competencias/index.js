@@ -35,29 +35,27 @@ export default function Competencia({ navigation }) {
 
     const posicaoMap = posicao.setPosComps.map((p, i) => {
         return (
-            <Container key={i}>
-                <TreinamentoColaArea >
-                    <TreinamentoColaView>
-                        <TreinaText>Nome: </TreinaText>
-                        <TreinamenText>{p.competencia.nome}</TreinamenText>
-                    </TreinamentoColaView>
-                    <TreinamentoColaView>
-                        <TreinaText>Descrição: </TreinaText>
-                        <TreinamenText>{p.competencia.descricao}</TreinamenText>
-                    </TreinamentoColaView>
-                    <TreinamentoColaView>
-                        <TreinamentoButton onPress={() => handleClick(p)}>
-                            <ComText>Ver Conhecimentos</ComText>
-                        </TreinamentoButton>
-                    </TreinamentoColaView>
-                </TreinamentoColaArea>
+                <TreinamentoColaArea key={i} >
+                <TreinamentoColaView>
+                    <TreinaText>Nome: </TreinaText>
+                    <TreinamenText>{p.competencia.nome}</TreinamenText>
+                </TreinamentoColaView>
+                <TreinamentoColaView>
+                    <TreinaText>Descrição: </TreinaText>
+                    <TreinamenText>{p.competencia.descricao}</TreinamenText>
+                </TreinamentoColaView>
+                <TreinamentoColaView>
+                    <TreinamentoButton onPress={() => handleClick(p)}>
+                        <ComText>Ver Conhecimentos</ComText>
+                    </TreinamentoButton>
+                </TreinamentoColaView>
                 <TreinaColaView>
                     <TreinamentoColaButton onPress={() => handleRemoveCompetencia(p)}>
                         <ComText>Remover</ComText>
                     </TreinamentoColaButton>
                 </TreinaColaView>
-            </Container>
-
+            </TreinamentoColaArea>
+     
         )
 
     })
