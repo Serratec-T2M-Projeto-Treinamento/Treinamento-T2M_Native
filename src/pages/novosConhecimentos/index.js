@@ -38,14 +38,14 @@ export default function NovoConhecimento({ navigation }) {
                         <>
                             <InputArea>
                                 <CertiView>
-                                    <PosiText>Nome dos conhecimentos:</PosiText>
+                                    <PosiText>Nome do conhecimento:</PosiText>
                                     <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
                                     {(errors.nome && touched.nome) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                                         }
                                 </CertiView>
                                 <CertiView>
-                                     <PosiText>Descrição  dos conhecimentos:</PosiText>
+                                     <PosiText>Descrição  do conhecimento:</PosiText>
                                     <InputCadastro name='descricao' onChangeText={handleChange('descricao')} onBlur={handleBlur('descricao')} value={values.descricao} placeholder='Descrição' placeholderTextColor='#181818' />
                                     {(errors.descricao && touched.descricao) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.descricao}</Text>

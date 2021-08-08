@@ -19,7 +19,7 @@ export default function CadastroFormacoes({ route, navigation }) {
     return (
         <Container>
             <FormaView>
-                <FormacaoText> Inserir Formaçôes </FormacaoText>
+                <FormacaoText> Inserir Formações </FormacaoText>
             </FormaView>
             <Formik validationSchema={formValidationSchema}
                 initialValues={{
@@ -73,21 +73,53 @@ export default function CadastroFormacoes({ route, navigation }) {
                                 <Text style={{ fontSize: 15, color: 'red' }}>{errors.instituicao}</Text>
                             }
                             <CadastroText>Data de entrada:</CadastroText>
-                            <DatePicker style={{ width: 270,margin:10, backgroundColor: "#eaeaea", borderRadius: 8,}}
+                            <DatePicker style={{ width: 270, margin: 10, backgroundColor: "#eaeaea", borderRadius: 8, }}
+                                customStyles={{
+                                    dateInput: {
+                                        borderWidth: 0,
+                                        borderBottomWidth: 0,
+
+                                    },
+                                    placeholderText: {
+                                        fontSize: 17,
+                                        color: '#181818'
+                                    },
+                                    dateText: {
+                                        fontSize: 21,
+                                        color: "#181818"
+                                    }
+                                }}
                                 date={values.dataEntrada}
+                                placeholder='Data de Entrada'
                                 format='YYYY-MM-DD'
                                 minDate='1990-01-01'
                                 maxDate={new Date()}
                                 onDateChange={(data) => setFieldValue('dataEntrada', data)} />
                             <CadastroText>Data de Conclusao:</CadastroText>
-                            
-                            <DatePicker style={{ width: 270, margin:10, backgroundColor: "#eaeaea",borderRadius: 8}}
+
+                            <DatePicker style={{ width: 270, margin: 10, backgroundColor: "#eaeaea", borderRadius: 8 }}
+                                customStyles={{
+                                    dateInput: {
+                                        borderWidth: 0,
+                                        borderBottomWidth: 0,
+
+                                    },
+                                    placeholderText: {
+                                        fontSize: 17,
+                                        color: '#181818'
+                                    },
+                                    dateText: {
+                                        fontSize: 21,
+                                        color: "#181818"
+                                    }
+                                }}
                                 date={values.dataConclusao}
+                                placeholder='Data de Conclusão'
                                 format='YYYY-MM-DD'
                                 minDate='1990-07-07'
                                 maxDate={new Date()}
                                 onDateChange={(data) => setFieldValue('dataConclusao', data)} />
-                                
+
                         </InputArea>
                         <FormaView>
                             <FormaButton onPress={() => handleSubmit()}
