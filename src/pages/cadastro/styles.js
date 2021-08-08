@@ -3,13 +3,23 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   height: 100%;
   background-color: #A0C8C3;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Titulo = styled.Text`
+  text-align: center;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
 `;
 
 export const CadastroButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
   width: 80%;
-  display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 30px;
@@ -28,8 +38,9 @@ export const InputCadastro = styled.TextInput`
   color: #181818;
   align-items: center;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin-left:80px;
+  margin: 5px;
+  height: 50px;
+  padding-left: 17px
 `;
 
 export const CadastroText = styled.Text`
@@ -52,16 +63,13 @@ export const InputArea = styled.View`
   border-color: black;
   align-items: center;
   justify-content: center;
-  display: flex;
   background-color: black;
   width:80%;
-  height: 1300px;
   border-radius: 15px;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 40px;
   justify-content: center;
   border:white;
+  padding: 20px 0;
   
 `;
 export const CadasView = styled.View`
@@ -80,31 +88,30 @@ export const InputView = styled.View`
 
 export const CadastroScroll = styled.ScrollView`
   background-color: #A0C8C3;
+  flex-direction: column;
+  width: 100%;
 `;
 
 export const EspacoView = styled.View`
-  height: 80px;
+  align-items: center;
 
 `;
 
 export const ButtonView = styled.View`
   align-items: center;
+  width: 100%;
+  margin-top: 30px;
 `;
 
 export const PickerView = styled.View`
   background-color: white;
   width: 70%;
-  margin-top: 10px;
   border-radius: 10px;
   border: black;
+  margin: 5px;
 `;
 
-export const DataView = styled.View`
-  width: 70%;
-  background-color: white;
-  margin-top: 10px;
-  border-radius: 10px;
+export const TituloView = styled.View`
+  margin-bottom: 30px;
 `;
-export const Titulo = styled.Text`
 
-`;
