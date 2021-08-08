@@ -105,3 +105,6 @@ export const DataView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
 `;
+export const Titulo = styled.Text`
+
+`;

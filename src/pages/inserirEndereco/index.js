@@ -6,7 +6,7 @@ import { Picker } from '@react-native-picker/picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-export default function CadastroEndereco({ route }) {
+export default function CadastroEndereco({ route, navigation }) {
 
         const { colaborador } = route.params
 

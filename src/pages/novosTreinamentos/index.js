@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, TreinaScroll, EspacoView, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
-import { Alert, Text } from 'react-native';
-import NumericInput from 'react-native-numeric-input';
+import { Container, TreinaScroll, InputArea, InputCadastro, CertiButton, CertiText, ButtonView, CadastroText, CadastroView, CertiView } from './styles';
+import { Alert } from 'react-native';
 
 export default function NovosTreinamentos({ navigation }) {
     const [treinamento, setTreinamento] = useState({
@@ -14,7 +13,12 @@ export default function NovosTreinamentos({ navigation }) {
 
     const postTreinamento = async () => {
         try {
-            await axios.post(`https://api-treinamento-t2m.herokuapp.com/colaboradores`, treinamento)
+            await axios.post(`https://api-treinamento-t2m.herokuapp.com/treinamentos`, {
+                nome: treinamento.nome,
+                descricao: treinamento.descricao,
+                instituicao: treinamento.instituicao,
+                cargaHoraria: parseInt(treinamento.cargaHoraria)
+            })
             Alert.alert('Treinamento cadastrado com sucesso!')
             navigation.reset({
                 routes: [{ name: 'Treinamentos' }]
@@ -24,16 +28,12 @@ export default function NovosTreinamentos({ navigation }) {
         }
     }
 
-    console.log(treinamento);
-
-
     return (
         <Container>
             <TreinaScroll>
                 <CadastroView>
                     <CadastroText>Novos Treinamentos </CadastroText>
                 </CadastroView>
-
                 <InputArea>
                     <CertiView>
                         <CertiText>Nome:</CertiText>
@@ -49,8 +49,7 @@ export default function NovosTreinamentos({ navigation }) {
                     </CertiView>
                     <CertiView>
                         <CertiText>Carga Horária:</CertiText>
-                        <InputCadastro  onChangeText={(text) => parseInt(setTreinamento({ ...treinamento, cargaHoraria: text }))} placeholder='Carga Horaria' placeholderTextColor='#181818' />
-                        {/* <NumericInput value={treinamento.cargaHoraria} onChange={(value) => setTreinamento({ value })} minValue={1} valueType='integer' /> */}
+                        <InputCadastro onChangeText={(text) => setTreinamento({ ...treinamento, cargaHoraria: text })} keyboardType='numeric' placeholder='Carga Horaria' placeholderTextColor='#181818' />
                     </CertiView>
                     <ButtonView>
                         <CertiButton onPress={() => postTreinamento()}>

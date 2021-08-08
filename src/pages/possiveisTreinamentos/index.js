@@ -50,11 +50,11 @@ export default function PossiveisTreinamentos({ navigation }) {
         <Container>
             <ListScroll>
                 <Titulo>Possiveis Treinamentos</Titulo>
-                {/* <TreinamentoColaView>
+                <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Treinamento')} >
                         <TreinamenText>Cadastrar Treinamentos</TreinamenText>
                     </TreinamentoButton>
-                </TreinamentoColaView> */}
+                </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Inserir Treinamentos em Conhecimento')} >
                         <TreinamenText>Inserir</TreinamenText>

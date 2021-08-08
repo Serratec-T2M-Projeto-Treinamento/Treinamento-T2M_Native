@@ -20,6 +20,7 @@ import {
 import { Titulo } from '../certificacao/styles';
 import axios from 'axios';
 import { AuthContext } from '../../services/auth';
+import { Alert } from 'react-native';
 
 export default function Formacoes({ route, navigation }) {
     const { colaborador } = route.params
@@ -48,7 +49,7 @@ export default function Formacoes({ route, navigation }) {
 
     async function handleRemoveForm(p){
       await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsForms/${colaboradores.idColaboradores}/formacaoARemover/${p.formacao.idFormacoes}`);
-      alert("Formação removida com sucesso!");
+      Alert.alert("Formação removida com sucesso!");
       setRefresh(!refresh);
     };
 

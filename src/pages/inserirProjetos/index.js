@@ -4,7 +4,7 @@ import { Container, EspacoView, ProjetoArea, CarText, ProScroll, ButtonView, Inp
 import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import { Alert, ActivityIndicator } from 'react-native';
 import { handleDate } from '../../components/dataFormatada';
-import DateField from 'react-native-datefield';
+import DatePicker from 'react-native-datepicker';
 
 export default function CadastroProjetos({ route, navigation }) {
 
@@ -96,7 +96,12 @@ export default function CadastroProjetos({ route, navigation }) {
                                 <ButtonView>
                                     <InputCadastro onChangeText={(text) => setLinkProj({ ...linkProj, funcao: text })} placeholder='Função' placeholderTextColor='#181818' />
                                     <DateView>
-                                        <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                                        <DatePicker style={{ width: 200 }}
+                                            date={linkProj.dataInicio}
+                                            format='YYYY-MM-DD'
+                                            minDate='2001-01-01'
+                                            maxDate={new Date()}
+                                            onDateChange={(data) => setLinkProj({...linkProj, dataInicio: data})} />
                                     </DateView>
                                     <ProjetoButton onPress={() => LinkarProjeto(p)}>
                                         <ProjetoText>Inserir</ProjetoText>
