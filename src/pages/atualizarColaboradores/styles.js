@@ -92,3 +92,6 @@ export const CadasView = styled.View`
   justify-content:center;
   align-items:center;
 `;
+export const Titulo = styled.Text`
+
+`;

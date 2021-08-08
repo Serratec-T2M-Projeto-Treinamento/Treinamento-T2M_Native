@@ -79,7 +79,7 @@ export default function Cadastro({ navigation }) {
           rg: "",
           cnh: "",
           permissao: 0,
-          idPosicoes: 1,
+          idPosicoes: 2,
           rua: "",
           numero: "",
           complemento: "",
