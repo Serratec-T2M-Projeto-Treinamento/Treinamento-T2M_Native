@@ -54,7 +54,7 @@ export default function Cadastro({ navigation }) {
     dataNascimento: yup.date("Inserir uma data valida").required("Data de nascimento é obrigatória"),
     email: yup.string().email("Inserir um email valido").max(30, ({ max }) => `Maximo de ${max} caracteres`).required("Email é obrigatório"),
     pix: yup.string().max(40, ({ max }) => `Maximo de ${max} caracteres`),
-    cpf: yup.string().min(14, ({ min }) => `Minimo de ${min} caracteres`).required("CPF é obrigatório"),
+    cpf: yup.string().min(11, ({ min }) => `Minimo de ${min} caracteres`).required("CPF é obrigatório"),
     rg: yup.string().min(9, ({ min }) => `Minimo de ${min} caracteres`).required("RG é obrigatório"),
     rua: yup.string().max(100, ({ max }) => `Maximo de ${max} caracteres`).required("Rua é obrigatório"),
     numero: yup.string().max(10, ({ max }) => `Maximo de ${max} caracteres`).required("Numero é obrigatório"),
@@ -194,7 +194,6 @@ export default function Cadastro({ navigation }) {
                       itemStyle={{ color: '#181818' }}
                       selectedValue={values.cnh}
                       onValueChange={(itemValue) => setFieldValue('cnh', itemValue)}>
-                      <Picker.Item color='#181818' label='Sem CNH' value='' />
                       <Picker.Item color='#181818' label='A' value='A' />
                       <Picker.Item color='#181818' label='B' value='B' />
                       <Picker.Item color='#181818' label='C' value='C' />
@@ -305,7 +304,7 @@ export default function Cadastro({ navigation }) {
                 </InputArea>
                 <ButtonView>
                   <CadastroButton onPress={() => handleSubmit()}
-                    disabled={!isValid}>
+                                  disabled={!isValid}>
                     <CadastroText>SALVAR</CadastroText>
                   </CadastroButton>
                 </ButtonView>
