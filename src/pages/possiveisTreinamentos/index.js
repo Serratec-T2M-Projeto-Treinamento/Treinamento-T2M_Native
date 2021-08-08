@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Container, ListScroll, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText, TreinamentoButton} from './styles';
+import { Container, ListScroll,TreinaColaView,TreinamentoColaButton,TreiText, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText, TreinamentoButton} from './styles';
 import axios from 'axios';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
@@ -22,7 +22,8 @@ export default function PossiveisTreinamentos({ navigation }) {
 
     const treinamentos = conhecimento.setConsTrns.map((p, i) => {
         return (
-            <TreinamentoColaArea key={i}>
+            <Container key={i}>
+            <TreinamentoColaArea >
                 <TreinamentoColaView>
                     <TreinaText>Nome:</TreinaText>
                     <TreinamenText>{p.treinamento.nome}</TreinamenText>
@@ -39,12 +40,13 @@ export default function PossiveisTreinamentos({ navigation }) {
                     <TreinaText>Carga Horária:</TreinaText>
                     <TreinamenText>{p.treinamento.cargaHoraria}Hora(s)</TreinamenText>
                 </TreinamentoColaView>
-                <TreinamentoColaView>
-                    <TreinamentoButton onPress={() => handleRemoverTreinamento(p)} >
-                        <TreinamenText>Remover</TreinamenText>
-                    </TreinamentoButton>
-                </TreinamentoColaView>
             </TreinamentoColaArea>
+                <TreinaColaView>
+                    <TreinamentoColaButton onPress={() => handleRemoverTreinamento(p)} >
+                        <TreiText>Remover</TreiText>
+                    </TreinamentoColaButton>
+                </TreinaColaView>
+            </Container>
         )
     })
     return (
@@ -59,7 +61,7 @@ export default function PossiveisTreinamentos({ navigation }) {
                 </TreinamentoColaView> */}
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Inserir Treinamentos em Conhecimento')} >
-                        <TreinamenText>Inserir</TreinamenText>
+                        <TreiText>Inserir</TreiText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                     {treinamentos}

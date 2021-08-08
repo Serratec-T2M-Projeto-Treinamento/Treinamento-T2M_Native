@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import { Container, EspacoView,InserirTreinaView, ProjetoArea, ProScroll,CardText, CarText, ProjetoButton, ProjetoText, InserirText, InserirView, CardView, ProjetoView} from './styles';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
@@ -38,28 +38,27 @@ export default function AdicionarTreinamentos({ navigation }) {
             <ProjetoArea key={i}>
                 <InserirView>
                     <CardView>
-                        <CardText>Nome:</CardText>
+                        <CarText>Nome:</CarText>
                         <CardText>{p.nome}</CardText>
                     </CardView>
                     <CardView>
-                        <CardText>Descrição:</CardText>
+                        <CarText>Descrição:</CarText>
                         <CardText>{p.descricao}</CardText>
                     </CardView>
                     <CardView>
-                        <CardText>Instituição:</CardText>
+                        <CarText>Instituição:</CarText>
                         <CardText>{p.instituicao}</CardText>
                     </CardView>
                     <CardView>
-                        <CardText>Carga Horária:</CardText>
+                        <CarText>Carga Horária:</CarText>
                         <CardText>{p.cargaHoraria} Hora(s)</CardText>
                     </CardView>
-                    <InserirView>
+                  
+                    <InserirTreinaView>
                         <ProjetoButton onPress={() => handleClick(p)}>
                             <ProjetoText>Inserir</ProjetoText>
                         </ProjetoButton>
-                    </InserirView>
-                    <InserirView>
-                    </InserirView>
+                    </InserirTreinaView>
                 </InserirView>
             </ProjetoArea>
         )
@@ -69,7 +68,6 @@ export default function AdicionarTreinamentos({ navigation }) {
         <Container>
             <ProScroll>
                 <MenuIcon />
-                <EspacoView></EspacoView>
                 <ProjetoView>
                     <InserirText> Inserir Treinamento</InserirText>
                 </ProjetoView>

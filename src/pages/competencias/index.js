@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ListScroll, Titulo, TreinaText, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import { Container, ListScroll, Titulo, TreinaText,ComText, TreinamentoColaButton, TreinaColaView, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
 import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
@@ -31,7 +31,8 @@ export default function Competencia({ navigation }) {
 
     const posicaoMap = posicao.setPosComps.map((p, i) => {
         return (
-            <TreinamentoColaArea key={i}>
+            <Container key={i}>
+                <TreinamentoColaArea >
                 <TreinamentoColaView>
                     <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.competencia.nome}</TreinamenText>
@@ -42,17 +43,21 @@ export default function Competencia({ navigation }) {
                 </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => handleClick(p)}>
-                        <TreinamenText>Ver Conhecimentos</TreinamenText>
-                    </TreinamentoButton>
-                </TreinamentoColaView>
-                <TreinamentoColaView>
-                    <TreinamentoButton onPress={() => handleRemoveCompetencia(p)}>
-                        <TreinamenText>Remover</TreinamenText>
+                        <ComText>Ver Conhecimentos</ComText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
             </TreinamentoColaArea>
+                <TreinaColaView>
+                    <TreinamentoColaButton onPress={() => handleRemoveCompetencia(p)}>
+                        <ComText>Remover</ComText>
+                    </TreinamentoColaButton>
+                </TreinaColaView>
+            </Container>
+              
         )
+             
     })
+
 
     return (
         <Container>
@@ -61,12 +66,12 @@ export default function Competencia({ navigation }) {
                 <Titulo>Compentências: {posicao.nome}</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Competência')}>
-                        <TreinamenText>Cadastrar Compentência</TreinamenText>
+                        <ComText>Cadastrar Compentência</ComText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Inserir Competência')}>
-                        <TreinamenText>Inserir Compentência</TreinamenText>
+                        <ComText>Inserir Compentência</ComText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                 {posicaoMap}

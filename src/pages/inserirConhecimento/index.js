@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll,MensagemArea, InserirConheView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView,CarText, CardText, CardView, ProjetoView, DateView } from './styles';
 import { Alert } from 'react-native';
 import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
@@ -49,20 +49,18 @@ export default function InserirConhecimento({ navigation }) {
                         return (
                             <InserirView key={i}>
                                 <CardView>
-                                    <CardText>Nome:</CardText>
+                                    <CarText>Nome:</CarText>
                                     <CardText>{p.nome}</CardText>
                                 </CardView>
                                 <CardView>
-                                    <CardText>Descrção:</CardText>
+                                    <CarText>Descrção:</CarText>
                                     <CardText>{p.descricao}</CardText>
                                 </CardView>
-                                <InserirView>
+                                <InserirConheView>
                                     <ProjetoButton onPress={() => handleClick(p)}>
                                         <ProjetoText>Inserir</ProjetoText>
                                     </ProjetoButton>
-                                </InserirView>
-                                <InserirView>
-                                </InserirView>
+                                </InserirConheView>
                             </InserirView>
                         )
                     })}

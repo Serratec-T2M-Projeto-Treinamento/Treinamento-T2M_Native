@@ -40,14 +40,14 @@ export default function NovaPosicao({ navigation }) {
                         <>
                             <InputArea>
                                 <CertiView>
-                                    <PosiText>Nome:</PosiText>
+                                    <PosiText>Nome da Posição:</PosiText>
                                     <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
                                     {(errors.nome && touched.nome) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                                         }
                                 </CertiView>
                                 <CertiView>
-                                     <PosiText>Descrição:</PosiText>
+                                     <PosiText>Descrição da posição:</PosiText>
                                     <InputCadastro name='descricao' onChangeText={handleChange('descricao')} onBlur={handleBlur('descricao')} value={values.descricao} placeholder='Descrição' placeholderTextColor='#181818' />
                                     {(errors.descricao && touched.descricao) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.descricao}</Text>
