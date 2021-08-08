@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Container, DateView, CadastroText, InputArea, InputCadastro, FormacaoText, FormaText, FormaView, FormaButton } from './styles';
+import { Container, CadastroText, InputArea, InputCadastro, FormacaoText, FormaText, FormaView, FormaButton } from './styles';
 import { Alert, Text } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import { Formik } from 'formik';

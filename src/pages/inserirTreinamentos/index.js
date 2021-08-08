@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, TreinamentoArea, CarText, ProScroll, TreinaView, MensagemArea, MensagemView, MensagemText, TreinamentoButton, TreinamentoText, TreinamentoView, InserirText, InserirView, CardText, CardView, PickerView } from './styles';
+import { Container, EspacoView, TreinamentoArea, CarText, ProScroll, TreinaView, MensagemArea, MensagemView, MensagemText, TreinamentoButton, TreinamentoText, InserirText, InserirView, CardText, CardView, PickerView } from './styles';
 import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import { Alert, ActivityIndicator } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -49,61 +49,62 @@ export default function CadastroTreinamentos({ route, navigation }) {
                 </LoadingView>
             </Container>
         )
-    }
+    } else {
 
-    return (
-        <Container>
-            <ProScroll>
-                <EspacoView>
-                </EspacoView>
-                <TreinaView>
-                    <InserirText> Inserir Treinamento </InserirText>
-                </TreinaView>
-                <TreinamentoArea>
-                    {treinamentos.map((p, i) => {
-                        return (
-                            <InserirView key={i}>
-                                <CardView>
-                                    <CardText>Nome:</CardText>
-                                    <CarText>{p.nome}</CarText>
-                                </CardView>
-                                <CardView>
-                                    <CardText>Descrição:</CardText>
-                                    <CarText>{p.descricao}</CarText>
-                                </CardView>
-                                <CardView>
-                                    <CardText>Carga Horária:</CardText>
-                                    <CarText>{p.cargaHoraria} Hora(s)</CarText>
-                                </CardView>
-                                <CardView>
-                                    <CardText>instituição:</CardText>
-                                    <CarText>{p.instituicao}</CarText>
-                                </CardView>
-                                <CardView>
-                                    <PickerView>
-                                        <Picker
-                                            mode='dropdown'
-                                            itemStyle={{ color: '#181818' }}
-                                            selectedValue={linkTreina}
-                                            onValueChange={(itemValue) => setLinkTreina({ ...linkTreina, status: itemValue })}>
-                                            <Picker.Item color='#181818' label='Status' value='' />
-                                            <Picker.Item color='#181818' label='Em andamento' value='Em andamento' />
-                                            <Picker.Item color='#181818' label='Concluído' value='Concluído' />
-                                        </Picker>
-                                    </PickerView>
-                                </CardView>
-                                <InserirView>
-                                    <TreinamentoButton onPress={() => LinkarTreinamento(p)}>
-                                        <TreinamentoText>Inserir</TreinamentoText>
-                                    </TreinamentoButton>
+        return (
+            <Container>
+                <ProScroll>
+                    <EspacoView>
+                    </EspacoView>
+                    <TreinaView>
+                        <InserirText> Inserir Treinamento </InserirText>
+                    </TreinaView>
+                    <TreinamentoArea>
+                        {treinamentos.map((p, i) => {
+                            return (
+                                <InserirView key={i}>
+                                    <CardView>
+                                        <CardText>Nome:</CardText>
+                                        <CarText>{p.nome}</CarText>
+                                    </CardView>
+                                    <CardView>
+                                        <CardText>Descrição:</CardText>
+                                        <CarText>{p.descricao}</CarText>
+                                    </CardView>
+                                    <CardView>
+                                        <CardText>Carga Horária:</CardText>
+                                        <CarText>{p.cargaHoraria} Hora(s)</CarText>
+                                    </CardView>
+                                    <CardView>
+                                        <CardText>instituição:</CardText>
+                                        <CarText>{p.instituicao}</CarText>
+                                    </CardView>
+                                    <CardView>
+                                        <PickerView>
+                                            <Picker
+                                                mode='dropdown'
+                                                itemStyle={{ color: '#181818' }}
+                                                selectedValue={linkTreina}
+                                                onValueChange={(itemValue) => setLinkTreina({ ...linkTreina, status: itemValue })}>
+                                                <Picker.Item color='#181818' label='Status' value='' />
+                                                <Picker.Item color='#181818' label='Em andamento' value='Em andamento' />
+                                                <Picker.Item color='#181818' label='Concluído' value='Concluído' />
+                                            </Picker>
+                                        </PickerView>
+                                    </CardView>
+                                    <InserirView>
+                                        <TreinamentoButton onPress={() => LinkarTreinamento(p)}>
+                                            <TreinamentoText>Inserir</TreinamentoText>
+                                        </TreinamentoButton>
+                                    </InserirView>
                                 </InserirView>
-                            </InserirView>
-                        )
-                    })}
-                </TreinamentoArea>
-                <EspacoView>
-                </EspacoView>
-            </ProScroll>
-        </Container>
-    )
+                            )
+                        })}
+                    </TreinamentoArea>
+                    <EspacoView>
+                    </EspacoView>
+                </ProScroll>
+            </Container>
+        )
+    }
 }
