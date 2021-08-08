@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Container, EspacoView,InserirTreinaView, ProjetoArea, ProScroll,CardText, CarText, ProjetoButton, ProjetoText, InserirText, InserirView, CardView, ProjetoView} from './styles';
-import MenuIcon from '../../components/icon';
+import { Container, InserirTreinaView, ProjetoArea, ProScroll, CardText, CarText, ProjetoButton, ProjetoText, InserirText, InserirView, CardView, ProjetoView } from './styles';
+import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
-import { Alert } from 'react-native';
+import { Alert, ActivityIndicator } from 'react-native';
 
 export default function AdicionarTreinamentos({ navigation }) {
     const { conhecimento, setConhecimento } = React.useContext(AuthContext);
     const [treinamentos, setTreinamentos] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         axios.get(`https://api-treinamento-t2m.herokuapp.com/treinamentos`)
             .then((response) => {
                 setTreinamentos(response.data);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error(error);
@@ -53,7 +56,7 @@ export default function AdicionarTreinamentos({ navigation }) {
                         <CarText>Carga Horária:</CarText>
                         <CardText>{p.cargaHoraria} Hora(s)</CardText>
                     </CardView>
-                  
+
                     <InserirTreinaView>
                         <ProjetoButton onPress={() => handleClick(p)}>
                             <ProjetoText>Inserir</ProjetoText>
@@ -64,16 +67,26 @@ export default function AdicionarTreinamentos({ navigation }) {
         )
     })
 
-    return (
-        <Container>
-            <ProScroll>
+    if (loading) {
+        return (
+            <Container>
+                <LoadingView>
+                    <ActivityIndicator size='large' color='white' />
+                    <LoadingText>Carregando...</LoadingText>
+                </LoadingView>
+            </Container>
+        );
+    } else {
 
-                <MenuIcon />
-                <ProjetoView>
-                    <InserirText> Inserir Treinamento</InserirText>
-                </ProjetoView>
-                {treinamentosMap}
-            </ProScroll>
-        </Container>
-    )
+        return (
+            <Container>
+                <ProScroll>
+                    <ProjetoView>
+                        <InserirText> Inserir Treinamento</InserirText>
+                    </ProjetoView>
+                    {treinamentosMap}
+                </ProScroll>
+            </Container>
+        )
+    }
 }

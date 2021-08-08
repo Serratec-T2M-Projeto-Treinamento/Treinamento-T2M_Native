@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Container, EspacoView, ProjetoArea, ProScroll, InserirColaView, CarText, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
-import MenuIcon from '../../components/icon';
+import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
-import { Alert } from 'react-native';
+import { Alert, ActivityIndicator } from 'react-native';
 
 export default function InserirCompetencia({ navigation }) {
     const { posicao, setPosicao } = React.useContext(AuthContext);
     const [competencias, setCompetencias] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`https://api-treinamento-t2m.herokuapp.com/competencias`)
             .then((response) => {
                 setCompetencias(response.data);
+                setLoading(false);
             })
             .catch((error) => {
                 console.error(error);
@@ -58,15 +60,27 @@ export default function InserirCompetencia({ navigation }) {
         )
     })
 
-    return (
-        <Container>
-            <ProScroll>
-                <EspacoView></EspacoView>
-                <ProjetoView>
-                    <InserirText> Inserir Competencia</InserirText>
-                </ProjetoView>
-                {competenciasMap}
-            </ProScroll>
-        </Container>
-    )
+    if (loading) {
+        return (
+            <Container>
+                <LoadingView>
+                    <ActivityIndicator size='large' color='white' />
+                    <LoadingText>Carregando...</LoadingText>
+                </LoadingView>
+            </Container>
+        );
+    } else {
+
+        return (
+            <Container>
+                <ProScroll>
+                    <EspacoView></EspacoView>
+                    <ProjetoView>
+                        <InserirText> Inserir Competencia</InserirText>
+                    </ProjetoView>
+                    {competenciasMap}
+                </ProScroll>
+            </Container>
+        )
+    }
 }
