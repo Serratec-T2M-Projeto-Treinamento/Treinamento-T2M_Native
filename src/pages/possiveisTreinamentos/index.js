@@ -21,8 +21,7 @@ export default function PossiveisTreinamentos({ navigation }) {
 
     const treinamentos = conhecimento.setConsTrns.map((p, i) => {
         return (
-            <Container key={i}>
-            <TreinamentoColaArea >
+            <TreinamentoColaArea key={i} >
                 <TreinamentoColaView>
                     <TreinaText>Nome:</TreinaText>
                     <TreinamenText>{p.treinamento.nome}</TreinamenText>
@@ -39,13 +38,12 @@ export default function PossiveisTreinamentos({ navigation }) {
                     <TreinaText>Carga Horária:</TreinaText>
                     <TreinamenText>{p.treinamento.cargaHoraria}Hora(s)</TreinamenText>
                 </TreinamentoColaView>
-            </TreinamentoColaArea>
                 <TreinaColaView>
                     <TreinamentoColaButton onPress={() => handleRemoverTreinamento(p)} >
                         <TreiText>Remover</TreiText>
                     </TreinamentoColaButton>
                 </TreinaColaView>
-            </Container>
+            </TreinamentoColaArea>
         )
     })
     return (
@@ -54,7 +52,7 @@ export default function PossiveisTreinamentos({ navigation }) {
                 <Titulo>Possiveis Treinamentos</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Treinamento')} >
-                        <TreinamenText>Cadastrar Treinamentos</TreinamenText>
+                        <TreiText>Cadastrar Treinamentos</TreiText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                 <TreinamentoColaView>

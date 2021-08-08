@@ -40,7 +40,7 @@ export const TreinaText = styled.Text`
   font-weight: bold;
 `;
 export const TreinamentoButton = styled.TouchableOpacity`
-  height:53px;
+  height:45px;
   background-color: #01a999;
   width: 70%;
   display: flex;

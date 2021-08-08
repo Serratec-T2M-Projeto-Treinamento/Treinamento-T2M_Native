@@ -17,14 +17,19 @@ export const PosiText = styled.Text`
   
 
 export const InputArea = styled.View`
-    width:80%;
-    height: 400px;
-    align-items: center;
-    border-radius: 15px;
-    margin: 40px;
-    justify-content: center;
-    border:white;
-  
+  width:80%;
+  height: 500px;
+  align-items: center;
+  border-radius: 15px;
+  margin: 40px;
+  justify-content: center;
+  border:white;
+  flex-direction: column;
+  border-radius: 20px;
+  justify-content: center;
+  background-color: black;
+  border:white ;
+  margin: 40px;
     
 `;
 
@@ -32,12 +37,12 @@ export const InputCadastro = styled.TextInput`
   font-size: 18px;
   margin-top: 10px;
   border: white;
-  width: 90%;
+  width: 98%;
   background-color: white;
   height: 50px;
   border-radius: 10px;
   color: #181818;
-  margin: 5%;
+
   margin-bottom: 3%;
 `;
 export const CadastroText = styled.Text`

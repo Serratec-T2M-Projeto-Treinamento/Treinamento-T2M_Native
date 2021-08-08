@@ -31,8 +31,7 @@ export default function Competencia({ navigation }) {
 
     const posicaoMap = posicao.setPosComps.map((p, i) => {
         return (
-            <Container key={i}>
-                <TreinamentoColaArea >
+                <TreinamentoColaArea key={i} >
                 <TreinamentoColaView>
                     <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.competencia.nome}</TreinamenText>
@@ -46,13 +45,13 @@ export default function Competencia({ navigation }) {
                         <ComText>Ver Conhecimentos</ComText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
-            </TreinamentoColaArea>
                 <TreinaColaView>
                     <TreinamentoColaButton onPress={() => handleRemoveCompetencia(p)}>
                         <ComText>Remover</ComText>
                     </TreinamentoColaButton>
                 </TreinaColaView>
-            </Container>
+            </TreinamentoColaArea>
+        
               
         )
              
