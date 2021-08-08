@@ -28,8 +28,7 @@ export default function Conhecimento({ navigation }) {
 
     const posicaoMap = competencia.setCompsCons.map((p, i) => {
         return (
-            <Container key={i}>
-            <TreinamentoColaArea >
+            <TreinamentoColaArea key={i} >
                 <TreinamentoColaView>
                     <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.conhecimento.nome}</TreinamenText>
@@ -43,13 +42,13 @@ export default function Conhecimento({ navigation }) {
                         <TreText>Possiveis Treinamentos</TreText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
-            </TreinamentoColaArea>
                 <TreinaColaView>
                     <TreinaButton onPress={() => handleRemoverConhecimento(p)}>
                         <TreText>Remover</TreText>
                     </TreinaButton>
                 </TreinaColaView>
-                </Container>
+            </TreinamentoColaArea>
+             
         )
     })
 
