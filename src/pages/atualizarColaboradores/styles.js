@@ -68,6 +68,8 @@ export const EspacoView = styled.View`
   justify-content: center;
 
 `;
+
+
 export const ButtonView = styled.View`
   align-items: center;
 `;
