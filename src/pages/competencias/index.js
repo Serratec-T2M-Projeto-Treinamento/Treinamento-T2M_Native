@@ -62,7 +62,6 @@ export default function Competencia({ navigation }) {
     return (
         <Container>
             <ListScroll>
-                <MenuIcon />
                 <Titulo>Compentências: {posicao.nome}</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Competência')}>

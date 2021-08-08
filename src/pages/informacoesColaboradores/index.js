@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {
-  InformacoesButton,
   InformacoesText,
   InformacoesScroll,
   InformacoesArea,
@@ -8,27 +7,21 @@ import {
   ButtonView,
   EspacoView,
   ButtonText,
-  MensagemView,
   DadosText,
   DadosView,
   DadosArea,
-  MensagemArea,
-  MensagemText,
   TodoButton,
   EndButton,
   EndText,
   EndView,
   InfView
 } from './styles';
-import MenuIcon from '../../components/icon';
 import { handleDate } from '../../components/dataFormatada';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
 
 export default function Informacoes({ route, navigation }) {
-
-  if (route.params) {
     const { setEnderecos, setColaboradores, colaboradores } = React.useContext(AuthContext);
 
     const { colaborador } = route.params
@@ -124,7 +117,6 @@ export default function Informacoes({ route, navigation }) {
       return (
         <Container>
           <InformacoesScroll>
-            <MenuIcon />
             <InformacoesArea>
               <DadosArea>
                 <DadosView>
@@ -239,20 +231,5 @@ export default function Informacoes({ route, navigation }) {
           </InformacoesScroll>
         </Container>
       );
-
-   } 
-   else {
-      return (
-        <Container>
-          <MenuIcon />
-          <MensagemArea>
-            <MensagemView>
-              <MensagemText>Nenhuma informação encontrada,</MensagemText>
-              <MensagemText>escolha um colaborador primeiro.</MensagemText>
-            </MensagemView>
-          </MensagemArea>
-        </Container>
-      )
-  }
 
 }

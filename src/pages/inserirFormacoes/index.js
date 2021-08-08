@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, EspacoView,DateView, CadastroText, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText, FormacaoText, FormaText, FormaView, FormaButton } from './styles';
 import { Alert } from 'react-native';
-import MenuIcon from '../../components/icon';
 import DateField from 'react-native-datefield';
 
 export default function CadastroFormacoes({ route, navigation }) {
-    if (route.params) {
-
 
         const { colaborador } = route.params
 
@@ -46,7 +43,6 @@ export default function CadastroFormacoes({ route, navigation }) {
 
         return (
             <Container>
-                <MenuIcon />
                 <FormaView>
                     <FormacaoText> Inserir Formaçôes </FormacaoText>
                 </FormaView>
@@ -73,19 +69,7 @@ export default function CadastroFormacoes({ route, navigation }) {
                 </FormaView>
             </Container>
         )
-    } else {
-        return (
-            <Container>
-                <MenuIcon />
-                <MensagemArea>
-                    <MensagemView>
-                        <MensagemText>Não foi possivel ir para o cadastro,</MensagemText>
-                        <MensagemText>escolha um colaborador para cadastrar uma formacao a ele.</MensagemText>
-                    </MensagemView>
-                </MensagemArea>
-            </Container>
-        )
-    }
+    
 }
 
 

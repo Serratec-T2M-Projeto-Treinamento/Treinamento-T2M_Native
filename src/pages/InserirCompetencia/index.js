@@ -61,7 +61,6 @@ export default function InserirCompetencia({ navigation }) {
     return (
         <Container>
             <ProScroll>
-                <MenuIcon />
                 <EspacoView></EspacoView>
                 <ProjetoView>
                     <InserirText> Inserir Competencia</InserirText>

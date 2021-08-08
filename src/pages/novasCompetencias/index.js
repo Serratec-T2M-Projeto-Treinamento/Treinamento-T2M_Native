@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, TreinaScroll, EspacoView, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert, Text } from 'react-native';
-import MenuIcon from '../../components/icon';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
@@ -16,7 +15,6 @@ export default function NovasCompetencias({ navigation }) {
     return (
         <Container>
             <TreinaScroll>
-                <MenuIcon />
                 <CadastroView>
                     <CadastroText>Cadastrar Competências</CadastroText>
                 </CadastroView>

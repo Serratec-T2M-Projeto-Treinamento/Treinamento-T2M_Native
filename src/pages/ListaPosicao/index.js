@@ -39,7 +39,6 @@ export default function ListaPosicao({ navigation }) {
     return (
         <Container>
             <ListScroll>
-                <MenuIcon />
                 <Titulo>Posições</Titulo>
                 <PosicaoView>
                     <TreinamentoButton onPress={() => { navigation.navigate('Cadastrar Posições') }}>

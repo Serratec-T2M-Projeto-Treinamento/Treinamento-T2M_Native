@@ -67,6 +67,7 @@ export default function AdicionarTreinamentos({ navigation }) {
     return (
         <Container>
             <ProScroll>
+
                 <MenuIcon />
                 <ProjetoView>
                     <InserirText> Inserir Treinamento</InserirText>

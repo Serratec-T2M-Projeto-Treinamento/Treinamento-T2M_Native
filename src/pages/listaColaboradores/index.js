@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ButtonInserir, ButtonText, ButtonView, InfoButton, InfoButtonText, InfoView, ContentView, ListScroll, EspacoView, LoadingView, LoadingText } from './styles';
-import MenuIcon from '../../components/icon';
+import { Container, ButtonInserir, ButtonText, ButtonView, InfoButton, InfoButtonText, InfoView, ContentView, ListScroll, EspacoView } from './styles';
+import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import axios from 'axios';
 import { ActivityIndicator } from 'react-native';
 import { AuthContext } from '../../services/auth';
@@ -57,7 +57,6 @@ export default function Listagem({ navigation }) {
         return (
             <Container>
                 <ListScroll>
-                    <MenuIcon />
                     <ContentView>
                         <ButtonView>
                             <ButtonInserir onPress={() => navigation.navigate('Cadastro')}>

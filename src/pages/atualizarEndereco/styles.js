@@ -8,15 +8,14 @@ export const Container = styled.SafeAreaView`
 export const InputArea = styled.View`
   background-color: black;
   width:80%;
-  height: 600px;
   align-items: center;
+  justify-content: center;
   border-radius: 15px;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   margin: 40px;
   justify-content: center;
   border: white;
-  
+  padding: 20px 0;
 `;
 
 export const InputView = styled.View`
@@ -28,9 +27,9 @@ export const InputCadastro = styled.TextInput`
   font-size: 18px;
   margin-top: 3%;
   border: black;
-  width: 70%;
+  width: 80%;
   background-color: white;
-  height: 8%;
+  height: 50px;
   border-radius: 10px;
   color: #181818;
   flex-direction:column;
@@ -65,7 +64,7 @@ export const CadastroText = styled.Text`
 
 export const PickerView = styled.View`
   background-color: white;
-  width: 70%;
+  width: 80%;
   margin-top: 10px;
   border-radius: 10px;
   border: black;
