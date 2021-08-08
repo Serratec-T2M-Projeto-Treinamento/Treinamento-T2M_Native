@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   height: 100%;
   background-color: #A0C8C3;
+  align-items: center;
+  justify-content: center;
 `;
 export const CadastroButton = styled.TouchableOpacity`
   height:50px;
@@ -19,15 +21,16 @@ export const CadastroButton = styled.TouchableOpacity`
 `;
 export const InputCadastro = styled.TextInput`
   font-size: 18px;
-  margin-top: 3%;
   border: black;
   width: 80%;
   background-color: white;
   height: 50px;
   border-radius: 10px;
   color: #181818;
-  flex-direction:column;
-  margin-bottom: 5px;
+  align-items: center;
+  flex-direction: column;
+  margin:5px;
+  height: 50px
   
 `;
 export const CadastroText = styled.Text`
@@ -37,14 +40,15 @@ export const CadastroText = styled.Text`
   font-weight: bold;
 `;
 export const InputArea = styled.View`
+border-color: black;
+  align-items: center;
+  justify-content: center;
   background-color: black;
   width:80%;
-  align-items: center;
   border-radius: 15px;
   flex-direction: column;
-  margin: 40px;
   justify-content: center;
-  border: white;
+  border:white;
   padding: 20px 0;
 `;
 export const InputView = styled.View`
@@ -57,9 +61,11 @@ export const InputView = styled.View`
 `;
 export const CadastroScroll = styled.ScrollView`
   background-color: #A0C8C3;
+  width: 100%;
 `;
 export const EspacoView = styled.View`
-  height: 80px;
+  align-items: center;
+  justify-content: center;
 
 `;
 
@@ -71,17 +77,9 @@ export const PickerView = styled.View`
   background-color: white;
   height: 50px;
   width: 80%;
-  margin-top: 10px;
   border-radius: 10px;
   border: black;
-`;
-export const DataView = styled.View`
-  width: 80%;
-  height: 50px;
-  background-color: white;
-  margin-top: 10px;
-  border-radius: 10px;
-  
+  margin: 5px;
 `;
 export const CadasText = styled.Text`
  text-align: center;
@@ -95,5 +93,13 @@ export const CadasView = styled.View`
   align-items:center;
 `;
 export const Titulo = styled.Text`
-
+  text-align: center;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  font-weight: bold;
+  align-items: center;
+`;
+export const TituloView = styled.View`
+  margin-bottom: 30px;
 `;

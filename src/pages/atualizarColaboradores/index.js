@@ -10,7 +10,7 @@ import {
     EspacoView,
     PickerView,
     Titulo,
-    CadasView
+    TituloView
 } from './styles';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
@@ -60,71 +60,136 @@ export default function AtualizarColaboradores({ route, navigation }) {
     return (
         <Container>
             <CadastroScroll>
-                <CadasView>
-                    <CadasText>Atualize seu Cadastro</CadasText>
-                </CadasView>
-                <InputArea>
-                    <CadastroText>Nome Completo:</CadastroText>
-                    <InputCadastro value={valores.nome} onChangeText={(text) => setValores({ ...valores, nome: text })} placeholder='Nome' placeholderTextColor='#181818' />
-                    <CadastroText>RG:</CadastroText>
-                    <InputCadastro value={valores.rg} onChangeText={(text) => setValores({ ...valores, rg: text })} keyboardType='number-pad' placeholder='RG' placeholderTextColor='#181818' />
-                    <CadastroText>CPF:</CadastroText>
-                    <InputCadastro value={valores.cpf} onChangeText={(text) => setValores({ ...valores, cpf: text })} keyboardType='number-pad' placeholder='CPF' placeholderTextColor='#181818' />
-                    <CadastroText>E-mail:</CadastroText>
-                    <InputCadastro value={valores.email} onChangeText={(text) => setValores({ ...valores, email: text })} keyboardType='email-address' autoCapitalize='none' placeholder='E-mail' placeholderTextColor='#181818' />
-                    <CadastroText>Data de nascimento:</CadastroText>
-                    <DataView>
-                        <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setValores({ ...valores, dataNascimento: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
-                    </DataView>
-                    <CadastroText>Pix:</CadastroText>
-                    <InputCadastro value={valores.pix} onChangeText={(text) => setValores({ ...valores, pix: text })} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
-                    <CadastroText>CNH:</CadastroText>
-                    <PickerView>
-                        <Picker
-                            mode='dropdown'
-                            itemStyle={{ color: '#181818' }}
-                            selectedValue={valores.cnh}
-                            onValueChange={(itemValue) => setValores({ ...valores, cnh: itemValue })}>
-                            <Picker.Item color='#181818' label='Escolha uma categoria' value='' />
-                            <Picker.Item color='#181818' label='A' value='A' />
-                            <Picker.Item color='#181818' label='B' value='B' />
-                            <Picker.Item color='#181818' label='C' value='C' />
-                            <Picker.Item color='#181818' label='D' value='D' />
-                            <Picker.Item color='#181818' label='E' value='E' />
-                            <Picker.Item color='#181818' label='AB' value='AB' />
-                        </Picker>
-                    </PickerView>
-                    <CadastroText>Cargo:</CadastroText>
-                    <PickerView>
-                        <Picker
-                            mode='dropdown'
-                            itemStyle={{ color: '#181818' }}
-                            selectedValue={valores.posicao.idPosicoes}
-                            onValueChange={(itemValue) => setValores({ ...valores, posicao: { ...valores.posicao, idPosicoes: itemValue } })}>
-                            {posicoes.map((p, i) => (
-                                <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
-                            )
-                            )}
-                        </Picker>
-                    </PickerView>
-                    <CadastroText>Posição:</CadastroText>
-                    <PickerView>
-                        <Picker
-                            mode='dropdown'
-                            itemStyle={{ color: '#181818' }}
-                            selectedValue={valores.permissao}
-                            onValueChange={(itemValue) => setValores({ ...valores, permissao: itemValue })}>
-                            {handlePermissao(isAdmin)}
-                            <Picker.Item color='#181818' label='Líder' value={1} />
-                            <Picker.Item color='#181818' label='Colaborador' value={0} />
-                        </Picker>
-                    </PickerView>
-                </InputArea>
-                <ButtonView>
-                    <CadastroButton onPress={() => putColaboradores()}>
-                        <CadastroText>Atualizar Dados</CadastroText>
-                    </CadastroButton>
-                </ButtonView>
+                <EspacoView>
+                    <TituloView>
+                        <Titulo>Atualizar Colaboradores</Titulo>
+                    </TituloView>
+                    <Formik initialValues={{
+                        nome: colaboradores.nome,
+                        dataNascimento: colaboradores.dataNascimento,
+                        email: colaboradores.email,
+                        pix: colaboradores.pix,
+                        cpf: colaboradores.cpf,
+                        rg: colaboradores.rg,
+                        cnh: colaboradores.cnh,
+                        permissao: colaboradores.permissao,
+                        idPosicoes: colaboradores.idPosicoes
+                    }}
+                        onSubmit={async (values) => {
+                            const colaborador = {
+                                nome: values.nome,
+                                dataNascimento: values.dataNascimento,
+                                email: values.email,
+                                pix: values.pix,
+                                cpf: mask(values.cpf, padraoCpf),
+                                rg: mask(values.rg, padraoRg),
+                                cnh: values.cnh,
+                                permissao: values.permissao,
+                                posicao: {
+                                    idPosicoes: values.idPosicoes,
+                                },
+                            };
+                            try {
+                                const response = await axios.put(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${colaboradores.idColaboradores}`, colaborador);
+                                Alert.alert("Colaborador atualizado com sucesso!");
+                                navigation.reset({
+                                    routes: [{ name: 'Lista de Colaboradores' }]
+                                });
+                            } catch {
+                                Alert.alert('Envio de dados nao permitidos...')
+                                Alert.alert('Os Campos CPF, RG, email e Pix devem ter valores únicos, cheque se algum colaborador cadastrado ja possui esses dados!')
+                            }
+                        }}
+                        validationSchema={updateValidations}>
+                        {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched, isValid }) => (
+                            <>
+                                <InputArea>
+                                    <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} autoCapitalize='words' placeholder='Nome' placeholderTextColor='#181818' />
+                                    {(errors.nome && touched.nome) &&
+                                        <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
+                                    }
+                                    <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} keyboardType='numeric' placeholder='RG' placeholderTextColor='#181818' />
+                                    {(errors.rg && touched.rg) &&
+                                        <Text style={{ fontSize: 15, color: 'red' }}>{errors.rg}</Text>
+                                    }
+                                    <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} keyboardType='numeric' placeholder='CPF' placeholderTextColor='#181818' />
+                                    {(errors.cpf && touched.cpf) &&
+                                        <Text style={{ fontSize: 15, color: 'red' }}>{errors.cpf}</Text>
+                                    }
+                                    <DatePicker style={{ width: 259, backgroundColor: 'white', margin: 5, height: 50, borderRadius: 5 }}
+                                        customStyles={{
+                                            dateInput: {
+                                                borderWidth: 0,
+                                                borderBottomWidth: 0,
+
+                                            },
+                                            dateText: {
+                                                marginTop: 8,
+                                                fontSize: 21,
+                                                color: "#181818"
+                                            }
+                                        }}
+                                        date={values.dataNascimento}
+                                        format='YYYY-MM-DD'
+                                        minDate='1970-01-01'
+                                        maxDate={new Date()}
+                                        onDateChange={(data) => setFieldValue('dataNascimento', data)} />
+                                    <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={(values.email)} keyboardType='email-address' placeholder='E-mail' placeholderTextColor='#181818' />
+                                    {(errors.email && touched.email) &&
+                                        <Text style={{ fontSize: 15, color: 'red' }}>{errors.email}</Text>
+                                    }
+                                    <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
+                                    {(errors.pix && touched.pix) &&
+                                        <Text style={{ fontSize: 15, color: 'red' }}>{errors.pix}</Text>
+                                    }
+                                    <PickerView>
+                                        <Picker
+                                            mode='dropdown'
+                                            itemStyle={{ color: '#181818' }}
+                                            selectedValue={values.cnh}
+                                            onValueChange={(itemValue) => setFieldValue('cnh', itemValue)}>
+                                            <Picker.Item color='#181818' label='Sem CNH' value='' />
+                                            <Picker.Item color='#181818' label='A' value='A' />
+                                            <Picker.Item color='#181818' label='B' value='B' />
+                                            <Picker.Item color='#181818' label='C' value='C' />
+                                            <Picker.Item color='#181818' label='D' value='D' />
+                                            <Picker.Item color='#181818' label='E' value='E' />
+                                        </Picker>
+                                    </PickerView>
+                                    <PickerView>
+                                        <Picker
+                                            mode='dropdown'
+                                            itemStyle={{ color: '#181818' }}
+                                            selectedValue={values.idPosicoes}
+                                            onValueChange={(itemValue) => setFieldValue('idPosicoes', itemValue)}>
+                                            {posicoes.map((p, i) => (
+                                                <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
+                                            )
+                                            )}
+                                        </Picker>
+                                    </PickerView>
+                                    <PickerView>
+                                        <Picker
+                                            mode='dropdown'
+                                            itemStyle={{ color: '#181818' }}
+                                            selectedValue={values.permissao}
+                                            onValueChange={(itemValue) => setFieldValue('permissao', itemValue)}>
+                                            <Picker.Item color='#181818' label='Colaborador' value={0} />
+                                            <Picker.Item color='#181818' label='Líder' value={1} />
+                                            {handlePermissao(isAdmin)}
+                                        </Picker>
+                                    </PickerView>
+                                </InputArea>
+                                <ButtonView>
+                                    <CadastroButton onPress={() => handleSubmit()}
+                                        disabled={!isValid}>
+                                        <CadastroText>SALVAR</CadastroText>
+                                    </CadastroButton>
+                                </ButtonView>
+                            </>
+                        )}
+                    </Formik>
+                </EspacoView>
             </CadastroScroll>
         </Container>
     )

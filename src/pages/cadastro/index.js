@@ -9,7 +9,8 @@ import {
   ButtonView,
   EspacoView,
   PickerView,
-  Titulo
+  Titulo,
+  TituloView
 } from './styles';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
@@ -68,213 +69,235 @@ export default function Cadastro({ navigation }) {
   return (
     <Container>
       <CadastroScroll>
-        <EspacoView></EspacoView>
-        <Titulo>Cadastrar Colaboradores</Titulo>
-        <Formik initialValues={{
-          nome: "",
-          dataNascimento: "",
-          email: "",
-          pix: "",
-          cpf: "",
-          rg: "",
-          cnh: "",
-          permissao: 0,
-          idPosicoes: 2,
-          rua: "",
-          numero: "",
-          complemento: "",
-          bairro: "",
-          cidade: "",
-          estado: "",
-          cep: "",
-          pais: ""
-        }}
-          onSubmit={async (values) => {
-            const colaborador = {
-              nome: values.nome,
-              dataNascimento: values.dataNascimento,
-              email: values.email,
-              pix: values.pix,
-              cpf: mask(values.cpf, padraoCpf),
-              rg: mask(values.rg, padraoRg),
-              cnh: values.cnh,
-              permissao: values.permissao,
-              posicao: {
-                idPosicoes: values.idPosicoes,
-              },
-            };
-            const endereco = {
-              rua: values.rua,
-              numero: values.numero,
-              complemento: values.complemento,
-              bairro: values.bairro,
-              cidade: values.cidade,
-              estado: values.estado,
-              cep: mask(values.cep, padraoCep),
-              pais: values.pais,
-            };
-            try {
-              const responseColaborador = await axios.post("https://api-treinamento-t2m.herokuapp.com/colaboradores", colaborador);
-              const idColaborador = responseColaborador.data.idColaboradores;
-              const responseEndereco = await axios.post("https://api-treinamento-t2m.herokuapp.com/enderecos", endereco);
-              const idEndereco = responseEndereco.data.idEnderecos;
-
-              const response = await axios.put(
-                `https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`
-              );
-              Alert.alert("Cadastro realizado com sucesso!");
-              navigation.reset({
-                routes: [{ name: 'Lista de Colaboradores' }]
-              });
-            } catch {
-              Alert.alert('Os Campos CPF, RG, email e Pix devem ter valores únicos, algum colaborador cadastrado já deve possuir algum desses valores !!!')
-            }
+        <EspacoView>
+          <TituloView>
+            <Titulo>Cadastro de Colaboradores</Titulo>
+          </TituloView>
+          <Formik initialValues={{
+            nome: "",
+            dataNascimento: "",
+            email: "",
+            pix: "",
+            cpf: "",
+            rg: "",
+            cnh: "",
+            permissao: 0,
+            idPosicoes: 2,
+            rua: "",
+            numero: "",
+            complemento: "",
+            bairro: "",
+            cidade: "",
+            estado: "",
+            cep: "",
+            pais: ""
           }}
-          validationSchema={cadastroValidations}>
-          {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched, isValid }) => (
-            <>
-              <InputArea>
-                <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
-                {(errors.nome && touched.nome) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
-                }
-                <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} placeholder='RG' placeholderTextColor='#181818' />
-                {(errors.rg && touched.rg) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.rg}</Text>
-                }
-                <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} placeholder='CPF' placeholderTextColor='#181818' />
-                {(errors.cpf && touched.cpf) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.cpf}</Text>
-                }
-                <DatePicker style={{ width: 200 }}
-                  date={values.dataNascimento}
-                  format='YYYY-MM-DD'
-                  minDate='1970-01-01'
-                  maxDate={new Date()}
-                  onDateChange={(data) => setFieldValue('dataNascimento', data)} />
-                <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={(values.email)} placeholder='E-mail' placeholderTextColor='#181818' />
-                {(errors.email && touched.email) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.email}</Text>
-                }
-                <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} placeholder='Pix' placeholderTextColor='#181818' />
-                {(errors.pix && touched.pix) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.pix}</Text>
-                }
-                <PickerView>
-                  <Picker
-                    mode='dropdown'
-                    itemStyle={{ color: '#181818' }}
-                    selectedValue={values.cnh}
-                    onValueChange={(itemValue) => setFieldValue('cnh', itemValue)}>
-                    <Picker.Item color='#181818' label='Sem CNH' value='' />
-                    <Picker.Item color='#181818' label='A' value='A' />
-                    <Picker.Item color='#181818' label='B' value='B' />
-                    <Picker.Item color='#181818' label='C' value='C' />
-                    <Picker.Item color='#181818' label='D' value='D' />
-                    <Picker.Item color='#181818' label='E' value='E' />
-                  </Picker>
-                </PickerView>
-                <PickerView>
-                  <Picker
-                    mode='dropdown'
-                    itemStyle={{ color: '#181818' }}
-                    selectedValue={values.idPosicoes}
-                    onValueChange={(itemValue) => setFieldValue('idPosicoes', itemValue)}>
-                    {posicoes.map((p, i) => (
-                      <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
-                    )
-                    )}
-                  </Picker>
-                </PickerView>
-                <PickerView>
-                  <Picker
-                    mode='dropdown'
-                    itemStyle={{ color: '#181818' }}
-                    selectedValue={values.permissao}
-                    onValueChange={(itemValue) => setFieldValue('permissao', itemValue)}>
-                    <Picker.Item color='#181818' label='Colaborador' value={0} />
-                    <Picker.Item color='#181818' label='Líder' value={1} />
-                    {handlePermissao(isAdmin)}
-                  </Picker>
-                </PickerView>
-                <InputCadastro name='pais' onChangeText={handleChange('pais')} onBlur={handleBlur('pais')} value={values.pais} placeholder='País' placeholderTextColor='#181818' />
-                {(errors.pais && touched.pais) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.pais}</Text>
-                }
-                <PickerView>
-                  <Picker
-                    mode='dropdown'
-                    itemStyle={{ color: '#181818' }}
-                    selectedValue={values.estado}
-                    onValueChange={(itemValue) => setFieldValue('estado', itemValue)}>
-                    <Picker.Item color='#181818' label='Escolha um Estado' value='' />
-                    <Picker.Item color='#181818' value='AC' label='Acre' />
-                    <Picker.Item color='#181818' value='AL' label='Alagoas' />
-                    <Picker.Item color='#181818' value='AP' label='Amapá' />
-                    <Picker.Item color='#181818' value='AM' label='Amazonas' />
-                    <Picker.Item color='#181818' value='BA' label='Bahia' />
-                    <Picker.Item color='#181818' value='CE' label='Ceará' />
-                    <Picker.Item color='#181818' value='DF' label='Distrito Federal' />
-                    <Picker.Item color='#181818' value='ES' label='Espírito Santo' />
-                    <Picker.Item color='#181818' value='GO' label='Goiás' />
-                    <Picker.Item color='#181818' value='MA' label='Maranhão' />
-                    <Picker.Item color='#181818' value='MT' label='Mato Grosso' />
-                    <Picker.Item color='#181818' value='MS' label='Mato Grosso do Sul' />
-                    <Picker.Item color='#181818' value='MG' label='Minas Gerais' />
-                    <Picker.Item color='#181818' value='PA' label='Pará' />
-                    <Picker.Item color='#181818' value='PB' label='Paraíba' />
-                    <Picker.Item color='#181818' value='PR' label='Paraná' />
-                    <Picker.Item color='#181818' value='PE' label='Pernambuco' />
-                    <Picker.Item color='#181818' value='PI' label='Piauí' />
-                    <Picker.Item color='#181818' value='RJ' label='Rio de Janeiro' />
-                    <Picker.Item color='#181818' value='RN' label='Rio Grande do Norte' />
-                    <Picker.Item color='#181818' value='RS' label='Rio Grande do Sul' />
-                    <Picker.Item color='#181818' value='RO' label='Rondônia' />
-                    <Picker.Item color='#181818' value='RR' label='Roraima' />
-                    <Picker.Item color='#181818' value='SC' label='Santa Catarina' />
-                    <Picker.Item color='#181818' value='SP' label='São Paulo' />
-                    <Picker.Item color='#181818' value='SE' label='Sergipe' />
-                    <Picker.Item color='#181818' value='TO' label='Tocantins' />
-                  </Picker>
-                  {(errors.estado && touched.estado) &&
-                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.estado}</Text>
+            onSubmit={async (values) => {
+              const colaborador = {
+                nome: values.nome,
+                dataNascimento: values.dataNascimento,
+                email: values.email,
+                pix: values.pix,
+                cpf: mask(values.cpf, padraoCpf),
+                rg: mask(values.rg, padraoRg),
+                cnh: values.cnh,
+                permissao: values.permissao,
+                posicao: {
+                  idPosicoes: values.idPosicoes,
+                },
+              };
+              const endereco = {
+                rua: values.rua,
+                numero: values.numero,
+                complemento: values.complemento,
+                bairro: values.bairro,
+                cidade: values.cidade,
+                estado: values.estado,
+                cep: mask(values.cep, padraoCep),
+                pais: values.pais,
+              };
+              try {
+                const responseColaborador = await axios.post("https://api-treinamento-t2m.herokuapp.com/colaboradores", colaborador);
+                const idColaborador = responseColaborador.data.idColaboradores;
+                const responseEndereco = await axios.post("https://api-treinamento-t2m.herokuapp.com/enderecos", endereco);
+                const idEndereco = responseEndereco.data.idEnderecos;
+
+                const response = await axios.put(
+                  `https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`
+                );
+                Alert.alert("Cadastro realizado com sucesso!");
+                navigation.reset({
+                  routes: [{ name: 'Lista de Colaboradores' }]
+                });
+              } catch {
+                Alert.alert('Os Campos CPF, RG, email e Pix devem ter valores únicos, algum colaborador cadastrado já deve possuir algum desses valores !!!')
+              }
+            }}
+            validationSchema={cadastroValidations}>
+            {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched, isValid }) => (
+              <>
+                <InputArea>
+                  <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
+                  {(errors.nome && touched.nome) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                   }
-                </PickerView>
-                <InputCadastro name='cidade' onChangeText={handleChange('cidade')} onBlur={handleBlur('cidade')} value={values.cidade} placeholder='Cidade' placeholderTextColor='#181818' />
-                {(errors.cidade && touched.cidade) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.cidade}</Text>
-                }
-                <InputCadastro name='bairro' onChangeText={handleChange('bairro')} onBlur={handleBlur('bairro')} value={values.bairro} placeholder='Bairro' placeholderTextColor='#181818' />
-                {(errors.bairro && touched.bairro) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.bairro}</Text>
-                }
-                <InputCadastro name='rua' onChangeText={handleChange('rua')} onBlur={handleBlur('rua')} value={values.rua} placeholder='Logradouro' placeholderTextColor='#181818' />
-                {(errors.rua && touched.rua) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.rua}</Text>
-                }
-                <InputCadastro name='numero' onChangeText={handleChange('numero')} onBlur={handleBlur('numero')} value={values.numero} placeholder='Número' placeholderTextColor='#181818' />
-                {(errors.numero && touched.numero) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.numero}</Text>
-                }
-                <InputCadastro name='complemento' onChangeText={handleChange('complemento')} onBlur={handleBlur('complemento')} value={values.complemento} placeholder='Complemento' placeholderTextColor='#181818' />
-                {(errors.complemento && touched.complemento) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.complemento}</Text>
-                }
-                <InputCadastro name='cep' onChangeText={handleChange('cep')} onBlur={handleBlur('cep')} value={mask(values.cep, padraoCep)} placeholder='CEP' placeholderTextColor='#181818' />
-                {(errors.cep && touched.cep) &&
-                  <Text style={{ fontSize: 15, color: 'red' }}>{errors.cep}</Text>
-                }
-              </InputArea>
-              <ButtonView>
-                <CadastroButton onPress={() => handleSubmit()}
-                  disabled={!isValid}>
-                  <CadastroText>SALVAR</CadastroText>
-                </CadastroButton>
-              </ButtonView>
-            </>
-          )}
-        </Formik>
-        <EspacoView></EspacoView>
+                  <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} placeholder='RG' placeholderTextColor='#181818' />
+                  {(errors.rg && touched.rg) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.rg}</Text>
+                  }
+                  <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} placeholder='CPF' placeholderTextColor='#181818' />
+                  {(errors.cpf && touched.cpf) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.cpf}</Text>
+                  }
+
+                  <DatePicker style={{ width: 225, backgroundColor: 'white', margin: 5, height: 50, borderRadius: 5 }}
+                    customStyles={{
+                      dateInput: {
+                        borderWidth: 0,
+                        borderBottomWidth: 0,
+                        
+                      },
+                      placeholderText: {
+                        marginTop: 8,
+                        fontSize: 17,
+                        color: '#181818'
+                      },
+                      dateText: {
+                        marginTop: 8,
+                        fontSize: 21,
+                        color: "#181818"
+                      }
+                    }}
+                    date={values.dataNascimento}
+                    placeholder='Data de Nascimento'
+                    format='YYYY-MM-DD'
+                    minDate='1970-01-01'
+                    maxDate={new Date()}
+                    onDateChange={(data) => setFieldValue('dataNascimento', data)} />
+
+                  <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={(values.email)} placeholder='E-mail' placeholderTextColor='#181818' />
+                  {(errors.email && touched.email) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.email}</Text>
+                  }
+                  <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} placeholder='Pix' placeholderTextColor='#181818' />
+                  {(errors.pix && touched.pix) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.pix}</Text>
+                  }
+                  <PickerView>
+                    <Picker
+                      mode='dropdown'
+                      itemStyle={{ color: '#181818' }}
+                      selectedValue={values.cnh}
+                      onValueChange={(itemValue) => setFieldValue('cnh', itemValue)}>
+                      <Picker.Item color='#181818' label='Sem CNH' value='' />
+                      <Picker.Item color='#181818' label='A' value='A' />
+                      <Picker.Item color='#181818' label='B' value='B' />
+                      <Picker.Item color='#181818' label='C' value='C' />
+                      <Picker.Item color='#181818' label='D' value='D' />
+                      <Picker.Item color='#181818' label='E' value='E' />
+                    </Picker>
+                  </PickerView>
+                  <PickerView>
+                    <Picker
+                      mode='dropdown'
+                      itemStyle={{ color: '#181818' }}
+                      selectedValue={values.idPosicoes}
+                      onValueChange={(itemValue) => setFieldValue('idPosicoes', itemValue)}>
+                      {posicoes.map((p, i) => (
+                        <Picker.Item color='#181818' key={i} label={p.nome} value={p.idPosicoes} />
+                      )
+                      )}
+                    </Picker>
+                  </PickerView>
+                  <PickerView>
+                    <Picker
+                      mode='dropdown'
+                      itemStyle={{ color: '#181818' }}
+                      selectedValue={values.permissao}
+                      onValueChange={(itemValue) => setFieldValue('permissao', itemValue)}>
+                      <Picker.Item color='#181818' label='Colaborador' value={0} />
+                      <Picker.Item color='#181818' label='Líder' value={1} />
+                      {handlePermissao(isAdmin)}
+                    </Picker>
+                  </PickerView>
+                  <InputCadastro name='pais' onChangeText={handleChange('pais')} onBlur={handleBlur('pais')} value={values.pais} placeholder='País' placeholderTextColor='#181818' />
+                  {(errors.pais && touched.pais) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.pais}</Text>
+                  }
+                  <PickerView>
+                    <Picker
+                      mode='dropdown'
+                      itemStyle={{ color: '#181818' }}
+                      selectedValue={values.estado}
+                      onValueChange={(itemValue) => setFieldValue('estado', itemValue)}>
+                      <Picker.Item color='#181818' label='Escolha um Estado' value='' />
+                      <Picker.Item color='#181818' value='AC' label='Acre' />
+                      <Picker.Item color='#181818' value='AL' label='Alagoas' />
+                      <Picker.Item color='#181818' value='AP' label='Amapá' />
+                      <Picker.Item color='#181818' value='AM' label='Amazonas' />
+                      <Picker.Item color='#181818' value='BA' label='Bahia' />
+                      <Picker.Item color='#181818' value='CE' label='Ceará' />
+                      <Picker.Item color='#181818' value='DF' label='Distrito Federal' />
+                      <Picker.Item color='#181818' value='ES' label='Espírito Santo' />
+                      <Picker.Item color='#181818' value='GO' label='Goiás' />
+                      <Picker.Item color='#181818' value='MA' label='Maranhão' />
+                      <Picker.Item color='#181818' value='MT' label='Mato Grosso' />
+                      <Picker.Item color='#181818' value='MS' label='Mato Grosso do Sul' />
+                      <Picker.Item color='#181818' value='MG' label='Minas Gerais' />
+                      <Picker.Item color='#181818' value='PA' label='Pará' />
+                      <Picker.Item color='#181818' value='PB' label='Paraíba' />
+                      <Picker.Item color='#181818' value='PR' label='Paraná' />
+                      <Picker.Item color='#181818' value='PE' label='Pernambuco' />
+                      <Picker.Item color='#181818' value='PI' label='Piauí' />
+                      <Picker.Item color='#181818' value='RJ' label='Rio de Janeiro' />
+                      <Picker.Item color='#181818' value='RN' label='Rio Grande do Norte' />
+                      <Picker.Item color='#181818' value='RS' label='Rio Grande do Sul' />
+                      <Picker.Item color='#181818' value='RO' label='Rondônia' />
+                      <Picker.Item color='#181818' value='RR' label='Roraima' />
+                      <Picker.Item color='#181818' value='SC' label='Santa Catarina' />
+                      <Picker.Item color='#181818' value='SP' label='São Paulo' />
+                      <Picker.Item color='#181818' value='SE' label='Sergipe' />
+                      <Picker.Item color='#181818' value='TO' label='Tocantins' />
+                    </Picker>
+                    {(errors.estado && touched.estado) &&
+                      <Text style={{ fontSize: 15, color: 'red' }}>{errors.estado}</Text>
+                    }
+                  </PickerView>
+                  <InputCadastro name='cidade' onChangeText={handleChange('cidade')} onBlur={handleBlur('cidade')} value={values.cidade} placeholder='Cidade' placeholderTextColor='#181818' />
+                  {(errors.cidade && touched.cidade) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.cidade}</Text>
+                  }
+                  <InputCadastro name='bairro' onChangeText={handleChange('bairro')} onBlur={handleBlur('bairro')} value={values.bairro} placeholder='Bairro' placeholderTextColor='#181818' />
+                  {(errors.bairro && touched.bairro) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.bairro}</Text>
+                  }
+                  <InputCadastro name='rua' onChangeText={handleChange('rua')} onBlur={handleBlur('rua')} value={values.rua} placeholder='Logradouro' placeholderTextColor='#181818' />
+                  {(errors.rua && touched.rua) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.rua}</Text>
+                  }
+                  <InputCadastro name='numero' onChangeText={handleChange('numero')} onBlur={handleBlur('numero')} value={values.numero} placeholder='Número' placeholderTextColor='#181818' />
+                  {(errors.numero && touched.numero) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.numero}</Text>
+                  }
+                  <InputCadastro name='complemento' onChangeText={handleChange('complemento')} onBlur={handleBlur('complemento')} value={values.complemento} placeholder='Complemento' placeholderTextColor='#181818' />
+                  {(errors.complemento && touched.complemento) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.complemento}</Text>
+                  }
+                  <InputCadastro name='cep' onChangeText={handleChange('cep')} onBlur={handleBlur('cep')} value={mask(values.cep, padraoCep)} placeholder='CEP' placeholderTextColor='#181818' />
+                  {(errors.cep && touched.cep) &&
+                    <Text style={{ fontSize: 15, color: 'red' }}>{errors.cep}</Text>
+                  }
+                </InputArea>
+                <ButtonView>
+                  <CadastroButton onPress={() => handleSubmit()}
+                    disabled={!isValid}>
+                    <CadastroText>SALVAR</CadastroText>
+                  </CadastroButton>
+                </ButtonView>
+              </>
+            )}
+          </Formik>
+        </EspacoView>
       </CadastroScroll>
     </Container>
   )
