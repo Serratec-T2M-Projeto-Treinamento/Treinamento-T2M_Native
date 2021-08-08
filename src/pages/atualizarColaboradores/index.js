@@ -9,27 +9,24 @@ import {
     ButtonView,
     EspacoView,
     PickerView,
-    DataView,
-    CadasText,
-    CadasView
+    Titulo
 } from './styles';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
-import { Alert } from 'react-native';
-import DateField from 'react-native-datefield';
+import { Alert, Text } from 'react-native';
 import { AuthContext } from '../../services/auth';
+import { mask } from 'remask';
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import DatePicker from 'react-native-datepicker';
 
 export default function AtualizarColaboradores({ route, navigation }) {
-
     const { isAdmin } = React.useContext(AuthContext);
-    const { colaborador } = route.params;
     const [posicoes, setPosicoes] = useState([]);
+    const { colaboradores } = route.params
 
-    const handlePermissao = (p) => {
-        if (p) {
-            return <Picker.Item color='#181818' label='Administrador' value={2} />
-        }
-    }
+    const padraoCpf = '999.999.999-99'
+    const padraoRg = '99.999.999-9'
 
     const getPosicao = async () => {
         try {
@@ -44,34 +41,20 @@ export default function AtualizarColaboradores({ route, navigation }) {
         getPosicao()
     }, []);
 
-    const [valores, setValores] = useState({
-        nome: colaborador.nome,
-        rg: colaborador.rg,
-        cpf: colaborador.cpf,
-        dataNascimento: colaborador.dataNascimento,
-        email: colaborador.email,
-        cnh: colaborador.cnh,
-        pix: colaborador.pix,
-        permissao: colaborador.permissao,
-        posicao: {
-            idPosicoes: colaborador?.posicao?.idPosicoes
-        }
-
-    })
-
-    const putColaboradores = async () => {
-        try {
-            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${colaborador.idColaboradores}`, valores)
-            Alert.alert('Dados Atualizados!')
-            navigation.reset({
-                routes: [{ name: 'Lista de Colaboradores' }]
-            })
-
-        } catch (error) {
-            Alert.alert('Ocorreu um erro, cheque os dados passados.')
-            console.error(error);
+    const handlePermissao = (p) => {
+        if (p) {
+            return <Picker.Item color='#181818' label='Administrador' value={2} />
         }
     }
+
+    const updateValidations = yup.object().shape({
+        nome: yup.string().min(5, ({ min }) => `Mínimo de ${min} caracteres`).max(50, ({ max }) => `Maximo de ${max} caracteres`).required("Nome é obrigatório"),
+        dataNascimento: yup.date("Inserir uma data valida").required("Data de nascimento é obrigatória"),
+        email: yup.string().email("Inserir um email valido").max(30, ({ max }) => `Maximo de ${max} caracteres`).required("Email é obrigatório"),
+        pix: yup.string().max(40, ({ max }) => `Maximo de ${max} caracteres`),
+        cpf: yup.string().min(14, ({ min }) => `Minimo de ${min} caracteres`).required("CPF é obrigatório"),
+        rg: yup.string().min(9, ({ min }) => `Minimo de ${min} caracteres`).required("RG é obrigatório")
+    });
 
     return (
         <Container>
