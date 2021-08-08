@@ -119,18 +119,29 @@ export default function Cadastro({ navigation }) {
               try {
                 const responseColaborador = await axios.post("https://api-treinamento-t2m.herokuapp.com/colaboradores", colaborador);
                 const idColaborador = responseColaborador.data.idColaboradores;
+
+                const responseUsuario = await axios.get(`https://api-treinamento-t2m.herokuapp.com/colaboradores/${idColaborador}`);
+
                 const responseEndereco = await axios.post("https://api-treinamento-t2m.herokuapp.com/enderecos", endereco);
                 const idEndereco = responseEndereco.data.idEnderecos;
 
                 const response = await axios.put(
                   `https://api-treinamento-t2m.herokuapp.com/colabsEndrs/colaborador/${idColaborador}/enderecoAInserir/${idEndereco}`
                 );
-                Alert.alert("Cadastro realizado com sucesso!");
-                navigation.reset({
-                  routes: [{ name: 'Lista de Colaboradores' }]
-                });
+                if (colaborador.permissao != 0) {
+                  Alert.alert("Cadastro realizado com sucesso!");
+                  Alert.alert(`Usuario: ${responseUsuario.data.usuario.usuario} && Senha: ${responseUsuario.data.usuario.senha}`);
+                  navigation.reset({
+                    routes: [{ name: 'Lista de Colaboradores' }]
+                  });
+                } else {
+                  Alert.alert("Cadastro realizado com sucesso!");
+                  navigation.reset({
+                    routes: [{ name: 'Lista de Colaboradores' }]
+                  });
+                }
               } catch {
-                Alert.alert('Os Campos CPF, RG, email e Pix devem ter valores únicos, algum colaborador cadastrado já deve possuir algum desses valores !!!')
+                Alert.alert('Envio de dados não permitido, verifique se algum colaborador ja possui esses dados!')
               }
             }}
             validationSchema={cadastroValidations}>
@@ -138,17 +149,17 @@ export default function Cadastro({ navigation }) {
               <>
                 <InputArea>
                   <CadastroText>Nome Completo:</CadastroText>
-                  <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} placeholder='Nome' placeholderTextColor='#181818' />
+                  <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} autoCapitalize='words' placeholder='Nome' placeholderTextColor='#181818' />
                   {(errors.nome && touched.nome) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                   }
                   <CadastroText>RG:</CadastroText>
-                  <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} placeholder='RG' placeholderTextColor='#181818' />
+                  <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} keyboardType='numeric' placeholder='RG' placeholderTextColor='#181818' />
                   {(errors.rg && touched.rg) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.rg}</Text>
                   }
                   <CadastroText>CPF:</CadastroText>
-                  <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} placeholder='CPF' placeholderTextColor='#181818' />
+                  <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} keyboardType='numeric' placeholder='CPF' placeholderTextColor='#181818' />
                   {(errors.cpf && touched.cpf) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.cpf}</Text>
                   }
@@ -178,12 +189,12 @@ export default function Cadastro({ navigation }) {
                     maxDate={new Date()}
                     onDateChange={(data) => setFieldValue('dataNascimento', data)} />
                   <CadastroText>E-mail:</CadastroText>
-                  <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={(values.email)} placeholder='E-mail' placeholderTextColor='#181818' />
+                  <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} keyboardType='email-address' value={(values.email)} placeholder='E-mail' placeholderTextColor='#181818' />
                   {(errors.email && touched.email) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.email}</Text>
                   }
                   <CadastroText>Pix:</CadastroText>
-                  <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} placeholder='Pix' placeholderTextColor='#181818' />
+                  <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
                   {(errors.pix && touched.pix) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.pix}</Text>
                   }
@@ -297,14 +308,14 @@ export default function Cadastro({ navigation }) {
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.complemento}</Text>
                   }
                   <CadastroText>CEP:</CadastroText>
-                  <InputCadastro name='cep' onChangeText={handleChange('cep')} onBlur={handleBlur('cep')} value={mask(values.cep, padraoCep)} placeholder='CEP' placeholderTextColor='#181818' />
+                  <InputCadastro name='cep' onChangeText={handleChange('cep')} onBlur={handleBlur('cep')} value={mask(values.cep, padraoCep)} keyboardType='numeric' placeholder='CEP' placeholderTextColor='#181818' />
                   {(errors.cep && touched.cep) &&
                     <Text style={{ fontSize: 15, color: 'red' }}>{errors.cep}</Text>
                   }
                 </InputArea>
                 <ButtonView>
                   <CadastroButton onPress={() => handleSubmit()}
-                                  disabled={!isValid}>
+                    disabled={!isValid}>
                     <CadastroText>SALVAR</CadastroText>
                   </CadastroButton>
                 </ButtonView>
