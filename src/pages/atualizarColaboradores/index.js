@@ -141,8 +141,6 @@ export default function AtualizarColaboradores({ route, navigation }) {
                         <CadastroText>Atualizar Dados</CadastroText>
                     </CadastroButton>
                 </ButtonView>
-                <EspacoView>
-                </EspacoView>
             </CadastroScroll>
         </Container>
     )

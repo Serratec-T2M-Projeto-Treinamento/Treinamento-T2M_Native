@@ -5,7 +5,6 @@ import {
   InformacoesArea,
   Container,
   ButtonView,
-  EspacoView,
   ButtonText,
   DadosText,
   DadosView,
@@ -227,7 +226,6 @@ export default function Informacoes({ route, navigation }) {
                 <ButtonText>Projetos atuais</ButtonText>
               </TodoButton>
             </ButtonView>
-            <EspacoView></EspacoView>
           </InformacoesScroll>
         </Container>
       );

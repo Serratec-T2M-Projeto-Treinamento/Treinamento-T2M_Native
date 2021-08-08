@@ -49,7 +49,6 @@ export default function InserirConhecimento({ navigation }) {
         return (
             <Container>
                 <ProScroll>
-                    <EspacoView></EspacoView>
                     <ProjetoView>
                         <InserirText> Inserir Conhecimento</InserirText>
                     </ProjetoView>

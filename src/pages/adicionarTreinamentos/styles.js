@@ -99,7 +99,7 @@ export const CardText = styled.Text`
   text-align: center;
   color: black;
   font-size: 22px;
-  font-style: italic
+  font-family: italic;
 
   
 `;

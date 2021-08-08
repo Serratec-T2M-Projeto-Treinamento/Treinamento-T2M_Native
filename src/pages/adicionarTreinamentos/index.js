@@ -56,7 +56,6 @@ export default function AdicionarTreinamentos({ navigation }) {
                         <CarText>Carga Horária:</CarText>
                         <CardText>{p.cargaHoraria} Hora(s)</CardText>
                     </CardView>
-
                     <InserirTreinaView>
                         <ProjetoButton onPress={() => handleClick(p)}>
                             <ProjetoText>Inserir</ProjetoText>

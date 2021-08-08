@@ -53,27 +53,6 @@ export const DadosText = styled.Text`
   font-style: italic;
 `;
 
-export const MensagemArea = styled.View`
-  border-color: black;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 800px;
-`;
-
-export const MensagemView = styled.View`
-  margin-bottom: 200px;
-`;
-
-export const MensagemText = styled.Text`
-  text-align: center;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-`;
-
 export const EndButton = styled.TouchableOpacity`
   height: 35px;
   background-color: #01a999;
@@ -103,23 +82,3 @@ export const EndView = styled.View`
   margin-top:15px
 `;
 
-export const CertiButton = styled.TouchableOpacity`
-  height:50px;
-  background-color: #01a999;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  border: white;
-  
-`;
-
-export const CertiButtonText = styled.Text`
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  
-`;

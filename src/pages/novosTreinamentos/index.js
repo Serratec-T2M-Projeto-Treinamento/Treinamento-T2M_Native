@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, TreinaScroll, InputArea, InputCadastro, CertiButton, CertiText, ButtonView, CadastroText, CadastroView, CertiView } from './styles';
 import { Alert } from 'react-native';
