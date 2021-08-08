@@ -26,10 +26,6 @@ export default function Login({ navigation }) {
         senha: yup.string().min(4, ({ min }) => `Senha deve ter no mínimo ${min} caracteres`).required('Campo obrigatório *'),
     })
 
-    const isLoading = () => {
-        setLoading(true);
-    }
-
     return (
         <ContainerLogin>
             <LoginView>
@@ -47,12 +43,13 @@ export default function Login({ navigation }) {
                                     senha: values.senha
                                 }
 
+                                setLoading(true)
                                 await axios.post('https://api-treinamento-t2m.herokuapp.com/usuarios/login', login)
                                     .then((response) => {
                                         navigation.navigate('Home');
                                         setLoading(false);
                                         setIsAdmin(response.data.isAdmin)
-                                        
+
                                     }).catch(() => {
                                         Alert.alert('Dados inválidos, tente novamente!')
                                         setLoading(false);
@@ -72,14 +69,14 @@ export default function Login({ navigation }) {
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.senha}</Text>
                                         }
                                     </InputArea>
-                                    <LoginButton onPress={() => {handleSubmit(); isLoading();}}
-                                                 disabled={!isValid}>
+                                    <LoginButton onPress={() => { handleSubmit(); }}
+                                        disabled={!isValid}>
                                         {
                                             loading ? (
                                                 <ActivityIndicator animating={loading} color='white' />
                                             ) : (
                                                 <ButtonText>Entrar</ButtonText>
-                                                
+
                                             )}
                                     </LoginButton>
                                 </>

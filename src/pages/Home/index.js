@@ -12,16 +12,11 @@ import {
   HomeText,
   HoText
 } from './styles';
-import MenuIcon from '../../components/icon';
-
 export default function Home({ navigation }) {
-  
-    
 
   return (
     <ContainerHome>
       <IconArea>
-        <MenuIcon />
       </IconArea>
       <HomeView>
       <LogoView>
@@ -37,6 +32,9 @@ export default function Home({ navigation }) {
           </HomeButton>
           <HomeButton onPress={() => { navigation.navigate('Lista de Posições') }}>
             <ButtonText>Treinamentos</ButtonText>
+          </HomeButton>
+          <HomeButton onPress={() => { navigation.navigate('Login') }}>
+            <ButtonText>Sair</ButtonText>
           </HomeButton>
         </ButtonView>
       </HomeView>

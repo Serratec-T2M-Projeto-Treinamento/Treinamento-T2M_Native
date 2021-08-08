@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, TreinaScroll,CertText, EspacoView, InputArea, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert } from 'react-native';
-import MenuIcon from '../../components/icon';
 import DateField from 'react-native-datefield';
 
 export default function InserirCertificados({ route, navigation }) {
-    if (route.params) {
         const { colaborador } = route.params
 
         const [certificados, setCertificados] = useState([]);
-        const [data, setData] = useState({
+        const [date, setDate] = useState({
             dataObtencao: ''
         });
 
@@ -26,7 +24,7 @@ export default function InserirCertificados({ route, navigation }) {
 
         const putCertificacoes = async (p) => {
             try {
-                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts/colaborador/${colaborador.idColaboradores}/certificacaoAInserir/${p.idCertificacoes}​`, data);
+                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsCerts/colaborador/${colaborador.idColaboradores}/certificacaoAInserir/${p.idCertificacoes}​`, date);
                 Alert.alert('Certificação inserida com sucesso!')
                 navigation.reset({
                     routes: [{ name: 'Lista de Colaboradores' }]
@@ -42,7 +40,6 @@ export default function InserirCertificados({ route, navigation }) {
         return (
             <Container>
                 <TreinaScroll>
-                    <MenuIcon />
                     <CadastroView>
                         <CadastroText> Cadastro de Certificados </CadastroText>
                     </CadastroView>
@@ -63,7 +60,7 @@ export default function InserirCertificados({ route, navigation }) {
                                     <CertText>Data de Obtenção:</CertText>
                                 </CertiView>
                                 <DataView>
-                                    <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setData({dataObtencao: value})} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                                    <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setDate({dataObtencao: value})} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
                                 </DataView>
                                 <ButtonView>
                                     <CertiButton onPress={() => putCertificacoes(p)}>
@@ -77,17 +74,4 @@ export default function InserirCertificados({ route, navigation }) {
                 </TreinaScroll>
             </Container>
         )
-    } else {
-        return (
-            <Container>
-                <MenuIcon />
-                <MensagemArea>
-                    <MensagemView>
-                        <MensagemText>Não foi possivel ir para o cadastro,</MensagemText>
-                        <MensagemText>escolha um colaborador para cadastrar uma certificação a ele.</MensagemText>
-                    </MensagemView>
-                </MensagemArea>
-            </Container>
-        )
-    }
 }

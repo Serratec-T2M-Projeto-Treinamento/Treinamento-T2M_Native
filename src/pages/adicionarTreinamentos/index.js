@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
-import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
@@ -68,7 +67,6 @@ export default function AdicionarTreinamentos({ navigation }) {
     return (
         <Container>
             <ProScroll>
-                <MenuIcon />
                 <EspacoView></EspacoView>
                 <ProjetoView>
                     <InserirText> Inserir Treinamento</InserirText>

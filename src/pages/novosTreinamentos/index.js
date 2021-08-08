@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, TreinaScroll, EspacoView, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert, Text } from 'react-native';
-import MenuIcon from '../../components/icon';
 import NumericInput from 'react-native-numeric-input';
 
 export default function NovosTreinamentos({ navigation }) {
@@ -31,7 +30,6 @@ export default function NovosTreinamentos({ navigation }) {
     return (
         <Container>
             <TreinaScroll>
-                <MenuIcon />
                 <CadastroView>
                     <CadastroText>Novos Treinamentos </CadastroText>
                 </CadastroView>

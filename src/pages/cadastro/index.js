@@ -101,7 +101,6 @@ export default function Cadastro({ navigation }) {
   return (
     <Container>
       <CadastroScroll>
-        <MenuIcon />
         <CadasView>
               <CadasText>Insira seu Cadastro</CadasText>
         </CadasView>

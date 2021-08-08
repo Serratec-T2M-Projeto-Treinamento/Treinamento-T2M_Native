@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { Container, TreinaScroll, PosiText, InputArea, InputCadastro, CertiButton, CertiText, DataView, ButtonView, CadastroText, CadastroView, MensagemArea, MensagemView, MensagemText, CertiView } from './styles';
 import { Alert, Text } from 'react-native';
-import MenuIcon from '../../components/icon';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -15,7 +14,6 @@ export default function NovoConhecimento({ navigation }) {
     return (
         <Container>
             <TreinaScroll>
-                <MenuIcon />
                 <CadastroView>
                     <CadastroText>Cadastro de Conhecimentos</CadastroText>
                 </CadastroView>
