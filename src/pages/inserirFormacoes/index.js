@@ -9,7 +9,6 @@ import * as yup from 'yup';
 export default function CadastroFormacoes({ route, navigation }) {
 
     const { colaborador } = route.params
-    console.log(colaborador);
 
     const formValidationSchema = yup.object().shape({
         nome: yup.string().max(50, ({ max }) => `Máximo de ${max} caracteres`).required('Nome é obrigatório'),
@@ -74,19 +73,21 @@ export default function CadastroFormacoes({ route, navigation }) {
                                 <Text style={{ fontSize: 15, color: 'red' }}>{errors.instituicao}</Text>
                             }
                             <CadastroText>Data de entrada:</CadastroText>
-                            <DatePicker style={{ width: 200 }}
+                            <DatePicker style={{ width: 270,margin:10, backgroundColor: "#eaeaea", borderRadius: 8,}}
                                 date={values.dataEntrada}
                                 format='YYYY-MM-DD'
                                 minDate='1990-01-01'
                                 maxDate={new Date()}
                                 onDateChange={(data) => setFieldValue('dataEntrada', data)} />
                             <CadastroText>Data de Conclusao:</CadastroText>
-                            <DatePicker style={{ width: 200 }}
+                            
+                            <DatePicker style={{ width: 270, margin:10, backgroundColor: "#eaeaea",borderRadius: 8}}
                                 date={values.dataConclusao}
                                 format='YYYY-MM-DD'
                                 minDate='1990-07-07'
                                 maxDate={new Date()}
                                 onDateChange={(data) => setFieldValue('dataConclusao', data)} />
+                                
                         </InputArea>
                         <FormaView>
                             <FormaButton onPress={() => handleSubmit()}
@@ -101,75 +102,3 @@ export default function CadastroFormacoes({ route, navigation }) {
     )
 
 }
-
-
-
-
-
-
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// import { Container, EspacoView, InputArea, InputCadastro, MensagemArea, MensagemView, MensagemText, FormacaoText, FormaText, FormaView, FormaButton  } from './styles';
-// import { Alert } from 'react-native';
-// import MenuIcon from '../../components/icon';
-
-// export default function CadastroFormacoes({ route }) {
-//     if (route.params) {
-
-
-//     const { idColaborador } = route.params
-
-
-//     const [formacao, setFormacao] = useState({
-//         nome: '',
-//         nivel: '',
-//         instituicao: ''
-//     });
-
-//     async function postFormacao() {
-//         try {
-
-//             const responseFormacao = await axios.post('https://api-Formacao-t2m.herokuapp.com/formacoes', formacao)
-//             const idFormacao = responseFormacao.data.idFormacoes
-
-
-//             const response = await axios.put(`https://api-Formacao-t2m.herokuapp.com/colabsForms/colaborador/${idColaborador}/formacao/${idFormacao}/dataEntrada/${dataEntradaForm}`)
-//             console.log(response.data);
-
-//         } catch (error) {
-//             Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
-//         }
-
-//     }
-//     return (
-//         <Container>
-//             <MenuIcon />
-//             <FormaView>
-//                     <FormacaoText> Inserir Formaçôes </FormacaoText>
-//             </FormaView>
-//             <InputArea>
-//                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nome: text })} placeholder='Nome da Formacao' placeholderTextColor='#181818' />
-//                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, nivel: text })} placeholder='Nível' placeholderTextColor='#181818' />
-//                 <InputCadastro onChangeText={(text) => setFormacao({ ...formacao, instituicao: text })} placeholder='Nome da Instuição' placeholderTextColor='#181818' />
-//                 <FormaView>
-//                         <FormaButton>
-//                             <FormaText>Salvar</FormaText>
-//                         </FormaButton>
-//                     </FormaView>
-//             </InputArea>
-//         </Container>
-//     )
-//     }else{
-//         return (
-//             <Container>
-//               <MenuIcon />
-//               <MensagemArea>
-//                 <MensagemView>
-//                   <MensagemText>Não foi possivel ir para o cadastro,</MensagemText>
-//                   <MensagemText>escolha um colaborador para cadastrar uma formacao a ele.</MensagemText>
-//                 </MensagemView>
-//               </MensagemArea>
-//             </Container>
-//           )
-//     }
-// }

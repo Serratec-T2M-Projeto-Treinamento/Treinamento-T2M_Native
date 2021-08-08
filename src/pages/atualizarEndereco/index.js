@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Container, InputArea, EspacoView, ProScroll, InserirText, InserirView, InputView, InputCadastro, ButtonView, CadastroButton, CadastroText, PickerView } from './styles';
+import { Container, InputArea, ProScroll, InserirText, InserirView, InputView, InputCadastro, ButtonView, CadastroButton, CadastroText, PickerView } from './styles';
 import { Alert, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Formik } from 'formik';
@@ -50,7 +50,6 @@ export default function AtualizarEndereco({ route, navigation }) {
                 <InserirView>
                     <InserirText> Atualização de endereço </InserirText>
                 </InserirView>
-                <EspacoView></EspacoView>
                 <Formik
                     initialValues={{
                         pais: enderecos.endereco.pais,

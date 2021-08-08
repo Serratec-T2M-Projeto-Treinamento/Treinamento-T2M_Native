@@ -13,9 +13,6 @@ export const TreinamentoArea = styled.View`
 
 `;
 
-export const EspacoView = styled.View`
-
-`;
 export const TreinaView = styled.View`
 
 `;
@@ -30,6 +27,7 @@ export const TreinamentoButton = styled.TouchableOpacity`
   border-radius: 30px;
   margin-top: 5px;
   border: white;
+  margin:15px
 `;
 
 export const MensagemArea = styled.View`
@@ -60,9 +58,6 @@ export const TreinamentoText = styled.Text`
   font-size:18px;
   font-weight: bold;
   
-`;
-export const TreinamentoView = styled.View`
-  margin-bottom: 50px;
 `;
 export const CardText = styled.Text`
   text-align: center;
@@ -108,7 +103,4 @@ export const PickerView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
   border: black;
-`;
-export const TreinaColaView = styled.View`
- 
 `;

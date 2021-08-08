@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, MensagemArea, MensagemView, MensagemText, EndText, EndButton, EndView, CertiButton, CertiButtonText } from './styles';
+import { CertificacaoScroll, Container, CertiText, CertifiArea, CertiView, DadosView, DadosText, Titulo, EndText, EndButton, EndView, } from './styles';
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { AuthContext } from '../../services/auth';
@@ -63,11 +63,6 @@ export default function certificacao({ route, navigation }) {
             </CertifiArea>
           )
         })}
-        {/* <CertiView>
-          <CertiButton onPress={() => handleCadasCert()}>
-            <CertiButtonText>Inserir Certificação</CertiButtonText>
-          </CertiButton>
-        </CertiView> */}
       </CertificacaoScroll>
     </Container>
 
