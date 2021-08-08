@@ -91,6 +91,7 @@ export const InserirView = styled.View`
   margin: 40px; 
   flex-direction: column;
   border-radius: 20px;
+  border:#01a999;
  
   `;
 export const InserirText = styled.Text`
@@ -107,4 +108,7 @@ export const PickerView = styled.View`
   margin-top: 10px;
   border-radius: 10px;
   border: black;
+`;
+export const TreinaColaView = styled.View`
+ 
 `;

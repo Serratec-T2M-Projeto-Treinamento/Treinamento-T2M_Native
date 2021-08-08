@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, ListScroll, TreinaColaView, TreinamentoColaButton, TreiText, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText, TreinamentoButton } from './styles';
+import { Container, ListScroll, TreinaColaView, TreinamentoColaButton,Trein, TreiText, Titulo, TreinaText, TreinamentoColaArea, TreinamentoColaView, TreinamenText, TreinamentoButton } from './styles';
 import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
 import axios from 'axios';
 import { AuthContext } from '../../services/auth';
@@ -67,14 +67,14 @@ export default function PossiveisTreinamentos({ navigation }) {
                     <Titulo>Possiveis Treinamentos</Titulo>
                     <TreinamentoColaView>
                         <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Treinamento')} >
-                            <TreinamenText>Cadastrar Treinamentos</TreinamenText>
+                            <TreiText>Cadastrar Treinamentos</TreiText>
                         </TreinamentoButton>
                     </TreinamentoColaView>
-                    <TreinamentoColaView>
+                    <TreinaColaView>
                         <TreinamentoButton onPress={() => navigation.navigate('Inserir Treinamentos em Conhecimento')} >
                             <TreiText>Inserir</TreiText>
                         </TreinamentoButton>
-                    </TreinamentoColaView>
+                    </TreinaColaView>
                     {treinamentos}
                 </ListScroll>
             </Container>
