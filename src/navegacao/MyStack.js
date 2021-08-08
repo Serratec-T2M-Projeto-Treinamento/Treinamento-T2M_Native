@@ -33,7 +33,7 @@ const Stack = createStackNavigator();
 export default function MyStack() {
     return (
         <Stack.Navigator
-            initialRouteName='Home'
+            initialRouteName='Login'
             screenOptions={{ headerTransparent: true, headerShown: false }}>
             <Stack.Screen name='Login' component={Login} />
             <Stack.Screen name='Home' component={Home} />

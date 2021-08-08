@@ -104,18 +104,22 @@ export default function AtualizarColaboradores({ route, navigation }) {
                         {({ handleChange, handleBlur, handleSubmit, setFieldValue, values, errors, touched, isValid }) => (
                             <>
                                 <InputArea>
+                                    <CadastroText>Nome Completo:</CadastroText>
                                     <InputCadastro name='nome' onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} value={values.nome} autoCapitalize='words' placeholder='Nome' placeholderTextColor='#181818' />
                                     {(errors.nome && touched.nome) &&
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.nome}</Text>
                                     }
+                                    <CadastroText>RG:</CadastroText>
                                     <InputCadastro name='rg' onChangeText={handleChange('rg')} onBlur={handleBlur('rg')} value={mask(values.rg, padraoRg)} keyboardType='numeric' placeholder='RG' placeholderTextColor='#181818' />
                                     {(errors.rg && touched.rg) &&
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.rg}</Text>
                                     }
+                                    <CadastroText>CPF:</CadastroText>
                                     <InputCadastro name='cpf' onChangeText={handleChange('cpf')} onBlur={handleBlur('cpf')} value={mask(values.cpf, padraoCpf)} keyboardType='numeric' placeholder='CPF' placeholderTextColor='#181818' />
                                     {(errors.cpf && touched.cpf) &&
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.cpf}</Text>
                                     }
+                                    <CadastroText>Data de Nascimento:</CadastroText>
                                     <DatePicker style={{ width: 259, backgroundColor: 'white', margin: 5, height: 50, borderRadius: 5 }}
                                         customStyles={{
                                             dateInput: {
@@ -134,14 +138,17 @@ export default function AtualizarColaboradores({ route, navigation }) {
                                         minDate='1970-01-01'
                                         maxDate={new Date()}
                                         onDateChange={(data) => setFieldValue('dataNascimento', data)} />
+                                    <CadastroText>E-mail:</CadastroText>
                                     <InputCadastro name='email' onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={(values.email)} keyboardType='email-address' placeholder='E-mail' placeholderTextColor='#181818' />
                                     {(errors.email && touched.email) &&
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.email}</Text>
                                     }
+                                    <CadastroText>Pix:</CadastroText>
                                     <InputCadastro name='pix' onChangeText={handleChange('pix')} onBlur={handleBlur('pix')} value={values.pix} autoCapitalize='none' placeholder='Pix' placeholderTextColor='#181818' />
                                     {(errors.pix && touched.pix) &&
                                         <Text style={{ fontSize: 15, color: 'red' }}>{errors.pix}</Text>
                                     }
+                                    <CadastroText>CNH:</CadastroText>
                                     <PickerView>
                                         <Picker
                                             mode='dropdown'
@@ -156,6 +163,7 @@ export default function AtualizarColaboradores({ route, navigation }) {
                                             <Picker.Item color='#181818' label='E' value='E' />
                                         </Picker>
                                     </PickerView>
+                                    <CadastroText>Posição:</CadastroText>
                                     <PickerView>
                                         <Picker
                                             mode='dropdown'
@@ -168,6 +176,7 @@ export default function AtualizarColaboradores({ route, navigation }) {
                                             )}
                                         </Picker>
                                     </PickerView>
+                                    <CadastroText>Permissão:</CadastroText>
                                     <PickerView>
                                         <Picker
                                             mode='dropdown'

@@ -96,12 +96,28 @@ export default function CadastroProjetos({ route, navigation }) {
                                 <ButtonView>
                                     <InputCadastro onChangeText={(text) => setLinkProj({ ...linkProj, funcao: text })} placeholder='Função' placeholderTextColor='#181818' />
                                     <DateView>
-                                        <DatePicker style={{ width: 200,fontSize:20 }}
+                                        <DatePicker style={{ width: 200, fontSize: 20 }}
+                                            customStyles={{
+                                                dateInput: {
+                                                    borderWidth: 0,
+                                                    borderBottomWidth: 0,
+
+                                                },
+                                                placeholderText: {
+                                                    fontSize: 17,
+                                                    color: '#181818'
+                                                },
+                                                dateText: {
+                                                    fontSize: 21,
+                                                    color: "#181818"
+                                                }
+                                            }}
+                                            placeholder='Data de Início'
                                             date={linkProj.dataInicio}
                                             format='YYYY-MM-DD'
                                             minDate='2001-01-01'
                                             maxDate={new Date()}
-                                            onDateChange={(data) => setLinkProj({...linkProj, dataInicio: data})} />
+                                            onDateChange={(data) => setLinkProj({ ...linkProj, dataInicio: data })} />
                                     </DateView>
                                     <ProjetoButton onPress={() => LinkarProjeto(p)}>
                                         <ProjetoText>Inserir</ProjetoText>
