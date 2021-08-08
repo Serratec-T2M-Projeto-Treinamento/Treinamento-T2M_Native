@@ -1,15 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, InputArea, EspacoView, ProScroll, InserirText, InserirView, InputView, InputCadastro, ButtonView, CadastroButton, CadastroText, PickerView, MensagemArea, MensagemView, MensagemText } from './styles';
-import MenuIcon from '../../components/icon';
 import { Alert, Text } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 export default function CadastroEndereco({ route }) {
-
-    if (route.params) {
 
         const { colaborador } = route.params
 
@@ -47,7 +44,6 @@ export default function CadastroEndereco({ route }) {
         return (
             <Container>
                 <ProScroll>
-                    <MenuIcon />
                     <InserirView>
                         <InserirText> Cadastro de endereço </InserirText>
                     </InserirView>
@@ -95,12 +91,14 @@ export default function CadastroEndereco({ route }) {
 
                                 <InputArea>
                                     <InputView>
+                                    <CadastroText>País:</CadastroText>
                                         <InputCadastro name='pais' onChangeText={handleChange('pais')} onBlur={handleBlur('pais')} value={values.pais} placeholder='País' placeholderTextColor='#181818' />
                                         {(errors.pais && touched.pais) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.pais}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Estado:</CadastroText>
                                         <PickerView>
                                             <Picker
                                                 mode='dropdown'
@@ -140,36 +138,42 @@ export default function CadastroEndereco({ route }) {
                                         </PickerView>
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Cidade:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('cidade')} onBlur={handleBlur('cidade')} value={values.cidade} placeholder='Cidade' placeholderTextColor='#181818' />
                                         {(errors.cidade && touched.cidade) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.cidade}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Bairro:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('bairro')} onBlur={handleBlur('bairro')} value={values.bairro} placeholder='Bairro' placeholderTextColor='#181818' />
                                         {(errors.bairro && touched.bairro) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.bairro}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Logradouro:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('rua')} onBlur={handleBlur('rua')} value={values.rua} placeholder='Rua' placeholderTextColor='#181818' />
                                         {(errors.rua && touched.pais) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.rua}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Número:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('numero')} onBlur={handleBlur('numero')} value={values.numero} keyboardType='number-pad' placeholder='Numero' placeholderTextColor='#181818' />
                                         {(errors.numero && touched.numero) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.numero}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>Complemento:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('complemento')} onBlur={handleBlur('complemento')} values={values.complemento} placeholder='Complemento' placeholderTextColor='#181818' />
                                         {(errors.complemento && touched.complemento) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.complemento}</Text>
                                         }
                                     </InputView>
                                     <InputView>
+                                    <CadastroText>CEP:</CadastroText>
                                         <InputCadastro onChangeText={handleChange('cep')} onBlur={handleBlur('cep')} value={values.cep} keyboardType='number-pad' placeholder='Cep' placeholderTextColor='#181818' />
                                         {(errors.cep && touched.cep) &&
                                             <Text style={{ fontSize: 15, color: 'red' }}>{errors.cep}</Text>
@@ -188,19 +192,6 @@ export default function CadastroEndereco({ route }) {
                 </ProScroll>
             </Container>
         )
-    } else {
-        return (
-            <Container>
-                <MenuIcon />
-                <MensagemArea>
-                    <MensagemView>
-                        <MensagemText>Nenhuma informação encontrada,</MensagemText>
-                        <MensagemText>escolha um colaborador para inserir um endereço a ele.</MensagemText>
-                    </MensagemView>
-                </MensagemArea>
-            </Container>
-        )
-    }
 }
 
 

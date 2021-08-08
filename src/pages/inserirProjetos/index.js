@@ -1,111 +1,112 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, EspacoView, ProjetoArea,CarText, ProScroll,ButtonView, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
-import { Alert } from 'react-native';
-import MenuIcon from '../../components/icon';
+import { Container, EspacoView, ProjetoArea, CarText, ProScroll, ButtonView, InputCadastro, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import { LoadingView, LoadingText } from '../../components/loadingStyle/loading';
+import { Alert, ActivityIndicator } from 'react-native';
 import { handleDate } from '../../components/dataFormatada';
 import DateField from 'react-native-datefield';
 
 export default function CadastroProjetos({ route, navigation }) {
-    if (route.params) {
 
-        const { colaborador } = route.params
+    const { colaborador } = route.params
 
-        const [projetos, setProjetos] = useState([]);
-        const [linkProj, setLinkProj] = useState({
-            funcao: '',
-            dataInicio: ''
-        })
+    const [projetos, setProjetos] = useState([]);
+    const [linkProj, setLinkProj] = useState({
+        funcao: '',
+        dataInicio: ''
+    });
 
-        useEffect(() => {
-            axios.get('https://api-treinamento-t2m.herokuapp.com/projetos')
-                .then((response) => setProjetos(response.data))
-                .catch((error) => {
-                    console.error(error);
-                });
-        }, []);
+    const [loading, setLoading] = useState(true);
 
-
-        const LinkarProjeto = async (p) => {
-            try {
-                await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${p.idProjetos}`, linkProj)
-                Alert.alert('Projeto Inserido com sucesso!')
-                navigation.reset({
-                    routes: [{ name: 'Lista de Colaboradores' }]
-                })
-            } catch (error) {
-                Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
+    useEffect(() => {
+        axios.get('https://api-treinamento-t2m.herokuapp.com/projetos')
+            .then((response) => {
+                setProjetos(response.data);
+                setLoading(false);
+            })
+            .catch((error) => {
                 console.error(error);
-            }
+            });
+    }, []);
+
+
+    const LinkarProjeto = async (p) => {
+        try {
+            await axios.put(`https://api-treinamento-t2m.herokuapp.com/colabsProjs/colaborador/${colaborador.idColaboradores}/projetoAInserir/${p.idProjetos}`, linkProj)
+            Alert.alert('Projeto Inserido com sucesso!')
+            navigation.reset({
+                routes: [{ name: 'Lista de Colaboradores' }]
+            })
+        } catch (error) {
+            Alert.alert('Envio de dados nao permitido, cheque as informações passadas');
+            console.error(error);
         }
-        
+    }
+
+    if (loading) {
         return (
             <Container>
-                <ProScroll>
-                    <MenuIcon />
-                    <EspacoView></EspacoView>
-                    <ProjetoView>
-                        <InserirText> Inserir Projeto </InserirText>
-                    </ProjetoView>
-                    <ProjetoArea>
-                        {projetos.map((p, i) => {
-                            return (
-                                <InserirView key={i}>
-                                        <CardView>
-                                            <CarText>Nome:</CarText>
-                                            <CardText>{p.nome}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>Descrção:</CarText>
-                                            <CardText>{p.descricao}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>App Gerenciador:</CarText>
-                                            <CardText>{p.appGerenciamento}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>Segmento:</CarText>
-                                            <CardText>{p.segmento}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>Data de entrega esperada:</CarText>
-                                            <CardText>{handleDate(p.dataEntregaEsperada)}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>Data de entrega:</CarText>
-                                            <CardText>{handleDate(p.dataEntrega)}</CardText>
-                                        </CardView>
-                                        <CardView>
-                                            <CarText>N° de integrantes:</CarText>
-                                            <CardText>{p.equipe}</CardText>
-                                        </CardView>
-                                        <ButtonView>
-                                            <InputCadastro onChangeText={(text) => setLinkProj({...linkProj, funcao: text})} placeholder='Função' placeholderTextColor='#181818' />
-                                        <DateView>
-                                            <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
-                                        </DateView>
-                                        <ProjetoButton onPress={() => LinkarProjeto(p)}>
-                                            <ProjetoText>Inserir</ProjetoText>
-                                        </ProjetoButton>
-                                        </ButtonView>
-                                </InserirView>
-                            )
-                        })}
-                    </ProjetoArea>
-                </ProScroll>
-            </Container>
-        )
-    } else {
-        return (
-            <Container>
-                <MenuIcon />
-                <MensagemArea>
-                    <MensagemView>
-                        <MensagemText>Não foi possivel ir para o cadastro,</MensagemText>
-                        <MensagemText>escolha um colaborador para cadastrar um projeto a ele.</MensagemText>
-                    </MensagemView>
-                </MensagemArea>
+                <LoadingView>
+                    <ActivityIndicator size='large' color='white' />
+                    <LoadingText>Carregando...</LoadingText>
+                </LoadingView>
             </Container>
         )
     }
+
+    return (
+        <Container>
+            <ProScroll>
+                <EspacoView></EspacoView>
+                <ProjetoView>
+                    <InserirText> Inserir Projeto </InserirText>
+                </ProjetoView>
+                <ProjetoArea>
+                    {projetos.map((p, i) => {
+                        return (
+                            <InserirView key={i}>
+                                <CardView>
+                                    <CarText>Nome:</CarText>
+                                    <CardText>{p.nome}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>Descrção:</CarText>
+                                    <CardText>{p.descricao}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>App Gerenciador:</CarText>
+                                    <CardText>{p.appGerenciamento}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>Segmento:</CarText>
+                                    <CardText>{p.segmento}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>Data de entrega esperada:</CarText>
+                                    <CardText>{handleDate(p.dataEntregaEsperada)}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>Data de entrega:</CarText>
+                                    <CardText>{handleDate(p.dataEntrega)}</CardText>
+                                </CardView>
+                                <CardView>
+                                    <CarText>N° de integrantes:</CarText>
+                                    <CardText>{p.equipe}</CardText>
+                                </CardView>
+                                <ButtonView>
+                                    <InputCadastro onChangeText={(text) => setLinkProj({ ...linkProj, funcao: text })} placeholder='Função' placeholderTextColor='#181818' />
+                                    <DateView>
+                                        <DateField labelDate='Dia' labelMonth='Mês' labelYear='Ano' onSubmit={(value) => setLinkProj({ ...linkProj, dataInicio: value })} styleInput={{ fontSize: 22, paddingLeft: 5 }} />
+                                    </DateView>
+                                    <ProjetoButton onPress={() => LinkarProjeto(p)}>
+                                        <ProjetoText>Inserir</ProjetoText>
+                                    </ProjetoButton>
+                                </ButtonView>
+                            </InserirView>
+                        )
+                    })}
+                </ProjetoArea>
+            </ProScroll>
+        </Container>
+    )
 }

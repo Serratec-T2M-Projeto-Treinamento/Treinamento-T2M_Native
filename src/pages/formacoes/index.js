@@ -17,13 +17,11 @@ import {
   EndText,
   EndButton
 } from './styles';
-import MenuIcon from '../../components/icon';
 import { Titulo } from '../certificacao/styles';
 import axios from 'axios';
 import { AuthContext } from '../../services/auth';
 
 export default function Formacoes({ route, navigation }) {
-  if (route.params) {
     const { colaborador } = route.params
 
     const { colaboradores, setColaboradores } = React.useContext(AuthContext);
@@ -57,7 +55,6 @@ export default function Formacoes({ route, navigation }) {
     return (
       <Container>
         <ListScroll>
-          <MenuIcon />
           <Titulo>Formações:</Titulo>
           {colaboradores.setColabsForms.map((p, i) => {
             return (
@@ -97,23 +94,4 @@ export default function Formacoes({ route, navigation }) {
         </ListScroll>
       </Container>
     );
-  } else {
-    return (
-      <Container>
-        <MenuIcon />
-        <MensagemArea>
-          <MensagemView>
-            <MensagemText>Nenhuma informação encontrada,</MensagemText>
-            <MensagemText>escolha um colaborador primeiro para ver sua formação.</MensagemText>
-          </MensagemView>
-        </MensagemArea>
-      </Container>
-    )
-  }
 }
-
-{/* <ButtonView>
-  <ButtonInserir onPress={() => navigation.navigate('Cadastro')}>
-    <ButtonText>Inserir Treinamento</ButtonText>
-  </ButtonInserir>
-</ButtonView> */}

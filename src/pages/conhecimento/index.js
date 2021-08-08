@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, ListScroll, TreinaText, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
-import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import { Alert } from 'react-native';
 import axios from 'axios';
@@ -54,7 +53,6 @@ export default function Conhecimento({ navigation }) {
     return (
         <Container>
             <ListScroll>
-                <MenuIcon />
                 <Titulo>Conhecimentos</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Conhecimento')}>

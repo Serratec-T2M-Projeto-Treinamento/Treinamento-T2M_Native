@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, ListScroll, Titulo, TreinaText, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
-import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
@@ -57,7 +56,6 @@ export default function Competencia({ navigation }) {
     return (
         <Container>
             <ListScroll>
-                <MenuIcon />
                 <Titulo>Compentências: {posicao.nome}</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Competência')}>

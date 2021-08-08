@@ -55,7 +55,7 @@ export const InputArea = styled.View`
   display: flex;
   background-color: black;
   width:80%;
-  height: 80%;
+  height: 1300px;
   border-radius: 15px;
   flex-direction: column;
   flex-wrap: wrap;
