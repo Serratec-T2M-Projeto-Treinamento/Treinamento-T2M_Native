@@ -62,7 +62,7 @@ export default function Informacoes({ route, navigation }) {
       }
 
       const handleClickColab = () => {
-        navigation.navigate('Atualizar Colaborador', { colaborador });
+        navigation.navigate('Atualizar Colaborador', { colaboradores });
       }
 
       const handleClickEnder = (p) => {
