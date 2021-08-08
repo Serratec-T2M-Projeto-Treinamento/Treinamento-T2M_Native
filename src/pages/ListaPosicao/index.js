@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ListScroll, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import { Container, ListScroll, Titulo,PosicaoView, PosicaoButton, PosicaoText, TreinamentoButton, TreinaColaView, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
@@ -39,11 +40,11 @@ export default function ListaPosicao({ navigation }) {
         <Container>
             <ListScroll>
                 <Titulo>Posições</Titulo>
-                <TreinamentoColaView>
+                <PosicaoView>
                     <TreinamentoButton onPress={() => { navigation.navigate('Cadastrar Posições') }}>
-                        <TreinamenText>Cadastrar posição</TreinamenText>
+                        <PosicaoText>Cadastrar posição</PosicaoText>
                     </TreinamentoButton>
-                </TreinamentoColaView>
+                </PosicaoView>
                 {posicoes.map((p, i) => {
                     return (
                         <TreinamentoColaArea key={i}>
@@ -51,12 +52,14 @@ export default function ListaPosicao({ navigation }) {
                                 <TreinamenText>{p.nome}</TreinamenText>
                                 <TreinamenText>{p.descricao}</TreinamenText>
                                 <TreinamentoButton onPress={() => handleClick(p)}>
-                                    <TreinamenText>Requisitos para ocupação</TreinamenText>
-                                </TreinamentoButton>
-                                <TreinamentoButton onPress={() => handleRemoverPosicao(p)}>
-                                    <TreinamenText>Remover</TreinamenText>
+                                    <PosicaoText>Requisitos para ocupação</PosicaoText>
                                 </TreinamentoButton>
                             </TreinamentoColaView>
+                            <TreinaColaView>
+                                <PosicaoButton onPress={() => handleRemoverPosicao(p)}>
+                                    <PosicaoText>Remover</PosicaoText>
+                                </PosicaoButton>
+                            </TreinaColaView>
                         </TreinamentoColaArea>
                     )
                 })}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, ListScroll, TreinaText, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import { Container, ListScroll, TreinaText, TreText, TreinaButton, TreinaColaView, Titulo, TreinamentoButton, TreinamentoColaArea, TreinamentoColaView, TreinamenText } from './styles';
+import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import { Alert } from 'react-native';
 import axios from 'axios';
@@ -27,7 +28,8 @@ export default function Conhecimento({ navigation }) {
 
     const posicaoMap = competencia.setCompsCons.map((p, i) => {
         return (
-            <TreinamentoColaArea key={i}>
+            <Container key={i}>
+            <TreinamentoColaArea >
                 <TreinamentoColaView>
                     <TreinaText>Nome: </TreinaText>
                     <TreinamenText>{p.conhecimento.nome}</TreinamenText>
@@ -38,15 +40,16 @@ export default function Conhecimento({ navigation }) {
                 </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => handleClick(p)}>
-                        <TreinaText>Possiveis Treinamentos</TreinaText>
-                    </TreinamentoButton>
-                </TreinamentoColaView>
-                <TreinamentoColaView>
-                    <TreinamentoButton onPress={() => handleRemoverConhecimento(p)}>
-                        <TreinaText>Remover</TreinaText>
+                        <TreText>Possiveis Treinamentos</TreText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
             </TreinamentoColaArea>
+                <TreinaColaView>
+                    <TreinaButton onPress={() => handleRemoverConhecimento(p)}>
+                        <TreText>Remover</TreText>
+                    </TreinaButton>
+                </TreinaColaView>
+                </Container>
         )
     })
 
@@ -56,12 +59,12 @@ export default function Conhecimento({ navigation }) {
                 <Titulo>Conhecimentos</Titulo>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Cadastrar Conhecimento')}>
-                        <TreinaText>Cadastar Conhecimento</TreinaText>
+                        <TreText>Cadastar Conhecimento</TreText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                 <TreinamentoColaView>
                     <TreinamentoButton onPress={() => navigation.navigate('Inserir Conhecimento')}>
-                        <TreinaText>Inserir Conhecimento</TreinaText>
+                        <TreText>Inserir Conhecimento</TreText>
                     </TreinamentoButton>
                 </TreinamentoColaView>
                 {posicaoMap}

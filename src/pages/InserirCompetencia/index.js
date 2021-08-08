@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, EspacoView, ProjetoArea, ProScroll, InputCadastro, MensagemArea, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import { Container, EspacoView, ProjetoArea, ProScroll, InserirColaView, CarText, MensagemView, MensagemText, ProjetoButton, ProjetoText, InserirText, InserirView, CardText, CardView, ProjetoView, DateView } from './styles';
+import MenuIcon from '../../components/icon';
 import { AuthContext } from '../../services/auth';
 import axios from 'axios';
 import { Alert } from 'react-native';
@@ -39,20 +40,18 @@ export default function InserirCompetencia({ navigation }) {
             <ProjetoArea key={i}>
                 <InserirView>
                     <CardView>
-                        <CardText>Nome:</CardText>
+                        <CarText>Nome:</CarText>
                         <CardText>{p.nome}</CardText>
                     </CardView>
                     <CardView>
-                        <CardText>Descrição:</CardText>
+                        <CarText>Descrição:</CarText>
                         <CardText>{p.descricao}</CardText>
                     </CardView>
-                    <InserirView>
+                    <InserirColaView>
                         <ProjetoButton onPress={() => handleClick(p)}>
                             <ProjetoText>Inserir</ProjetoText>
                         </ProjetoButton>
-                    </InserirView>
-                    <InserirView>
-                    </InserirView>
+                    </InserirColaView>
                 </InserirView>
 
             </ProjetoArea>

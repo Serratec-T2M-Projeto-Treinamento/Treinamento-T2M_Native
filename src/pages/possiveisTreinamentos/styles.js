@@ -17,7 +17,7 @@ export const TreinamentoColaArea = styled.View`
   border-radius: 20px;
   justify-content: center;
   background-color: lightgray;
-  border: lightblue;
+  border:#01a999 ;
   margin: 15px;
 `;
 export const TreinamentoColaView = styled.View`
@@ -30,12 +30,25 @@ export const TreinamentoColaView = styled.View`
 export const TreinamenText = styled.Text`
   text-align: center;
   color: black;
-  font-size: 18px;
+  font-size: 20px;
+  font-style: italic
 `;
 export const TreinamentoButton = styled.TouchableOpacity`
   height:50px;
   background-color: #01a999;
-  width: 50%;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: white;
+`;
+export const TreinamentoColaButton = styled.TouchableOpacity`
+  height:40px;
+  background-color: #01a999;
+  width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,4 +62,18 @@ export const TreinaText = styled.Text`
   color: black;
   font-size: 20px;
   font-weight: bold;
+`;
+export const TreiText = styled.Text`
+  text-align: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+`;
+export const TreinaColaView = styled.View`
+  margin-top: 5px;
+  justify-content: center;
+  align-items: flex-end;
+  height: 35px;
+  width: 98%;
+  padding-left: 10px;
 `;
