@@ -65,8 +65,6 @@ export default function Listagem({ navigation }) {
                         </ButtonView>
                         {info}
                     </ContentView>
-                    <EspacoView>
-                    </EspacoView>
                 </ListScroll>
             </Container>
         );

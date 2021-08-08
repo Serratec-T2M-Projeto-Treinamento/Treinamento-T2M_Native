@@ -62,6 +62,8 @@ export const EspacoView = styled.View`
   height: 80px;
 
 `;
+
+
 export const ButtonView = styled.View`
   align-items: center;
 `;

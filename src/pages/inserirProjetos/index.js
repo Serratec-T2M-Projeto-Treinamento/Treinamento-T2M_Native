@@ -96,7 +96,7 @@ export default function CadastroProjetos({ route, navigation }) {
                                 <ButtonView>
                                     <InputCadastro onChangeText={(text) => setLinkProj({ ...linkProj, funcao: text })} placeholder='Função' placeholderTextColor='#181818' />
                                     <DateView>
-                                        <DatePicker style={{ width: 200 }}
+                                        <DatePicker style={{ width: 200,fontSize:20 }}
                                             date={linkProj.dataInicio}
                                             format='YYYY-MM-DD'
                                             minDate='2001-01-01'

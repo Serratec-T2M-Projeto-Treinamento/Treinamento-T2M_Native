@@ -6,11 +6,11 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const ButtonInserir = styled.TouchableOpacity`
-    margin: 30px;
+    margin: 40px;
     height: 40px;
     background-color: #01a999;
     font-size: 18px;
-    width: 200px;
+    width: 300px;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
@@ -27,6 +27,7 @@ export const ButtonText = styled.Text`
 export const ButtonView = styled.View`
     display: flex;
     align-items: center;
+   
     
 `;
 
@@ -36,12 +37,16 @@ export const InfoButton = styled.TouchableOpacity`
     width: 80%;
     height: 50px;
     justify-content: center;
+    margin:5px;
+    border:#01a999;
+    margin-bottom: 3px;
 `;
 
 export const InfoButtonText = styled.Text`
     font-size: 18px;
     color: black;
     text-align: center;
+    font-weight: bold;
     
 `;
 
@@ -49,17 +54,14 @@ export const InfoView = styled.View`
     width: 100%;
     margin-top: 35px;
     align-items: center;
+  
     
 `;
 
 export const ContentView = styled.View`
-    
+    margin:20px
 `;
 
 export const ListScroll = styled.ScrollView`
 
-`;
-
-export const EspacoView = styled.View`
-    height: 40px;
 `;

@@ -9,7 +9,8 @@ import {
     ButtonView,
     EspacoView,
     PickerView,
-    Titulo
+    Titulo,
+    CadasView
 } from './styles';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
