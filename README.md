@@ -3,7 +3,7 @@
 <p align="center">
 <img height="100px" src="./assets/img/logoSerratec.png" alt="logo serratec"/><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img height="100px" src="./assets/img/logot2m1.png" alt="logo t2m"/>
 </p>
-<h1 align="center">T2M TREINAMENTO WEB</h1>
+<h1 align="center">T2M TREINAMENTO MOBILE</h1>
 </br>
 
 ## Índice
