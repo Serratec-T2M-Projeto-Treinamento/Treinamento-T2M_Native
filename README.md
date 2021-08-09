@@ -105,7 +105,7 @@
 - [**Node**](https://nodejs.org/en/)    [(*Documentação*)](https://nodejs.org/en/docs/)
 - [**npm**](https://www.npmjs.com/)    [(*Documentação*)](https://docs.npmjs.com/)
 - [**React Native**](https://reactnative.dev/)    [*(Documentação)*](https://reactnative.dev/docs/getting-started)
-- [**React N Gesture Handler](https://github.com/software-mansion/react-native-gesture-handler)    [(*Documentação*)](https://www.npmjs.com/package/react-native-gesture-handler)
+- [**React N Gesture Handler**](https://github.com/software-mansion/react-native-gesture-handler)    [(*Documentação*)](https://www.npmjs.com/package/react-native-gesture-handler)
 - [**React Navigation**](https://reactnavigation.org/)    [(*Documentação*)](https://reactnavigation.org/docs/getting-started/)
 - [**Remask**](https://github.com/brunobertolini/remask)   [(*Documentação*)](https://www.npmjs.com/package/remask)
 - [**Styled Components**](https://styled-components.com/)    [(*Documentação*)](https://styled-components.com/docs)
