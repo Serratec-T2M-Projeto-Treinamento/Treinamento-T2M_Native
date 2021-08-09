@@ -6,8 +6,8 @@
 <h1 align="center">T2M TREINAMENTO MOBILE</h1>
 </br>
 
-## Índice
-- [Índice](#índice)
+<h2>Índice</h2>
+
 - [🖊️Projeto](#️projeto)
 - [⚡Backlog Priorizado](#backlog-priorizado)
 - [⛏️Desenvolvimento Mobile](#️desenvolvimento-mobile)
